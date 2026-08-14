@@ -47,20 +47,39 @@ requests are verified but never published.
 
 ### One-time setup
 
+> **The repository must be public unless you pay for GitHub.** GitHub Pages on a *private* repository
+> requires Pro, Team or Enterprise. On the free plan, enabling Pages on a private repo fails with
+> `HTTP 422: Your current plan does not support GitHub Pages for this repository`, and the deploy job
+> dies at `configure-pages`. Repository visibility and *site* visibility are separate things: a public
+> repo means the source is readable, which for a hand-written marketing site is mostly the same content
+> the site already serves — but **read the "What goes public" note below before flipping it.**
+
 ```bash
 git init -b main
 git add .
 git commit -m "SeQontrol.com: initial site"
-gh repo create seqontrol-com --private --source=. --remote=origin --push
+gh repo create seqontrol-com --public --source=. --remote=origin --push
 ```
 
-Then in the repository: **Settings → Pages → Build and deployment → Source: GitHub Actions**. The first
-push runs the workflow and publishes.
+The workflow sets `enablement: true` on `configure-pages`, so Pages is switched on automatically by the
+first successful run — no visit to Settings needed. To do it by hand instead:
+**Settings → Pages → Build and deployment → Source: GitHub Actions.**
+
+### What goes public
+
+A public repository publishes **this README** alongside the site, and this file is candid by design: it
+records the ShareCare catalog mismatch, that scan cadence is sold but not yet enforced, and pointers to
+internal pricing material. None of that is secret, but none of it is written for customers either.
+Before making the repository public, either trim the "Things to change before it goes live" section and
+the internal cross-references, or keep the repo private and pay for Pages.
 
 ### Custom domain
 
 `CNAME` contains `seqontrol.com`, which is also what `sitemap.xml`, `robots.txt` and the `og:image` URL
 assume. Point the domain at GitHub:
+
+Eight apex records — four A and four AAAA — plus one CNAME for `www`. Each value below is literal and
+complete; enter them exactly as written, one record per row.
 
 | Record | Name | Value |
 |---|---|---|
@@ -68,11 +87,23 @@ assume. Point the domain at GitHub:
 | A | `@` | `185.199.109.153` |
 | A | `@` | `185.199.110.153` |
 | A | `@` | `185.199.111.153` |
-| AAAA | `@` | `2606:50c0:8000::153`, `…8001::153`, `…8002::153`, `…8003::153` |
+| AAAA | `@` | `2606:50c0:8000::153` |
+| AAAA | `@` | `2606:50c0:8001::153` |
+| AAAA | `@` | `2606:50c0:8002::153` |
+| AAAA | `@` | `2606:50c0:8003::153` |
 | CNAME | `www` | `<owner>.github.io` |
 
+The AAAA values differ only in the fourth group (`8000`, `8001`, `8002`, `8003`); `::` is IPv6's own
+notation for a run of zero groups and is part of the address, not an abbreviation of mine.
+
+**Check these against GitHub's current documentation before you commit them.** They are GitHub's
+published Pages addresses and have been stable for years, but hosting IPs are not a promise, and a stale
+A record is a site that silently stops resolving. Search GitHub Docs for "Managing a custom domain for
+your GitHub Pages site".
+
 Then tick **Enforce HTTPS** in Settings → Pages once the certificate is issued (can take a few minutes
-to an hour). If your DNS provider supports ALIAS/ANAME at the apex, use that instead of the A records.
+to an hour). If your DNS provider supports ALIAS/ANAME at the apex, use that instead of the A and AAAA
+records — one record that follows GitHub's changes beats eight that do not.
 
 **Not using a custom domain?** Delete `CNAME`, and update the absolute URLs in `sitemap.xml`,
 `robots.txt` and the `og:image` meta tag to your Pages URL. Every internal link in the site is

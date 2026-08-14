@@ -28,9 +28,9 @@ jobs:
   verify:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
 
@@ -46,9 +46,16 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
+      # enablement: true turns Pages on for the repository if it is not already,
+      # so a fresh clone of this repo deploys without anyone visiting Settings.
+      # It cannot override the plan: Pages on a PRIVATE repo needs Pro/Team/
+      # Enterprise, and on a free plan this fails with HTTP 422 until the
+      # repository is made public.
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       # The repository root IS the site: no generated output directory, so the
       # whole checkout is uploaded. tools/ and .github/ ride along harmlessly —

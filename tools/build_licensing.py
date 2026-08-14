@@ -220,12 +220,16 @@ PRODUCTS = [
 
 tabs, panels = [], []
 for i, p in enumerate(PRODUCTS):
+    # The badge belongs on the panel heading, not the tab. A tab label is a
+    # navigation target and should stay short; the availability caveat is part
+    # of what the panel says about the product, and it is repeated in the
+    # "Counted on" line and the notes below it anyway.
     badge = (' <span class="status soon">%s</span>' % p["status"]) if p["status"] else ""
     tabs.append(
         '          <button type="button" role="tab" id="tab-%s" aria-controls="panel-%s"'
-        ' aria-selected="%s" tabindex="%s" style="--tone: var(%s)">%s%s</button>'
+        ' aria-selected="%s" tabindex="%s" style="--tone: var(%s)">%s</button>'
         % (p["key"], p["key"], "true" if i == 0 else "false", "0" if i == 0 else "-1",
-           p["tone"], p["name"], badge))
+           p["tone"], p["name"]))
 
     body = [tech(p["tech"])]
     if p["cols"]:

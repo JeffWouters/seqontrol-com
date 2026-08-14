@@ -424,7 +424,6 @@ tbody tr:hover td { background: rgba(148,163,184,.03); }
   border-bottom-color: var(--tone, var(--accent));
 }
 .tablist button[aria-selected="true"]::before { opacity: 1; }
-.tablist .status { margin-left: .1rem; }
 
 [data-tabs-ready] .product-licence { margin-bottom: 0; }
 [data-tabs-ready] .product-licence h3::before { display: none; }

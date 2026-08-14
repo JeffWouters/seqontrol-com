@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SeQontrol - Terms - The plain version</title>
-<meta name="description" content="The terms covering use of the SeQontrol website and, in outline, the service — written to be read rather than to be scrolled past.">
-<link rel="canonical" href="https://seqontrol.com/terms.html">
+<title>SeQontrol - About - Why this exists</title>
+<meta name="description" content="Who builds SeQontrol, why a Microsoft 365 security and compliance platform was worth building, and what we will and will not claim about it.">
+<link rel="canonical" href="https://seqontrol.com/about.html">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="SeQontrol">
 <meta property="og:locale" content="en">
-<meta property="og:title" content="SeQontrol - Terms - The plain version">
-<meta property="og:description" content="The terms covering use of the SeQontrol website and, in outline, the service — written to be read rather than to be scrolled past.">
-<meta property="og:url" content="https://seqontrol.com/terms.html">
+<meta property="og:title" content="SeQontrol - About - Why this exists">
+<meta property="og:description" content="Who builds SeQontrol, why a Microsoft 365 security and compliance platform was worth building, and what we will and will not claim about it.">
+<meta property="og:url" content="https://seqontrol.com/about.html">
 <meta property="og:image" content="https://seqontrol.com/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -23,7 +23,7 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://seqontrol.com/" },
-    { "@type": "ListItem", "position": 2, "name": "Terms", "item": "https://seqontrol.com/terms.html" }
+    { "@type": "ListItem", "position": 2, "name": "About", "item": "https://seqontrol.com/about.html" }
   ]
 }
 </script>
@@ -56,45 +56,57 @@
 
   <section class="hero">
     <div class="wrap wrap-narrow">
-      <span class="eyebrow">Terms</span>
-      <h1>Terms, in language you can actually check</h1>
-      <p class="lede">These cover the website. A signed agreement governs the service itself; ask and we will send it before you commit to anything.</p>
+      <span class="eyebrow">About</span>
+      <h1>Why this exists</h1>
+      <p class="lede">SeQontrol is built by {operator} — a small team, working on the Microsoft 365 estate, shipping in public.</p>
     </div>
   </section>
 
   <section>
     <div class="wrap wrap-narrow">
 
-      <h2>The website</h2>
-      <p>You may read, quote and link to anything here. The words, the brand and the artwork belong
-        to JeffOps. The site's source is public and its licence sits in the repository.</p>
-      <p>Everything on this site describing the product is written to be accurate at the time of
-        writing, including the parts that say what the product does <em>not</em> do. Where something
-        is not yet available it is labelled "coming soon", and where a capability is limited the
-        limit is stated. If you find something on this site that is wrong, tell us and we will fix
-        it — that is a commitment we would rather be held to than a disclaimer.</p>
+      <h2>The problem that started it</h2>
+      <p>Every Microsoft 365 tenant accumulates access. A link shared with a supplier in 2019, a group
+        that quietly means "everyone", an app somebody consented to once. None of it mattered much
+        while it stayed obscure. Copilot ended that: anything a user can technically reach is now
+        something an assistant will happily summarise and cite.</p>
+      <p>The tooling that existed answered the wrong shape of question. Native reports are per-workload
+        and per-tenant. GRC platforms take your word for the technical controls and spend their effort
+        on questionnaires. Nothing joined "what is exposed" to "prove it stayed fixed" — and nothing at
+        all was built for somebody managing forty tenants rather than one.</p>
 
-      <h2>The service</h2>
-      <p>Use of the platform is governed by a written agreement, not by this page. That agreement
-        covers availability, support, liability, processing terms and termination. We will send it
-        before you are asked to commit, not after.</p>
-      <p>Two things worth stating plainly here, because they shape everything else:</p>
+      <h2>The bet</h2>
+      <p>That the platform matters more than any single scanner. One consented connection, one findings
+        store, one audit trail — so a security finding becomes compliance evidence without a second
+        integration, and so the tenth tenant costs no more thought than the first.</p>
+      <p>And that security sits above compliance. A waived control turns a report green without
+        changing anything real; we would rather show you the finding that is still there.
+        <a href="index.html#principle">The full argument is on the home page.</a></p>
+
+      <h2>Who</h2>
+      <p>JeffOps is Jeff Wouters — writing, speaking and consulting on the Microsoft platform at
+        <a href="https://jeffops.com">jeffops.com</a>, and building SeQontrol. If you email us, the
+        reply comes from a person who worked on the thing you are asking about.</p>
+
+      <h2>What we will not do</h2>
       <ul>
-        <li><strong>SeQontrol provides readiness and evidence, not an audit opinion.</strong> Your
-          auditor signs the opinion. Nothing produced here is a certification.</li>
-        <li><strong>Remediation writes to your tenant only where you have separately consented.</strong>
-          It restores an approved state or removes an identified exposure; it does not run arbitrary
-          automation.</li>
+        <li><strong>Claim customers we do not have.</strong> There are no logos on this site because
+          there is nothing to show yet, and inventing them would be a strange way to start a
+          relationship built on trusting us with tenant access.</li>
+        <li><strong>Fabricate a pass.</strong> A control we cannot assess is reported as "not
+          assessed", never as green.</li>
+        <li><strong>Oversell the roadmap.</strong> What is shipped is labelled shipped, and what is
+          not is labelled coming soon, on the page where you would otherwise assume otherwise.</li>
       </ul>
 
-      <h2>No warranty of a secure estate</h2>
-      <p>SeQontrol reports what it can observe through the connections you grant it. It does not
-        claim to find everything, and a clean report is not a guarantee that you are not exposed —
-        a control that cannot be assessed is reported as "not assessed" rather than as a pass,
-        precisely so that the gap is visible to you.</p>
+      <!-- TO ADD: a photo, and a line of background if you want one. A named,
+           visible founder is the strongest trust signal available before there
+           are customers to reference. -->
 
-      <h2>Contact</h2>
-      <p>Questions about these terms: <a href="mailto:jeff@jeffops.com">jeff@jeffops.com</a>.</p>
+      <h2>Talk to us</h2>
+      <p>Ask a hard question — <a href="contact.html">the contact page</a> or
+        <a href="mailto:jeff@jeffops.com">jeff@jeffops.com</a>. If SeQontrol is not a fit for you, we would rather
+        say so early than sell you a year of it.</p>
     </div>
   </section>
 

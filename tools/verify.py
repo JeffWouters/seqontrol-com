@@ -187,6 +187,11 @@ def check_content(page: str, src: str) -> None:
 # identity: a soft-404 in an index helps nobody.
 SEO_EXEMPT = {"404.html"}
 
+# Redirect stubs are not pages: they exist so an obvious URL resolves. They are
+# noindex, canonical to their target, and carry no chrome — so the page-shaped
+# checks below would only ever produce noise.
+REDIRECT_STUBS = {"pricing.html"}
+
 # 60 is the usual guidance, but the real constraint is pixel width (~600px), so
 # a character or two either side is noise. The cap exists to catch titles that
 # are genuinely too long, not to force a rewrite of a title someone chose.
@@ -260,8 +265,13 @@ def main() -> int:
     for page in PAGES:
         with open(page, encoding="utf-8") as fh:
             src = fh.read()
+        rel = os.path.relpath(page, ROOT).replace(os.sep, "/")
         check_links(page, src)
         check_markup(page, src)
+        if rel in REDIRECT_STUBS:
+            if 'http-equiv="refresh"' not in src or "noindex" not in src:
+                fail(page, "redirect stub must carry a refresh and noindex")
+            continue
         check_a11y(page, src)
         check_content(page, src)
         check_seo(page, src)

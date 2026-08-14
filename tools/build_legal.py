@@ -27,6 +27,59 @@ OPERATOR = 'JeffOps'
 CONTACT = 'jeff@jeffops.com'
 
 PAGES = {
+    "about.html": dict(
+        title="SeQontrol - About - Why this exists",
+        desc="Who builds SeQontrol, why a Microsoft 365 security and compliance platform was worth "
+             "building, and what we will and will not claim about it.",
+        eyebrow="About",
+        h1="Why this exists",
+        lede="SeQontrol is built by {operator} — a small team, working on the Microsoft 365 estate, "
+             "shipping in public.",
+        body="""
+      <h2>The problem that started it</h2>
+      <p>Every Microsoft 365 tenant accumulates access. A link shared with a supplier in 2019, a group
+        that quietly means "everyone", an app somebody consented to once. None of it mattered much
+        while it stayed obscure. Copilot ended that: anything a user can technically reach is now
+        something an assistant will happily summarise and cite.</p>
+      <p>The tooling that existed answered the wrong shape of question. Native reports are per-workload
+        and per-tenant. GRC platforms take your word for the technical controls and spend their effort
+        on questionnaires. Nothing joined "what is exposed" to "prove it stayed fixed" — and nothing at
+        all was built for somebody managing forty tenants rather than one.</p>
+
+      <h2>The bet</h2>
+      <p>That the platform matters more than any single scanner. One consented connection, one findings
+        store, one audit trail — so a security finding becomes compliance evidence without a second
+        integration, and so the tenth tenant costs no more thought than the first.</p>
+      <p>And that security sits above compliance. A waived control turns a report green without
+        changing anything real; we would rather show you the finding that is still there.
+        <a href="index.html#principle">The full argument is on the home page.</a></p>
+
+      <h2>Who</h2>
+      <p>{operator} is Jeff Wouters — writing, speaking and consulting on the Microsoft platform at
+        <a href="https://jeffops.com">jeffops.com</a>, and building SeQontrol. If you email us, the
+        reply comes from a person who worked on the thing you are asking about.</p>
+
+      <h2>What we will not do</h2>
+      <ul>
+        <li><strong>Claim customers we do not have.</strong> There are no logos on this site because
+          there is nothing to show yet, and inventing them would be a strange way to start a
+          relationship built on trusting us with tenant access.</li>
+        <li><strong>Fabricate a pass.</strong> A control we cannot assess is reported as "not
+          assessed", never as green.</li>
+        <li><strong>Oversell the roadmap.</strong> What is shipped is labelled shipped, and what is
+          not is labelled coming soon, on the page where you would otherwise assume otherwise.</li>
+      </ul>
+
+      <!-- TO ADD: a photo, and a line of background if you want one. A named,
+           visible founder is the strongest trust signal available before there
+           are customers to reference. -->
+
+      <h2>Talk to us</h2>
+      <p>Ask a hard question — <a href="contact.html">the contact page</a> or
+        <a href="mailto:{contact}">{contact}</a>. If SeQontrol is not a fit for you, we would rather
+        say so early than sell you a year of it.</p>
+"""),
+
     "privacy.html": dict(
         title="SeQontrol - Privacy - What we collect and why",
         desc="What SeQontrol collects from this website and from a connected tenant, "

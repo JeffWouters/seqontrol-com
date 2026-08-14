@@ -46,6 +46,11 @@ META = {
         "Book a walkthrough, request a scoped assessment, or get a quote against your actual "
         "estate. You get a reply from the people who built it.",
         "Contact"),
+    "about.html": (
+        "SeQontrol - About - Why this exists",
+        "Who builds SeQontrol, why a Microsoft 365 security and compliance platform was worth "
+        "building, and what we will and will not claim about it.",
+        "About"),
     "privacy.html": (
         "SeQontrol - Privacy - What we collect and why",
         "What SeQontrol collects from this website and from a connected tenant, why, how long it "

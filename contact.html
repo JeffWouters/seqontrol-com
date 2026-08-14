@@ -50,7 +50,7 @@
     <ul class="nav-links" id="nav-links">
       <li><a href="platform.html">Platform</a></li>
       <li><a href="products/index.html">Products</a></li>
-      <li><a href="licensing.html">Licensing</a></li>
+      <li><a href="licensing.html">Pricing</a></li>
       <li><a href="for-msps.html">For MSPs</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li><a class="btn btn-primary" href="contact.html">Book a walkthrough</a></li>
@@ -126,6 +126,16 @@
           <p class="hint">Or email <a href="mailto:jeff@jeffops.com">jeff@jeffops.com</a> directly — some
             people would rather see what they sent.</p>
         </form>
+
+        <div class="note plain" id="cf-fallback" hidden>
+          <h3>If your mail client did not open</h3>
+          <p>Some browsers and webmail setups cannot hand off to a mail app. Nothing is lost — copy
+            the message below and send it to <a href="mailto:jeff@jeffops.com">jeff@jeffops.com</a>.</p>
+          <label class="sr-only" for="cf-copy">Your message, ready to copy</label>
+          <textarea id="cf-copy" rows="9" readonly
+                    style="width:100%;font-family:var(--mono);font-size:.85rem"></textarea>
+          <p class="mb0"><button class="btn btn-ghost" type="button" id="cf-copy-btn">Copy message</button></p>
+        </div>
 
         <div class="note plain" id="cf-thanks" hidden>
           <h3>Message sent</h3>
@@ -206,9 +216,10 @@
       <div>
         <h2>Company</h2>
         <ul>
+          <li><a href="about.html">About</a></li>
           <li><a href="platform.html">Platform</a></li>
           <li><a href="for-msps.html">For MSPs</a></li>
-          <li><a href="licensing.html">Licensing</a></li>
+          <li><a href="licensing.html">Pricing</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
@@ -279,7 +290,18 @@
     window.location.href = 'mailto:jeff@jeffops.com'
       + '?subject=' + encodeURIComponent('SeQontrol — ' + topic)
       + '&body=' + encodeURIComponent(body);
-    say('Opening your mail client. If nothing happens, email jeff@jeffops.com directly.');
+    say('Opening your mail client…');
+
+    // A mailto: handoff fails silently on webmail and on machines with no
+    // registered handler. Rather than lose the enquiry, surface the composed
+    // message so it can be copied and sent by hand.
+    var fallback = document.getElementById('cf-fallback');
+    var box = document.getElementById('cf-copy');
+    box.value = 'To: jeff@jeffops.com
+Subject: SeQontrol — ' + topic + '
+
+' + body;
+    window.setTimeout(function () { fallback.hidden = false; }, 1200);
   }
 
   form.addEventListener('submit', function (e) {
@@ -305,6 +327,17 @@
       say('That did not send. Try again, or email jeff@jeffops.com — the message is not lost, it is still in the form.');
     });
   });
+
+  var copyBtn = document.getElementById('cf-copy-btn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function () {
+      var box = document.getElementById('cf-copy');
+      box.select();
+      var done = function () { copyBtn.textContent = 'Copied'; };
+      if (navigator.clipboard) navigator.clipboard.writeText(box.value).then(done, function () {});
+      else { document.execCommand('copy'); done(); }
+    });
+  }
 })();
 </script>
 </body>

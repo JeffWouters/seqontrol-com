@@ -259,7 +259,7 @@ SECTION = """  <!-- ---------------------------------------------------------- p
           unlocks. Every rung contains the one before it, so the ticks accumulate left to right.</p>
       </div>
 
-      <div data-tabs>
+      <div data-tabs class="tabs-v">
         <div class="tablist" role="tablist" aria-label="Products">
 {tabs}
         </div>

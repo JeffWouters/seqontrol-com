@@ -68,10 +68,13 @@
 
     tabs.forEach(function (tab, i) {
       tab.addEventListener('click', function () { select(i); });
+      // Both axes are accepted. The set is a vertical rail on wide screens and
+      // a wrapping row on narrow ones, so neither pair of arrows is "the wrong
+      // one" — declaring a fixed aria-orientation would be wrong half the time.
       tab.addEventListener('keydown', function (e) {
         var next = null;
-        if (e.key === 'ArrowRight') next = (i + 1) % tabs.length;
-        else if (e.key === 'ArrowLeft') next = (i - 1 + tabs.length) % tabs.length;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = (i + 1) % tabs.length;
+        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = (i - 1 + tabs.length) % tabs.length;
         else if (e.key === 'Home') next = 0;
         else if (e.key === 'End') next = tabs.length - 1;
         if (next === null) return;

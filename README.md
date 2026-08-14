@@ -123,7 +123,7 @@ only place the domain is hard-coded.
 ## Brand and theme
 
 - **SeQontrol** is the platform/product brand. **JeffOps** is the company behind it — the footer and
-  copy say so ("Built by JeffOps", "SeQontrol is a JeffOps product"). Every one of those mentions links
+  copy say so ("Built by JeffOps", "SeQontrol is a JeffOps platform"). Every one of those mentions links
   to `https://jeffops.com` and is coloured in JeffOps' own cyan `#00d9ff` (its `--cyan` token), not the
   SeQontrol purple — the two brands stay visually distinct. The rule matches on the href
   (`a[href^="https://jeffops.com"]`), so a new mention is styled automatically; there is no class to

@@ -192,7 +192,7 @@ SEO_EXEMPT = {"404.html"}
 # Redirect stubs are not pages: they exist so an obvious URL resolves. They are
 # noindex, canonical to their target, and carry no chrome — so the page-shaped
 # checks below would only ever produce noise.
-REDIRECT_STUBS = {"pricing.html"}
+REDIRECT_STUBS = set()
 
 # 60 is the usual guidance, but the real constraint is pixel width (~600px), so
 # a character or two either side is noise. The cap exists to catch titles that

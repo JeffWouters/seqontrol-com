@@ -46,6 +46,16 @@ META = {
         "Book a walkthrough, request a scoped assessment, or get a quote against your actual "
         "estate. You get a reply from the people who built it.",
         "Contact"),
+    "pricing.html": (
+        "SeQontrol - Pricing - What sets your number",
+        "How SeQontrol is priced: what each product counts, what makes a quote go up or down, and how "
+        "to get a real number against your own estate.",
+        "Pricing"),
+    "spoofing-report.html": (
+        "SeQontrol - Free report - Who is sending as you",
+        "A free check of your domain's email authentication: SPF, DKIM, DMARC, BIMI and MTA-STS, plus "
+        "every source currently sending mail as you.",
+        "Free spoofing check"),
     "vs-grc-platforms.html": (
         "SeQontrol - vs GRC platforms - Where each one wins",
         "How SeQontrol compares with questionnaire-first GRC platforms on Microsoft 365 control "

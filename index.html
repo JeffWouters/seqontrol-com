@@ -64,7 +64,7 @@
     <ul class="nav-links" id="nav-links">
       <li><a href="platform.html">Platform</a></li>
       <li><a href="products/index.html">Products</a></li>
-      <li><a href="licensing.html">Pricing</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
       <li><a href="for-msps.html">For MSPs</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li><a class="btn btn-primary" href="exposure-report.html">Free exposure report</a></li>
@@ -130,8 +130,9 @@
       <div class="section-head">
         <span class="eyebrow">The products</span>
         <h2>What each product finds, proves and fixes</h2>
-        <p>Each one answers a question you are already being asked, and each is useful on its own.
-           Run one, or run all of them against the same connection.</p>
+        <p><strong>Four are running today.</strong> Each answers a question you are already being asked,
+           and each is useful on its own — run one, or run all of them against the same connection.
+           Three more are in build, and they are labelled as such rather than sold as if they were here.</p>
       </div>
 
       <!-- the three portals, grouped -->
@@ -186,16 +187,43 @@
              providers.</p>
           <a class="arrow-link" href="products/mailtrust.html">MailTrust</a>
         </article>
-        <article class="pcard" style="--tone: var(--t-dredd)">
+      </div>
+
+
+      <h3 style="margin-top:3rem">What actually gets crawled</h3>
+      <p class="muted" style="max-width:62ch">Every surface below is read app-only, on a schedule, and
+        scored into one findings store. Dashed means detected but not yet remediable app-only — the
+        distinction is stated rather than glossed.</p>
+      <div class="coverage">
+        <div class="plane" style="--tone: var(--t-sharecare)"><b>SharePoint</b><span>Sites, links, permissions</span></div>
+        <div class="plane" style="--tone: var(--t-sharecare)"><b>OneDrive</b><span>Shares, revoke app-only</span></div>
+        <div class="plane" style="--tone: var(--t-sharecare)"><b>Teams</b><span>Membership, guest access</span></div>
+        <div class="plane" style="--tone: var(--t-sharecare)"><b>Entra ID</b><span>App consents, grants</span></div>
+        <div class="plane off" style="--tone: var(--t-sharecare)"><b>Exchange</b><span>Forwarding — detect only</span></div>
+        <div class="plane off" style="--tone: var(--t-sharecare)"><b>Power Platform</b><span>Detect only</span></div>
+        <div class="plane" style="--tone: var(--t-sharecare)"><b>Power BI</b><span>Sharing surface</span></div>
+        <div class="plane" style="--tone: var(--t-security)"><b>Conditional Access</b><span>Coverage and gaps</span></div>
+        <div class="plane" style="--tone: var(--t-security)"><b>Log Analytics</b><span>Where logs are exported</span></div>
+        <div class="plane" style="--tone: var(--t-security)"><b>Public web surface</b><span>TLS, headers, DNS</span></div>
+        <div class="plane" style="--tone: var(--t-mailtrust)"><b>Email auth</b><span>SPF, DKIM, DMARC, BIMI</span></div>
+        <div class="plane" style="--tone: var(--t-compliance)"><b>Google Cloud &amp; AWS</b><span>Read-only connectors</span></div>
+        <div class="plane" style="--tone: var(--t-sharecare)"><b>Box</b><span>Links, revoke app-only</span></div>
+        <div class="plane off" style="--tone: var(--t-sharecare)"><b>Slack Connect</b><span>Detect only</span></div>
+      </div>
+      <p class="coverage-note">Google Workspace is the next plane. What is not here is not scanned —
+        <a href="limits.html">the full list of what we do not do</a>.</p>
+
+      <h3 style="margin-top:3rem">In build, not yet available</h3>
+      <p class="muted" style="max-width:62ch">Listed because you will find them in the platform and we
+        would rather you knew the roadmap than discovered it. None of them is on the price list.</p>
+      <div class="grid grid-3">
+        <article class="pcard soon" style="--tone: var(--t-dredd)">
           <span class="kicker">Drift governance</span>
           <h3><a href="products/dredd.html">Dredd</a> <span class="status soon">Coming soon</span></h3>
           <p>Holds your approved configuration as a versioned baseline, catches every deviation, and forces the
              decision: revert it or ratify it. Not "this is unwise" — <em>"this is not what you approved."</em></p>
           <a class="arrow-link" href="products/dredd.html">Dredd</a>
         </article>
-      </div>
-
-      <div class="grid grid-3" style="margin-top:1.15rem">
         <article class="pcard soon" style="--tone: var(--t-soon)">
           <span class="kicker">Coming soon</span>
           <h3>ConditionalAccessPortal <span class="status soon">Coming soon</span></h3>
@@ -438,10 +466,11 @@
         <h2>Company</h2>
         <ul>
           <li><a href="exposure-report.html">Free exposure report</a></li>
+          <li><a href="spoofing-report.html">Free spoofing check</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="platform.html">Platform</a></li>
           <li><a href="for-msps.html">For MSPs</a></li>
-          <li><a href="licensing.html">Pricing</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>

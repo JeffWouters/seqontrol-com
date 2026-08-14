@@ -26,7 +26,225 @@ SOURCE = os.path.join(ROOT, "contact.html")   # chrome donor
 OPERATOR = 'JeffOps'
 CONTACT = 'jeff@jeffops.com'
 
+# A page with form=<button label> gets the request form inlined. It lives here
+# rather than being pasted into the HTML, because this script regenerates those
+# files — anything added to the output by hand is wiped on the next run.
+FORM = '''
+      <!-- FORM ENDPOINT: paste the URL into BOTH action and data-endpoint.
+           With it set the form posts normally and works without JavaScript;
+           left empty it falls back to composing a mailto, which can fail
+           silently on webmail — see README. -->
+      <form id="contact-form" method="post" action="" data-endpoint="" novalidate>
+        <input type="hidden" id="cf-topic" name="topic" value="{topic}">
+        <div class="field">
+          <label for="cf-name">Name</label>
+          <input id="cf-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="cf-email">Work email</label>
+          <input id="cf-email" name="email" type="email" autocomplete="email" required>
+          <p class="hint">So we can reply. Nothing else is done with it.</p>
+        </div>
+        <div class="field">
+          <label for="cf-org">Organisation</label>
+          <input id="cf-org" name="org" type="text" autocomplete="organization">
+        </div>
+        <div class="field">
+          <label for="cf-estate">{estate_label}</label>
+          <input id="cf-estate" name="estate" type="text" placeholder="{estate_hint}">
+        </div>
+        <div class="field">
+          <label for="cf-message">Anything we should know?</label>
+          <textarea id="cf-message" name="message" rows="4"></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit" id="cf-submit">{button}</button>
+        <p class="hint" id="cf-status" role="status" aria-live="polite"></p>
+        <p class="hint">Or email <a href="mailto:{contact}">{contact}</a> directly.</p>
+      </form>
+
+      <div class="note plain" id="cf-fallback" hidden>
+        <h2>If your mail client did not open</h2>
+        <p>Some browsers and webmail setups cannot hand off to a mail app. Nothing is lost — copy
+          the message below and send it to <a href="mailto:{contact}">{contact}</a>.</p>
+        <label class="sr-only" for="cf-copy">Your message, ready to copy</label>
+        <textarea id="cf-copy" rows="9" readonly
+                  style="width:100%;font-family:var(--mono);font-size:.85rem"></textarea>
+        <p class="mb0"><button class="btn btn-ghost" type="button" id="cf-copy-btn">Copy message</button></p>
+      </div>
+
+      <div class="note plain" id="cf-thanks" hidden>
+        <h2>Request sent</h2>
+        <p class="mb0">It landed. You will get a reply from a person, usually the same working day.</p>
+      </div>
+'''
+
+FORM_SCRIPT = '''<script>
+/* Same behaviour as the contact page: post when an endpoint is configured,
+   otherwise compose a mailto and surface the text so a failed handoff is
+   recoverable rather than silent. */
+(function () {
+  'use strict';
+  var form = document.getElementById('contact-form');
+  if (!form) return;
+  var status = document.getElementById('cf-status');
+  var thanks = document.getElementById('cf-thanks');
+  var fallback = document.getElementById('cf-fallback');
+  var submit = document.getElementById('cf-submit');
+  var endpoint = (form.getAttribute('data-endpoint') || '').trim();
+
+  function say(m) { status.textContent = m; }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = form.elements.name.value.trim();
+    if (!name) { say('A name helps.'); form.elements.name.focus(); return; }
+    var email = form.elements.email.value.trim();
+    if (!email || email.indexOf('@') < 1) {
+      say('We need an email address to reply to.'); form.elements.email.focus(); return;
+    }
+
+    var body = [
+      'Name: ' + name,
+      'Email: ' + email,
+      'Organisation: ' + (form.elements.org.value.trim() || '—'),
+      'Request: ' + form.elements.topic.value,
+      'Estate: ' + (form.elements.estate.value.trim() || '—'),
+      '', form.elements.message.value.trim()
+    ].join('\\n');
+
+    if (endpoint) {
+      submit.disabled = true; say('Sending…');
+      fetch(endpoint, { method: 'POST', headers: { 'Accept': 'application/json' },
+                        body: new FormData(form) })
+        .then(function (r) { if (!r.ok) throw new Error(r.status);
+          form.hidden = true; thanks.hidden = false;
+          thanks.setAttribute('tabindex', '-1'); thanks.focus(); })
+        .catch(function () { submit.disabled = false;
+          say('That did not send. Try again, or email us — your message is still in the form.'); });
+      return;
+    }
+
+    window.location.href = 'mailto:{contact}'
+      + '?subject=' + encodeURIComponent('SeQontrol — ' + form.elements.topic.value)
+      + '&body=' + encodeURIComponent(body);
+    say('Opening your mail client…');
+    document.getElementById('cf-copy').value =
+      'To: {contact}\\nSubject: SeQontrol — ' + form.elements.topic.value + '\\n\\n' + body;
+    window.setTimeout(function () { fallback.hidden = false; }, 1200);
+  });
+
+  var copyBtn = document.getElementById('cf-copy-btn');
+  if (copyBtn) copyBtn.addEventListener('click', function () {
+    var box = document.getElementById('cf-copy');
+    box.select();
+    var done = function () { copyBtn.textContent = 'Copied'; };
+    if (navigator.clipboard) navigator.clipboard.writeText(box.value).then(done, function () {});
+    else { document.execCommand('copy'); done(); }
+  });
+})();
+</script>
+'''
+
 PAGES = {
+    "pricing.html": dict(
+        title="SeQontrol - Pricing - What sets your number",
+        desc="How SeQontrol is priced: what each product counts, what makes a quote go up or down, and "
+             "how to get a real number against your own estate.",
+        eyebrow="Pricing",
+        h1="What sets your number",
+        lede="No published list price, and here is the honest reason why — plus everything that "
+             "determines what you would actually pay, so you can size it before you ask.",
+        form=dict(topic="Pricing for my estate",
+                  button="Get a real number",
+                  estate_label="Your estate",
+                  estate_hint="e.g. 150 users, 2 domains — or 60 managed tenants"),
+        body="""
+      <h2>Why there is no price on this page</h2>
+      <p>Because we would be guessing, and you would hold us to the guess. The pricing model is settled;
+        the levels are still being set against real estates rather than against a spreadsheet. Publishing
+        a number we expect to move would be the kind of thing this site otherwise refuses to do.</p>
+      <p>What we will not do is make you sit through a call to find out whether this is a four-figure or
+        a five-figure decision. Ask, and you get a number back — usually the same working day.</p>
+
+      <h2>What each product counts</h2>
+      <div class="table-wrap table-scroll" tabindex="0">
+        <table>
+          <thead><tr><th scope="col">Product</th><th scope="col">Priced on</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">ShareCare</th><td>Microsoft 365 users, with a 25-user minimum</td></tr>
+            <tr><th scope="row">SecurityPortal</th><td>Users — or included with any ShareCare tier</td></tr>
+            <tr><th scope="row">CompliancePortal</th><td>Per tenant, banded by how many frameworks are in scope</td></tr>
+            <tr><th scope="row">MailTrust</th><td>Per domain</td></tr>
+            <tr><th scope="row">PosturePortal</th><td>Bundled, never a separate line</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>What moves the number</h2>
+      <ul>
+        <li><strong>Which rung you buy.</strong> Visibility, Governance or Automation — see
+          <a href="licensing.html">what each licence includes</a>.</li>
+        <li><strong>How big the estate is</strong>, in the unit that product counts.</li>
+        <li><strong>Annual or monthly.</strong> Committing annually costs less.</li>
+        <li><strong>How many products.</strong> Taking the suite costs meaningfully less than the parts.</li>
+        <li><strong>Whether you are a provider.</strong> Pooled capacity across managed tenants, with a
+          per-tenant floor applied as greater-of rather than added on top.</li>
+      </ul>
+
+      <h2>What never moves it</h2>
+      <p>How often you scan, how many findings you have, how much you remediate, or how much evidence you
+        export. None of those are metered, deliberately — charging for them would teach you to look less
+        often, which is the one behaviour this product exists to prevent.</p>
+
+      <h2 id="request">Get a number</h2>
+      <p>Tell us the size of the estate. You will get a real figure back, not a discovery call.</p>
+"""),
+
+    "spoofing-report.html": dict(
+        title="SeQontrol - Free report - Who is sending as you",
+        desc="A free check of your domain's email authentication: SPF, DKIM, DMARC, BIMI and MTA-STS, "
+             "plus every source currently sending mail as you.",
+        eyebrow="Free assessment",
+        h1="Find out who is sending email as your domain",
+        lede="A free check of SPF, DKIM, DMARC, BIMI and MTA-STS — and, once reports are flowing, a list "
+             "of every source sending mail as you. No tenant access required.",
+        form=dict(topic="Free spoofing / DMARC check",
+                  button="Check my domain",
+                  estate_label="Domain",
+                  estate_hint="yourcompany.com — or several, comma separated"),
+        body="""
+      <h2>What you get back</h2>
+      <ul>
+        <li><strong>Your posture, record by record</strong> — what SPF actually authorises, whether DKIM is
+          signing, what your DMARC policy does today, and whether MTA-STS and BIMI are in play.</li>
+        <li><strong>Whether you can be spoofed right now</strong>, stated plainly rather than as a score.
+          Most domains sit at <code>p=none</code>, which monitors and blocks nothing.</li>
+        <li><strong>Every sender using your domain</strong> — from real DMARC aggregate reports once
+          collection is running. Legitimate services you had forgotten about, and anyone else.</li>
+        <li><strong>A staged path to enforcement</strong> that will not drop the mail your business depends
+          on, which is the actual reason most DMARC projects stall at monitoring.</li>
+      </ul>
+
+      <h2>The easiest one to start with</h2>
+      <p>It needs no access to your tenant. Email authentication is published in public DNS, so the first
+        pass costs you nothing but the domain name. The sender inventory needs a mailbox to receive DMARC
+        reports — we will tell you exactly how to point them at it.</p>
+
+      <h2>Why now</h2>
+      <p>Major mailbox providers now require DMARC for bulk senders, inbox brand indicators require
+        enforcement, and business email compromise remains among the most expensive attacks in circulation.
+        Reaching <code>p=reject</code> is the proven defence; doing it without breaking legitimate mail is
+        the hard part, and it is what this is designed around.</p>
+
+      <h2>If you want it continuously</h2>
+      <p>That is <a href="products/mailtrust.html">MailTrust</a> — across one domain or every domain your
+        clients own, writing the DNS records itself for supported providers rather than handing you a
+        ticket for another team.</p>
+
+      <h2 id="request">Check my domain</h2>
+      <p>Send the domain name. A person replies, usually the same working day.</p>
+"""),
+
     "vs-grc-platforms.html": dict(
         title="SeQontrol - vs GRC platforms - Where each one wins",
         desc="How SeQontrol compares with questionnaire-first GRC platforms on Microsoft 365 control "
@@ -112,6 +330,10 @@ PAGES = {
              "over-shared internally, and exactly what to revoke first.",
         eyebrow="Free assessment",
         h1="See what Copilot can reach in your tenant",
+        form=dict(topic="Free exposure report",
+                  button="Request my exposure report",
+                  estate_label="Tenant size",
+                  estate_hint="e.g. 150 users, ~4 TB in SharePoint"),
         lede="A scoped scan, a scored list of what is actually exposed, and a remediation order. "
              "Free, read-only, and useful whether or not you buy anything afterwards.",
         body="""
@@ -161,14 +383,9 @@ PAGES = {
         have with them is specific rather than general.
         <a href="for-msps.html">More on the provider model</a>.</p>
 
-      <div class="note plain">
-        <h2>Ask for the report</h2>
-        <p>Mail <a href="mailto:{contact}?subject=Free%20exposure%20report">{contact}</a> with your
-          tenant size, or use <a href="contact.html">the contact form</a> and pick
-          <em>"A scoped assessment (Copilot oversharing)"</em>. A person replies — usually the same
-          working day.</p>
-        <p class="mb0"><a class="btn btn-primary" href="contact.html">Request the report</a></p>
-      </div>
+      <h2 id="request">Ask for the report</h2>
+      <p>Tell us the tenant size and we will come back with a scope and a date. A person replies,
+        usually the same working day.</p>
 """),
 
     "limits.html": dict(
@@ -443,6 +660,18 @@ def chrome() -> tuple[str, str]:
 def build(name: str, spec: dict) -> None:
     head_open, after_head, footer = chrome()
     body = spec["body"].format(contact=CONTACT, operator=OPERATOR)
+
+    # An offer page carries its own form, so the ask sits where the intent is
+    # rather than one click away on the contact page.
+    if spec.get("form"):
+        body += FORM.format(
+            contact=CONTACT,
+            topic=spec["form"]["topic"],
+            button=spec["form"]["button"],
+            estate_label=spec["form"]["estate_label"],
+            estate_hint=spec["form"]["estate_hint"],
+        )
+
     html = (
         head_open
         + f"<title>{spec['title']}</title>\n"
@@ -459,7 +688,9 @@ def build(name: str, spec: dict) -> None:
         + body
         + "    </div>\n  </section>\n\n</main>\n\n"
         + footer
-        + '<script src="js/site.js"></script>\n</body>\n</html>\n'
+        + '<script src="js/site.js"></script>\n'
+        + (FORM_SCRIPT.replace("{contact}", CONTACT) if spec.get("form") else "")
+        + '</body>\n</html>\n'
     )
     path = os.path.join(ROOT, name)
     io.open(path, "w", encoding="utf-8").write(html)

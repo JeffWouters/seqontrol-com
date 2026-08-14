@@ -705,3 +705,28 @@ a[href^="https://jeffops.com"]:hover,
 .field .hint { font-size: .82rem; color: var(--dim); margin: .3rem 0 0; }
 /* Browser default placeholder grey fails contrast on this background. */
 .field ::placeholder { color: var(--dim); opacity: 1; }
+
+/* ------------------------------------------------- coverage map (homepage)
+   Not a screenshot and not pretending to be one: a map of the surfaces that
+   actually get crawled, so the page has something to look at and the claim
+   is checkable rather than decorative. Real screenshots replace this. */
+.coverage {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+  gap: .55rem;
+  margin: 1.6rem 0 .8rem;
+}
+.plane {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-left: 3px solid var(--tone, var(--accent));
+  border-radius: var(--radius-sm);
+  padding: .7rem .8rem;
+}
+.plane b {
+  display: block; font-size: .92rem; font-weight: 620; color: var(--text);
+  margin-bottom: .12rem;
+}
+.plane span { font-size: .8rem; color: var(--muted); }
+.plane.off { border-left-style: dashed; opacity: .72; }
+.coverage-note { font-size: .86rem; color: var(--dim); margin: 0; }

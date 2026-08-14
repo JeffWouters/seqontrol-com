@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SeQontrol - Free report - What Copilot can reach</title>
-<meta name="description" content="A free, scoped scan of your Microsoft 365 tenant: what is shared externally, what is over-shared internally, and exactly what to revoke first.">
-<link rel="canonical" href="https://seqontrol.com/exposure-report.html">
+<title>SeQontrol - Free report - Who is sending as you</title>
+<meta name="description" content="A free check of your domain's email authentication: SPF, DKIM, DMARC, BIMI and MTA-STS, plus every source currently sending mail as you.">
+<link rel="canonical" href="https://seqontrol.com/spoofing-report.html">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="SeQontrol">
 <meta property="og:locale" content="en">
-<meta property="og:title" content="SeQontrol - Free report - What Copilot can reach">
-<meta property="og:description" content="A free, scoped scan of your Microsoft 365 tenant: what is shared externally, what is over-shared internally, and exactly what to revoke first.">
-<meta property="og:url" content="https://seqontrol.com/exposure-report.html">
+<meta property="og:title" content="SeQontrol - Free report - Who is sending as you">
+<meta property="og:description" content="A free check of your domain's email authentication: SPF, DKIM, DMARC, BIMI and MTA-STS, plus every source currently sending mail as you.">
+<meta property="og:url" content="https://seqontrol.com/spoofing-report.html">
 <meta property="og:image" content="https://seqontrol.com/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -23,7 +23,7 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://seqontrol.com/" },
-    { "@type": "ListItem", "position": 2, "name": "Free exposure report", "item": "https://seqontrol.com/exposure-report.html" }
+    { "@type": "ListItem", "position": 2, "name": "Free spoofing check", "item": "https://seqontrol.com/spoofing-report.html" }
   ]
 }
 </script>
@@ -57,8 +57,8 @@
   <section class="hero">
     <div class="wrap wrap-narrow">
       <span class="eyebrow">Free assessment</span>
-      <h1>See what Copilot can reach in your tenant</h1>
-      <p class="lede">A scoped scan, a scored list of what is actually exposed, and a remediation order. Free, read-only, and useful whether or not you buy anything afterwards.</p>
+      <h1>Find out who is sending email as your domain</h1>
+      <p class="lede">A free check of SPF, DKIM, DMARC, BIMI and MTA-STS — and, once reports are flowing, a list of every source sending mail as you. No tenant access required.</p>
     </div>
   </section>
 
@@ -67,60 +67,41 @@
 
       <h2>What you get back</h2>
       <ul>
-        <li><strong>Every external share, listed and scored</strong> — anonymous links, links that
-          allow editing, guests who have not signed in for months, and the resources each can reach.</li>
-        <li><strong>The internal over-exposure</strong> — organisation-wide links and company-wide
-          groups such as "Everyone except external users". These are the patterns that make Copilot
-          surface far more than anyone intended, and they are invisible in native reports.</li>
-        <li><strong>Risky grants beyond files</strong> — over-permissioned OAuth applications, and
-          mail forwarding to domains nobody in your organisation owns.</li>
-        <li><strong>A remediation order</strong> — not a CSV of everything, but what to revoke first,
-          ranked by sensitivity and blast radius, with the ones that are safe to automate marked.</li>
+        <li><strong>Your posture, record by record</strong> — what SPF actually authorises, whether DKIM is
+          signing, what your DMARC policy does today, and whether MTA-STS and BIMI are in play.</li>
+        <li><strong>Whether you can be spoofed right now</strong>, stated plainly rather than as a score.
+          Most domains sit at <code>p=none</code>, which monitors and blocks nothing.</li>
+        <li><strong>Every sender using your domain</strong> — from real DMARC aggregate reports once
+          collection is running. Legitimate services you had forgotten about, and anyone else.</li>
+        <li><strong>A staged path to enforcement</strong> that will not drop the mail your business depends
+          on, which is the actual reason most DMARC projects stall at monitoring.</li>
       </ul>
 
-      <h2>What it costs, and what it does not</h2>
-      <p>Nothing. No card, no trial that converts into a subscription, no contract. If the report
-        tells you your estate is in good shape, that is a perfectly good outcome and we will say so.</p>
-      <p><strong>The catch, stated plainly:</strong> we do this because a scored list of your own
-        exposure is a better argument for the product than any page on this site. If it is not
-        compelling, you will not buy, and that is fair.</p>
+      <h2>The easiest one to start with</h2>
+      <p>It needs no access to your tenant. Email authentication is published in public DNS, so the first
+        pass costs you nothing but the domain name. The sender inventory needs a mailbox to receive DMARC
+        reports — we will tell you exactly how to point them at it.</p>
 
-      <h2>What it touches</h2>
-      <ul>
-        <li><strong>Read-only, app-only.</strong> Application permissions through Microsoft Graph — not
-          a user's session, no agent to install, no disruption to anybody working.</li>
-        <li><strong>Metadata, not content.</strong> We read who can reach what. We do not read your
-          documents or your mail.</li>
-        <li><strong>Nothing is changed.</strong> Remediation needs a separate consent that this
-          assessment does not ask for and does not use.</li>
-        <li><strong>You can revoke it the moment the report lands</strong>, and the findings you have
-          been given remain yours.</li>
-      </ul>
+      <h2>Why now</h2>
+      <p>Major mailbox providers now require DMARC for bulk senders, inbox brand indicators require
+        enforcement, and business email compromise remains among the most expensive attacks in circulation.
+        Reaching <code>p=reject</code> is the proven defence; doing it without breaking legitimate mail is
+        the hard part, and it is what this is designed around.</p>
 
-      <h2>How it runs</h2>
-      <ol>
-        <li>You tell us the tenant and roughly how big it is.</li>
-        <li>We agree the scope and a date before anything connects.</li>
-        <li>An administrator grants read-only consent to one Entra application.</li>
-        <li>The crawl runs. Large estates are swept in stages so nothing is throttled.</li>
-        <li>You get the report, and a walkthrough of it if you want one.</li>
-      </ol>
+      <h2>If you want it continuously</h2>
+      <p>That is <a href="products/mailtrust.html">MailTrust</a> — across one domain or every domain your
+        clients own, writing the DNS records itself for supported providers rather than handing you a
+        ticket for another team.</p>
 
-      <h2>Managing many tenants?</h2>
-      <p>The provider version ranks your worst clients against each other, so the conversation you
-        have with them is specific rather than general.
-        <a href="for-msps.html">More on the provider model</a>.</p>
-
-      <h2 id="request">Ask for the report</h2>
-      <p>Tell us the tenant size and we will come back with a scope and a date. A person replies,
-        usually the same working day.</p>
+      <h2 id="request">Check my domain</h2>
+      <p>Send the domain name. A person replies, usually the same working day.</p>
 
       <!-- FORM ENDPOINT: paste the URL into BOTH action and data-endpoint.
            With it set the form posts normally and works without JavaScript;
            left empty it falls back to composing a mailto, which can fail
            silently on webmail — see README. -->
       <form id="contact-form" method="post" action="" data-endpoint="" novalidate>
-        <input type="hidden" id="cf-topic" name="topic" value="Free exposure report">
+        <input type="hidden" id="cf-topic" name="topic" value="Free spoofing / DMARC check">
         <div class="field">
           <label for="cf-name">Name</label>
           <input id="cf-name" name="name" type="text" autocomplete="name" required>
@@ -135,14 +116,14 @@
           <input id="cf-org" name="org" type="text" autocomplete="organization">
         </div>
         <div class="field">
-          <label for="cf-estate">Tenant size</label>
-          <input id="cf-estate" name="estate" type="text" placeholder="e.g. 150 users, ~4 TB in SharePoint">
+          <label for="cf-estate">Domain</label>
+          <input id="cf-estate" name="estate" type="text" placeholder="yourcompany.com — or several, comma separated">
         </div>
         <div class="field">
           <label for="cf-message">Anything we should know?</label>
           <textarea id="cf-message" name="message" rows="4"></textarea>
         </div>
-        <button class="btn btn-primary" type="submit" id="cf-submit">Request my exposure report</button>
+        <button class="btn btn-primary" type="submit" id="cf-submit">Check my domain</button>
         <p class="hint" id="cf-status" role="status" aria-live="polite"></p>
         <p class="hint">Or email <a href="mailto:jeff@jeffops.com">jeff@jeffops.com</a> directly.</p>
       </form>

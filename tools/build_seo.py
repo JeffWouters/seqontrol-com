@@ -22,9 +22,9 @@ SITE = "https://seqontrol.com"
 # page -> (title, description, breadcrumb label or None)
 META = {
     "index.html": (
-        "SeQontrol - Microsoft 365 - Secure, Compliant, Confident",
-        "One platform for Microsoft 365 security, compliance and configuration governance. "
-        "Seven products on one Entra app, across every tenant you manage.",
+        "SeQontrol - Microsoft 365 - See what is over-shared",
+        "ShareCare finds what Microsoft 365 over-shares, SecurityPortal scores your posture, "
+        "CompliancePortal turns both into audit evidence, MailTrust stops spoofing.",
         None),
     "platform.html": (
         "SeQontrol - Platform - Connect once, secure &amp; prove it all",

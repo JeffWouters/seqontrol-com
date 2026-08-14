@@ -103,6 +103,8 @@ class Page(HTMLParser):
         if tag == "label" and a.get("for"):
             self.labels.add(a["for"])
         if tag in ("input", "select", "textarea"):
+            if a.get("type") == "hidden":
+                return
             self.fields.append(
                 (tag, a.get("id"), bool(a.get("aria-label") or a.get("aria-labelledby"))))
         if tag in ("main", "header", "footer", "nav", "aside"):

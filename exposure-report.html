@@ -47,7 +47,7 @@
       <li><a href="licensing.html">Pricing</a></li>
       <li><a href="for-msps.html">For MSPs</a></li>
       <li><a href="contact.html">Contact</a></li>
-      <li><a class="btn btn-primary" href="contact.html">Book a walkthrough</a></li>
+      <li><a class="btn btn-primary" href="exposure-report.html">Free exposure report</a></li>
     </ul>
   </nav>
 </header>
@@ -111,14 +111,76 @@
         have with them is specific rather than general.
         <a href="for-msps.html">More on the provider model</a>.</p>
 
-      <div class="note plain">
-        <h2>Ask for the report</h2>
-        <p>Mail <a href="mailto:jeff@jeffops.com?subject=Free%20exposure%20report">jeff@jeffops.com</a> with your
-          tenant size, or use <a href="contact.html">the contact form</a> and pick
-          <em>"A scoped assessment (Copilot oversharing)"</em>. A person replies — usually the same
-          working day.</p>
-        <p class="mb0"><a class="btn btn-primary" href="contact.html">Request the report</a></p>
-      </div>
+      <h2 id="request">Ask for the report</h2>
+      <p>Tell us the tenant size and we will come back with a scope and a date. A person replies —
+        usually the same working day.</p>
+
+        <!-- FORM ENDPOINT: paste the URL into BOTH action and data-endpoint below.
+             With it set, the form posts normally (works without JavaScript) and
+             site.js upgrades it to an inline thank-you. Left empty, it falls back
+             to composing a mailto, which can fail silently on webmail — see README. -->
+        <form id="contact-form" method="post" action="" data-endpoint="" novalidate>
+          <div class="field">
+            <label for="cf-name">Name</label>
+            <input id="cf-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="cf-email">Work email</label>
+            <input id="cf-email" name="email" type="email" autocomplete="email" required>
+            <p class="hint">So we can reply. Nothing else is done with it.</p>
+          </div>
+          <div class="field">
+            <label for="cf-org">Organisation</label>
+            <input id="cf-org" name="org" type="text" autocomplete="organization">
+          </div>
+          <input type="hidden" id="cf-topic" name="topic" value="Free exposure report">
+          <div class="field" hidden>
+            <label for="cf-topic-unused">Topic</label>
+            <select id="cf-topic-unused">
+              <option>A walkthrough of the platform</option>
+              <option>A scoped assessment (Copilot oversharing)</option>
+              <option>A scoped assessment (email spoofing / DMARC)</option>
+              <option>A security posture assessment</option>
+              <option>A compliance readiness snapshot</option>
+              <option>Tell me when Dredd or PosturePortal lands</option>
+              <option>Partner / MSP model</option>
+              <option>A quote for my estate</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="cf-estate">Estate size</label>
+            <input id="cf-estate" name="estate" type="text" placeholder="e.g. 150 users, 2 domains, ~4 TB in SharePoint">
+            <p class="hint">Rough numbers are fine. Users and domains set the price; a rough sense of how large the
+              SharePoint and OneDrive estate is sets the band, so this is what turns a range into a real quote.</p>
+          </div>
+          <div class="field">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message"></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit" id="cf-submit">Request my exposure report</button>
+          <p class="hint" id="cf-status" role="status" aria-live="polite"></p>
+          <p class="hint">Or email <a href="mailto:jeff@jeffops.com">jeff@jeffops.com</a> directly — some
+            people would rather see what they sent.</p>
+        </form>
+
+        <div class="note plain" id="cf-fallback" hidden>
+          <h3>If your mail client did not open</h3>
+          <p>Some browsers and webmail setups cannot hand off to a mail app. Nothing is lost — copy
+            the message below and send it to <a href="mailto:jeff@jeffops.com">jeff@jeffops.com</a>.</p>
+          <label class="sr-only" for="cf-copy">Your message, ready to copy</label>
+          <textarea id="cf-copy" rows="9" readonly
+                    style="width:100%;font-family:var(--mono);font-size:.85rem"></textarea>
+          <p class="mb0"><button class="btn btn-ghost" type="button" id="cf-copy-btn">Copy message</button></p>
+        </div>
+
+        <div class="note plain" id="cf-thanks" hidden>
+          <h3>Message sent</h3>
+          <p class="mb0">It landed. You will get a reply from a person, usually the same working day. If you do
+            not hear back within two, mail <a href="mailto:jeff@jeffops.com">jeff@jeffops.com</a> — something
+            went wrong at our end and we would want to know.</p>
+        </div>
+
     </div>
   </section>
 
@@ -188,5 +250,101 @@
 </footer>
 
 <script src="js/site.js"></script>
+<script>
+/* Submits the contact form.
+   With an endpoint configured the form posts for real and this upgrades it to an
+   inline thank-you. With no endpoint it falls back to composing a mailto, which
+   is the old behaviour — it can fail silently on webmail, so it is the fallback
+   and not the mechanism. See the comment on the form markup above. */
+(function () {
+  'use strict';
+  var form = document.getElementById('contact-form');
+  if (!form) return;
+
+  var status = document.getElementById('cf-status');
+  var thanks = document.getElementById('cf-thanks');
+  var submit = document.getElementById('cf-submit');
+  var endpoint = (form.getAttribute('data-endpoint') || '').trim();
+
+  if (!endpoint) submit.textContent = 'Open in my mail client';
+
+  function say(msg) { status.textContent = msg; }
+
+  function invalid() {
+    var name = form.elements.name.value.trim();
+    if (!name) { say('A name helps.'); form.elements.name.focus(); return true; }
+    var email = form.elements.email.value.trim();
+    if (!email || email.indexOf('@') < 1) {
+      say('We need an email address to reply to.');
+      form.elements.email.focus();
+      return true;
+    }
+    return false;
+  }
+
+  function mailto() {
+    var topic = form.elements.topic.value;
+    var body = [
+      'Name: ' + form.elements.name.value.trim(),
+      'Email: ' + form.elements.email.value.trim(),
+      'Organisation: ' + (form.elements.org.value.trim() || '—'),
+      'Topic: ' + topic,
+      'Estate: ' + (form.elements.estate.value.trim() || '—'),
+      '',
+      form.elements.message.value.trim()
+    ].join('\n');
+    window.location.href = 'mailto:jeff@jeffops.com'
+      + '?subject=' + encodeURIComponent('SeQontrol — ' + topic)
+      + '&body=' + encodeURIComponent(body);
+    say('Opening your mail client…');
+
+    // A mailto: handoff fails silently on webmail and on machines with no
+    // registered handler. Rather than lose the enquiry, surface the composed
+    // message so it can be copied and sent by hand.
+    var fallback = document.getElementById('cf-fallback');
+    var box = document.getElementById('cf-copy');
+    box.value = 'To: jeff@jeffops.com
+Subject: SeQontrol — ' + topic + '
+
+' + body;
+    window.setTimeout(function () { fallback.hidden = false; }, 1200);
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (invalid()) return;
+    if (!endpoint) { mailto(); return; }
+
+    submit.disabled = true;
+    say('Sending…');
+
+    fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    }).then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      form.hidden = true;
+      thanks.hidden = false;
+      thanks.setAttribute('tabindex', '-1');
+      thanks.focus();
+    }).catch(function () {
+      submit.disabled = false;
+      say('That did not send. Try again, or email jeff@jeffops.com — the message is not lost, it is still in the form.');
+    });
+  });
+
+  var copyBtn = document.getElementById('cf-copy-btn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function () {
+      var box = document.getElementById('cf-copy');
+      box.select();
+      var done = function () { copyBtn.textContent = 'Copied'; };
+      if (navigator.clipboard) navigator.clipboard.writeText(box.value).then(done, function () {});
+      else { document.execCommand('copy'); done(); }
+    });
+  }
+})();
+</script>
 </body>
 </html>

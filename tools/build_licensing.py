@@ -131,9 +131,15 @@ PRODUCTS = [
                              ("Intune", 1), ("Azure", 1), ("Purview", 1), ("Power Platform", 1), ("Power BI", 1)]),
               ("Other clouds", [("Google Cloud", 1), ("Amazon Web Services", 1)]),
               ("Engineering", [("GitHub", 1), ("Azure DevOps", 1)]),
-              ("Frameworks", [("SOC 2", 1), ("ISO 27001", 1), ("NIST CSF", 1), ("NIST 800-53", 1),
-                              ("PCI-DSS", 1), ("HIPAA", 1), ("GDPR", 1), ("NIS 2", 1),
-                              ("Essential Eight", 1), ("A first-party framework", 1)])],
+              # 24 in the catalog; a representative spread is listed rather than all of them.
+              # The full per-framework coverage lives on the CompliancePortal page.
+              ("Frameworks — 24 in the catalog", [
+                  ("SOC 2", 1), ("ISO 27001", 1), ("ISO 27002", 1), ("ISO 27017", 1),
+                  ("ISO 27701", 1), ("NIST CSF", 1), ("PCI DSS", 1), ("HIPAA", 1),
+                  ("GDPR", 1), ("NIS 2", 1), ("DORA", 1), ("FedRAMP", 1), ("CMMC", 1),
+                  ("CSA STAR", 1), ("Essential Eight", 1), ("Cyber Essentials", 1),
+                  ("NEN 7510", 1), ("MITRE ATT&amp;CK", 1), ("OWASP", 1),
+                  ("A first-party set", 1)])],
         cols=BANDS,
         rows=["In every band",
               ("On-demand assessment, whenever you want one", [Y, Y, Y]),

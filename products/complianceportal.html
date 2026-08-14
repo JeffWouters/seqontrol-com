@@ -134,9 +134,10 @@
       <div>
         <h2>What it does</h2>
         <ul class="checklist" style="--tone: var(--t-compliance)">
-          <li><strong>Framework and benchmark catalog</strong> covering the major regimes — SOC 2, ISO 27001,
-            NIST CSF and 800-53, PCI-DSS, HIPAA, GDPR, NIS 2 and Essential Eight — plus a first-party framework of
-            our own for the controls the standard sets under-specify.</li>
+          <li><strong>A catalog of 24 frameworks</strong> — SOC 2, ISO 27001, NIST CSF, PCI DSS, HIPAA, GDPR,
+            NIS 2, DORA, FedRAMP, CMMC and more — plus a first-party set of our own for the controls the
+            standard frameworks under-specify. <a href="#coverage">See the coverage per framework</a>,
+            including how much of each is provable without a human.</li>
           <li><strong>Multi-framework crosswalk</strong>, so one piece of evidence satisfies overlapping controls
             in several frameworks at once instead of being collected three times.</li>
           <li><strong>Automated control probes</strong> across the connected technology planes — Entra ID,
@@ -249,6 +250,231 @@
     </div>
   </section>
 
+<!-- frameworks:start -->
+  <section id="coverage">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Coverage</span>
+        <h2>What we can prove, framework by framework</h2>
+        <p>24 frameworks, 3,331 controls between them. <strong>630 of those
+          are provable by inspecting configuration</strong> — the rest need a human to attest, and no
+          amount of scanning changes that.</p>
+        <p>Publishing the split is the point. A control that cannot be automated is not a gap we are
+          hiding; it is the part of your programme that was always going to be yours.</p>
+      </div>
+
+      <div data-tabs class="tabs-v">
+        <div class="tablist" role="tablist" aria-label="Framework families">
+          <button type="button" role="tab" id="tab-governance" aria-controls="panel-governance" aria-selected="true" tabindex="0" style="--tone: var(--t-compliance)">Security and governance</button>
+          <button type="button" role="tab" id="tab-privacy" aria-controls="panel-privacy" aria-selected="false" tabindex="-1" style="--tone: var(--t-compliance)">Privacy and data protection</button>
+          <button type="button" role="tab" id="tab-sector" aria-controls="panel-sector" aria-selected="false" tabindex="-1" style="--tone: var(--t-compliance)">Sector regulation</button>
+          <button type="button" role="tab" id="tab-regimes" aria-controls="panel-regimes" aria-selected="false" tabindex="-1" style="--tone: var(--t-compliance)">EU and national regimes</button>
+          <button type="button" role="tab" id="tab-government" aria-controls="panel-government" aria-selected="false" tabindex="-1" style="--tone: var(--t-compliance)">Government and defence</button>
+          <button type="button" role="tab" id="tab-technical" aria-controls="panel-technical" aria-selected="false" tabindex="-1" style="--tone: var(--t-compliance)">Technical baselines</button>
+          <button type="button" role="tab" id="tab-first-party" aria-controls="panel-first-party" aria-selected="false" tabindex="-1" style="--tone: var(--t-compliance)">Our own</button>
+        </div>
+      <div class="product-licence" role="tabpanel" id="panel-governance"
+           aria-labelledby="tab-governance" tabindex="0" style="--tone: var(--t-compliance)">
+        <header>
+          <h3>Security and governance</h3>
+          <p class="counted">5 frameworks &middot;
+            550 controls &middot; 159 provable from configuration</p>
+        </header>
+        <p class="after" style="margin-top:0">The general-purpose control sets most buyers are assessed against first.</p>
+        <div class="table-wrap table-scroll" tabindex="0" role="group" aria-label="Security and governance coverage">
+          <table class="matrix">
+            <thead>
+              <tr>
+                <th scope="col">Framework</th>
+                <th scope="col">Controls</th>
+                <th scope="col">Provable from<br>configuration</th>
+                <th scope="col">Needs<br>attestation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">SOC 2 (2017 Trust Services Criteria)</th><td>61</td><td>20 <span class="dim">(33%)</span></td><td>41</td></tr>
+              <tr><th scope="row">ISO/IEC 27001:2022</th><td>93</td><td>42 <span class="dim">(45%)</span></td><td>51</td></tr>
+              <tr><th scope="row">ISO/IEC 27002:2022</th><td>93</td><td>42 <span class="dim">(45%)</span></td><td>51</td></tr>
+              <tr><th scope="row">NIST CSF 2.0</th><td>106</td><td>16 <span class="dim">(15%)</span></td><td>90</td></tr>
+              <tr><th scope="row">CSA STAR (Cloud Controls Matrix)</th><td>197</td><td>39 <span class="dim">(20%)</span></td><td>158</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="product-licence" role="tabpanel" id="panel-privacy"
+           aria-labelledby="tab-privacy" tabindex="0" style="--tone: var(--t-compliance)">
+        <header>
+          <h3>Privacy and data protection</h3>
+          <p class="counted">2 frameworks &middot;
+            140 controls &middot; 4 provable from configuration</p>
+        </header>
+        <p class="after" style="margin-top:0">Privacy regimes are mostly process, lawful basis and record-keeping — which is why the automatable share here is the smallest on the site, and why we say so rather than implying a product can make you GDPR-compliant.</p>
+        <div class="table-wrap table-scroll" tabindex="0" role="group" aria-label="Privacy and data protection coverage">
+          <table class="matrix">
+            <thead>
+              <tr>
+                <th scope="col">Framework</th>
+                <th scope="col">Controls</th>
+                <th scope="col">Provable from<br>configuration</th>
+                <th scope="col">Needs<br>attestation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">GDPR</th><td>91</td><td>2 <span class="dim">(2%)</span></td><td>89</td></tr>
+              <tr><th scope="row">ISO/IEC 27701</th><td>49</td><td>2 <span class="dim">(4%)</span></td><td>47</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="product-licence" role="tabpanel" id="panel-sector"
+           aria-labelledby="tab-sector" tabindex="0" style="--tone: var(--t-compliance)">
+        <header>
+          <h3>Sector regulation</h3>
+          <p class="counted">4 frameworks &middot;
+            506 controls &middot; 143 provable from configuration</p>
+        </header>
+        <p class="after" style="margin-top:0">Where the regime is written for a specific industry and the technical controls are explicit.</p>
+        <div class="table-wrap table-scroll" tabindex="0" role="group" aria-label="Sector regulation coverage">
+          <table class="matrix">
+            <thead>
+              <tr>
+                <th scope="col">Framework</th>
+                <th scope="col">Controls</th>
+                <th scope="col">Provable from<br>configuration</th>
+                <th scope="col">Needs<br>attestation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">PCI DSS 4.0</th><td>313</td><td>87 <span class="dim">(28%)</span></td><td>226</td></tr>
+              <tr><th scope="row">HIPAA Security Rule</th><td>97</td><td>11 <span class="dim">(11%)</span></td><td>86</td></tr>
+              <tr><th scope="row">NEN 7510 (Dutch healthcare)</th><td>93</td><td>42 <span class="dim">(45%)</span></td><td>51</td></tr>
+              <tr><th scope="row">NEN 7513 (Dutch healthcare logging)</th><td>3</td><td>3 <span class="dim">(100%)</span></td><td>0</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="product-licence" role="tabpanel" id="panel-regimes"
+           aria-labelledby="tab-regimes" tabindex="0" style="--tone: var(--t-compliance)">
+        <header>
+          <h3>EU and national regimes</h3>
+          <p class="counted">4 frameworks &middot;
+            101 controls &middot; 27 provable from configuration</p>
+        </header>
+        <p class="after" style="margin-top:0">Obligations set by law or by a national scheme, usually stated as outcomes rather than configuration — so the automatable share is low by nature.</p>
+        <div class="table-wrap table-scroll" tabindex="0" role="group" aria-label="EU and national regimes coverage">
+          <table class="matrix">
+            <thead>
+              <tr>
+                <th scope="col">Framework</th>
+                <th scope="col">Controls</th>
+                <th scope="col">Provable from<br>configuration</th>
+                <th scope="col">Needs<br>attestation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">NIS 2</th><td>44</td><td>7 <span class="dim">(16%)</span></td><td>37</td></tr>
+              <tr><th scope="row">DORA</th><td>29</td><td>4 <span class="dim">(14%)</span></td><td>25</td></tr>
+              <tr><th scope="row">Essential Eight (ACSC)</th><td>24</td><td>12 <span class="dim">(50%)</span></td><td>12</td></tr>
+              <tr><th scope="row">Cyber Essentials</th><td>4</td><td>4 <span class="dim">(100%)</span></td><td>0</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="product-licence" role="tabpanel" id="panel-government"
+           aria-labelledby="tab-government" tabindex="0" style="--tone: var(--t-compliance)">
+        <header>
+          <h3>Government and defence</h3>
+          <p class="counted">3 frameworks &middot;
+            762 controls &middot; 161 provable from configuration</p>
+        </header>
+        <p class="after" style="margin-top:0">Large baselines with deep technical detail. FedRAMP uses NIST SP 800-53 Rev 5 control identifiers; 800-53 is not carried as a separate pack.</p>
+        <div class="table-wrap table-scroll" tabindex="0" role="group" aria-label="Government and defence coverage">
+          <table class="matrix">
+            <thead>
+              <tr>
+                <th scope="col">Framework</th>
+                <th scope="col">Controls</th>
+                <th scope="col">Provable from<br>configuration</th>
+                <th scope="col">Needs<br>attestation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">FedRAMP (Rev 5 baselines)</th><td>410</td><td>72 <span class="dim">(18%)</span></td><td>338</td></tr>
+              <tr><th scope="row">CMMC 2.0</th><td>126</td><td>72 <span class="dim">(57%)</span></td><td>54</td></tr>
+              <tr><th scope="row">DISA STIG</th><td>226</td><td>17 <span class="dim">(8%)</span></td><td>209</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="product-licence" role="tabpanel" id="panel-technical"
+           aria-labelledby="tab-technical" tabindex="0" style="--tone: var(--t-compliance)">
+        <header>
+          <h3>Technical baselines</h3>
+          <p class="counted">5 frameworks &middot;
+            1260 controls &middot; 124 provable from configuration</p>
+        </header>
+        <p class="after" style="margin-top:0">Configuration and threat catalogues rather than certification schemes. They are here because findings map onto them, not because anyone audits you against ATT&CK.</p>
+        <div class="table-wrap table-scroll" tabindex="0" role="group" aria-label="Technical baselines coverage">
+          <table class="matrix">
+            <thead>
+              <tr>
+                <th scope="col">Framework</th>
+                <th scope="col">Controls</th>
+                <th scope="col">Provable from<br>configuration</th>
+                <th scope="col">Needs<br>attestation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">MITRE ATT&CK</th><td>691</td><td>23 <span class="dim">(3%)</span></td><td>668</td></tr>
+              <tr><th scope="row">OWASP</th><td>278</td><td>6 <span class="dim">(2%)</span></td><td>272</td></tr>
+              <tr><th scope="row">CISA SCuBA (Microsoft 365)</th><td>104</td><td>25 <span class="dim">(24%)</span></td><td>79</td></tr>
+              <tr><th scope="row">ISO/IEC 27017 (cloud)</th><td>101</td><td>49 <span class="dim">(49%)</span></td><td>52</td></tr>
+              <tr><th scope="row">Microsoft Cloud Security Benchmark</th><td>86</td><td>21 <span class="dim">(24%)</span></td><td>65</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="product-licence" role="tabpanel" id="panel-first-party"
+           aria-labelledby="tab-first-party" tabindex="0" style="--tone: var(--t-compliance)">
+        <header>
+          <h3>Our own</h3>
+          <p class="counted">1 framework &middot;
+            12 controls &middot; 12 provable from configuration</p>
+        </header>
+        <p class="after" style="margin-top:0">A first-party set covering the things the standard frameworks under-specify for a Microsoft 365 estate. Every control in it is automatable — it was written against what the platform can actually observe.</p>
+        <div class="table-wrap table-scroll" tabindex="0" role="group" aria-label="Our own coverage">
+          <table class="matrix">
+            <thead>
+              <tr>
+                <th scope="col">Framework</th>
+                <th scope="col">Controls</th>
+                <th scope="col">Provable from<br>configuration</th>
+                <th scope="col">Needs<br>attestation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">JeffOps Beyond</th><td>12</td><td>12 <span class="dim">(100%)</span></td><td>0</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      </div>
+
+      <div class="note scope">
+        <h3>How to read these numbers</h3>
+        <p><strong>&ldquo;Provable from configuration&rdquo;</strong> means the control is assessed by
+          inspecting a connected platform, rather than by someone signing a statement. It is a property
+          of the control, not a promise that every one of them is implemented today — coverage of that
+          set is high but not complete, and the product reports per-control status rather than a
+          headline percentage.</p>
+        <p class="mb0"><strong>A low share is not a weakness in the framework or in us.</strong> GDPR
+          sits at 2 of 91 because GDPR is mostly lawful basis, records and process. Reporting it as
+          anything else would be the fabricated automation we refuse to ship.</p>
+      </div>
+    </div>
+  </section>
+
+<!-- frameworks:end -->
   <section class="cta">
     <div class="wrap">
       <h2>See what your existing scans already prove</h2>

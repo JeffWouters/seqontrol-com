@@ -4,6 +4,7 @@
 Four groups, all of which have caught a real regression at least once:
 
   links     every internal href/src resolves to a file that exists
+  seo       titles, descriptions, canonicals, Open Graph, valid JSON-LD
   markup    tags balance, no duplicate ids, no malformed attributes
   a11y      lang, single h1, no skipped heading levels, alt text, labels,
             landmarks, th scope, keyboard-reachable scroll boxes
@@ -14,6 +15,7 @@ Run: python tools/verify.py
 """
 from __future__ import annotations
 
+import json
 import os
 import re
 import sys
@@ -178,6 +180,68 @@ def check_content(page: str, src: str) -> None:
             fail(page, f"content rule: {why} — found {m.group(0)!r}")
 
 
+# ------------------------------------------------------------------------ seo
+
+# 404.html is deliberately noindex, with no canonical and no Open Graph
+# identity: a soft-404 in an index helps nobody.
+SEO_EXEMPT = {"404.html"}
+
+_titles: dict[str, str] = {}
+_descs: dict[str, str] = {}
+
+
+def check_seo(page: str, src: str) -> None:
+    rel = os.path.relpath(page, ROOT).replace(os.sep, "/")
+
+    m = re.search(r"<title>(.*?)</title>", src, re.S)
+    title = m.group(1).strip() if m else ""
+    if not title:
+        fail(page, "no <title>")
+    elif len(title) > 60:
+        fail(page, f"title is {len(title)} chars (max 60, else it truncates in results)")
+    if title in _titles and _titles[title] != rel:
+        fail(page, f"duplicate <title>, also on {_titles[title]}")
+    _titles.setdefault(title, rel)
+
+    d = re.search(r'<meta name="description" content="([^"]*)"', src)
+    desc = d.group(1) if d else ""
+    if not desc:
+        fail(page, "no meta description")
+    elif rel not in SEO_EXEMPT and not (110 <= len(desc) <= 160):
+        fail(page, f"meta description is {len(desc)} chars (want 110-160)")
+    if desc in _descs and _descs[desc] != rel:
+        fail(page, f"duplicate meta description, also on {_descs[desc]}")
+    _descs.setdefault(desc, rel)
+
+    if rel in SEO_EXEMPT:
+        if 'name="robots"' not in src or "noindex" not in src:
+            fail(page, "expected a noindex robots meta")
+        return
+
+    canon = re.search(r'<link rel="canonical" href="([^"]+)"', src)
+    if not canon:
+        fail(page, "no canonical link")
+    else:
+        expected = "https://seqontrol.com/" + ("" if rel == "index.html" else
+                                               rel[:-len("index.html")] if rel.endswith("/index.html") else rel)
+        if canon.group(1) != expected:
+            fail(page, f"canonical is {canon.group(1)}, expected {expected}")
+
+    for prop in ("og:title", "og:description", "og:url", "og:image", "og:type", "og:site_name"):
+        if f'property="{prop}"' not in src:
+            fail(page, f"missing {prop}")
+
+    og_url = re.search(r'<meta property="og:url" content="([^"]+)"', src)
+    if canon and og_url and canon.group(1) != og_url.group(1):
+        fail(page, "og:url does not match canonical")
+
+    for block in re.findall(r'<script type="application/ld\+json">([\s\S]*?)</script>', src):
+        try:
+            json.loads(block)
+        except json.JSONDecodeError as exc:
+            fail(page, f"invalid JSON-LD: {exc}")
+
+
 # --------------------------------------------------------------------- main
 
 def main() -> int:
@@ -192,6 +256,7 @@ def main() -> int:
         check_markup(page, src)
         check_a11y(page, src)
         check_content(page, src)
+        check_seo(page, src)
 
     print(f"checked {len(PAGES)} pages")
     if failures:

@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SeQontrol - Terms - The plain version</title>
-<meta name="description" content="The terms covering use of the SeQontrol website and, in outline, the service — written to be read rather than to be scrolled past.">
-<link rel="canonical" href="https://seqontrol.com/terms.html">
+<title>SeQontrol - vs Secure Score - What native tooling misses</title>
+<meta name="description" content="How SeQontrol differs from Microsoft Secure Score and native Microsoft 365 reporting, and when the native tools are enough on their own.">
+<link rel="canonical" href="https://seqontrol.com/vs-secure-score.html">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="SeQontrol">
 <meta property="og:locale" content="en">
-<meta property="og:title" content="SeQontrol - Terms - The plain version">
-<meta property="og:description" content="The terms covering use of the SeQontrol website and, in outline, the service — written to be read rather than to be scrolled past.">
-<meta property="og:url" content="https://seqontrol.com/terms.html">
+<meta property="og:title" content="SeQontrol - vs Secure Score - What native tooling misses">
+<meta property="og:description" content="How SeQontrol differs from Microsoft Secure Score and native Microsoft 365 reporting, and when the native tools are enough on their own.">
+<meta property="og:url" content="https://seqontrol.com/vs-secure-score.html">
 <meta property="og:image" content="https://seqontrol.com/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -23,7 +23,7 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://seqontrol.com/" },
-    { "@type": "ListItem", "position": 2, "name": "Terms", "item": "https://seqontrol.com/terms.html" }
+    { "@type": "ListItem", "position": 2, "name": "vs Secure Score", "item": "https://seqontrol.com/vs-secure-score.html" }
   ]
 }
 </script>
@@ -56,45 +56,42 @@
 
   <section class="hero">
     <div class="wrap wrap-narrow">
-      <span class="eyebrow">Terms</span>
-      <h1>Terms, in language you can actually check</h1>
-      <p class="lede">These cover the website. A signed agreement governs the service itself; ask and we will send it before you commit to anything.</p>
+      <span class="eyebrow">Comparison</span>
+      <h1>SeQontrol and Microsoft's native tooling</h1>
+      <p class="lede">Secure Score, Purview and SharePoint Advanced Management already ship with your licence. Here is what they cover, and the specific gaps that made this worth building.</p>
     </div>
   </section>
 
   <section>
     <div class="wrap wrap-narrow">
 
-      <h2>The website</h2>
-      <p>You may read, quote and link to anything here. The words, the brand and the artwork belong
-        to JeffOps. The site's source is public and its licence sits in the repository.</p>
-      <p>Everything on this site describing the product is written to be accurate at the time of
-        writing, including the parts that say what the product does <em>not</em> do. Where something
-        is not yet available it is labelled "coming soon", and where a capability is limited the
-        limit is stated. If you find something on this site that is wrong, tell us and we will fix
-        it — that is a commitment we would rather be held to than a disclaimer.</p>
+      <h2>When native is enough</h2>
+      <p>One tenant, one administrator, no external reporting obligation and no Copilot rollout
+        pending: Secure Score plus the native reports will tell you most of what you need, and they
+        cost nothing extra. <strong>Start there.</strong> A tool you already own and will actually
+        check beats one you buy and ignore.</p>
 
-      <h2>The service</h2>
-      <p>Use of the platform is governed by a written agreement, not by this page. That agreement
-        covers availability, support, liability, processing terms and termination. We will send it
-        before you are asked to commit, not after.</p>
-      <p>Two things worth stating plainly here, because they shape everything else:</p>
+      <h2>The four gaps</h2>
       <ul>
-        <li><strong>SeQontrol provides readiness and evidence, not an audit opinion.</strong> Your
-          auditor signs the opinion. Nothing produced here is a certification.</li>
-        <li><strong>Remediation writes to your tenant only where you have separately consented.</strong>
-          It restores an approved state or removes an identified exposure; it does not run arbitrary
-          automation.</li>
+        <li><strong>One number, not a control.</strong> Secure Score gives a figure per tenant. It
+          does not tell an auditor which control held, or produce evidence that it held over a
+          period.</li>
+        <li><strong>Per workload, per tenant.</strong> Sharing sits in one report, identity in
+          another, mail flow in a third — and none of them span the clients a provider manages.</li>
+        <li><strong>No outside-in view.</strong> Nothing native scans your public web and domain
+          surface, which is where a good deal of exposure actually lives.</li>
+        <li><strong>Reporting, not remediation, and no memory.</strong> Native reports show a state.
+          They do not stage a fix with a grace window and an undo, and they do not keep a
+          tamper-evident record of what changed and who approved it.</li>
       </ul>
 
-      <h2>No warranty of a secure estate</h2>
-      <p>SeQontrol reports what it can observe through the connections you grant it. It does not
-        claim to find everything, and a clean report is not a guarantee that you are not exposed —
-        a control that cannot be assessed is reported as "not assessed" rather than as a pass,
-        precisely so that the gap is visible to you.</p>
-
-      <h2>Contact</h2>
-      <p>Questions about these terms: <a href="mailto:jeff@jeffops.com">jeff@jeffops.com</a>.</p>
+      <h2>The honest overlap</h2>
+      <p>Microsoft improves this surface constantly, and some of what SeQontrol does today will be
+        native eventually. The parts we expect to keep mattering are the ones native tooling is
+        structurally unlikely to build: cross-tenant fleet economics, and turning a security finding
+        into portable compliance evidence.</p>
+      <p>We license per estate, so if Microsoft ships something that replaces a piece of this, you
+        are free to stop paying for that piece.</p>
     </div>
   </section>
 

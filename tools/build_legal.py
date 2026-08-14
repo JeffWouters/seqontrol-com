@@ -27,6 +27,85 @@ OPERATOR = 'JeffOps'
 CONTACT = 'jeff@jeffops.com'
 
 PAGES = {
+    "vs-grc-platforms.html": dict(
+        title="SeQontrol - vs GRC platforms - Where each one wins",
+        desc="How SeQontrol compares with questionnaire-first GRC platforms on Microsoft 365 control "
+             "evidence, and where those platforms are the better choice.",
+        eyebrow="Comparison",
+        h1="SeQontrol and the GRC platforms",
+        lede="Vanta, Drata, Secureframe and their peers do something we deliberately do not. Here is "
+             "the honest split, including the cases where you should pick them.",
+        body="""
+      <h2>What they are better at</h2>
+      <p>Said first, because it is true. Automated GRC platforms have spent years on the parts of
+        compliance that are workflow: policy management, employee onboarding and training records,
+        vendor reviews, questionnaire handling, and — importantly — established relationships with
+        auditors who already know their evidence format.</p>
+      <p><strong>If your problem is "we need to run a SOC 2 programme and we have no process yet",
+        buy one of those.</strong> We are not a substitute for it and pretending otherwise would waste
+        your money.</p>
+
+      <h2>What we are better at</h2>
+      <p>Proving the technical controls, at control granularity, on a Microsoft 365 estate.</p>
+      <p>A GRC platform generally establishes that a control exists by asking you, or by a shallow
+        integration check. SeQontrol establishes it by scanning: external sharing containment,
+        Conditional Access coverage, MFA enforcement including the exclusions, application permissions
+        that are actually unused, email authentication posture. The finding and the evidence are the
+        same record, and you can re-run it.</p>
+      <p>The second difference is fleet economics. If you manage many client tenants, per-tenant GRC
+        licensing prices the work out of existence. This platform was built provider-first.</p>
+
+      <h2>They are often complementary</h2>
+      <p>The common shape: a GRC platform runs the programme, and SeQontrol feeds it the technical
+        control evidence it cannot produce itself. If that is your situation, say so on the first call
+        and we will scope for it rather than argue for replacement.</p>
+
+      <div class="note scope">
+        <h2>What we will not claim</h2>
+        <p class="mb0">We do not give you an audit opinion, an auditor relationship, or the process
+          half of a compliance programme. <a href="limits.html">The full list of what we do not do</a>
+          is published, and this is on it.</p>
+      </div>
+"""),
+
+    "vs-secure-score.html": dict(
+        title="SeQontrol - vs Secure Score - What native tooling misses",
+        desc="How SeQontrol differs from Microsoft Secure Score and native Microsoft 365 reporting, "
+             "and when the native tools are enough.",
+        eyebrow="Comparison",
+        h1="SeQontrol and Microsoft's native tooling",
+        lede="Secure Score, Purview and SharePoint Advanced Management already ship with your "
+             "licence. Here is what they cover, and the specific gaps that made this worth building.",
+        body="""
+      <h2>When native is enough</h2>
+      <p>One tenant, one administrator, no external reporting obligation and no Copilot rollout
+        pending: Secure Score plus the native reports will tell you most of what you need, and they
+        cost nothing extra. <strong>Start there.</strong> A tool you already own and will actually
+        check beats one you buy and ignore.</p>
+
+      <h2>The four gaps</h2>
+      <ul>
+        <li><strong>One number, not a control.</strong> Secure Score gives a figure per tenant. It
+          does not tell an auditor which control held, or produce evidence that it held over a
+          period.</li>
+        <li><strong>Per workload, per tenant.</strong> Sharing sits in one report, identity in
+          another, mail flow in a third — and none of them span the clients a provider manages.</li>
+        <li><strong>No outside-in view.</strong> Nothing native scans your public web and domain
+          surface, which is where a good deal of exposure actually lives.</li>
+        <li><strong>Reporting, not remediation, and no memory.</strong> Native reports show a state.
+          They do not stage a fix with a grace window and an undo, and they do not keep a
+          tamper-evident record of what changed and who approved it.</li>
+      </ul>
+
+      <h2>The honest overlap</h2>
+      <p>Microsoft improves this surface constantly, and some of what SeQontrol does today will be
+        native eventually. The parts we expect to keep mattering are the ones native tooling is
+        structurally unlikely to build: cross-tenant fleet economics, and turning a security finding
+        into portable compliance evidence.</p>
+      <p>We license per estate, so if Microsoft ships something that replaces a piece of this, you
+        are free to stop paying for that piece.</p>
+"""),
+
     "exposure-report.html": dict(
         title="SeQontrol - Free report - What Copilot can reach",
         desc="A free, scoped scan of your Microsoft 365 tenant: what is shared externally, what is "

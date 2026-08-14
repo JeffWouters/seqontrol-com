@@ -46,6 +46,16 @@ META = {
         "Book a walkthrough, request a scoped assessment, or get a quote against your actual "
         "estate. You get a reply from the people who built it.",
         "Contact"),
+    "vs-grc-platforms.html": (
+        "SeQontrol - vs GRC platforms - Where each one wins",
+        "How SeQontrol compares with questionnaire-first GRC platforms on Microsoft 365 control "
+        "evidence, and where those platforms are the better choice.",
+        "vs GRC platforms"),
+    "vs-secure-score.html": (
+        "SeQontrol - vs Secure Score - What native tooling misses",
+        "How SeQontrol differs from Microsoft Secure Score and native Microsoft 365 reporting, and "
+        "when the native tools are enough on their own.",
+        "vs Secure Score"),
     "exposure-report.html": (
         "SeQontrol - Free report - What Copilot can reach",
         "A free, scoped scan of your Microsoft 365 tenant: what is shared externally, what is "

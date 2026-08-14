@@ -24,7 +24,7 @@ META = {
     "index.html": (
         "Microsoft 365 security, compliance, governance | SeQontrol",
         "One platform for Microsoft 365 security, compliance and configuration governance. "
-        "Six products on one Entra app, across every tenant you manage.",
+        "Seven products on one Entra app, across every tenant you manage.",
         None),
     "platform.html": (
         "Platform — one Entra app, one findings model | SeQontrol",
@@ -47,9 +47,9 @@ META = {
         "estate. You get a reply from the person who built it.",
         "Contact"),
     "products/index.html": (
-        "Products — six on one platform | SeQontrol",
-        "Six products on one platform: ShareCare, SecurityPortal, CompliancePortal, "
-        "PosturePortal, MailTrust and Dredd — with one connection between them.",
+        "Products — seven on one platform | SeQontrol",
+        "Seven products on one platform: ShareCare, SecurityPortal, CompliancePortal, "
+        "PosturePortal, MailTrust, Dredd and ConditionalAccessPortal.",
         "Products"),
     "products/sharecare.html": (
         "ShareCare — M365 sharing and Copilot exposure | SeQontrol",

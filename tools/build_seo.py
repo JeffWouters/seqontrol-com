@@ -42,7 +42,7 @@ META = {
         "benchmarking, and partner margin built into the plan.",
         "For MSPs"),
     "contact.html": (
-        "SeQontrol - Contact - Book a walkthrough",
+        "SeQontrol - Contact - Talk to the person who built it",
         "Book a walkthrough, request a scoped assessment, or get a quote against your actual "
         "estate. You get a reply from the person who built it.",
         "Contact"),

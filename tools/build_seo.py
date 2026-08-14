@@ -46,6 +46,16 @@ META = {
         "Book a walkthrough, request a scoped assessment, or get a quote against your actual "
         "estate. You get a reply from the people who built it.",
         "Contact"),
+    "exposure-report.html": (
+        "SeQontrol - Free report - What Copilot can reach",
+        "A free, scoped scan of your Microsoft 365 tenant: what is shared externally, what is "
+        "over-shared internally, and exactly what to revoke first.",
+        "Free exposure report"),
+    "limits.html": (
+        "SeQontrol - Limits - What this does not do",
+        "The planes that detect but cannot yet fix, where the Microsoft-first scope ends, and why "
+        "readiness is not an audit opinion. Written down before you ask.",
+        "Limits"),
     "about.html": (
         "SeQontrol - About - Why this exists",
         "Who builds SeQontrol, why a Microsoft 365 security and compliance platform was worth "

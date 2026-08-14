@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SeQontrol - Security - What we do with your access</title>
-<meta name="description" content="The access SeQontrol asks for, what it does with it, how the audit trail works, and how to report a vulnerability.">
-<link rel="canonical" href="https://seqontrol.com/security.html">
+<title>SeQontrol - Free report - What Copilot can reach</title>
+<meta name="description" content="A free, scoped scan of your Microsoft 365 tenant: what is shared externally, what is over-shared internally, and exactly what to revoke first.">
+<link rel="canonical" href="https://seqontrol.com/exposure-report.html">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="SeQontrol">
 <meta property="og:locale" content="en">
-<meta property="og:title" content="SeQontrol - Security - What we do with your access">
-<meta property="og:description" content="The access SeQontrol asks for, what it does with it, how the audit trail works, and how to report a vulnerability.">
-<meta property="og:url" content="https://seqontrol.com/security.html">
+<meta property="og:title" content="SeQontrol - Free report - What Copilot can reach">
+<meta property="og:description" content="A free, scoped scan of your Microsoft 365 tenant: what is shared externally, what is over-shared internally, and exactly what to revoke first.">
+<meta property="og:url" content="https://seqontrol.com/exposure-report.html">
 <meta property="og:image" content="https://seqontrol.com/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -23,7 +23,7 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://seqontrol.com/" },
-    { "@type": "ListItem", "position": 2, "name": "Security", "item": "https://seqontrol.com/security.html" }
+    { "@type": "ListItem", "position": 2, "name": "Free exposure report", "item": "https://seqontrol.com/exposure-report.html" }
   ]
 }
 </script>
@@ -56,66 +56,69 @@
 
   <section class="hero">
     <div class="wrap wrap-narrow">
-      <span class="eyebrow">Security</span>
-      <h1>What we do with the access you give us</h1>
-      <p class="lede">A new vendor asking to read your entire identity estate should expect hard questions. These are the answers, before you ask.</p>
+      <span class="eyebrow">Free assessment</span>
+      <h1>See what Copilot can reach in your tenant</h1>
+      <p class="lede">A scoped scan, a scored list of what is actually exposed, and a remediation order. Free, read-only, and useful whether or not you buy anything afterwards.</p>
     </div>
   </section>
 
   <section>
     <div class="wrap wrap-narrow">
 
-      <h2>The access we ask for</h2>
+      <h2>What you get back</h2>
       <ul>
-        <li><strong>App-only, and read-first.</strong> Scanning uses application permissions, not a
-          user's session. There is no agent to install and no user-facing disruption.</li>
-        <li><strong>One consent, scoped and documented.</strong> A single Entra application declares
-          the permissions every product needs. Enabling a further product does not ask you for new
-          permissions — though it does require an administrator to switch that product's connector
-          on.</li>
-        <li><strong>Write access is separate.</strong> Remediation requires its own explicit consent
-          on top of the read grant. Withdrawing it stops all write paths and leaves your findings and
-          evidence intact.</li>
+        <li><strong>Every external share, listed and scored</strong> — anonymous links, links that
+          allow editing, guests who have not signed in for months, and the resources each can reach.</li>
+        <li><strong>The internal over-exposure</strong> — organisation-wide links and company-wide
+          groups such as "Everyone except external users". These are the patterns that make Copilot
+          surface far more than anyone intended, and they are invisible in native reports.</li>
+        <li><strong>Risky grants beyond files</strong> — over-permissioned OAuth applications, and
+          mail forwarding to domains nobody in your organisation owns.</li>
+        <li><strong>A remediation order</strong> — not a CSV of everything, but what to revoke first,
+          ranked by sensitivity and blast radius, with the ones that are safe to automate marked.</li>
+      </ul>
+
+      <h2>What it costs, and what it does not</h2>
+      <p>Nothing. No card, no trial that converts into a subscription, no contract. If the report
+        tells you your estate is in good shape, that is a perfectly good outcome and we will say so.</p>
+      <p><strong>The catch, stated plainly:</strong> we do this because a scored list of your own
+        exposure is a better argument for the product than any page on this site. If it is not
+        compelling, you will not buy, and that is fair.</p>
+
+      <h2>What it touches</h2>
+      <ul>
+        <li><strong>Read-only, app-only.</strong> Application permissions through Microsoft Graph — not
+          a user's session, no agent to install, no disruption to anybody working.</li>
         <li><strong>Metadata, not content.</strong> We read who can reach what. We do not read your
           documents or your mail.</li>
+        <li><strong>Nothing is changed.</strong> Remediation needs a separate consent that this
+          assessment does not ask for and does not use.</li>
+        <li><strong>You can revoke it the moment the report lands</strong>, and the findings you have
+          been given remain yours.</li>
       </ul>
 
-      <h2>How the platform is built</h2>
-      <ul>
-        <li><strong>Tenant isolation.</strong> Each tenant owns its own connectors, findings,
-          governance records and history. There is no shared tenant data. Templates may seed a
-          tenant, but instantiated records belong to that tenant.</li>
-        <li><strong>Tamper-evident audit.</strong> The audit trail is hash-chained, so a record that
-          was altered after the fact can be shown to have been altered. Support access through
-          impersonation is recorded in it like anything else.</li>
-        <li><strong>An approval gate for providers.</strong> Where a managed service provider
-          operates inside your tenant, you can require that their actions are approved first.</li>
-        <li><strong>Nothing is overwritten.</strong> Controls, desired states, findings, remediations,
-          approvals and waivers preserve their history. Governance decisions overlay the facts; they
-          never rewrite them.</li>
-        <li><strong>No fabricated passes.</strong> A control that cannot be assessed — no exported
-          logs, an unsupported plane, a missing permission — is reported as "not assessed", with the
-          reason. It is never scored green by default.</li>
-      </ul>
+      <h2>How it runs</h2>
+      <ol>
+        <li>You tell us the tenant and roughly how big it is.</li>
+        <li>We agree the scope and a date before anything connects.</li>
+        <li>An administrator grants read-only consent to one Entra application.</li>
+        <li>The crawl runs. Large estates are swept in stages so nothing is throttled.</li>
+        <li>You get the report, and a walkthrough of it if you want one.</li>
+      </ol>
 
-      <h2>This website</h2>
-      <p>Static files, served over HTTPS with HSTS via the host. No cookies, no third-party scripts,
-        no external requests of any kind. The source is public, so any claim on this page can be
-        checked against the code that makes it.</p>
+      <h2>Managing many tenants?</h2>
+      <p>The provider version ranks your worst clients against each other, so the conversation you
+        have with them is specific rather than general.
+        <a href="for-msps.html">More on the provider model</a>.</p>
 
-      <h2>Reporting a vulnerability</h2>
-      <p>Email <a href="mailto:jeff@jeffops.com">jeff@jeffops.com</a>. Include enough detail to reproduce the
-        issue. We will acknowledge within two working days and keep you informed until it is
-        resolved. We will not take legal action against anyone acting in good faith to find and
-        report a problem, and we are happy to credit you unless you would rather we did not.</p>
-      <p>Machine-readable contact details are published at
-        <a href=".well-known/security.txt">/.well-known/security.txt</a>.</p>
-
-      <!-- TO FILL IN before this page carries real weight:
-             · hosting region(s) for product data
-             · subprocessor list (hosting, mail, error reporting)
-             · retention defaults per data class
-             · certifications held, if any (say none rather than implying)  -->
+      <div class="note plain">
+        <h2>Ask for the report</h2>
+        <p>Mail <a href="mailto:jeff@jeffops.com?subject=Free%20exposure%20report">jeff@jeffops.com</a> with your
+          tenant size, or use <a href="contact.html">the contact form</a> and pick
+          <em>"A scoped assessment (Copilot oversharing)"</em>. A person replies — usually the same
+          working day.</p>
+        <p class="mb0"><a class="btn btn-primary" href="contact.html">Request the report</a></p>
+      </div>
     </div>
   </section>
 

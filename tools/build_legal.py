@@ -27,6 +27,123 @@ OPERATOR = 'JeffOps'
 CONTACT = 'jeff@jeffops.com'
 
 PAGES = {
+    "exposure-report.html": dict(
+        title="SeQontrol - Free report - What Copilot can reach",
+        desc="A free, scoped scan of your Microsoft 365 tenant: what is shared externally, what is "
+             "over-shared internally, and exactly what to revoke first.",
+        eyebrow="Free assessment",
+        h1="See what Copilot can reach in your tenant",
+        lede="A scoped scan, a scored list of what is actually exposed, and a remediation order. "
+             "Free, read-only, and useful whether or not you buy anything afterwards.",
+        body="""
+      <h2>What you get back</h2>
+      <ul>
+        <li><strong>Every external share, listed and scored</strong> — anonymous links, links that
+          allow editing, guests who have not signed in for months, and the resources each can reach.</li>
+        <li><strong>The internal over-exposure</strong> — organisation-wide links and company-wide
+          groups such as "Everyone except external users". These are the patterns that make Copilot
+          surface far more than anyone intended, and they are invisible in native reports.</li>
+        <li><strong>Risky grants beyond files</strong> — over-permissioned OAuth applications, and
+          mail forwarding to domains nobody in your organisation owns.</li>
+        <li><strong>A remediation order</strong> — not a CSV of everything, but what to revoke first,
+          ranked by sensitivity and blast radius, with the ones that are safe to automate marked.</li>
+      </ul>
+
+      <h2>What it costs, and what it does not</h2>
+      <p>Nothing. No card, no trial that converts into a subscription, no contract. If the report
+        tells you your estate is in good shape, that is a perfectly good outcome and we will say so.</p>
+      <p><strong>The catch, stated plainly:</strong> we do this because a scored list of your own
+        exposure is a better argument for the product than any page on this site. If it is not
+        compelling, you will not buy, and that is fair.</p>
+
+      <h2>What it touches</h2>
+      <ul>
+        <li><strong>Read-only, app-only.</strong> Application permissions through Microsoft Graph — not
+          a user's session, no agent to install, no disruption to anybody working.</li>
+        <li><strong>Metadata, not content.</strong> We read who can reach what. We do not read your
+          documents or your mail.</li>
+        <li><strong>Nothing is changed.</strong> Remediation needs a separate consent that this
+          assessment does not ask for and does not use.</li>
+        <li><strong>You can revoke it the moment the report lands</strong>, and the findings you have
+          been given remain yours.</li>
+      </ul>
+
+      <h2>How it runs</h2>
+      <ol>
+        <li>You tell us the tenant and roughly how big it is.</li>
+        <li>We agree the scope and a date before anything connects.</li>
+        <li>An administrator grants read-only consent to one Entra application.</li>
+        <li>The crawl runs. Large estates are swept in stages so nothing is throttled.</li>
+        <li>You get the report, and a walkthrough of it if you want one.</li>
+      </ol>
+
+      <h2>Managing many tenants?</h2>
+      <p>The provider version ranks your worst clients against each other, so the conversation you
+        have with them is specific rather than general.
+        <a href="for-msps.html">More on the provider model</a>.</p>
+
+      <div class="note plain">
+        <h2>Ask for the report</h2>
+        <p>Mail <a href="mailto:{contact}?subject=Free%20exposure%20report">{contact}</a> with your
+          tenant size, or use <a href="contact.html">the contact form</a> and pick
+          <em>"A scoped assessment (Copilot oversharing)"</em>. A person replies — usually the same
+          working day.</p>
+        <p class="mb0"><a class="btn btn-primary" href="contact.html">Request the report</a></p>
+      </div>
+"""),
+
+    "limits.html": dict(
+        title="SeQontrol - Limits - What this does not do",
+        desc="The planes that detect but cannot yet fix, where the Microsoft-first scope ends, and "
+             "why readiness is not an audit opinion. Written down before you ask.",
+        eyebrow="Straight answers",
+        h1="What SeQontrol does not do",
+        lede="Every limit worth knowing, in one place — including the ones a sales call would "
+             "normally leave until month two.",
+        body="""
+      <p>Security software is bought on trust, and trust does not survive a discovered exaggeration.
+        So here is the unflattering version, in one place, rather than scattered through the pages
+        that are trying to persuade you.</p>
+
+<div class="note honest">
+        <h2>"Connect once" means the permission grant, not zero-touch</h2>
+        <p class="mb0">One Entra app covers every product, so your admin consents once and enabling a product
+          never asks for new permissions. It is not zero-touch: each product's connector still has to be switched
+          on by an administrator, write-back is a separate opt-in, and Exchange admin, Power Platform, Azure and
+          DNS each need their own one-time setup. The
+          <a href="platform.html">platform page lists every step</a> rather than letting you find them during
+          onboarding.</p>
+      </div>
+
+<div class="note honest">
+        <h2>Some planes detect but do not yet fix</h2>
+        <p class="mb0">Where a plane can be remediated app-only, it is. Where it cannot — Exchange, SharePoint
+          site roles, Power Platform and delegated-admin relationships today — the product says so, with the
+          precise reason, rather than guessing or quietly failing.</p>
+      </div>
+
+<div class="note honest">
+        <h2>We are Microsoft-first</h2>
+        <p class="mb0">Microsoft 365 and Entra are the deep estate. Box and Slack sharing planes ship today, and
+          CompliancePortal covers Google Cloud and AWS through read-only connectors. Everything else is roadmap,
+          and we will not pretend otherwise on a sales call.</p>
+      </div>
+
+<div class="note honest">
+        <h2>Readiness is not an audit opinion</h2>
+        <p class="mb0">CompliancePortal produces continuous evidence and readiness for the technical controls on
+          the platforms we support. Your auditor still signs the opinion, and the controls that live in people and
+          process are still yours to run.</p>
+      </div>
+
+      <h2>Why this page exists</h2>
+      <p>Most vendors bury this and let you find out in month two. We would rather you knew before
+        the first call, because every one of these limits is something you would eventually hit —
+        and finding out late costs you more than it costs us.</p>
+      <p>If one of them is a dealbreaker, tell us and we will say so plainly rather than sell around
+        it. <a href="contact.html">Ask the awkward question</a>.</p>
+"""),
+
     "about.html": dict(
         title="SeQontrol - About - Why this exists",
         desc="Who builds SeQontrol, why a Microsoft 365 security and compliance platform was worth "

@@ -58,7 +58,7 @@ requests are verified but never published.
 git init -b main
 git add .
 git commit -m "SeQontrol.com: initial site"
-gh repo create seqontrol-com --public --source=. --remote=origin --push
+gh repo create seqontrol.com --public --source=. --remote=origin --push
 ```
 
 The workflow sets `enablement: true` on `configure-pages`, so Pages is switched on automatically by the

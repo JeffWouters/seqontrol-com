@@ -46,6 +46,21 @@ META = {
         "Book a walkthrough, request a scoped assessment, or get a quote against your actual "
         "estate. You get a reply from the people who built it.",
         "Contact"),
+    "privacy.html": (
+        "SeQontrol - Privacy - What we collect and why",
+        "What SeQontrol collects from this website and from a connected tenant, why, how long it "
+        "is kept, and who to contact about it.",
+        "Privacy"),
+    "terms.html": (
+        "SeQontrol - Terms - The plain version",
+        "The terms covering use of the SeQontrol website and, in outline, the service — written to "
+        "be read rather than to be scrolled past.",
+        "Terms"),
+    "security.html": (
+        "SeQontrol - Security - What we do with your access",
+        "The access SeQontrol asks for, what it does with it, how the audit trail works, and how "
+        "to report a vulnerability.",
+        "Security"),
     "products/index.html": (
         "SeQontrol - Products - Each stands alone, all connect",
         "Seven products on one platform: ShareCare, SecurityPortal, CompliancePortal, "
@@ -82,6 +97,21 @@ META = {
         "change, and force the decision: revert it, or ratify it. Coming soon.",
         "Dredd"),
 }
+
+# ---------------------------------------------------------------- analytics
+# Paste a single analytics snippet here and re-run to inject it into every
+# page. Left empty, the site makes no third-party requests at all — which is
+# the current state and a deliberate one.
+#
+# The site cannot be optimised while it is unmeasured, so this is meant to be
+# filled in. Use something cookieless (Plausible, Fathom, GoatCounter) so the
+# privacy notice stays short and no consent banner is needed. Example:
+#
+#   ANALYTICS = '<script defer data-domain="seqontrol.com" ' #               'src="https://plausible.io/js/script.js"></script>'
+#
+# If you add a script here, update privacy.html — it currently states that no
+# third-party analytics run.
+ANALYTICS = ""
 
 PRODUCT_CATEGORY = "SecurityApplication"
 
@@ -184,6 +214,9 @@ def apply(rel: str) -> None:
         f'<meta property="og:image:alt" content="SeQontrol — secure, compliant, confident">',
         f'<meta name="twitter:card" content="summary_large_image">',
     ]
+
+    if ANALYTICS:
+        blocks.append(ANALYTICS)
 
     ld = []
     if rel == "index.html":

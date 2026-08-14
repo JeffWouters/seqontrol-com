@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SeQontrol - Privacy - What we collect and why</title>
+<meta name="description" content="What SeQontrol collects from this website and from a connected tenant, why, how long it is kept, and who to contact about it.">
+<link rel="canonical" href="https://seqontrol.com/privacy.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SeQontrol">
+<meta property="og:locale" content="en">
+<meta property="og:title" content="SeQontrol - Privacy - What we collect and why">
+<meta property="og:description" content="What SeQontrol collects from this website and from a connected tenant, why, how long it is kept, and who to contact about it.">
+<meta property="og:url" content="https://seqontrol.com/privacy.html">
+<meta property="og:image" content="https://seqontrol.com/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SeQontrol — secure, compliant, confident">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://seqontrol.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Privacy", "item": "https://seqontrol.com/privacy.html" }
+  ]
+}
+</script>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="wrap nav" aria-label="Main">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="assets/seqontrol-symbol-on-dark-64.png"
+           alt="" width="32" height="31" decoding="async">
+      <img class="brand-word" src="assets/seqontrol-wordmark-on-dark-320.png"
+           alt="SeQontrol" width="150" height="28" decoding="async">
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="platform.html">Platform</a></li>
+      <li><a href="products/index.html">Products</a></li>
+      <li><a href="licensing.html">Licensing</a></li>
+      <li><a href="for-msps.html">For MSPs</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a class="btn btn-primary" href="contact.html">Book a walkthrough</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="wrap wrap-narrow">
+      <span class="eyebrow">Privacy</span>
+      <h1>What we collect, and why</h1>
+      <p class="lede">Short, because there is not much of it. This covers the website; the second half covers what the product reads once a tenant is connected.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap wrap-narrow">
+
+      <h2>This website</h2>
+      <p>The site is static. It sets no cookies, runs no advertising or profiling scripts, and makes
+        no third-party requests — no fonts, no CDN, no embedded video. Nothing about you is collected
+        by visiting it.</p>
+      <p>If you send the contact form, we receive what you typed: your name, email address, and
+        whatever else you chose to add. We use it to reply to you and to keep track of the
+        conversation. We do not sell it, share it for marketing, or add you to a list you did not ask
+        for.</p>
+
+      <h2>What the product reads</h2>
+      <p>Once you connect a Microsoft 365 tenant, SeQontrol reads configuration and metadata through
+        app-only Microsoft Graph permissions in order to produce findings. Concretely, that means
+        things like sharing links, permission assignments, group memberships, application consents,
+        Conditional Access policies and DNS records.</p>
+      <p><strong>It is metadata about access, not the contents of your files.</strong> SeQontrol
+        records that a document is shared with an external address; it does not read the document.</p>
+      <p>Scanning is read-only. Anything that writes back to your tenant — revoking a permission,
+        publishing a DNS record, restoring an approved configuration — requires a separate, explicit
+        consent that is distinct from the read grant, and can be withdrawn without losing the
+        findings and evidence you already hold.</p>
+
+      <h2>How long it is kept</h2>
+      <p>Findings and evidence are retained for the period your licence sets, because the value of
+        compliance evidence is that it covers a period. The audit trail is hash-chained and
+        append-only by design: entries are not edited or deleted, which is the property that makes it
+        worth having.</p>
+      <p>Contact-form correspondence is kept for as long as the conversation is useful, and deleted
+        on request.</p>
+
+      <h2>Your rights</h2>
+      <p>You can ask what we hold about you, ask for it to be corrected, ask for it to be deleted, or
+        object to it being processed. Email <a href="mailto:jeff@jeffops.com">jeff@jeffops.com</a> and you will get
+        a reply from a person.</p>
+      <p>Where SeQontrol processes data from your tenant, you are the controller and we act as
+        processor on your instructions. A data processing agreement is available on request.</p>
+
+      <h2>Changes</h2>
+      <p>If this notice changes materially, the change is visible in the site's public commit
+        history — the whole site is a public repository, which is a stronger guarantee than a
+        "last updated" date we control.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+      <img class="brand-mark" src="assets/seqontrol-symbol-on-dark-64.png"
+           alt="" width="32" height="31" decoding="async">
+      <img class="brand-word" src="assets/seqontrol-wordmark-on-dark-320.png"
+           alt="SeQontrol" width="150" height="28" decoding="async">
+    </a>
+        <img class="footer-tagline" src="assets/seqontrol-tagline-on-dark-320.png"
+             alt="Secure. Compliant. Confident." width="260" height="12" decoding="async">
+        <p class="blurb">Security, compliance and configuration governance for the Microsoft 365
+          estate. Built by <a href="https://jeffops.com">JeffOps</a>.</p>
+      </div>
+      <div>
+        <h2>Products</h2>
+        <ul>
+          <li><a href="products/sharecare.html">ShareCare</a></li>
+          <li><a href="products/securityportal.html">SecurityPortal</a></li>
+          <li><a href="products/complianceportal.html">CompliancePortal</a></li>
+          <li><a href="products/postureportal.html">PosturePortal</a></li>
+          <li><a href="products/mailtrust.html">MailTrust</a></li>
+          <li><a href="products/dredd.html">Dredd</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Company</h2>
+        <ul>
+          <li><a href="platform.html">Platform</a></li>
+          <li><a href="for-msps.html">For MSPs</a></li>
+          <li><a href="licensing.html">Licensing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Elsewhere</h2>
+        <ul>
+          <li><a href="https://jeffops.com">JeffOps</a></li>
+        </ul>
+        <h2>Trust</h2>
+        <ul>
+          <li><a href="security.html">Security</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="terms.html">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span data-year>2026</span> <a href="https://jeffops.com">JeffOps</a>. All rights reserved.</span>
+      <span>SeQontrol is a <a href="https://jeffops.com">JeffOps</a> platform.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+</body>
+</html>

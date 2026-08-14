@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SeQontrol - Security - What we do with your access</title>
+<meta name="description" content="The access SeQontrol asks for, what it does with it, how the audit trail works, and how to report a vulnerability.">
+<link rel="canonical" href="https://seqontrol.com/security.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SeQontrol">
+<meta property="og:locale" content="en">
+<meta property="og:title" content="SeQontrol - Security - What we do with your access">
+<meta property="og:description" content="The access SeQontrol asks for, what it does with it, how the audit trail works, and how to report a vulnerability.">
+<meta property="og:url" content="https://seqontrol.com/security.html">
+<meta property="og:image" content="https://seqontrol.com/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SeQontrol — secure, compliant, confident">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://seqontrol.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Security", "item": "https://seqontrol.com/security.html" }
+  ]
+}
+</script>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="wrap nav" aria-label="Main">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="assets/seqontrol-symbol-on-dark-64.png"
+           alt="" width="32" height="31" decoding="async">
+      <img class="brand-word" src="assets/seqontrol-wordmark-on-dark-320.png"
+           alt="SeQontrol" width="150" height="28" decoding="async">
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="platform.html">Platform</a></li>
+      <li><a href="products/index.html">Products</a></li>
+      <li><a href="licensing.html">Licensing</a></li>
+      <li><a href="for-msps.html">For MSPs</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a class="btn btn-primary" href="contact.html">Book a walkthrough</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="wrap wrap-narrow">
+      <span class="eyebrow">Security</span>
+      <h1>What we do with the access you give us</h1>
+      <p class="lede">A new vendor asking to read your entire identity estate should expect hard questions. These are the answers, before you ask.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap wrap-narrow">
+
+      <h2>The access we ask for</h2>
+      <ul>
+        <li><strong>App-only, and read-first.</strong> Scanning uses application permissions, not a
+          user's session. There is no agent to install and no user-facing disruption.</li>
+        <li><strong>One consent, scoped and documented.</strong> A single Entra application declares
+          the permissions every product needs. Enabling a further product does not ask you for new
+          permissions — though it does require an administrator to switch that product's connector
+          on.</li>
+        <li><strong>Write access is separate.</strong> Remediation requires its own explicit consent
+          on top of the read grant. Withdrawing it stops all write paths and leaves your findings and
+          evidence intact.</li>
+        <li><strong>Metadata, not content.</strong> We read who can reach what. We do not read your
+          documents or your mail.</li>
+      </ul>
+
+      <h2>How the platform is built</h2>
+      <ul>
+        <li><strong>Tenant isolation.</strong> Each tenant owns its own connectors, findings,
+          governance records and history. There is no shared tenant data. Templates may seed a
+          tenant, but instantiated records belong to that tenant.</li>
+        <li><strong>Tamper-evident audit.</strong> The audit trail is hash-chained, so a record that
+          was altered after the fact can be shown to have been altered. Support access through
+          impersonation is recorded in it like anything else.</li>
+        <li><strong>An approval gate for providers.</strong> Where a managed service provider
+          operates inside your tenant, you can require that their actions are approved first.</li>
+        <li><strong>Nothing is overwritten.</strong> Controls, desired states, findings, remediations,
+          approvals and waivers preserve their history. Governance decisions overlay the facts; they
+          never rewrite them.</li>
+        <li><strong>No fabricated passes.</strong> A control that cannot be assessed — no exported
+          logs, an unsupported plane, a missing permission — is reported as "not assessed", with the
+          reason. It is never scored green by default.</li>
+      </ul>
+
+      <h2>This website</h2>
+      <p>Static files, served over HTTPS with HSTS via the host. No cookies, no third-party scripts,
+        no external requests of any kind. The source is public, so any claim on this page can be
+        checked against the code that makes it.</p>
+
+      <h2>Reporting a vulnerability</h2>
+      <p>Email <a href="mailto:jeff@jeffops.com">jeff@jeffops.com</a>. Include enough detail to reproduce the
+        issue. We will acknowledge within two working days and keep you informed until it is
+        resolved. We will not take legal action against anyone acting in good faith to find and
+        report a problem, and we are happy to credit you unless you would rather we did not.</p>
+      <p>Machine-readable contact details are published at
+        <a href=".well-known/security.txt">/.well-known/security.txt</a>.</p>
+
+      <!-- TO FILL IN before this page carries real weight:
+             · hosting region(s) for product data
+             · subprocessor list (hosting, mail, error reporting)
+             · retention defaults per data class
+             · certifications held, if any (say none rather than implying)  -->
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+      <img class="brand-mark" src="assets/seqontrol-symbol-on-dark-64.png"
+           alt="" width="32" height="31" decoding="async">
+      <img class="brand-word" src="assets/seqontrol-wordmark-on-dark-320.png"
+           alt="SeQontrol" width="150" height="28" decoding="async">
+    </a>
+        <img class="footer-tagline" src="assets/seqontrol-tagline-on-dark-320.png"
+             alt="Secure. Compliant. Confident." width="260" height="12" decoding="async">
+        <p class="blurb">Security, compliance and configuration governance for the Microsoft 365
+          estate. Built by <a href="https://jeffops.com">JeffOps</a>.</p>
+      </div>
+      <div>
+        <h2>Products</h2>
+        <ul>
+          <li><a href="products/sharecare.html">ShareCare</a></li>
+          <li><a href="products/securityportal.html">SecurityPortal</a></li>
+          <li><a href="products/complianceportal.html">CompliancePortal</a></li>
+          <li><a href="products/postureportal.html">PosturePortal</a></li>
+          <li><a href="products/mailtrust.html">MailTrust</a></li>
+          <li><a href="products/dredd.html">Dredd</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Company</h2>
+        <ul>
+          <li><a href="platform.html">Platform</a></li>
+          <li><a href="for-msps.html">For MSPs</a></li>
+          <li><a href="licensing.html">Licensing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Elsewhere</h2>
+        <ul>
+          <li><a href="https://jeffops.com">JeffOps</a></li>
+        </ul>
+        <h2>Trust</h2>
+        <ul>
+          <li><a href="security.html">Security</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="terms.html">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span data-year>2026</span> <a href="https://jeffops.com">JeffOps</a>. All rights reserved.</span>
+      <span>SeQontrol is a <a href="https://jeffops.com">JeffOps</a> platform.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+</body>
+</html>

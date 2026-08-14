@@ -76,13 +76,22 @@
     <div class="wrap split">
       <div>
         <h2>Send a message</h2>
-        <p class="muted">This form opens your own mail client with the details filled in — nothing is submitted to
-          a server from this page, and no tracking runs on it.</p>
+        <p class="muted">Straight to a person. We reply to everything, usually the same working day, and we
+          will tell you if this is not a fit for you.</p>
 
-        <form id="contact-form" novalidate>
+        <!-- FORM ENDPOINT: paste the URL into BOTH action and data-endpoint below.
+             With it set, the form posts normally (works without JavaScript) and
+             site.js upgrades it to an inline thank-you. Left empty, it falls back
+             to composing a mailto, which can fail silently on webmail — see README. -->
+        <form id="contact-form" method="post" action="" data-endpoint="" novalidate>
           <div class="field">
             <label for="cf-name">Name</label>
             <input id="cf-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="cf-email">Work email</label>
+            <input id="cf-email" name="email" type="email" autocomplete="email" required>
+            <p class="hint">So we can reply. Nothing else is done with it.</p>
           </div>
           <div class="field">
             <label for="cf-org">Organisation</label>
@@ -112,9 +121,18 @@
             <label for="cf-message">Message</label>
             <textarea id="cf-message" name="message"></textarea>
           </div>
-          <button class="btn btn-primary" type="submit">Open in my mail client</button>
-          <p class="hint" id="cf-status" role="status"></p>
+          <button class="btn btn-primary" type="submit" id="cf-submit">Send message</button>
+          <p class="hint" id="cf-status" role="status" aria-live="polite"></p>
+          <p class="hint">Or email <a href="mailto:jeff@jeffops.com">jeff@jeffops.com</a> directly — some
+            people would rather see what they sent.</p>
         </form>
+
+        <div class="note plain" id="cf-thanks" hidden>
+          <h3>Message sent</h3>
+          <p class="mb0">It landed. You will get a reply from a person, usually the same working day. If you do
+            not hear back within two, mail <a href="mailto:jeff@jeffops.com">jeff@jeffops.com</a> — something
+            went wrong at our end and we would want to know.</p>
+        </div>
       </div>
 
       <aside class="aside">
@@ -199,6 +217,12 @@
         <ul>
           <li><a href="https://jeffops.com">JeffOps</a></li>
         </ul>
+        <h2>Trust</h2>
+        <ul>
+          <li><a href="security.html">Security</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="terms.html">Terms</a></li>
+        </ul>
       </div>
     </div>
     <div class="footer-bottom">
@@ -210,38 +234,76 @@
 
 <script src="js/site.js"></script>
 <script>
-/* Composes a mailto: from the form. Entirely client-side — this page posts nothing anywhere. */
+/* Submits the contact form.
+   With an endpoint configured the form posts for real and this upgrades it to an
+   inline thank-you. With no endpoint it falls back to composing a mailto, which
+   is the old behaviour — it can fail silently on webmail, so it is the fallback
+   and not the mechanism. See the comment on the form markup above. */
 (function () {
   'use strict';
   var form = document.getElementById('contact-form');
   if (!form) return;
+
   var status = document.getElementById('cf-status');
+  var thanks = document.getElementById('cf-thanks');
+  var submit = document.getElementById('cf-submit');
+  var endpoint = (form.getAttribute('data-endpoint') || '').trim();
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
+  if (!endpoint) submit.textContent = 'Open in my mail client';
 
+  function say(msg) { status.textContent = msg; }
+
+  function invalid() {
     var name = form.elements.name.value.trim();
-    if (!name) {
-      status.textContent = 'A name helps — everything else is optional.';
-      form.elements.name.focus();
-      return;
+    if (!name) { say('A name helps.'); form.elements.name.focus(); return true; }
+    var email = form.elements.email.value.trim();
+    if (!email || email.indexOf('@') < 1) {
+      say('We need an email address to reply to.');
+      form.elements.email.focus();
+      return true;
     }
+    return false;
+  }
 
+  function mailto() {
     var topic = form.elements.topic.value;
     var body = [
-      'Name: ' + name,
+      'Name: ' + form.elements.name.value.trim(),
+      'Email: ' + form.elements.email.value.trim(),
       'Organisation: ' + (form.elements.org.value.trim() || '—'),
       'Topic: ' + topic,
       'Estate: ' + (form.elements.estate.value.trim() || '—'),
       '',
       form.elements.message.value.trim()
     ].join('\n');
-
     window.location.href = 'mailto:jeff@jeffops.com'
       + '?subject=' + encodeURIComponent('SeQontrol — ' + topic)
       + '&body=' + encodeURIComponent(body);
+    say('Opening your mail client. If nothing happens, email jeff@jeffops.com directly.');
+  }
 
-    status.textContent = 'Opening your mail client. If nothing happens, email jeff@jeffops.com directly.';
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (invalid()) return;
+    if (!endpoint) { mailto(); return; }
+
+    submit.disabled = true;
+    say('Sending…');
+
+    fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    }).then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      form.hidden = true;
+      thanks.hidden = false;
+      thanks.setAttribute('tabindex', '-1');
+      thanks.focus();
+    }).catch(function () {
+      submit.disabled = false;
+      say('That did not send. Try again, or email jeff@jeffops.com — the message is not lost, it is still in the form.');
+    });
   });
 })();
 </script>

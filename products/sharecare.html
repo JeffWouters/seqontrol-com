@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ShareCare — Microsoft 365 sharing and permission governance | SeQontrol</title>
+<meta name="description" content="ShareCare crawls the whole Microsoft 365 sharing and permission surface app-only, scores exposure by sensitivity and blast radius, and remediates safely with a grace window and undo.">
+<meta name="theme-color" content="#0b0f17">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" href="../assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="../assets/favicon-32-light.png" sizes="32x32" type="image/png" media="(prefers-color-scheme: light)">
+<link rel="icon" href="../assets/icon-512.png" sizes="512x512" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:image" content="https://seqontrol.com/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="wrap nav" aria-label="Main">
+    <a class="brand" href="../index.html">
+      <img class="brand-mark" src="../assets/seqontrol-symbol-on-dark-64.png"
+           alt="" width="32" height="31" decoding="async">
+      <img class="brand-word" src="../assets/seqontrol-wordmark-on-dark-320.png"
+           alt="SeQontrol" width="150" height="28" decoding="async">
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../platform.html">Platform</a></li>
+      <li><a href="index.html">Products</a></li>
+      <li><a href="../licensing.html">Licensing</a></li>
+      <li><a href="../for-msps.html">For MSPs</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+      <li><a class="btn btn-primary" href="../contact.html">Book a walkthrough</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="phero" style="--tone: var(--t-sharecare)">
+    <div class="wrap">
+      <p class="breadcrumb"><a href="index.html">Products</a><span>/</span>ShareCare</p>
+      <span class="eyebrow">Data access governance</span>
+      <h1>See your Copilot blast radius. Then shrink it.</h1>
+      <p class="lede">
+        ShareCare answers the question every Microsoft 365 customer suddenly has to answer:
+        <strong>what is shared with the outside world — or over-shared internally so Copilot can reach it —
+        and who can fix it?</strong>
+      </p>
+      <div class="oneline"><strong>In one line:</strong> see what is exposed across every tenant you manage, and safely fix it.</div>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="../contact.html">Request an assessment</a>
+        <a class="btn btn-ghost" href="../licensing.html">Licensing</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap split">
+      <div>
+        <h2>What it does</h2>
+        <ul class="checklist" style="--tone: var(--t-sharecare)">
+          <li><strong>Crawls seven planes</strong> of the estate app-only — SharePoint, OneDrive, Teams, Entra app
+            consents, Exchange forwarding, Power Platform and Power BI. No agent, no user disruption.</li>
+          <li><strong>Finds internal over-exposure</strong> — organisation-wide sharing links and whole-company
+            groups such as "Everyone except external users". These are exactly the patterns that make Copilot
+            surface data far more broadly than anyone intended.</li>
+          <li><strong>Scores real risk</strong> as sensitivity × exposure × blast radius rather than a flat
+            checklist, and keeps an identity-level score so one toxic guest surfaces across every share they touch.</li>
+          <li><strong>Detects the dangerous specifics</strong> — anonymous edit links, dormant external guests
+            measured by actual sign-in activity, over-permissioned OAuth applications, and mail forwarding to
+            domains nobody owns.</li>
+          <li><strong>Remediates durably</strong> — simulate, then execute after an optional grace window, with
+            undo and retry. App-only permission revoke on OneDrive, plus downgrade and resource-level revoke-all.</li>
+          <li><strong>Recertifies with the owner</strong>, not just the admin — and the owner's decision actually
+            executes rather than landing in a report.</li>
+          <li><strong>Benchmarks the fleet</strong> — rank and compare oversharing exposure across every managed
+            tenant.</li>
+        </ul>
+
+        <h2 style="margin-top:2.8rem">Why it matters now</h2>
+        <p>Copilot can summarise, surface and cite anything a user can technically reach. Sharing links created
+          years ago, "Everyone" groups and inherited permissions that never mattered now decide what an AI
+          assistant will hand to the wrong person. Security teams are being asked — often for the first time —
+          to prove the blast radius <em>before</em> the rollout, and keep it shrinking afterwards.</p>
+        <p>Underneath that, the classic problems have not gone anywhere: anonymous link sprawl, stale guest
+          access, and mailbox forwarding rules used for exfiltration. Native tooling reports these thinly, one
+          workload at a time, one tenant at a time.</p>
+
+        <div class="note honest">
+          <h3>What it does not do yet</h3>
+          <p>Some planes are read-only today: Exchange forwarding rules, SharePoint site roles, Power Platform and
+            delegated-admin relationships are detected but not revoked app-only. When ShareCare cannot safely act,
+            it tells you the precise reason instead of guessing or silently skipping.</p>
+          <p class="mb0">OneDrive permission revoke and sharing-link revoke are live today. Beyond Microsoft 365,
+            Box public links and external collaborations are covered with app-only revoke, and Slack Connect
+            externally-shared channels are read-only pending the admin APIs that would let us act.</p>
+        </div>
+      </div>
+
+      <aside class="aside">
+        <h3>Status</h3>
+        <ul><li><span class="status built">Built</span> Running today</li></ul>
+        <h3>Metered on</h3>
+        <ul><li>Microsoft 365 users, 25-user minimum</li></ul>
+        <h3>License flavours</h3>
+        <ul>
+          <li><strong>Visibility</strong> — inventory, scoring, findings, reports</li>
+          <li><strong>Governance</strong> — policies, access reviews, approvals, waivers, evidence packs</li>
+          <li><strong>Automation</strong> — remediation write-back</li>
+        </ul>
+        <h3>Planes covered</h3>
+        <ul>
+          <li>SharePoint · OneDrive · Teams</li>
+          <li>Entra app consents</li>
+          <li>Exchange forwarding</li>
+          <li>Power Platform · Power BI</li>
+          <li>Box · Slack Connect</li>
+        </ul>
+        <h3>Pairs with</h3>
+        <ul>
+          <li><a href="complianceportal.html">CompliancePortal</a> — exposure becomes control evidence</li>
+          <li><a href="postureportal.html">PosturePortal</a> — exposure on the board (coming soon)</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Capability and what you get from it</h2>
+      <div class="table-wrap table-scroll" tabindex="0">
+        <table>
+          <thead><tr><th scope="col">Capability</th><th scope="col">What it means for you</th></tr></thead>
+          <tbody>
+            <tr><td>Cross-workload sharing and permission crawl</td><td>One picture of exposure instead of seven separate workload reports</td></tr>
+            <tr><td>Org-wide link and "Everyone" group detection</td><td>A direct answer to "what can Copilot reach?"</td></tr>
+            <tr><td>Sensitivity × exposure risk model</td><td>Prioritise the shares that actually matter, not the loudest ones</td></tr>
+            <tr><td>Durable remediation with grace window and undo</td><td>Fix safely in production, and reverse a mistake</td></tr>
+            <tr><td>Owner-delegated recertification</td><td>Push the decision to the person who owns the data</td></tr>
+            <tr><td>Fleet benchmarking</td><td>Rank clients by exposure and drive the remediation conversation</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 style="margin-top:3rem">Objections, answered straight</h2>
+      <div class="grid grid-2">
+        <article class="card">
+          <h3>"Copilot has its own controls."</h3>
+          <p>Restricted search and tenant-wide switches blunt the symptom for everyone. ShareCare finds and fixes
+            the <em>specific</em> over-shared items, and does it across every client you manage.</p>
+        </article>
+        <article class="card">
+          <h3>"Will scanning disrupt users?"</h3>
+          <p>The crawl is app-only and read-first. Remediation is simulate-then-execute with a grace window and
+            undo, and it only runs on the rung you bought.</p>
+        </article>
+        <article class="card">
+          <h3>"We only need this once, before Copilot."</h3>
+          <p>Sharing sprawl regenerates continuously — new links, new guests, new apps. And the continuous version
+            is what becomes compliance evidence.</p>
+        </article>
+        <article class="card">
+          <h3>"Can it fix Exchange forwarding rules?"</h3>
+          <p>It detects them. App-only revoke for that plane needs Exchange PowerShell and is on the roadmap. We
+            would rather say that than imply coverage we do not have.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2>Start with a Copilot-readiness assessment</h2>
+      <p>A real crawl of your worst tenants, a scored exposure report, and a remediation plan — whether or not
+        you buy anything afterwards.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="../contact.html">Request an assessment</a>
+        <a class="btn btn-ghost" href="index.html">All products</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="../index.html">
+      <img class="brand-mark" src="../assets/seqontrol-symbol-on-dark-64.png"
+           alt="" width="32" height="31" decoding="async">
+      <img class="brand-word" src="../assets/seqontrol-wordmark-on-dark-320.png"
+           alt="SeQontrol" width="150" height="28" decoding="async">
+    </a>
+        <img class="footer-tagline" src="../assets/seqontrol-tagline-on-dark-320.png"
+             alt="Secure. Compliant. Confident." width="260" height="12" decoding="async">
+        <p class="blurb">Security, compliance and configuration governance for the Microsoft 365
+          estate. Built by <a href="https://jeffops.com">JeffOps</a>.</p>
+      </div>
+      <div>
+        <h2>Products</h2>
+        <ul>
+          <li><a href="sharecare.html">ShareCare</a></li>
+          <li><a href="securityportal.html">SecurityPortal</a></li>
+          <li><a href="complianceportal.html">CompliancePortal</a></li>
+          <li><a href="postureportal.html">PosturePortal</a></li>
+          <li><a href="mailtrust.html">MailTrust</a></li>
+          <li><a href="dredd.html">Dredd</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Company</h2>
+        <ul>
+          <li><a href="../platform.html">Platform</a></li>
+          <li><a href="../for-msps.html">For MSPs</a></li>
+          <li><a href="../licensing.html">Licensing</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Elsewhere</h2>
+        <ul>
+          <li><a href="https://jeffops.com">JeffOps</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span data-year>2026</span> <a href="https://jeffops.com">JeffOps</a>. All rights reserved.</span>
+      <span>SeQontrol is a <a href="https://jeffops.com">JeffOps</a> product.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/site.js"></script>
+</body>
+</html>

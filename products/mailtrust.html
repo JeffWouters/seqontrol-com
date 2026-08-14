@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MailTrust — DMARC enforcement without breaking your mail | SeQontrol</title>
+<meta name="description" content="MailTrust takes every domain from DMARC monitoring to safe enforcement — real sender inventory from aggregate reports, staged rollout guidance, and DNS records written in-product for supported providers.">
+<meta name="theme-color" content="#0b0f17">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" href="../assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="../assets/favicon-32-light.png" sizes="32x32" type="image/png" media="(prefers-color-scheme: light)">
+<link rel="icon" href="../assets/icon-512.png" sizes="512x512" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:image" content="https://seqontrol.com/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="wrap nav" aria-label="Main">
+    <a class="brand" href="../index.html">
+      <img class="brand-mark" src="../assets/seqontrol-symbol-on-dark-64.png"
+           alt="" width="32" height="31" decoding="async">
+      <img class="brand-word" src="../assets/seqontrol-wordmark-on-dark-320.png"
+           alt="SeQontrol" width="150" height="28" decoding="async">
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../platform.html">Platform</a></li>
+      <li><a href="index.html">Products</a></li>
+      <li><a href="../licensing.html">Licensing</a></li>
+      <li><a href="../for-msps.html">For MSPs</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+      <li><a class="btn btn-primary" href="../contact.html">Book a walkthrough</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="phero" style="--tone: var(--t-mailtrust)">
+    <div class="wrap">
+      <p class="breadcrumb"><a href="index.html">Products</a><span>/</span>MailTrust</p>
+      <span class="eyebrow">Email authentication</span>
+      <h1>Reach DMARC enforcement without breaking real mail</h1>
+      <p class="lede">
+        MailTrust gets an organisation's email authentication to a safe, enforced, spoof-resistant state — and
+        keeps it there — <strong>across every domain and every tenant you manage</strong>. It closes the loop that
+        report-only monitors leave open: it makes the DNS change.
+      </p>
+      <div class="oneline"><strong>In one line:</strong> get every client's domain to enforcement safely, and fix the DNS without leaving the tool.</div>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="../contact.html">Request a spoofing report</a>
+        <a class="btn btn-ghost" href="../licensing.html">Licensing</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap split">
+      <div>
+        <h2>What it does</h2>
+        <ul class="checklist" style="--tone: var(--t-mailtrust)">
+          <li><strong>Email-authentication posture</strong> — evaluates SPF, DKIM, DMARC, BIMI and MTA-STS for
+            every domain, continuously rather than at project time.</li>
+          <li><strong>Real sender inventory</strong> — ingests and analyses DMARC aggregate reports to reveal
+            every source sending as your domain: legitimate services and spoofers alike. This is the prerequisite
+            to enforcing safely, and it is the step most projects skip.</li>
+          <li><strong>Staged rollout guidance</strong> — concrete steps from monitoring, through quarantine, to
+            full rejection, without blocking mail that should be getting through.</li>
+          <li><strong>DNS written in-product</strong> — through the platform's OAuth2 DNS connectors, MailTrust
+            applies the record changes directly for supported providers. Fixing is a click, not a ticket for
+            another team.</li>
+          <li><strong>Drift monitoring</strong> — records change and new senders appear. MailTrust keeps watching
+            after you reach enforcement, which is the half a one-off consulting project cannot do.</li>
+          <li><strong>Fleet-ready</strong> — every client domain in one console, feeding the shared findings store
+            so email authentication shows up on the board and as control evidence.</li>
+        </ul>
+
+        <h2 style="margin-top:2.8rem">Why it matters now</h2>
+        <p>Email spoofing and business email compromise remain among the most common and most expensive attack
+          routes, and DMARC enforcement is the proven defence. Yet most organisations sit at monitoring-only,
+          because getting to full rejection without blocking legitimate mail is genuinely frightening: it requires
+          knowing every legitimate sender, fixing SPF and DKIM, and staging the policy.</p>
+        <p>Meanwhile the decision is being taken out of your hands. Major mailbox providers now require DMARC for
+          bulk senders, brand indicators in the inbox require enforced DMARC, and cyber-insurance questionnaires
+          increasingly ask about it directly.</p>
+
+        <div class="note honest">
+          <h3>The limits, stated plainly</h3>
+          <p>In-product remediation covers the DNS providers we have OAuth2 connectors for today — Azure DNS and
+            DNSimple. Every other provider gets precise, guided manual steps until its connector ships. We would
+            rather name the two than imply all of them.</p>
+          <p class="mb0">One operational prerequisite: a mailbox to receive DMARC aggregate reports. That is
+            standard for DMARC analysis generally, and setup is part of onboarding.</p>
+        </div>
+      </div>
+
+      <aside class="aside">
+        <h3>Status</h3>
+        <ul><li><span class="status built">Built</span> Running today</li></ul>
+        <h3>Metered on</h3>
+        <ul><li>Per domain</li></ul>
+        <h3>License flavours</h3>
+        <ul>
+          <li><strong>Visibility</strong> — monitoring, sender analysis, reports</li>
+          <li><strong>Governance</strong> — guided rollout, alerting, multi-domain fleet</li>
+          <li><strong>Automation</strong> — DNS write-back</li>
+        </ul>
+        <h3>Standards covered</h3>
+        <ul>
+          <li>SPF · DKIM · DMARC</li>
+          <li>BIMI · MTA-STS</li>
+        </ul>
+        <h3>DNS write-back</h3>
+        <ul>
+          <li>Azure DNS</li>
+          <li>DNSimple</li>
+          <li>Others — guided steps</li>
+        </ul>
+        <h3>Pairs with</h3>
+        <ul>
+          <li><a href="complianceportal.html">CompliancePortal</a> — email authentication as control evidence</li>
+          <li><a href="postureportal.html">PosturePortal</a> — domain posture on the board (coming soon)</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Capability and what you get from it</h2>
+      <div class="table-wrap table-scroll" tabindex="0">
+        <table>
+          <thead><tr><th scope="col">Capability</th><th scope="col">What it means for you</th></tr></thead>
+          <tbody>
+            <tr><td>SPF, DKIM, DMARC, BIMI and MTA-STS posture</td><td>The complete email-authentication picture in one place</td></tr>
+            <tr><td>Aggregate report analysis</td><td>Know every sender before you enforce anything</td></tr>
+            <tr><td>Staged rollout guidance</td><td>Reach full enforcement without blocking real mail</td></tr>
+            <tr><td>In-product DNS write-back</td><td>Fix the record without raising a ticket with another team</td></tr>
+            <tr><td>Fleet view</td><td>Every client domain, one console, one posture score</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 style="margin-top:3rem">Objections, answered straight</h2>
+      <div class="grid grid-2">
+        <article class="card">
+          <h3>"We already have a DMARC monitor."</h3>
+          <p>Does it make the DNS change, stage the rollout, and manage every client domain from one console?
+            Most stop at the report and leave the hard half with you.</p>
+        </article>
+        <article class="card">
+          <h3>"Enforcement will block legitimate mail."</h3>
+          <p>That is exactly why the product inventories every real sender from actual reports first, and stages
+            the policy. The safe path <em>is</em> the product.</p>
+        </article>
+        <article class="card">
+          <h3>"Our DNS is somewhere you do not support."</h3>
+          <p>Then you get precise guided steps rather than automation, and we will tell you that before you buy.
+            More connectors are coming.</p>
+        </article>
+        <article class="card">
+          <h3>"Is email authentication really a priority?"</h3>
+          <p>Providers now mandate DMARC for bulk senders and inbox brand indicators require enforcement. It moved
+            from good practice to a requirement.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2>Find out who is sending as you</h2>
+      <p>The opener is a free email-authentication and spoofing-exposure report on your primary domains — real
+        reports, real senders, a concrete path to enforcement.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="../contact.html">Request the report</a>
+        <a class="btn btn-ghost" href="index.html">All products</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="../index.html">
+      <img class="brand-mark" src="../assets/seqontrol-symbol-on-dark-64.png"
+           alt="" width="32" height="31" decoding="async">
+      <img class="brand-word" src="../assets/seqontrol-wordmark-on-dark-320.png"
+           alt="SeQontrol" width="150" height="28" decoding="async">
+    </a>
+        <img class="footer-tagline" src="../assets/seqontrol-tagline-on-dark-320.png"
+             alt="Secure. Compliant. Confident." width="260" height="12" decoding="async">
+        <p class="blurb">Security, compliance and configuration governance for the Microsoft 365
+          estate. Built by <a href="https://jeffops.com">JeffOps</a>.</p>
+      </div>
+      <div>
+        <h2>Products</h2>
+        <ul>
+          <li><a href="sharecare.html">ShareCare</a></li>
+          <li><a href="securityportal.html">SecurityPortal</a></li>
+          <li><a href="complianceportal.html">CompliancePortal</a></li>
+          <li><a href="postureportal.html">PosturePortal</a></li>
+          <li><a href="mailtrust.html">MailTrust</a></li>
+          <li><a href="dredd.html">Dredd</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Company</h2>
+        <ul>
+          <li><a href="../platform.html">Platform</a></li>
+          <li><a href="../for-msps.html">For MSPs</a></li>
+          <li><a href="../licensing.html">Licensing</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Elsewhere</h2>
+        <ul>
+          <li><a href="https://jeffops.com">JeffOps</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span data-year>2026</span> <a href="https://jeffops.com">JeffOps</a>. All rights reserved.</span>
+      <span>SeQontrol is a <a href="https://jeffops.com">JeffOps</a> product.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/site.js"></script>
+</body>
+</html>

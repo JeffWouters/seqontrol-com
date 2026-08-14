@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The platform — SeQontrol</title>
+<meta name="description" content="One tenancy model, one connector, one findings substrate, one hash-chained audit trail, one entitlement catalog. The layer every SeQontrol product sits on.">
+<meta name="theme-color" content="#0b0f17">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="assets/favicon-32-light.png" sizes="32x32" type="image/png" media="(prefers-color-scheme: light)">
+<link rel="icon" href="assets/icon-512.png" sizes="512x512" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:image" content="https://seqontrol.com/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="wrap nav" aria-label="Main">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="assets/seqontrol-symbol-on-dark-64.png"
+           alt="" width="32" height="31" decoding="async">
+      <img class="brand-word" src="assets/seqontrol-wordmark-on-dark-320.png"
+           alt="SeQontrol" width="150" height="28" decoding="async">
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="platform.html">Platform</a></li>
+      <li><a href="products/index.html">Products</a></li>
+      <li><a href="licensing.html">Licensing</a></li>
+      <li><a href="for-msps.html">For MSPs</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a class="btn btn-primary" href="contact.html">Book a walkthrough</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">The platform</span>
+      <h1>The layer underneath is the actual product</h1>
+      <p class="lede">
+        Anyone can ship a scanner. What is hard — and what makes the seventh product cheap to add and the second
+        product cheap to buy — is everything a scanner has to sit on: <strong>one tenancy model, one connector,
+        one findings substrate, one audit trail, one entitlement catalog.</strong>
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">What it gives you</span>
+        <h2>Six things every product inherits for free</h2>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <h3>Tenancy and provider hierarchy</h3>
+          <p>A provider organisation manages a fleet of client tenants with delegated onboarding, audited
+            impersonation for support, and an opt-in approval gate that must be satisfied before a provider acts
+            inside a managed tenant. Every product gets multi-client support without building it.</p>
+        </article>
+        <article class="card">
+          <h3>One Entra app for the whole platform</h3>
+          <p>The customer's admin consents once, and that grant covers every product's Graph permissions —
+            so enabling a new product never asks them for new permissions. Turning a product on is still a
+            step: each product gets its own connector, which an administrator activates against the consent
+            that already exists.</p>
+          <p class="mb0">The adjacent planes are separate, deliberately: Exchange admin, Power Platform, Azure
+            and DNS each need their own one-time setup, and write-back is its own opt-in consent on top of the
+            read grant.</p>
+        </article>
+        <article class="card">
+          <h3>A shared findings substrate</h3>
+          <p>Every product writes findings into one store with severity, waivers and control-reference tags. This
+            is the reason a security finding can become compliance evidence with no second integration, and the
+            reason one board can show all of it.</p>
+        </article>
+        <article class="card">
+          <h3>Tamper-evident audit</h3>
+          <p>A hash-chained audit trail across the platform. When a client or an auditor asks what was checked,
+            what changed, and who approved it, the answer is a record that can be shown to have not been edited
+            after the fact.</p>
+        </article>
+        <article class="card">
+          <h3>Entitlements and metered billing</h3>
+          <p>A catalog of features gated per plan and wired to metered billing. Because packaging is a platform
+            capability rather than per-product plumbing, expanding a customer is a configuration change — not an
+            implementation project.</p>
+        </article>
+        <article class="card">
+          <h3>Scheduling, reporting, notifications</h3>
+          <p>Scheduled scans with live progress, a report engine that produces evidence packs, a notification
+            system, and a full feature-flag and experiment framework with four-eyes approval and scheduling.
+            Shared by every product rather than rebuilt six times.</p>
+        </article>
+      </div>
+
+      <h3 style="margin-top:3rem">What connecting actually involves</h3>
+      <p class="muted">&ldquo;Connect once&rdquo; is true of the Microsoft Graph permission grant, and we would
+        rather be precise about the rest than let you discover it during onboarding.</p>
+      <div class="table-wrap table-scroll" tabindex="0">
+        <table>
+          <thead>
+            <tr><th scope="col">Step</th><th scope="col">What it needs</th><th scope="col">How often</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Microsoft 365 and Entra</th>
+              <td>One admin consent for the platform's Entra app, declaring the union of every product's Graph permissions</td>
+              <td>Once per tenant</td>
+            </tr>
+            <tr>
+              <th scope="row">Enabling a product</th>
+              <td>An administrator activates that product's connector against the grant that already exists. No new permission prompt — but it is a step, and the product does not run until it happens</td>
+              <td>Once per product</td>
+            </tr>
+            <tr>
+              <th scope="row">Write-back and remediation</th>
+              <td>A separate, explicit opt-in on top of the read grant — which is what keeps read access from silently becoming write access</td>
+              <td>Once per product that writes</td>
+            </tr>
+            <tr>
+              <th scope="row">Exchange admin</th>
+              <td>A certificate: provision it, upload the public key to the Entra app, and grant the Exchange management role</td>
+              <td>One-time setup</td>
+            </tr>
+            <tr>
+              <th scope="row">Power Platform</th>
+              <td>A service principal registered by an administrator before the plane can be read</td>
+              <td>One-time setup</td>
+            </tr>
+            <tr>
+              <th scope="row">Azure and Log Analytics</th>
+              <td>A workspace and a reader role assignment on it. Without the export, the log-based checks report &ldquo;not assessed&rdquo; rather than a pass</td>
+              <td>One-time setup</td>
+            </tr>
+            <tr>
+              <th scope="row">DNS, for MailTrust</th>
+              <td>Its own OAuth2 authorisation per DNS provider — a wholly separate flow from Graph</td>
+              <td>One-time, per provider</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small muted" style="margin-top:1rem">ShareCare, SecurityPortal, CompliancePortal and Dredd read
+        through the shared Graph connector. MailTrust and PosturePortal do not: MailTrust authorises DNS
+        providers directly and ingests DMARC reports from a mailbox, and PosturePortal connects to nothing at
+        all — it reads the findings the others have already written.</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">Why it matters commercially</span>
+        <h2>The flywheel is structural, not a slogan</h2>
+        <p>Because the products share the platform, the marginal cost of adding another product to an existing
+          customer is small — and the marginal value to that customer is high. More coverage, the same connection,
+          the same bill.</p>
+        <p>That is what makes the expansion path real rather than aspirational: you buy one product because one
+          problem hurts, and the second one costs you an entitlement and a connector to switch on, instead of a
+          project. It is also what makes the provider model work at all — one provider tenant, one console, and
+          a client's permission grant that every later product rides on.</p>
+        <ul class="checklist">
+          <li><strong>One permission grant</strong> — adding a product never asks the customer for new permissions</li>
+          <li><strong>One findings model</strong> — evidence is reused, not re-collected</li>
+          <li><strong>One audit trail</strong> — the same proof serves support, clients and auditors</li>
+          <li><strong>One bill</strong> — with per-tenant metering a provider can resell cleanly</li>
+        </ul>
+      </div>
+      <aside class="aside">
+        <h3>Architecture</h3>
+        <ul>
+          <li>Multi-tenant .NET services</li>
+          <li>Micro-frontend shell with per-product portals</li>
+          <li>Shared design system across every portal</li>
+          <li>One palette, one component library — which is why the products look like one product</li>
+        </ul>
+        <h3>Isolation</h3>
+        <ul>
+          <li>Each tenant owns its own data, connectors, findings and history</li>
+          <li>No shared tenant data</li>
+          <li>Templates may seed a tenant, but instantiated records are tenant-owned</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Trust</span>
+        <h2>What we do with the access you give us</h2>
+        <p>A new vendor asking for read access to your entire Microsoft 365 estate should expect hard questions.
+          Here are the answers before you ask.</p>
+      </div>
+      <div class="grid grid-3">
+        <article class="card">
+          <h3>Least privilege, app-only</h3>
+          <p>Scanning is app-only and read-first. Scopes are documented, and the connector's remediation consent
+            is separate from the read consent — so read access never silently becomes write access.</p>
+        </article>
+        <article class="card">
+          <h3>Write paths are gated twice</h3>
+          <p>Nothing is written to your tenant unless both the license entitlement and the connector's own
+            remediation consent are present. Turning either off stops the write path.</p>
+        </article>
+        <article class="card">
+          <h3>An approval gate for providers</h3>
+          <p>Providers can be required to obtain approval before acting inside a managed tenant, and every
+            impersonated support session is audited.</p>
+        </article>
+        <article class="card">
+          <h3>Nothing is overwritten</h3>
+          <p>Controls, desired states, findings, remediations, approvals, waivers and scan sessions preserve their
+            history. Governance decisions overlay the facts; they never rewrite them.</p>
+        </article>
+        <article class="card">
+          <h3>Exceptions expire</h3>
+          <p>Waivers and risk acceptances carry a mandatory expiry and are invalidated automatically when the
+            underlying finding changes shape. A waived finding is still a finding — because
+            <a href="index.html#principle">security stands above compliance</a>, and an accepted risk that
+            vanishes from the screen is just a risk you stopped counting.</p>
+        </article>
+        <article class="card">
+          <h3>We never fake a pass</h3>
+          <p>Where a check cannot be assessed — no exported logs, an unsupported plane, a missing permission —
+            the product reports "not assessed" with the reason. It does not quietly score it green.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2>See it against a real tenant</h2>
+      <p>The fastest way to judge a platform claim is to connect one tenant and look at what comes back.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="contact.html">Book a walkthrough</a>
+        <a class="btn btn-ghost" href="products/index.html">See the products</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+      <img class="brand-mark" src="assets/seqontrol-symbol-on-dark-64.png"
+           alt="" width="32" height="31" decoding="async">
+      <img class="brand-word" src="assets/seqontrol-wordmark-on-dark-320.png"
+           alt="SeQontrol" width="150" height="28" decoding="async">
+    </a>
+        <img class="footer-tagline" src="assets/seqontrol-tagline-on-dark-320.png"
+             alt="Secure. Compliant. Confident." width="260" height="12" decoding="async">
+        <p class="blurb">Security, compliance and configuration governance for the Microsoft 365
+          estate. Built by <a href="https://jeffops.com">JeffOps</a>.</p>
+      </div>
+      <div>
+        <h2>Products</h2>
+        <ul>
+          <li><a href="products/sharecare.html">ShareCare</a></li>
+          <li><a href="products/securityportal.html">SecurityPortal</a></li>
+          <li><a href="products/complianceportal.html">CompliancePortal</a></li>
+          <li><a href="products/postureportal.html">PosturePortal</a></li>
+          <li><a href="products/mailtrust.html">MailTrust</a></li>
+          <li><a href="products/dredd.html">Dredd</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Company</h2>
+        <ul>
+          <li><a href="platform.html">Platform</a></li>
+          <li><a href="for-msps.html">For MSPs</a></li>
+          <li><a href="licensing.html">Licensing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Elsewhere</h2>
+        <ul>
+          <li><a href="https://jeffops.com">JeffOps</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span data-year>2026</span> <a href="https://jeffops.com">JeffOps</a>. All rights reserved.</span>
+      <span>SeQontrol is a <a href="https://jeffops.com">JeffOps</a> product.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+</body>
+</html>

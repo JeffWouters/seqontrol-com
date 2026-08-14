@@ -1,0 +1,61 @@
+name: Verify and deploy SeQontrol.com
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  # deploy-pages v4 and later fetch the artifact by ID and need this.
+  actions: read
+
+# One deploy at a time. Queued runs wait rather than racing each other, but a run
+# already in progress finishes, so a deploy is never half-applied.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  # The site is hand-written static HTML with no build step, so there is nothing
+  # to compile — but there is plenty to get wrong. This job is the guard rail:
+  # broken links, unbalanced tags, accessibility regressions, and the editorial
+  # rules the site is committed to (no prices, no customer references, no CIS
+  # framework names, no re-consent overclaim). See tools/verify.py.
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Verify site
+        run: python tools/verify.py
+
+  deploy:
+    # Pull requests are verified but never published.
+    if: github.event_name != 'pull_request'
+    needs: verify
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/configure-pages@v5
+
+      # The repository root IS the site: no generated output directory, so the
+      # whole checkout is uploaded. tools/ and .github/ ride along harmlessly —
+      # they are a few KB and Pages will not execute them.
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

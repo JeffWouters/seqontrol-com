@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SecurityPortal — Microsoft 365 posture and external surface | SeQontrol</title>
+<meta name="description" content="SecurityPortal continuously scores Microsoft 365 and Entra security posture and your external web and domain surface, and turns every finding into control evidence.">
+<meta name="theme-color" content="#0b0f17">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" href="../assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="../assets/favicon-32-light.png" sizes="32x32" type="image/png" media="(prefers-color-scheme: light)">
+<link rel="icon" href="../assets/icon-512.png" sizes="512x512" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:image" content="https://seqontrol.com/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="wrap nav" aria-label="Main">
+    <a class="brand" href="../index.html">
+      <img class="brand-mark" src="../assets/seqontrol-symbol-on-dark-64.png"
+           alt="" width="32" height="31" decoding="async">
+      <img class="brand-word" src="../assets/seqontrol-wordmark-on-dark-320.png"
+           alt="SeQontrol" width="150" height="28" decoding="async">
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../platform.html">Platform</a></li>
+      <li><a href="index.html">Products</a></li>
+      <li><a href="../licensing.html">Licensing</a></li>
+      <li><a href="../for-msps.html">For MSPs</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+      <li><a class="btn btn-primary" href="../contact.html">Book a walkthrough</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="phero" style="--tone: var(--t-security)">
+    <div class="wrap">
+      <p class="breadcrumb"><a href="index.html">Products</a><span>/</span>SecurityPortal</p>
+      <span class="eyebrow">Posture scanning · one of three</span>
+      <h1>Inside and outside, scored continuously</h1>
+      <p class="lede">
+        SecurityPortal checks the identity and configuration posture of the Microsoft 365 and Entra estate
+        <strong>and</strong> the organisation's public web and domain surface — then tags every finding so it
+        becomes control evidence downstream instead of another dashboard nobody exports.
+      </p>
+      <div class="oneline"><strong>In one line:</strong> continuous posture, inside and out, across your whole client book.</div>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="../contact.html">Request a posture assessment</a>
+        <a class="btn btn-ghost" href="../licensing.html">Licensing</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap split">
+      <div>
+        <h2>What it does</h2>
+        <ul class="checklist" style="--tone: var(--t-security)">
+          <li><strong>Identity and configuration posture</strong> — Conditional Access coverage, MFA enforcement
+            including report-only and exclusion gaps, secure-configuration signals, and genuine
+            over-permissioned-application detection.</li>
+          <li><strong>Log analytics checks</strong> — where the tenant exports activity logs, SecurityPortal runs
+            query-based checks that a native score cannot produce: high-privilege application permissions that are
+            genuinely unused, and per-user MFA usage as actually observed.</li>
+          <li><strong>External surface scan</strong> — roughly 28 checks against your public domains covering TLS
+            configuration, HTTP security headers, cookie flags, DNS, and content and infrastructure exposure.</li>
+          <li><strong>Control-tagged findings</strong> — each finding carries control references and a structured
+            evidence table, so it flows into <a href="complianceportal.html">CompliancePortal</a> as first-party
+            evidence rather than being re-collected by hand.</li>
+          <li><strong>Fleet-wide and scan-only</strong> — no agents, no write path, built to run across every
+            tenant you manage.</li>
+        </ul>
+
+        <h2 style="margin-top:2.8rem">Why it matters</h2>
+        <p>A native secure score is one number per tenant. It is not mapped to the frameworks your clients and
+          auditors cite, it is partly licensing-gated, and it has no concept of a provider managing forty
+          tenants. Meanwhile the external attack surface — expired or weak TLS, missing security headers, exposed
+          infrastructure — is usually assessed by an entirely different tool, disconnected from the identity
+          posture it should be read alongside.</p>
+        <p>Regulatory regimes increasingly expect demonstrable, continuous controls. An annual penetration test
+          and a bare score no longer satisfy a client questionnaire, let alone an auditor.</p>
+
+        <div class="note honest">
+          <h3>Scan-only, on purpose</h3>
+          <p class="mb0">SecurityPortal assesses and evidences; it does not remediate. Fixing lives in the products
+            built to write safely — <a href="sharecare.html">ShareCare</a> for sharing and permissions,
+            <a href="mailtrust.html">MailTrust</a> for DNS, and <a href="dredd.html">Dredd</a> for approved
+            configuration once it lands. Guided remediation for the highest-value posture gaps is roadmap, not a
+            shipped claim.</p>
+        </div>
+
+        <div class="note plain">
+          <h3>When the data is not there, we say so</h3>
+          <p class="mb0">The log-analytics checks depend on the customer actually exporting activity logs. Where
+            that export does not exist, the check degrades honestly to "not assessed" — it never quietly reports a
+            pass it could not verify.</p>
+        </div>
+      </div>
+
+      <aside class="aside">
+        <h3>Status</h3>
+        <ul><li><span class="status built">Built</span> Running today</li></ul>
+        <h3>Metered on</h3>
+        <ul><li>Users — or included with any ShareCare tier</li></ul>
+        <h3>Writes to your tenant?</h3>
+        <ul><li>No. Assessment and evidence only.</li></ul>
+        <h3>Covers</h3>
+        <ul>
+          <li>Conditional Access coverage</li>
+          <li>MFA enforcement and gaps</li>
+          <li>Over-permissioned applications</li>
+          <li>Risky sign-in patterns</li>
+          <li>TLS, headers, cookies, DNS</li>
+          <li>Content and infrastructure exposure</li>
+        </ul>
+        <h3>Pairs with</h3>
+        <ul>
+          <li><a href="complianceportal.html">CompliancePortal</a> — findings become evidence</li>
+          <li><a href="postureportal.html">PosturePortal</a> — posture on one board (coming soon)</li>
+          <li><a href="dredd.html">Dredd</a> — promote a failing check into an enforced control (coming soon)</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Capability and what you get from it</h2>
+      <div class="table-wrap table-scroll" tabindex="0">
+        <table>
+          <thead><tr><th scope="col">Capability</th><th scope="col">What it means for you</th></tr></thead>
+          <tbody>
+            <tr><td>Conditional Access, MFA and application-permission posture</td><td>The controls auditors and clients actually ask about</td></tr>
+            <tr><td>Log-analytics query checks</td><td>Evidence a native score cannot produce — truly unused permissions, real MFA source</td></tr>
+            <tr><td>External web and domain scan</td><td>Internal and outside-in posture in one tool, on one schedule</td></tr>
+            <tr><td>Control-reference tags on every finding</td><td>Posture becomes compliance evidence with no second integration</td></tr>
+            <tr><td>Fleet-wide, agentless</td><td>Run it across the whole book without touching an endpoint</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 style="margin-top:3rem">Objections, answered straight</h2>
+      <div class="grid grid-2">
+        <article class="card">
+          <h3>"We already track our secure score."</h3>
+          <p>That is one number, for one tenant. Can you show a control-level gap, an external TLS misconfiguration,
+            and the evidence an auditor would accept, across thirty clients, from one screen?</p>
+        </article>
+        <article class="card">
+          <h3>"Isn't posture just a checklist?"</h3>
+          <p>Ours carries control mappings and structured evidence, and it feeds a real evidence workflow rather
+            than producing a static PDF that ages badly.</p>
+        </article>
+        <article class="card">
+          <h3>"Does it remediate?"</h3>
+          <p>No. It assesses and evidences. Remediation lives in the products designed to write safely, and we are
+            explicit about which plane can do what.</p>
+        </article>
+        <article class="card">
+          <h3>"Why not a general cloud posture tool?"</h3>
+          <p>Most do not combine Microsoft 365 identity posture, an external web surface, fleet economics and
+            compliance evidence output in one place.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2>Get the gap report first</h2>
+      <p>The usual opener: a posture assessment across your worst tenants, with the external surface included and
+        every finding mapped to a control.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="../contact.html">Request an assessment</a>
+        <a class="btn btn-ghost" href="index.html">All products</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="../index.html">
+      <img class="brand-mark" src="../assets/seqontrol-symbol-on-dark-64.png"
+           alt="" width="32" height="31" decoding="async">
+      <img class="brand-word" src="../assets/seqontrol-wordmark-on-dark-320.png"
+           alt="SeQontrol" width="150" height="28" decoding="async">
+    </a>
+        <img class="footer-tagline" src="../assets/seqontrol-tagline-on-dark-320.png"
+             alt="Secure. Compliant. Confident." width="260" height="12" decoding="async">
+        <p class="blurb">Security, compliance and configuration governance for the Microsoft 365
+          estate. Built by <a href="https://jeffops.com">JeffOps</a>.</p>
+      </div>
+      <div>
+        <h2>Products</h2>
+        <ul>
+          <li><a href="sharecare.html">ShareCare</a></li>
+          <li><a href="securityportal.html">SecurityPortal</a></li>
+          <li><a href="complianceportal.html">CompliancePortal</a></li>
+          <li><a href="postureportal.html">PosturePortal</a></li>
+          <li><a href="mailtrust.html">MailTrust</a></li>
+          <li><a href="dredd.html">Dredd</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Company</h2>
+        <ul>
+          <li><a href="../platform.html">Platform</a></li>
+          <li><a href="../for-msps.html">For MSPs</a></li>
+          <li><a href="../licensing.html">Licensing</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Elsewhere</h2>
+        <ul>
+          <li><a href="https://jeffops.com">JeffOps</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span data-year>2026</span> <a href="https://jeffops.com">JeffOps</a>. All rights reserved.</span>
+      <span>SeQontrol is a <a href="https://jeffops.com">JeffOps</a> product.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/site.js"></script>
+</body>
+</html>

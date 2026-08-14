@@ -1,0 +1,10 @@
+# Python bytecode from tools/
+__pycache__/
+*.py[cod]
+
+# OS and editor cruft
+Thumbs.db
+.DS_Store
+*.swp
+.vscode/
+.idea/

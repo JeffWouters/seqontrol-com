@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — SeQontrol</title>
+<meta name="description" content="Book a walkthrough, request a scoped assessment, or ask for a quote against your actual estate.">
+<meta name="theme-color" content="#0b0f17">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="assets/favicon-32-light.png" sizes="32x32" type="image/png" media="(prefers-color-scheme: light)">
+<link rel="icon" href="assets/icon-512.png" sizes="512x512" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:image" content="https://seqontrol.com/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="wrap nav" aria-label="Main">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="assets/seqontrol-symbol-on-dark-64.png"
+           alt="" width="32" height="31" decoding="async">
+      <img class="brand-word" src="assets/seqontrol-wordmark-on-dark-320.png"
+           alt="SeQontrol" width="150" height="28" decoding="async">
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="platform.html">Platform</a></li>
+      <li><a href="products/index.html">Products</a></li>
+      <li><a href="licensing.html">Licensing</a></li>
+      <li><a href="for-msps.html">For MSPs</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a class="btn btn-primary" href="contact.html">Book a walkthrough</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Contact</span>
+      <h1>Talk to the person who built it</h1>
+      <p class="lede">
+        No sales development queue, no qualification call before the demo. Say what you are trying to find out
+        and you will get a straight answer — including "this is not a fit for you", when that is the answer.
+      </p>
+      <p><a class="btn btn-primary" href="mailto:jeff@jeffops.com?subject=SeQontrol%20enquiry">jeff@jeffops.com</a></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap split">
+      <div>
+        <h2>Send a message</h2>
+        <p class="muted">This form opens your own mail client with the details filled in — nothing is submitted to
+          a server from this page, and no tracking runs on it.</p>
+
+        <form id="contact-form" novalidate>
+          <div class="field">
+            <label for="cf-name">Name</label>
+            <input id="cf-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="cf-org">Organisation</label>
+            <input id="cf-org" name="org" type="text" autocomplete="organization">
+          </div>
+          <div class="field">
+            <label for="cf-topic">What is this about?</label>
+            <select id="cf-topic" name="topic">
+              <option>A walkthrough of the platform</option>
+              <option>A scoped assessment (Copilot oversharing)</option>
+              <option>A scoped assessment (email spoofing / DMARC)</option>
+              <option>A security posture assessment</option>
+              <option>A compliance readiness snapshot</option>
+              <option>Tell me when Dredd or PosturePortal lands</option>
+              <option>Partner / MSP model</option>
+              <option>A quote for my estate</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="cf-estate">Estate size</label>
+            <input id="cf-estate" name="estate" type="text" placeholder="e.g. 150 users, 2 domains, ~4 TB in SharePoint">
+            <p class="hint">Rough numbers are fine. Users and domains set the price; a rough sense of how large the
+              SharePoint and OneDrive estate is sets the band, so this is what turns a range into a real quote.</p>
+          </div>
+          <div class="field">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message"></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">Open in my mail client</button>
+          <p class="hint" id="cf-status" role="status"></p>
+        </form>
+      </div>
+
+      <aside class="aside">
+        <h3>Direct</h3>
+        <ul>
+          <li><a href="mailto:jeff@jeffops.com">jeff@jeffops.com</a></li>
+          <li><a href="https://jeffops.com">jeffops.com</a></li>
+        </ul>
+        <h3>What to expect</h3>
+        <ul>
+          <li>A reply from a person, not a sequence</li>
+          <li>A walkthrough against real data where possible</li>
+          <li>An honest read on whether this fits you</li>
+        </ul>
+        <h3>Good fits</h3>
+        <ul>
+          <li>Providers managing many Microsoft 365 tenants</li>
+          <li>Organisations rolling out Copilot</li>
+          <li>Teams facing an audit or a new regime</li>
+          <li>Identity teams that cannot answer "who approved this?"</li>
+        </ul>
+        <h3>Poor fits</h3>
+        <ul>
+          <li>Estates not on Microsoft 365 or Entra</li>
+          <li>Buyers who need an on-premises-only tool</li>
+          <li>Anyone needing a signed audit opinion from the vendor</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2>Or just start with the assessment</h2>
+      <p>Scoped, real data, and useful on its own whether or not it turns into anything.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="mailto:jeff@jeffops.com?subject=SeQontrol%20assessment%20request">Request an assessment</a>
+        <a class="btn btn-ghost" href="products/index.html">See the products</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+      <img class="brand-mark" src="assets/seqontrol-symbol-on-dark-64.png"
+           alt="" width="32" height="31" decoding="async">
+      <img class="brand-word" src="assets/seqontrol-wordmark-on-dark-320.png"
+           alt="SeQontrol" width="150" height="28" decoding="async">
+    </a>
+        <img class="footer-tagline" src="assets/seqontrol-tagline-on-dark-320.png"
+             alt="Secure. Compliant. Confident." width="260" height="12" decoding="async">
+        <p class="blurb">Security, compliance and configuration governance for the Microsoft 365
+          estate. Built by <a href="https://jeffops.com">JeffOps</a>.</p>
+      </div>
+      <div>
+        <h2>Products</h2>
+        <ul>
+          <li><a href="products/sharecare.html">ShareCare</a></li>
+          <li><a href="products/securityportal.html">SecurityPortal</a></li>
+          <li><a href="products/complianceportal.html">CompliancePortal</a></li>
+          <li><a href="products/postureportal.html">PosturePortal</a></li>
+          <li><a href="products/mailtrust.html">MailTrust</a></li>
+          <li><a href="products/dredd.html">Dredd</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Company</h2>
+        <ul>
+          <li><a href="platform.html">Platform</a></li>
+          <li><a href="for-msps.html">For MSPs</a></li>
+          <li><a href="licensing.html">Licensing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Elsewhere</h2>
+        <ul>
+          <li><a href="https://jeffops.com">JeffOps</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span data-year>2026</span> <a href="https://jeffops.com">JeffOps</a>. All rights reserved.</span>
+      <span>SeQontrol is a <a href="https://jeffops.com">JeffOps</a> product.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+<script>
+/* Composes a mailto: from the form. Entirely client-side — this page posts nothing anywhere. */
+(function () {
+  'use strict';
+  var form = document.getElementById('contact-form');
+  if (!form) return;
+  var status = document.getElementById('cf-status');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var name = form.elements.name.value.trim();
+    if (!name) {
+      status.textContent = 'A name helps — everything else is optional.';
+      form.elements.name.focus();
+      return;
+    }
+
+    var topic = form.elements.topic.value;
+    var body = [
+      'Name: ' + name,
+      'Organisation: ' + (form.elements.org.value.trim() || '—'),
+      'Topic: ' + topic,
+      'Estate: ' + (form.elements.estate.value.trim() || '—'),
+      '',
+      form.elements.message.value.trim()
+    ].join('\n');
+
+    window.location.href = 'mailto:jeff@jeffops.com'
+      + '?subject=' + encodeURIComponent('SeQontrol — ' + topic)
+      + '&body=' + encodeURIComponent(body);
+
+    status.textContent = 'Opening your mail client. If nothing happens, email jeff@jeffops.com directly.';
+  });
+})();
+</script>
+</body>
+</html>

@@ -22,62 +22,62 @@ SITE = "https://seqontrol.com"
 # page -> (title, description, breadcrumb label or None)
 META = {
     "index.html": (
-        "Microsoft 365 security, compliance, governance | SeQontrol",
+        "SeQontrol - Microsoft 365 - Secure, Compliant, Confident",
         "One platform for Microsoft 365 security, compliance and configuration governance. "
         "Seven products on one Entra app, across every tenant you manage.",
         None),
     "platform.html": (
-        "Platform — one Entra app, one findings model | SeQontrol",
+        "SeQontrol - Platform - Connect once, secure &amp; prove it all",
         "One tenancy model, one Entra app, one findings store and a tamper-evident audit trail "
         "— the layer every SeQontrol product is built on.",
         "Platform"),
     "licensing.html": (
-        "Licensing — Visibility, Governance, Automation | SeQontrol",
+        "SeQontrol - Licensing - Visibility, Governance, Automation",
         "Three licence flavours: Visibility, Governance and Automation. See what each one unlocks "
         "per product, and why scanning itself is never metered.",
         "Licensing"),
     "for-msps.html": (
-        "For MSPs — one console for every client | SeQontrol",
+        "SeQontrol - For MSPs - Every client or tenant, one screen",
         "Built provider-first: one console across every client tenant, pooled capacity, fleet "
         "benchmarking, and partner margin built into the plan.",
         "For MSPs"),
     "contact.html": (
-        "Contact — book a walkthrough | SeQontrol",
+        "SeQontrol - Contact - Book a walkthrough",
         "Book a walkthrough, request a scoped assessment, or get a quote against your actual "
         "estate. You get a reply from the person who built it.",
         "Contact"),
     "products/index.html": (
-        "Products — seven on one platform | SeQontrol",
+        "SeQontrol - Products - Each stands alone, all connect",
         "Seven products on one platform: ShareCare, SecurityPortal, CompliancePortal, "
         "PosturePortal, MailTrust, Dredd and ConditionalAccessPortal.",
         "Products"),
     "products/sharecare.html": (
-        "ShareCare — M365 sharing and Copilot exposure | SeQontrol",
+        "SeQontrol - ShareCare - Who can reach what, and why",
         "See what Microsoft 365 over-shares, externally and to Copilot, across every tenant you "
         "manage — then remediate it safely, with a grace window and undo.",
         "ShareCare"),
     "products/securityportal.html": (
-        "SecurityPortal — Microsoft 365 posture scanning | SeQontrol",
+        "SeQontrol - SecurityPortal - Estate and public surface",
         "Continuous Microsoft 365 and Entra security posture, plus your external web and domain "
         "surface, with every finding tagged as control evidence.",
         "SecurityPortal"),
     "products/complianceportal.html": (
-        "CompliancePortal — continuous control evidence | SeQontrol",
+        "SeQontrol - CompliancePortal - Many frameworks, one crosswalk",
         "Turn the scans you already run into framework-mapped, audit-ready evidence for the "
         "technical controls on the platforms SeQontrol connects to.",
         "CompliancePortal"),
     "products/postureportal.html": (
-        "PosturePortal — one board across products | SeQontrol",
+        "SeQontrol - PosturePortal - The answer, not the raw scan",
         "The read-only board that aggregates findings, risk and coverage from every SeQontrol "
         "product into one per-tenant and fleet-wide view. Coming soon.",
         "PosturePortal"),
     "products/mailtrust.html": (
-        "MailTrust — DMARC enforcement, done safely | SeQontrol",
+        "SeQontrol - MailTrust - SPF, DKIM, DMARC and more, enforced",
         "Take every domain from DMARC monitoring to safe enforcement: real sender inventory, a "
         "staged rollout, and the DNS records written in-product.",
         "MailTrust"),
     "products/dredd.html": (
-        "Dredd — configuration drift governance | SeQontrol",
+        "SeQontrol - Dredd - Revert it, or ratify it",
         "Hold your approved Entra configuration as a versioned baseline, catch every unapproved "
         "change, and force the decision: revert it, or ratify it. Coming soon.",
         "Dredd"),

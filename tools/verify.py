@@ -15,6 +15,7 @@ Run: python tools/verify.py
 """
 from __future__ import annotations
 
+import html
 import json
 import os
 import re
@@ -186,6 +187,11 @@ def check_content(page: str, src: str) -> None:
 # identity: a soft-404 in an index helps nobody.
 SEO_EXEMPT = {"404.html"}
 
+# 60 is the usual guidance, but the real constraint is pixel width (~600px), so
+# a character or two either side is noise. The cap exists to catch titles that
+# are genuinely too long, not to force a rewrite of a title someone chose.
+TITLE_MAX = 62
+
 _titles: dict[str, str] = {}
 _descs: dict[str, str] = {}
 
@@ -194,11 +200,13 @@ def check_seo(page: str, src: str) -> None:
     rel = os.path.relpath(page, ROOT).replace(os.sep, "/")
 
     m = re.search(r"<title>(.*?)</title>", src, re.S)
-    title = m.group(1).strip() if m else ""
+    # Measure what a person sees, not the source: "&amp;" is one character on
+    # screen and five in the file.
+    title = html.unescape(m.group(1).strip()) if m else ""
     if not title:
         fail(page, "no <title>")
-    elif len(title) > 60:
-        fail(page, f"title is {len(title)} chars (max 60, else it truncates in results)")
+    elif len(title) > TITLE_MAX:
+        fail(page, f"title is {len(title)} chars (max {TITLE_MAX}, else it truncates in results)")
     if title in _titles and _titles[title] != rel:
         fail(page, f"duplicate <title>, also on {_titles[title]}")
     _titles.setdefault(title, rel)

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SeQontrol - Guide - DMARC without breaking mail</title>
+<meta name="description" content="How to get a domain from p=none to p=reject without dropping legitimate mail: sender inventory, staged policy, and the mistakes that stall most DMARC projects.">
+<link rel="canonical" href="https://seqontrol.com/guides/dmarc-without-breaking-mail.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SeQontrol">
+<meta property="og:locale" content="en">
+<meta property="og:title" content="SeQontrol - Guide - DMARC without breaking mail">
+<meta property="og:description" content="How to get a domain from p=none to p=reject without dropping legitimate mail: sender inventory, staged policy, and the mistakes that stall most DMARC projects.">
+<meta property="og:url" content="https://seqontrol.com/guides/dmarc-without-breaking-mail.html">
+<meta property="og:image" content="https://seqontrol.com/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SeQontrol — secure, compliant, confident">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://seqontrol.com/" },
+    { "@type": "ListItem", "position": 2, "name": "DMARC without breaking mail", "item": "https://seqontrol.com/guides/dmarc-without-breaking-mail.html" }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="wrap nav" aria-label="Main">
+    <a class="brand" href="../index.html">
+      <img class="brand-mark" src="../assets/seqontrol-symbol-on-dark-64.png"
+           alt="" width="32" height="31" decoding="async">
+      <img class="brand-word" src="../assets/seqontrol-wordmark-on-dark-320.png"
+           alt="SeQontrol" width="150" height="28" decoding="async">
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../platform.html">Platform</a></li>
+      <li><a href="../products/index.html">Products</a></li>
+      <li><a href="../pricing.html">Pricing</a></li>
+      <li><a href="../for-msps.html">For MSPs</a></li>
+      <li><a href="index.html">Guides</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+      <li><a class="btn btn-primary" href="../exposure-report.html">Free exposure report</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="wrap wrap-narrow">
+      <p class="breadcrumb"><a href="../index.html">Guides</a></p>
+      <span class="eyebrow">Guide</span>
+      <h1>Getting to DMARC enforcement without breaking your mail</h1>
+      <p class="lede">Almost every domain sits at p=none, which monitors and blocks nothing. The reason is not ignorance — it is that enforcing without an inventory is genuinely dangerous.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap wrap-narrow">
+
+      <h2>Why so many domains stop at monitoring</h2>
+      <p>Publishing <code>p=none</code> is safe and takes ten minutes. Publishing <code>p=reject</code>
+        tells the world to throw away mail that fails authentication — and if you have missed a
+        legitimate sender, you have just silently deleted your own invoices, your CRM notifications or
+        your payroll provider's mail.</p>
+      <p>So people publish <code>p=none</code>, collect reports nobody reads, and stop. The domain stays
+        spoofable, which is the thing DMARC existed to fix.</p>
+
+      <h2>The step everyone skips</h2>
+      <p><strong>Inventory every sender before you touch the policy.</strong> Not the senders you think
+        you have — the ones actually sending. In a typical organisation that list includes several
+        systems nobody in IT remembers procuring: a marketing tool, a survey platform, an ancient
+        on-premises scanner, a payroll system, and at least one thing a department bought on a card.</p>
+      <p>That list only exists in DMARC aggregate reports. You publish <code>p=none</code> with a
+        reporting address, wait for real traffic, and read what comes back. Two to four weeks of reports
+        beats any amount of asking around.</p>
+
+      <h2>A staged rollout that does not bite</h2>
+      <ol>
+        <li><strong>Publish <code>p=none</code> with aggregate reporting</strong> to a mailbox you will
+          actually process. Nothing changes for anyone.</li>
+        <li><strong>Collect for two to four weeks.</strong> Longer if you have monthly batch processes —
+          the payroll run you miss is the one that hurts.</li>
+        <li><strong>Authenticate the legitimate senders.</strong> Add them to SPF where the record has
+          room, and prefer DKIM signing — SPF has a hard limit of ten DNS lookups and large estates hit
+          it constantly.</li>
+        <li><strong>Move to <code>p=quarantine</code> with a percentage.</strong> Start at
+          <code>pct=10</code>. Failures go to junk rather than nowhere, so a mistake is recoverable and
+          visible.</li>
+        <li><strong>Raise the percentage as the reports stay clean</strong>, then move to
+          <code>p=reject</code>.</li>
+        <li><strong>Keep watching.</strong> New senders appear whenever someone buys something. A domain
+          that reached enforcement and stopped being monitored drifts back into breakage.</li>
+      </ol>
+
+      <h2>Three mistakes worth avoiding</h2>
+      <ul>
+        <li><strong>Blowing the SPF lookup limit.</strong> Ten DNS lookups, including nested includes.
+          Past that, SPF fails permanently and mail that should pass does not.</li>
+        <li><strong>Forgetting subdomains.</strong> A policy on the organisational domain does not
+          protect subdomains unless you set <code>sp=</code> — and attackers know this.</li>
+        <li><strong>Treating it as a project.</strong> It is a state to hold, not a task to close.</li>
+      </ul>
+
+      <h2>Why it is worth finishing</h2>
+      <p>Major mailbox providers now require DMARC for bulk senders. Brand indicators in the inbox need
+        enforcement. Cyber-insurance questionnaires ask. And unauthenticated domains remain one of the
+        cheapest attacks available to anyone targeting your customers or your finance team.</p>
+
+      <div class="note plain">
+        <h2>See your current posture and who is sending as you.</h2>
+        <p class="mb0"><a class="btn btn-primary" href="../spoofing-report.html">Check my domain, free</a></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="../index.html">
+      <img class="brand-mark" src="../assets/seqontrol-symbol-on-dark-64.png"
+           alt="" width="32" height="31" decoding="async">
+      <img class="brand-word" src="../assets/seqontrol-wordmark-on-dark-320.png"
+           alt="SeQontrol" width="150" height="28" decoding="async">
+    </a>
+        <img class="footer-tagline" src="../assets/seqontrol-tagline-on-dark-320.png"
+             alt="Secure. Compliant. Confident." width="260" height="12" decoding="async">
+        <p class="blurb">Security, compliance and configuration governance for the Microsoft 365
+          estate. Built by <a href="https://jeffops.com">JeffOps</a>.</p>
+      </div>
+      <div>
+        <h2>Products</h2>
+        <ul>
+          <li><a href="../products/sharecare.html">ShareCare</a></li>
+          <li><a href="../products/securityportal.html">SecurityPortal</a></li>
+          <li><a href="../products/complianceportal.html">CompliancePortal</a></li>
+          <li><a href="../products/postureportal.html">PosturePortal</a></li>
+          <li><a href="../products/mailtrust.html">MailTrust</a></li>
+          <li><a href="../products/dredd.html">Dredd</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Company</h2>
+        <ul>
+          <li><a href="../exposure-report.html">Free exposure report</a></li>
+          <li><a href="../spoofing-report.html">Free spoofing check</a></li>
+          <li><a href="index.html">Guides</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../platform.html">Platform</a></li>
+          <li><a href="../for-msps.html">For MSPs</a></li>
+          <li><a href="../pricing.html">Pricing</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Elsewhere</h2>
+        <ul>
+          <li><a href="https://jeffops.com">JeffOps</a></li>
+        </ul>
+        <h2>Compare</h2>
+        <ul>
+          <li><a href="../vs-grc-platforms.html">vs GRC platforms</a></li>
+          <li><a href="../vs-secure-score.html">vs Secure Score</a></li>
+        </ul>
+        <h2>Trust</h2>
+        <ul>
+          <li><a href="../limits.html">What we don't do</a></li>
+          <li><a href="../security.html">Security</a></li>
+          <li><a href="../privacy.html">Privacy</a></li>
+          <li><a href="../terms.html">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span data-year>2026</span> <a href="https://jeffops.com">JeffOps</a>. All rights reserved.</span>
+      <span>SeQontrol is a <a href="https://jeffops.com">JeffOps</a> platform.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/site.js"></script>
+</body>
+</html>

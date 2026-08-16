@@ -46,6 +46,26 @@ META = {
         "Book a walkthrough, request a scoped assessment, or get a quote against your actual "
         "estate. You get a reply from the people who built it.",
         "Contact"),
+    "guides/index.html": (
+        "SeQontrol - Guides - Microsoft 365 security and compliance",
+        "Practical guides on Copilot exposure, DMARC enforcement and compliance evidence — written to "
+        "be useful whether or not you ever buy anything.",
+        "Guides"),
+    "guides/what-copilot-can-reach.html": (
+        "SeQontrol - Guide - What Copilot can actually reach",
+        "Copilot surfaces anything a user can already open. What that means in practice, and how to "
+        "find your real blast radius before you roll it out.",
+        "What Copilot can reach"),
+    "guides/dmarc-without-breaking-mail.html": (
+        "SeQontrol - Guide - DMARC without breaking mail",
+        "How to get a domain from p=none to p=reject without dropping legitimate mail: sender "
+        "inventory, staged policy, and the mistakes that stall most DMARC projects.",
+        "DMARC without breaking mail"),
+    "guides/evidence-auditors-accept.html": (
+        "SeQontrol - Guide - Evidence auditors accept",
+        "Why screenshots are tolerated rather than trusted, what continuous control evidence looks "
+        "like, and which controls can never be automated by any tool.",
+        "Evidence auditors accept"),
     "pricing.html": (
         "SeQontrol - Pricing - What sets your number",
         "How SeQontrol is priced: what each product counts, what makes a quote go up or down, and how "
@@ -228,7 +248,7 @@ def apply(rel: str) -> None:
     title, desc, crumb = META[rel]
     url = canonical_for(rel)
     in_products = rel.startswith("products/")
-    prefix = "../" if in_products else ""
+    prefix = "../" if "/" in rel else ""
 
     src = strip_existing(src)
     src = re.sub(r"<title>.*?</title>", f"<title>{title}</title>", src, count=1, flags=re.S)

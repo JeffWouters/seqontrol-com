@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SeQontrol - Guide - What Copilot can actually reach</title>
+<meta name="description" content="Copilot surfaces anything a user can already open. What that means in practice, and how to find your real blast radius before you roll it out.">
+<link rel="canonical" href="https://seqontrol.com/guides/what-copilot-can-reach.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SeQontrol">
+<meta property="og:locale" content="en">
+<meta property="og:title" content="SeQontrol - Guide - What Copilot can actually reach">
+<meta property="og:description" content="Copilot surfaces anything a user can already open. What that means in practice, and how to find your real blast radius before you roll it out.">
+<meta property="og:url" content="https://seqontrol.com/guides/what-copilot-can-reach.html">
+<meta property="og:image" content="https://seqontrol.com/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SeQontrol — secure, compliant, confident">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://seqontrol.com/" },
+    { "@type": "ListItem", "position": 2, "name": "What Copilot can reach", "item": "https://seqontrol.com/guides/what-copilot-can-reach.html" }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="wrap nav" aria-label="Main">
+    <a class="brand" href="../index.html">
+      <img class="brand-mark" src="../assets/seqontrol-symbol-on-dark-64.png"
+           alt="" width="32" height="31" decoding="async">
+      <img class="brand-word" src="../assets/seqontrol-wordmark-on-dark-320.png"
+           alt="SeQontrol" width="150" height="28" decoding="async">
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../platform.html">Platform</a></li>
+      <li><a href="../products/index.html">Products</a></li>
+      <li><a href="../pricing.html">Pricing</a></li>
+      <li><a href="../for-msps.html">For MSPs</a></li>
+      <li><a href="index.html">Guides</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+      <li><a class="btn btn-primary" href="../exposure-report.html">Free exposure report</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="wrap wrap-narrow">
+      <p class="breadcrumb"><a href="../index.html">Guides</a></p>
+      <span class="eyebrow">Guide</span>
+      <h1>What Copilot can actually reach in Microsoft 365</h1>
+      <p class="lede">Copilot does not break permissions. It obeys them — which is exactly the problem, because most tenants have no idea what their permissions currently allow.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap wrap-narrow">
+
+      <h2>The rule, stated once</h2>
+      <p>Copilot can surface, summarise and cite <strong>anything the person asking could already open
+        themselves</strong>. It adds no access. It removes the friction that used to hide access nobody
+        had audited.</p>
+      <p>That distinction matters, because it means a Copilot rollout does not create a new security
+        problem. It reveals one you already had, instantly, to every employee at once.</p>
+
+      <h2>Where the exposure actually comes from</h2>
+      <p>In practice, four patterns account for most of what surprises people.</p>
+      <h3>1. Organisation-wide sharing links</h3>
+      <p>A link created as "anyone in the organisation" is permanent, transferable and invisible in most
+        reporting. Ten years of them accumulate. Each one is a document Copilot can now quote to anybody
+        who asks a question near enough to its contents.</p>
+      <h3>2. Company-wide groups used as convenience</h3>
+      <p>"Everyone except external users" started as a shortcut for one intranet page. It is now attached
+        to sites nobody remembers granting. This is the single most common cause of a Copilot answer that
+        contains something a colleague should not have seen.</p>
+      <h3>3. Inherited permissions on old sites</h3>
+      <p>A site created from a template in 2019 inherits an access model designed for a team that no
+        longer exists. Nobody checks, because nothing surfaced it — until something did.</p>
+      <h3>4. Personal OneDrive sprawl</h3>
+      <p>People store things in OneDrive precisely because it feels private, then share a folder once to
+        collaborate on one file. The folder stays shared.</p>
+
+      <h2>Why native reporting does not answer this</h2>
+      <p>You can retrieve sharing information per workload, per site, in separate reports. What you cannot
+        easily get is the question you actually need answered: <em>for this person, what would Copilot be
+        able to reach, and which of that is sensitive?</em></p>
+      <p>That requires joining the sharing surface to the permission model to the sensitivity of what sits
+        behind it — across SharePoint, OneDrive, Teams and the groups underpinning all three. It is a
+        crawl, not a report.</p>
+
+      <h2>What to do before you roll out</h2>
+      <ol>
+        <li><strong>Inventory the sharing surface</strong> across every workload, not one at a time.</li>
+        <li><strong>Find the org-wide links and company-wide groups</strong> first. They are the highest
+          blast radius per item and usually the easiest to fix.</li>
+        <li><strong>Score by sensitivity, not count.</strong> Four hundred shared lunch menus do not
+          matter. One shared HR folder does.</li>
+        <li><strong>Fix the top of the list, then re-run.</strong> Sharing sprawl regenerates; a one-off
+          clean-up decays within months.</li>
+        <li><strong>Keep the evidence.</strong> The scan that proves you fixed it is the same artefact
+          your auditor wants next quarter.</li>
+      </ol>
+
+      <h2>The uncomfortable part</h2>
+      <p>Restricting Copilot tenant-wide — turning off search scope, delaying the rollout — treats the
+        symptom and costs you the value you paid for. The exposure was there before Copilot and will
+        outlast it. The links, the stale guests and the forwarding rules are a data-access problem that
+        happens to have become visible.</p>
+
+      <div class="note plain">
+        <h2>Find out what Copilot can reach in your own tenant.</h2>
+        <p class="mb0"><a class="btn btn-primary" href="../exposure-report.html">Get a free exposure report</a></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="../index.html">
+      <img class="brand-mark" src="../assets/seqontrol-symbol-on-dark-64.png"
+           alt="" width="32" height="31" decoding="async">
+      <img class="brand-word" src="../assets/seqontrol-wordmark-on-dark-320.png"
+           alt="SeQontrol" width="150" height="28" decoding="async">
+    </a>
+        <img class="footer-tagline" src="../assets/seqontrol-tagline-on-dark-320.png"
+             alt="Secure. Compliant. Confident." width="260" height="12" decoding="async">
+        <p class="blurb">Security, compliance and configuration governance for the Microsoft 365
+          estate. Built by <a href="https://jeffops.com">JeffOps</a>.</p>
+      </div>
+      <div>
+        <h2>Products</h2>
+        <ul>
+          <li><a href="../products/sharecare.html">ShareCare</a></li>
+          <li><a href="../products/securityportal.html">SecurityPortal</a></li>
+          <li><a href="../products/complianceportal.html">CompliancePortal</a></li>
+          <li><a href="../products/postureportal.html">PosturePortal</a></li>
+          <li><a href="../products/mailtrust.html">MailTrust</a></li>
+          <li><a href="../products/dredd.html">Dredd</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Company</h2>
+        <ul>
+          <li><a href="../exposure-report.html">Free exposure report</a></li>
+          <li><a href="../spoofing-report.html">Free spoofing check</a></li>
+          <li><a href="index.html">Guides</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../platform.html">Platform</a></li>
+          <li><a href="../for-msps.html">For MSPs</a></li>
+          <li><a href="../pricing.html">Pricing</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Elsewhere</h2>
+        <ul>
+          <li><a href="https://jeffops.com">JeffOps</a></li>
+        </ul>
+        <h2>Compare</h2>
+        <ul>
+          <li><a href="../vs-grc-platforms.html">vs GRC platforms</a></li>
+          <li><a href="../vs-secure-score.html">vs Secure Score</a></li>
+        </ul>
+        <h2>Trust</h2>
+        <ul>
+          <li><a href="../limits.html">What we don't do</a></li>
+          <li><a href="../security.html">Security</a></li>
+          <li><a href="../privacy.html">Privacy</a></li>
+          <li><a href="../terms.html">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span data-year>2026</span> <a href="https://jeffops.com">JeffOps</a>. All rights reserved.</span>
+      <span>SeQontrol is a <a href="https://jeffops.com">JeffOps</a> platform.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/site.js"></script>
+</body>
+</html>

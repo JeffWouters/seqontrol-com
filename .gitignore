@@ -11,7 +11,7 @@ assets/Screenshots/**/ShareCare0*.png
 assets/Screenshots/**/SecurityPortal0*.png
 assets/Screenshots/**/WebScan0*.png
 !assets/Screenshots/ShareCare/ShareCare05.png
-!assets/Screenshots/SecurityPortal/WebScan02-redacted.png
+!assets/Screenshots/WebScan/WebScan02-redacted.png
 
 # OS and editor cruft
 Thumbs.db

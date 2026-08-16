@@ -19,7 +19,7 @@ import os
 from PIL import Image, ImageDraw, ImageFont
 
 SHOTS = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-                     "assets", "Screenshots", "SecurityPortal")
+                     "assets", "Screenshots", "WebScan")
 SURFACE = (15, 23, 42, 255)      # sampled from the screenshots themselves
 TEXT = (229, 231, 235, 255)
 

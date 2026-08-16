@@ -19,6 +19,8 @@ LADDER = [("Visibility", "see it"), ("Governance", "govern it"), ("Automation", 
 BANDS = [("1 framework", "single regime"), ("3 frameworks", "the usual mix"), ("Unlimited", "every regime")]
 ONE = [("Included", "one tier")]
 SOON = [("Included", "when it lands")]
+# WebScan does not have depth rungs. It has a memory.
+KEPT = [("Free", "on every tenant"), ("Licensed", "per domain")]
 
 
 def rows(items, cols):
@@ -106,15 +108,13 @@ PRODUCTS = [
         counted="Counted per user — or included with any ShareCare tier",
         tech=[("Microsoft 365 and Entra", [("Conditional Access", 1), ("MFA enforcement", 1),
                                            ("Entra ID app permissions", 1), ("Sign-in risk signals", 1),
-                                           ("Log Analytics (KQL checks)", 1)]),
-              ("External surface", [("TLS configuration", 1), ("HTTP security headers", 1), ("Cookie flags", 1),
-                                    ("DNS", 1), ("Content and infrastructure exposure", 1)])],
+                                           ("Log Analytics (KQL checks)", 1)])],
         cols=ONE,
         rows=[("On-demand scan, whenever you want one", [Y]),
               ("Scheduled scan cadence — daily", [Y]),
               ("Microsoft 365 and Entra posture — Conditional Access, MFA, app permissions", [Y]),
               ("Log-analytics checks, where activity logs are exported", [Y]),
-              ("External web and domain surface scan", [Y]),
+              ("Posture ladder, advanced only by scan evidence", [Y]),
               ("Control-reference tags on every finding", [Y]),
               ("Findings history and reports", [Y]),
               ("Fleet-wide across managed tenants", [Y]),
@@ -122,7 +122,49 @@ PRODUCTS = [
         after=("One tier, not a ladder: SecurityPortal is scan-only, so there is no write access to sell on a "
                "higher rung. Remediation lives in the products built to write safely. The log-analytics checks "
                "need the tenant to export activity logs; without that export they report &ldquo;not "
-               "assessed&rdquo; rather than a pass."),
+               "assessed&rdquo; rather than a pass. The public web and domain surface is "
+               "<a href=\"products/webscan.html\">WebScan</a>, licensed separately and free to run."),
+    ),
+    dict(
+        key="webscan", name="WebScan", tone="--t-webscan", status=None,
+        counted="Counted per domain &middot; free tier on every tenant",
+        tech=[("Transport", [("TLS versions and cipher suites", 1), ("Certificate chain and expiry", 1),
+                             ("HSTS", 1)]),
+              ("HTTP", [("Security headers", 1), ("Cookie flags", 1), ("Redirect chain", 1)]),
+              ("DNS", [("CAA", 1), ("DNSSEC", 1), ("Nameserver and record hygiene", 1)]),
+              ("Content and infrastructure", [("Exposed paths and files", 1),
+                                              ("security.txt (RFC 9116)", 1),
+                                              ("Server and technology disclosure", 1)])],
+        cols=KEPT,
+        rows=["The scan itself",
+              ("On-demand scan, whenever you want one", [Y, Y]),
+              ("The complete check set — nothing withheld from the free tier", [Y, Y]),
+              ("Graded score with the four result states kept apart", [Y, Y]),
+              ("Standard and RFC references on every check", [Y, Y]),
+              ("Why it matters, and the fix, on every failure", [Y, Y]),
+              ("Domains you may scan", ["Unlimited", "Unlimited"]),
+              "What happens afterwards",
+              ("Results kept once you close the page", [N, Y]),
+              ("Scan history and trend over time", [N, Y]),
+              ("Scheduled scans", [N, Y]),
+              ("Alerting when a passing check regresses", [N, Y]),
+              "Governance and evidence",
+              ("Waivers and risk acceptance, with mandatory expiry", [N, Y]),
+              ("Control-reference tags, feeding CompliancePortal as evidence", [N, Y]),
+              ("Immutable audit trail of scans and decisions", [N, Y]),
+              ("Fleet view across domains and managed tenants", [N, Y]),
+              "Write access",
+              ("Write access to your DNS or web server", [N, N])],
+        note=("<strong>The free tier is the whole scanner, and that is deliberate.</strong> Nothing is held back "
+              "to make the paid version look better — the free tier runs every check and shows every result. "
+              "What it does not do is remember. There is no history, no schedule, no evidence and no audit "
+              "trail, because nothing is written down when the scan finishes. That is also what makes it free "
+              "to give away: a free scan is a short-lived function with no storage behind it, it is on demand "
+              "only so nothing can schedule itself into a bill, and its cost ends when the scan does."),
+        after=("Counted per domain, like MailTrust, and for the same reason: a domain is the thing being "
+               "assessed and the thing a customer already counts. No rung caps how many domains you may add. "
+               "WebScan never writes anywhere — DNS write-back belongs to MailTrust, which also owns SPF, DKIM "
+               "and DMARC; those are mail authentication rather than web surface and are not duplicated here."),
     ),
     dict(
         key="complianceportal", name="CompliancePortal", tone="--t-compliance", status=None,

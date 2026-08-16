@@ -118,7 +118,7 @@ META = {
         "Security"),
     "products/index.html": (
         "SeQontrol - Products - Each stands alone, all connect",
-        "Seven products on one platform: ShareCare, SecurityPortal, CompliancePortal, "
+        "Eight products on one platform: ShareCare, SecurityPortal, WebScan, CompliancePortal, "
         "PosturePortal, MailTrust, Dredd and ConditionalAccessPortal.",
         "Products"),
     "products/sharecare.html": (
@@ -127,10 +127,15 @@ META = {
         "manage — then remediate it safely, with a grace window and undo.",
         "ShareCare"),
     "products/securityportal.html": (
-        "SeQontrol - SecurityPortal - Estate and public surface",
-        "Continuous Microsoft 365 and Entra security posture, plus your external web and domain "
-        "surface, with every finding tagged as control evidence.",
+        "SeQontrol - SecurityPortal - Posture that arrives as evidence",
+        "Continuous Microsoft 365 and Entra security posture on a ladder you climb with scan "
+        "evidence, every finding tagged to the control it proves.",
         "SecurityPortal"),
+    "products/webscan.html": (
+        "SeQontrol - WebScan - What your attacker sees first",
+        "Grade the public face of every domain you own — TLS, headers, cookies, DNS, content and "
+        "infrastructure — against the standards that define it. Free to run.",
+        "WebScan"),
     "products/complianceportal.html": (
         "SeQontrol - CompliancePortal - Many frameworks, one crosswalk",
         "Turn the scans you already run into framework-mapped, audit-ready evidence for the "

@@ -53,6 +53,7 @@
         <ul class="subnav">
           <li><a href="products/sharecare.html"><span class="dot" style="--tone: var(--t-sharecare)"></span>ShareCare</a></li>
           <li><a href="products/securityportal.html"><span class="dot" style="--tone: var(--t-security)"></span>SecurityPortal</a></li>
+          <li><a href="products/webscan.html"><span class="dot" style="--tone: var(--t-webscan)"></span>WebScan</a></li>
           <li><a href="products/complianceportal.html"><span class="dot" style="--tone: var(--t-compliance)"></span>CompliancePortal</a></li>
           <li><a href="products/postureportal.html"><span class="dot" style="--tone: var(--t-posture)"></span>PosturePortal<span class="soon-tag">Soon</span></a></li>
           <li><a href="products/mailtrust.html"><span class="dot" style="--tone: var(--t-mailtrust)"></span>MailTrust</a></li>
@@ -75,9 +76,12 @@
       <span class="eyebrow">Licensing</span>
       <h1>Buy the depth you want. Never pay per scan.</h1>
       <p class="lede">
-        Every product is licensed on the same three-rung ladder — <strong>Visibility, Governance,
+        Most products are licensed on the same three-rung ladder — <strong>Visibility, Governance,
         Automation</strong> — priced on the size of your estate, not on how much you use it.
-        The rung that writes to your tenant is always a separate, deliberate decision.
+        The rung that writes to your tenant is always a separate, deliberate decision. Where a
+        product's depth is genuinely a different shape, it says so rather than being forced onto
+        the ladder: CompliancePortal scales by frameworks in scope, and
+        <a href="products/webscan.html">WebScan</a> is free to run and licensed on what it keeps.
       </p>
     </div>
   </section>
@@ -248,6 +252,7 @@
         <div class="tablist" role="tablist" aria-label="Products">
           <button type="button" role="tab" id="tab-sharecare" aria-controls="panel-sharecare" aria-selected="true" tabindex="0" style="--tone: var(--t-sharecare)">ShareCare</button>
           <button type="button" role="tab" id="tab-securityportal" aria-controls="panel-securityportal" aria-selected="false" tabindex="-1" style="--tone: var(--t-security)">SecurityPortal</button>
+          <button type="button" role="tab" id="tab-webscan" aria-controls="panel-webscan" aria-selected="false" tabindex="-1" style="--tone: var(--t-webscan)">WebScan</button>
           <button type="button" role="tab" id="tab-complianceportal" aria-controls="panel-complianceportal" aria-selected="false" tabindex="-1" style="--tone: var(--t-compliance)">CompliancePortal</button>
           <button type="button" role="tab" id="tab-postureportal" aria-controls="panel-postureportal" aria-selected="false" tabindex="-1" style="--tone: var(--t-posture)">PosturePortal</button>
           <button type="button" role="tab" id="tab-mailtrust" aria-controls="panel-mailtrust" aria-selected="false" tabindex="-1" style="--tone: var(--t-mailtrust)">MailTrust</button>
@@ -306,8 +311,6 @@
           <h4>Technologies covered</h4>
           <span class="group-label">Microsoft 365 and Entra</span>
           <ul class="tags"><li class="tag on">Conditional Access</li><li class="tag on">MFA enforcement</li><li class="tag on">Entra ID app permissions</li><li class="tag on">Sign-in risk signals</li><li class="tag on">Log Analytics (KQL checks)</li></ul>
-          <span class="group-label">External surface</span>
-          <ul class="tags"><li class="tag on">TLS configuration</li><li class="tag on">HTTP security headers</li><li class="tag on">Cookie flags</li><li class="tag on">DNS</li><li class="tag on">Content and infrastructure exposure</li></ul>
         </div>
         <div class="table-wrap table-scroll" tabindex="0" role="group" aria-label="Licence comparison">
           <table class="matrix">
@@ -319,7 +322,7 @@
               <tr><th scope="row">Scheduled scan cadence — daily</th><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
               <tr><th scope="row">Microsoft 365 and Entra posture — Conditional Access, MFA, app permissions</th><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
               <tr><th scope="row">Log-analytics checks, where activity logs are exported</th><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
-              <tr><th scope="row">External web and domain surface scan</th><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
+              <tr><th scope="row">Posture ladder, advanced only by scan evidence</th><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
               <tr><th scope="row">Control-reference tags on every finding</th><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
               <tr><th scope="row">Findings history and reports</th><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
               <tr><th scope="row">Fleet-wide across managed tenants</th><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
@@ -327,7 +330,56 @@
             </tbody>
           </table>
         </div>
-        <p class="after">One tier, not a ladder: SecurityPortal is scan-only, so there is no write access to sell on a higher rung. Remediation lives in the products built to write safely. The log-analytics checks need the tenant to export activity logs; without that export they report &ldquo;not assessed&rdquo; rather than a pass.</p>
+        <p class="after">One tier, not a ladder: SecurityPortal is scan-only, so there is no write access to sell on a higher rung. Remediation lives in the products built to write safely. The log-analytics checks need the tenant to export activity logs; without that export they report &ldquo;not assessed&rdquo; rather than a pass. The public web and domain surface is <a href="products/webscan.html">WebScan</a>, licensed separately and free to run.</p>
+      </div>
+      <div class="product-licence" role="tabpanel" id="panel-webscan" aria-labelledby="tab-webscan" tabindex="0" style="--tone: var(--t-webscan)">
+        <header>
+          <h3>WebScan</h3>
+          <p class="counted">Counted per domain &middot; free tier on every tenant</p>
+        </header>
+        <div class="tech">
+          <h4>Technologies covered</h4>
+          <span class="group-label">Transport</span>
+          <ul class="tags"><li class="tag on">TLS versions and cipher suites</li><li class="tag on">Certificate chain and expiry</li><li class="tag on">HSTS</li></ul>
+          <span class="group-label">HTTP</span>
+          <ul class="tags"><li class="tag on">Security headers</li><li class="tag on">Cookie flags</li><li class="tag on">Redirect chain</li></ul>
+          <span class="group-label">DNS</span>
+          <ul class="tags"><li class="tag on">CAA</li><li class="tag on">DNSSEC</li><li class="tag on">Nameserver and record hygiene</li></ul>
+          <span class="group-label">Content and infrastructure</span>
+          <ul class="tags"><li class="tag on">Exposed paths and files</li><li class="tag on">security.txt (RFC 9116)</li><li class="tag on">Server and technology disclosure</li></ul>
+        </div>
+        <div class="table-wrap table-scroll" tabindex="0" role="group" aria-label="Licence comparison">
+          <table class="matrix">
+            <thead>
+              <tr><th scope="col">Capability</th><th class="rung-head" scope="col">Free<small>on every tenant</small></th><th class="rung-head" scope="col">Licensed<small>per domain</small></th></tr>
+            </thead>
+            <tbody>
+              <tr class="group"><th colspan="3" scope="colgroup">The scan itself</th></tr>
+              <tr><th scope="row">On-demand scan, whenever you want one</th><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
+              <tr><th scope="row">The complete check set — nothing withheld from the free tier</th><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
+              <tr><th scope="row">Graded score with the four result states kept apart</th><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
+              <tr><th scope="row">Standard and RFC references on every check</th><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
+              <tr><th scope="row">Why it matters, and the fix, on every failure</th><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
+              <tr><th scope="row">Domains you may scan</th><td>Unlimited</td><td>Unlimited</td></tr>
+              <tr class="group"><th colspan="3" scope="colgroup">What happens afterwards</th></tr>
+              <tr><th scope="row">Results kept once you close the page</th><td><span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
+              <tr><th scope="row">Scan history and trend over time</th><td><span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
+              <tr><th scope="row">Scheduled scans</th><td><span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
+              <tr><th scope="row">Alerting when a passing check regresses</th><td><span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
+              <tr class="group"><th colspan="3" scope="colgroup">Governance and evidence</th></tr>
+              <tr><th scope="row">Waivers and risk acceptance, with mandatory expiry</th><td><span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
+              <tr><th scope="row">Control-reference tags, feeding CompliancePortal as evidence</th><td><span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
+              <tr><th scope="row">Immutable audit trail of scans and decisions</th><td><span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
+              <tr><th scope="row">Fleet view across domains and managed tenants</th><td><span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
+              <tr class="group"><th colspan="3" scope="colgroup">Write access</th></tr>
+              <tr><th scope="row">Write access to your DNS or web server</th><td><span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td><td><span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note plain" style="margin-top:0">
+          <p class="mb0"><strong>The free tier is the whole scanner, and that is deliberate.</strong> Nothing is held back to make the paid version look better — the free tier runs every check and shows every result. What it does not do is remember. There is no history, no schedule, no evidence and no audit trail, because nothing is written down when the scan finishes. That is also what makes it free to give away: a free scan is a short-lived function with no storage behind it, it is on demand only so nothing can schedule itself into a bill, and its cost ends when the scan does.</p>
+        </div>
+        <p class="after">Counted per domain, like MailTrust, and for the same reason: a domain is the thing being assessed and the thing a customer already counts. No rung caps how many domains you may add. WebScan never writes anywhere — DNS write-back belongs to MailTrust, which also owns SPF, DKIM and DMARC; those are mail authentication rather than web surface and are not duplicated here.</p>
       </div>
       <div class="product-licence" role="tabpanel" id="panel-complianceportal" aria-labelledby="tab-complianceportal" tabindex="0" style="--tone: var(--t-compliance)">
         <header>
@@ -516,6 +568,7 @@
         <ul>
           <li><a href="products/sharecare.html">ShareCare</a></li>
           <li><a href="products/securityportal.html">SecurityPortal</a></li>
+          <li><a href="products/webscan.html">WebScan</a></li>
           <li><a href="products/complianceportal.html">CompliancePortal</a></li>
           <li><a href="products/postureportal.html">PosturePortal</a></li>
           <li><a href="products/mailtrust.html">MailTrust</a></li>

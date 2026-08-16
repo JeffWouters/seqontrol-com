@@ -174,6 +174,7 @@ PAGES = {
             <tr><th scope="row">ShareCare</th><td>Microsoft 365 users, with a 25-user minimum</td></tr>
             <tr><th scope="row">SecurityPortal</th><td>Users — or included with any ShareCare tier</td></tr>
             <tr><th scope="row">CompliancePortal</th><td>Per tenant, banded by how many frameworks are in scope</td></tr>
+            <tr><th scope="row">WebScan</th><td>Per domain — with a free tier on every tenant</td></tr>
             <tr><th scope="row">MailTrust</th><td>Per domain</td></tr>
             <tr><th scope="row">PosturePortal</th><td>Bundled, never a separate line</td></tr>
           </tbody>
@@ -195,6 +196,10 @@ PAGES = {
       <p>How often you scan, how many findings you have, how much you remediate, or how much evidence you
         export. None of those are metered, deliberately — charging for them would teach you to look less
         often, which is the one behaviour this product exists to prevent.</p>
+      <p><a href="products/webscan.html">WebScan</a> takes that further and costs nothing at all to run: every
+        tenant can scan any domain, on demand, as often as it likes. The licence buys what happens
+        <em>after</em> the scan — the history, the schedule, the audit trail and the evidence. A scan you do
+        not keep cannot prove anything, and it also costs us nothing to give you.</p>
 
       <h2 id="request">Get a number</h2>
       <p>Tell us the size of the estate. You will get a real figure back, not a discovery call.</p>
@@ -309,7 +314,8 @@ PAGES = {
         <li><strong>Per workload, per tenant.</strong> Sharing sits in one report, identity in
           another, mail flow in a third — and none of them span the clients a provider manages.</li>
         <li><strong>No outside-in view.</strong> Nothing native scans your public web and domain
-          surface, which is where a good deal of exposure actually lives.</li>
+          surface, which is where a good deal of exposure actually lives — that is
+          <a href="products/webscan.html">WebScan</a>, and running it costs nothing.</li>
         <li><strong>Reporting, not remediation, and no memory.</strong> Native reports show a state.
           They do not stage a fix with a grace window and an undo, and they do not keep a
           tamper-evident record of what changed and who approved it.</li>

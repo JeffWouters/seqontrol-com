@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SeQontrol - SecurityPortal - Estate and public surface</title>
-<meta name="description" content="Continuous Microsoft 365 and Entra security posture, plus your external web and domain surface, with every finding tagged as control evidence.">
+<title>SeQontrol - SecurityPortal - Posture that arrives as evidence</title>
+<meta name="description" content="Continuous Microsoft 365 and Entra security posture on a ladder you climb with scan evidence, every finding tagged to the control it proves.">
 <meta name="theme-color" content="#0b0f17">
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" href="../assets/favicon-32.png" sizes="32x32" type="image/png">
@@ -15,8 +15,8 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="SeQontrol">
 <meta property="og:locale" content="en">
-<meta property="og:title" content="SeQontrol - SecurityPortal - Estate and public surface">
-<meta property="og:description" content="Continuous Microsoft 365 and Entra security posture, plus your external web and domain surface, with every finding tagged as control evidence.">
+<meta property="og:title" content="SeQontrol - SecurityPortal - Posture that arrives as evidence">
+<meta property="og:description" content="Continuous Microsoft 365 and Entra security posture on a ladder you climb with scan evidence, every finding tagged to the control it proves.">
 <meta property="og:url" content="https://seqontrol.com/products/securityportal.html">
 <meta property="og:image" content="https://seqontrol.com/assets/og-card.png">
 <meta property="og:image:width" content="1200">
@@ -32,7 +32,7 @@
   "applicationCategory": "SecurityApplication",
   "applicationSubCategory": "Microsoft 365 security and compliance",
   "operatingSystem": "Web-based",
-  "description": "Continuous Microsoft 365 and Entra security posture, plus your external web and domain surface, with every finding tagged as control evidence.",
+  "description": "Continuous Microsoft 365 and Entra security posture on a ladder you climb with scan evidence, every finding tagged to the control it proves.",
   "isPartOf": { "@type": "SoftwareApplication", "name": "SeQontrol", "url": "https://seqontrol.com/" },
   "publisher": { "@id": "https://seqontrol.com/#organization" }
 }
@@ -68,6 +68,7 @@
         <ul class="subnav">
           <li><a href="sharecare.html"><span class="dot" style="--tone: var(--t-sharecare)"></span>ShareCare</a></li>
           <li><a href="securityportal.html"><span class="dot" style="--tone: var(--t-security)"></span>SecurityPortal</a></li>
+          <li><a href="webscan.html"><span class="dot" style="--tone: var(--t-webscan)"></span>WebScan</a></li>
           <li><a href="complianceportal.html"><span class="dot" style="--tone: var(--t-compliance)"></span>CompliancePortal</a></li>
           <li><a href="postureportal.html"><span class="dot" style="--tone: var(--t-posture)"></span>PosturePortal<span class="soon-tag">Soon</span></a></li>
           <li><a href="mailtrust.html"><span class="dot" style="--tone: var(--t-mailtrust)"></span>MailTrust</a></li>
@@ -89,13 +90,14 @@
     <div class="wrap">
       <p class="breadcrumb"><a href="index.html">Products</a><span>/</span>SecurityPortal</p>
       <span class="eyebrow">Posture scanning · one of three</span>
-      <h1>Inside and outside, scored continuously</h1>
+      <h1>Inside the tenant, scored continuously</h1>
       <p class="lede">
-        SecurityPortal checks the identity and configuration posture of the Microsoft 365 and Entra estate
-        <strong>and</strong> the organisation's public web and domain surface — then tags every finding so it
-        becomes control evidence downstream instead of another dashboard nobody exports.
+        SecurityPortal checks the identity and configuration posture of the Microsoft 365 and Entra estate —
+        then tags every finding so it becomes control evidence downstream instead of another dashboard
+        nobody exports. For the public side of the same organisation, see
+        <a href="webscan.html">WebScan</a>.
       </p>
-      <div class="oneline"><strong>In one line:</strong> continuous posture, inside and out, across your whole client book.</div>
+      <div class="oneline"><strong>In one line:</strong> continuous posture across your whole client book, arriving as evidence rather than as a chart.</div>
       <div class="btn-row">
         <a class="btn btn-primary" href="../contact.html">Request a posture assessment</a>
         <a class="btn btn-ghost" href="../licensing.html">Licensing</a>
@@ -114,8 +116,6 @@
           <li><strong>Log analytics checks</strong> — where the tenant exports activity logs, SecurityPortal runs
             query-based checks that a native score cannot produce: high-privilege application permissions that are
             genuinely unused, and per-user MFA usage as actually observed.</li>
-          <li><strong>External surface scan</strong> — roughly 28 checks against your public domains covering TLS
-            configuration, HTTP security headers, cookie flags, DNS, and content and infrastructure exposure.</li>
           <li><strong>Control-tagged findings</strong> — each finding carries control references and a structured
             evidence table, so it flows into <a href="complianceportal.html">CompliancePortal</a> as first-party
             evidence rather than being re-collected by hand.</li>
@@ -126,9 +126,9 @@
         <h2 style="margin-top:2.8rem">Why it matters</h2>
         <p>A native secure score is one number per tenant. It is not mapped to the frameworks your clients and
           auditors cite, it is partly licensing-gated, and it has no concept of a provider managing forty
-          tenants. Meanwhile the external attack surface — expired or weak TLS, missing security headers, exposed
-          infrastructure — is usually assessed by an entirely different tool, disconnected from the identity
-          posture it should be read alongside.</p>
+          tenants. It also stops at the boundary of the tenant, which is not where your risk stops —
+          <a href="webscan.html">WebScan</a> covers the public side, and both file their findings in the same
+          place.</p>
         <p>Regulatory regimes increasingly expect demonstrable, continuous controls. An annual penetration test
           and a bare score no longer satisfy a client questionnaire, let alone an auditor.</p>
 
@@ -162,11 +162,11 @@
           <li>MFA enforcement and gaps</li>
           <li>Over-permissioned applications</li>
           <li>Risky sign-in patterns</li>
-          <li>TLS, headers, cookies, DNS</li>
-          <li>Content and infrastructure exposure</li>
+          <li>Secure-configuration signals</li>
         </ul>
         <h3>Pairs with</h3>
         <ul>
+          <li><a href="webscan.html">WebScan</a> — the same posture, from outside</li>
           <li><a href="complianceportal.html">CompliancePortal</a> — findings become evidence</li>
           <li><a href="postureportal.html">PosturePortal</a> — posture on one board (coming soon)</li>
           <li><a href="dredd.html">Dredd</a> — promote a failing check into an enforced control (coming soon)</li>
@@ -267,40 +267,11 @@
         </figcaption>
       </figure>
 
-      <div class="shot-feature">
-        <figure class="shot">
-          <div class="shot-pan" tabindex="0">
-          <div class="shot-frame" style="--w:722px">
-            <img src="../assets/Screenshots/SecurityPortal/WebScan02-redacted.png"
-                 alt="External web scan result: a score of 54 rated D, with 12 passed, 10 failed, 5 not
-                      assessed and 4 not applicable, listing a missing security.txt, missing CAA records
-                      and weak TLS protocols, each with why it matters, a fix, and a waiver request."
-                 width="722" height="1251" loading="lazy" decoding="async">
-            <b class="pin" style="--x:90%; --y:10.8%" aria-hidden="true">1</b>
-            <b class="pin" style="--x:80%; --y:33%" aria-hidden="true">2</b>
-            <b class="pin" style="--x:41%; --y:47%" aria-hidden="true">3</b>
-          </div>
-          </div>
-        </figure>
-
-        <div>
-          <h3>The half your attacker looks at first</h3>
-          <p>Everything above is inside the tenant. This is the same product looking at you from the
-            outside — TLS, HTTP headers, cookies, DNS, content and infrastructure — and filing what it
-            finds in the same place as everything else.</p>
-          <ol class="notes">
-            <li><b>A grade, and what it is made of.</b> Passed, failed, not assessed and not
-              applicable kept apart, so a low score can be read rather than argued with.</li>
-            <li><b>Every failure cites the RFC.</b> The standard is the reason, which is what turns
-              &ldquo;the scanner says so&rdquo; into a change request someone will actually approve.</li>
-            <li><b>Why it matters, then the fix, then a waiver.</b> If you are not going to fix it,
-              say so on the record — the check stays on screen either way.</li>
-          </ol>
-          <p class="cta-under"><a class="btn btn-primary" href="../exposure-report.html">Scan one of
-            your domains, free</a></p>
-          <p class="small dim" style="margin:.7rem 0 0">Domain replaced in the screenshot. The findings
-            are the real ones.</p>
-        </div>
+      <div class="note plain" style="margin-top:2rem">
+        <h3>The outside half lives next door</h3>
+        <p class="mb0">Everything on this page is inside the tenant. The public side — TLS, HTTP headers,
+          cookies, DNS, content and infrastructure — is <a href="webscan.html">WebScan</a>, which is free to
+          run and files its findings in the same store, with the same control tags.</p>
       </div>
     </div>
   </section>
@@ -314,7 +285,7 @@
           <tbody>
             <tr><td>Conditional Access, MFA and application-permission posture</td><td>The controls auditors and clients actually ask about</td></tr>
             <tr><td>Log-analytics query checks</td><td>Evidence a native score cannot produce — truly unused permissions, real MFA source</td></tr>
-            <tr><td>External web and domain scan</td><td>Internal and outside-in posture in one tool, on one schedule</td></tr>
+            <tr><td>Not-assessed counted separately from pass and fail</td><td>A check that could not run never becomes a quiet pass</td></tr>
             <tr><td>Control-reference tags on every finding</td><td>Posture becomes compliance evidence with no second integration</td></tr>
             <tr><td>Fleet-wide, agentless</td><td>Run it across the whole book without touching an endpoint</td></tr>
           </tbody>
@@ -325,8 +296,8 @@
       <div class="grid grid-2">
         <article class="card">
           <h3>"We already track our secure score."</h3>
-          <p>That is one number, for one tenant. Can you show a control-level gap, an external TLS misconfiguration,
-            and the evidence an auditor would accept, across thirty clients, from one screen?</p>
+          <p>That is one number, for one tenant. Can you show a control-level gap, the rung it is blocking, and
+            the evidence an auditor would accept, across thirty clients, from one screen?</p>
         </article>
         <article class="card">
           <h3>"Isn't posture just a checklist?"</h3>
@@ -340,8 +311,8 @@
         </article>
         <article class="card">
           <h3>"Why not a general cloud posture tool?"</h3>
-          <p>Most do not combine Microsoft 365 identity posture, an external web surface, fleet economics and
-            compliance evidence output in one place.</p>
+          <p>Most do not combine Microsoft 365 identity posture, fleet economics and compliance evidence output
+            in one place — nor sit beside a scanner for the public surface that files into the same store.</p>
         </article>
       </div>
     </div>
@@ -350,8 +321,8 @@
   <section class="cta">
     <div class="wrap">
       <h2>Get the gap report first</h2>
-      <p>The usual opener: a posture assessment across your worst tenants, with the external surface included and
-        every finding mapped to a control.</p>
+      <p>The usual opener: a posture assessment across your worst tenants, every finding mapped to a control —
+        and a free <a href="webscan.html">WebScan</a> of the domains while we are there.</p>
       <div class="btn-row">
         <a class="btn btn-primary" href="../contact.html">Request an assessment</a>
         <a class="btn btn-ghost" href="index.html">All products</a>
@@ -381,6 +352,7 @@
         <ul>
           <li><a href="sharecare.html">ShareCare</a></li>
           <li><a href="securityportal.html">SecurityPortal</a></li>
+          <li><a href="webscan.html">WebScan</a></li>
           <li><a href="complianceportal.html">CompliancePortal</a></li>
           <li><a href="postureportal.html">PosturePortal</a></li>
           <li><a href="mailtrust.html">MailTrust</a></li>

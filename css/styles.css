@@ -61,6 +61,10 @@
   --t-compliance:#c084fc;
   --t-posture:   #818cf8;
   --t-mailtrust: #4ade80;
+  /* pink, because every neighbouring hue was taken: amber is ShareCare, sky is
+     SecurityPortal, the purples are Compliance and Posture, red is Dredd, and
+     cyan belongs to JeffOps. */
+  --t-webscan:   #f472b6;
   --t-dredd:     #f87171;
   --t-soon:      #94a3b8;
 

@@ -730,3 +730,103 @@ a[href^="https://jeffops.com"]:hover,
 .plane span { font-size: .8rem; color: var(--muted); }
 .plane.off { border-left-style: dashed; opacity: .72; }
 .coverage-note { font-size: .86rem; color: var(--dim); margin: 0; }
+
+/* ------------------------------------------------------- products submenu
+   Opens on hover and on :focus-within, so it works for a mouse and for a
+   keyboard without any JavaScript. The parent link still navigates to the
+   products index — the submenu is an addition, not a replacement, which is
+   why it is not a button.
+
+   On narrow screens the nav is already a stacked list, so the submenu simply
+   renders inline and indented: no hover to depend on, nothing hidden behind
+   an interaction a touchscreen cannot perform. */
+.has-sub { position: relative; }
+
+.subnav {
+  list-style: none;
+  margin: 0;
+  padding: .4rem;
+  position: absolute;
+  top: 100%;
+  left: -.6rem;
+  min-width: 15rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--el-md);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-.35rem);
+  transition: opacity .13s ease, transform .13s ease, visibility .13s;
+  z-index: 120;
+}
+.has-sub:hover > .subnav,
+.has-sub:focus-within > .subnav {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+/* a forgiving gap between the trigger and the panel, so the pointer can cross
+   the border without the menu closing under it */
+.has-sub::after {
+  content: "";
+  position: absolute;
+  inset: 100% -.6rem auto -.6rem;
+  height: .55rem;
+}
+.subnav a {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  padding: .45rem .6rem;
+  border-radius: var(--radius-sm);
+  border-bottom: 0;
+  font-size: .92rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.subnav a:hover { background: var(--surface-2); color: var(--text); }
+.subnav .dot { width: 7px; height: 7px; border-radius: 2px; background: var(--tone, var(--accent)); flex: none; }
+.subnav .soon-tag {
+  margin-left: auto; font-size: .68rem; letter-spacing: .07em; text-transform: uppercase;
+  color: var(--dim);
+}
+
+@media (max-width: 900px) {
+  .subnav {
+    position: static; opacity: 1; visibility: visible; transform: none;
+    background: none; border: 0; box-shadow: none;
+    padding: 0 0 .4rem .9rem; min-width: 0;
+  }
+  .has-sub::after { display: none; }
+  .subnav a { padding: .5rem 0; border-bottom: 1px solid var(--border-soft); }
+  .subnav a:hover { background: none; }
+}
+
+/* ----------------------------------------------------------- screenshots
+   Real product UI, on a dark ground that already matches the site, so the
+   frame stays out of the way: a hairline border and a soft lift, nothing
+   skeuomorphic. Captions carry the claim the image is evidence for. */
+.shot {
+  margin: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: var(--el-md);
+}
+.shot img { width: 100%; height: auto; display: block; }
+.shot figcaption {
+  font-size: .86rem;
+  color: var(--muted);
+  padding: .7rem .9rem;
+  border-top: 1px solid var(--border-soft);
+  background: var(--bg-deep);
+}
+.shot figcaption b { color: var(--text); font-weight: 620; }
+
+.hero .shot { box-shadow: var(--el-lg); }
+
+/* side-by-side pair on wide screens, stacked below */
+.shot-pair { display: grid; gap: 1.1rem; grid-template-columns: 1fr; margin: 1.6rem 0; }
+@media (min-width: 60rem) { .shot-pair { grid-template-columns: 1fr 1fr; align-items: start; } }

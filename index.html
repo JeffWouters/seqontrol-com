@@ -63,7 +63,16 @@
     <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
     <ul class="nav-links" id="nav-links">
       <li><a href="platform.html">Platform</a></li>
-      <li><a href="products/index.html">Products</a></li>
+      <li class="has-sub"><a href="products/index.html">Products</a>
+        <ul class="subnav">
+          <li><a href="products/sharecare.html"><span class="dot" style="--tone: var(--t-sharecare)"></span>ShareCare</a></li>
+          <li><a href="products/securityportal.html"><span class="dot" style="--tone: var(--t-security)"></span>SecurityPortal</a></li>
+          <li><a href="products/complianceportal.html"><span class="dot" style="--tone: var(--t-compliance)"></span>CompliancePortal</a></li>
+          <li><a href="products/postureportal.html"><span class="dot" style="--tone: var(--t-posture)"></span>PosturePortal<span class="soon-tag">Soon</span></a></li>
+          <li><a href="products/mailtrust.html"><span class="dot" style="--tone: var(--t-mailtrust)"></span>MailTrust</a></li>
+          <li><a href="products/dredd.html"><span class="dot" style="--tone: var(--t-dredd)"></span>Dredd<span class="soon-tag">Soon</span></a></li>
+        </ul>
+      </li>
       <li><a href="pricing.html">Pricing</a></li>
       <li><a href="for-msps.html">For MSPs</a></li>
       <li><a href="guides/index.html">Guides</a></li>
@@ -99,29 +108,15 @@
           report you can act on — whether or not you buy anything afterwards.</p>
       </div>
 
-      <div class="flow" role="group" aria-labelledby="flow-heading">
-        <h2 class="sr-only" id="flow-heading">How SeQontrol works</h2>
-        <div class="flow-step">
-          <span class="flow-num">1</span>
-          <div><h3>Connect</h3><p>One app-only Entra app for the whole platform. The admin consents once, covering every product's permissions.</p></div>
-        </div>
-        <div class="flow-step">
-          <span class="flow-num">2</span>
-          <div><h3>See</h3><p>Every product reads through that connection and writes into one shared findings store.</p></div>
-        </div>
-        <div class="flow-step">
-          <span class="flow-num">3</span>
-          <div><h3>Prove</h3><p>Findings carry control tags, so a security finding becomes compliance evidence without a second integration.</p></div>
-        </div>
-        <div class="flow-step">
-          <span class="flow-num">4</span>
-          <div><h3>Fix</h3><p>Remediation is simulate-then-execute, with grace windows, approvals and undo where the plane allows it.</p></div>
-        </div>
-        <div class="flow-step">
-          <span class="flow-num">5</span>
-          <div><h3>Govern</h3><p>Waivers expire, approvals are recorded, and the audit trail is hash-chained and tamper-evident.</p></div>
-        </div>
-      </div>
+      <figure class="shot">
+        <img src="assets/Screenshots/ShareCare/ShareCare01.png"
+             alt="ShareCare overview: an exposure score of 39 out of 100, three anonymous links and
+                  35 privileged grants needing attention, risk severity split, and exposure broken
+                  down by OneDrive and Entra."
+             width="969" height="1187" loading="eager" decoding="async">
+        <figcaption><b>ShareCare, on a real tenant.</b> Exposure scored, the items needing attention
+          surfaced first, and the workloads they came from.</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -213,6 +208,31 @@
       </div>
       <p class="coverage-note">Google Workspace is the next plane. What is not here is not scanned —
         <a href="limits.html">the full list of what we do not do</a>.</p>
+
+      <h3 style="margin-top:3rem">What happens to what it finds</h3>
+      <div class="flow" role="group" aria-labelledby="flow-heading" style="margin-bottom:1rem">
+        <h2 class="sr-only" id="flow-heading">How SeQontrol works</h2>
+        <div class="flow-step">
+          <span class="flow-num">1</span>
+          <div><h3>Connect</h3><p>One app-only Entra app for the whole platform. The admin consents once, covering every product's permissions.</p></div>
+        </div>
+        <div class="flow-step">
+          <span class="flow-num">2</span>
+          <div><h3>See</h3><p>Every product reads through that connection and writes into one shared findings store.</p></div>
+        </div>
+        <div class="flow-step">
+          <span class="flow-num">3</span>
+          <div><h3>Prove</h3><p>Findings carry control tags, so a security finding becomes compliance evidence without a second integration.</p></div>
+        </div>
+        <div class="flow-step">
+          <span class="flow-num">4</span>
+          <div><h3>Fix</h3><p>Remediation is simulate-then-execute, with grace windows, approvals and undo where the plane allows it.</p></div>
+        </div>
+        <div class="flow-step">
+          <span class="flow-num">5</span>
+          <div><h3>Govern</h3><p>Waivers expire, approvals are recorded, and the audit trail is hash-chained and tamper-evident.</p></div>
+        </div>
+      </div>
 
       <h3 style="margin-top:3rem">In build, not yet available</h3>
       <p class="muted" style="max-width:62ch">Listed because you will find them in the platform and we

@@ -186,60 +186,121 @@
       </div>
 
       <figure class="shot" style="margin-bottom:1.6rem">
-        <img src="../assets/Screenshots/SecurityPortal/SecurityPortal01.png"
-             alt="SecurityPortal posture view: a ladder from Blind to Assessed to Critical clear to High
-                  clear, 67 per cent posture, 9 passing, 23 warning and 20 failing checks, and category
-                  rows for authentication, devices, data protection, apps and email."
-             width="1208" height="1536" loading="lazy" decoding="async">
-        <figcaption><b>The rung is earned by evidence, not by paperwork.</b> In the product's own words:
-          <em>&ldquo;Rungs read scan evidence only — resolving, accepting or waiving a finding moves
-          nothing here. Clean is not the same as complete.&rdquo;</em> That is
+        <div class="shot-pan" tabindex="0">
+        <div class="shot-frame" style="--w:1168px">
+          <img src="../assets/Screenshots/SecurityPortal/ladder-strip.png"
+               alt="The posture ladder: Blind and Assessed both ticked, Critical clear current with no
+                    Critical failing, High clear still greyed out, and coverage at 56 per cent."
+               width="1168" height="124" loading="lazy" decoding="async">
+          <b class="pin" style="--x:34%; --y:13%" aria-hidden="true">1</b>
+          <b class="pin" style="--x:67%; --y:56%" aria-hidden="true">2</b>
+          <b class="pin" style="--x:88%; --y:56%" aria-hidden="true">3</b>
+        </div>
+        </div>
+        <figcaption>
+          <b>Four rungs, and you can only be on one of them.</b> A percentage lets everyone pick the
+          reading they prefer. A rung does not.
+          <ol class="notes">
+            <li><b>Where the whole estate stands</b> — one domain of five has reached the top rung, so
+              that is what the tenant is, whatever the average says.</li>
+            <li><b>The rung you are on, and why.</b> Not &ldquo;good&rdquo;: <em>no Critical
+              failing</em>. The condition is written next to the claim.</li>
+            <li><b>The one above it, and its price.</b> Greyed until nothing High is failing — a
+              target with a definition, not a nudge.</li>
+          </ol>
+          Rungs are earned by scan evidence only: waiving a finding moves nothing here. That is
           <a href="../index.html#principle">security above compliance</a>, enforced rather than
-          asserted.</figcaption>
+          asserted.
+        </figcaption>
       </figure>
 
-      <div class="shot-pair">
+      <figure class="shot" style="margin-bottom:1.6rem">
+        <div class="shot-pan" tabindex="0">
+        <div class="shot-frame" style="--w:1212px">
+          <img src="../assets/Screenshots/SecurityPortal/checks-three-rows.png"
+               alt="Three checks in a row: app registrations holding excessive application permissions
+                    marked Fail and High, apps retaining high-risk permissions marked Not assessed and
+                    Medium, and Global Administrator count within limit marked Pass — each tagged with
+                    its control reference."
+               width="1212" height="270" loading="lazy" decoding="async">
+          <b class="pin" style="--x:80%; --y:16%" aria-hidden="true">1</b>
+          <b class="pin" style="--x:80%; --y:50%" aria-hidden="true">2</b>
+          <b class="pin" style="--x:80%; --y:83%" aria-hidden="true">3</b>
+        </div>
+        </div>
+        <figcaption>
+          <b>Three states, and the middle one is the honest one.</b> Every check carries the control
+          reference that lets the same finding become compliance evidence without anyone re-collecting
+          it.
+          <ol class="notes">
+            <li><b>Fail</b>, with how many objects are affected — so you know whether this is an
+              afternoon or a project before you open it.</li>
+            <li><b>Not assessed.</b> We could not read what this check needs. It is not a pass, it is
+              not a fail, and it is counted separately so it can never quietly become either.</li>
+            <li><b>Pass</b>, still carrying its references. The evidence for a control is the check
+              that proved it, not a screenshot someone took in March.</li>
+          </ol>
+        </figcaption>
+      </figure>
+
+      <figure class="shot" style="margin-bottom:1.6rem">
+        <div class="shot-pan" tabindex="0">
+        <div class="shot-frame" style="--w:1196px">
+          <img src="../assets/Screenshots/SecurityPortal/category-rows.png"
+               alt="Category rows for authentication and identity, devices, data protection, apps and
+                    collaboration, and email and messaging — each with a pass, warning and fail split
+                    and a separate count of critical or high failures and unassessed checks."
+               width="1196" height="514" loading="lazy" decoding="async">
+          <b class="pin" style="--x:58%; --y:10%" aria-hidden="true">1</b>
+          <b class="pin" style="--x:58%; --y:91%" aria-hidden="true">2</b>
+        </div>
+        </div>
+        <figcaption>
+          <b>Grouped the way you would fix it</b> — by area, worst first, with the unassessed count
+          kept next to the failures rather than buried under them.
+          <ol class="notes">
+            <li><b>Two numbers, not one.</b> What is failing at Critical or High, and what was never
+              assessed. A row can be quiet because it is clean or because nobody could look.</li>
+            <li><b>A row that is entirely unassessed says so.</b> Nothing failing, nothing passing,
+              ten checks unread — which is a licensing conversation, not a security win.</li>
+          </ol>
+        </figcaption>
+      </figure>
+
+      <div class="shot-feature">
         <figure class="shot">
-          <img src="../assets/Screenshots/SecurityPortal/SecurityPortal03.png"
-               alt="Identity and access checks: app registrations holding excessive permissions, weak
-                    authentication methods, stale guest accounts and break-glass account checks — each
-                    tagged with its control reference, some marked Not assessed."
-               width="1212" height="1396" loading="lazy" decoding="async">
-          <figcaption><b>Every check carries its control reference.</b> That tag is what lets the same
-            finding become compliance evidence without anyone re-collecting it. Note the
-            <em>Not assessed</em> rows — a check we could not run is never scored as a pass.</figcaption>
+          <div class="shot-pan" tabindex="0">
+          <div class="shot-frame" style="--w:722px">
+            <img src="../assets/Screenshots/SecurityPortal/WebScan02-redacted.png"
+                 alt="External web scan result: a score of 54 rated D, with 12 passed, 10 failed, 5 not
+                      assessed and 4 not applicable, listing a missing security.txt, missing CAA records
+                      and weak TLS protocols, each with why it matters, a fix, and a waiver request."
+                 width="722" height="1251" loading="lazy" decoding="async">
+            <b class="pin" style="--x:90%; --y:10.8%" aria-hidden="true">1</b>
+            <b class="pin" style="--x:80%; --y:33%" aria-hidden="true">2</b>
+            <b class="pin" style="--x:41%; --y:47%" aria-hidden="true">3</b>
+          </div>
+          </div>
         </figure>
 
-        <figure class="shot">
-          <img src="../assets/Screenshots/SecurityPortal/WebScan02-redacted.png"
-               alt="External web scan result: a score of 54 rated D, with 12 passed, 10 failed, 5 not
-                    assessed and 4 not applicable, listing a missing security.txt, missing CAA records
-                    and weak TLS protocols, each with why it matters and a fix."
-               width="722" height="1251" loading="lazy" decoding="async">
-          <figcaption><b>The outside-in half, in the same tool.</b> TLS, headers, cookies, DNS and content
-            — each failure with why it matters and the fix, not just a red cross. Domain replaced; the
-            findings are the real ones.</figcaption>
-        </figure>
-      </div>
-
-      <div class="shot-pair">
-        <figure class="shot">
-          <img src="../assets/Screenshots/SecurityPortal/SecurityPortal02.png"
-               alt="Authentication and identity category: 16 checks across two technologies, 6 passing,
-                    3 warning, 7 failing, split into Identity and access and Conditional Access."
-               width="1208" height="542" loading="lazy" decoding="async">
-          <figcaption><b>Grouped the way you would fix it</b> — by area, worst first, with the unassessed
-            count kept visible next to the failures.</figcaption>
-        </figure>
-        <figure class="shot">
-          <img src="../assets/Screenshots/SecurityPortal/WebScan01-redacted.png"
-               alt="Web scan tab: a field to add a website, an explanation that the external surface scan
-                    covers TLS, HTTP headers, cookies, DNS, content and infrastructure, and a domain list
-                    with a queued scan."
-               width="1210" height="383" loading="lazy" decoding="async">
-          <figcaption><b>Add a domain, and it joins the schedule.</b> External findings land in the same
-            place as everything else.</figcaption>
-        </figure>
+        <div>
+          <h3>The half your attacker looks at first</h3>
+          <p>Everything above is inside the tenant. This is the same product looking at you from the
+            outside — TLS, HTTP headers, cookies, DNS, content and infrastructure — and filing what it
+            finds in the same place as everything else.</p>
+          <ol class="notes">
+            <li><b>A grade, and what it is made of.</b> Passed, failed, not assessed and not
+              applicable kept apart, so a low score can be read rather than argued with.</li>
+            <li><b>Every failure cites the RFC.</b> The standard is the reason, which is what turns
+              &ldquo;the scanner says so&rdquo; into a change request someone will actually approve.</li>
+            <li><b>Why it matters, then the fix, then a waiver.</b> If you are not going to fix it,
+              say so on the record — the check stays on screen either way.</li>
+          </ol>
+          <p class="cta-under"><a class="btn btn-primary" href="../exposure-report.html">Scan one of
+            your domains, free</a></p>
+          <p class="small dim" style="margin:.7rem 0 0">Domain replaced in the screenshot. The findings
+            are the real ones.</p>
+        </div>
       </div>
     </div>
   </section>

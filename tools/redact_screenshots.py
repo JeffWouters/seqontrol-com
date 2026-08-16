@@ -21,7 +21,6 @@ from PIL import Image, ImageDraw, ImageFont
 SHOTS = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
                      "assets", "Screenshots", "SecurityPortal")
 SURFACE = (15, 23, 42, 255)      # sampled from the screenshots themselves
-LINK = (96, 165, 250, 255)
 TEXT = (229, 231, 235, 255)
 
 
@@ -47,5 +46,3 @@ def redact(name: str, box, text: str, size: int, colour):
 if __name__ == "__main__":
     # the scan-result modal: domain as the panel title
     redact("WebScan02", (8, 6, 260, 34), "example.com", 22, TEXT)
-    # the domain list: the same domain as a link in the table
-    redact("WebScan01", (20, 266, 240, 292), "example.com", 17, LINK)

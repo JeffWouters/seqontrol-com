@@ -2,6 +2,17 @@
 __pycache__/
 *.py[cod]
 
+# Raw captures. They are the input to tools/crop_screenshots.py and
+# tools/redact_screenshots.py, not site assets — everything the site shows is a
+# derived crop committed alongside them. Keeping the raws out of the repo is not
+# tidiness: this repo is published as-is, and the raw web-scan captures still
+# carry the real third-party domain the redaction exists to remove.
+assets/Screenshots/**/ShareCare0*.png
+assets/Screenshots/**/SecurityPortal0*.png
+assets/Screenshots/**/WebScan0*.png
+!assets/Screenshots/ShareCare/ShareCare05.png
+!assets/Screenshots/SecurityPortal/WebScan02-redacted.png
+
 # OS and editor cruft
 Thumbs.db
 .DS_Store

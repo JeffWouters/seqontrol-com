@@ -184,48 +184,63 @@
           action — with the alternative to remediating stated next to it.</p>
       </div>
 
-      <div class="shot-pair">
+      <div class="shot-feature">
         <figure class="shot">
-          <img src="../assets/Screenshots/ShareCare/ShareCare05.png"
-               alt="A finding for Test.docx on OneDrive: medium severity, edit access granted directly to
-                    an outlook.com address with no expiry, risk score 45 out of 100, a score breakdown,
-                    the root cause, and buttons to remediate, accept the risk, or revoke all sharing."
-               width="708" height="906" loading="lazy" decoding="async">
-          <figcaption><b>Why it scored what it scored.</b> Edit access +25, no expiry +10, freemail
-            domain +10 — then the root cause, and what to do about it. Accepting the risk is a first-class
-            option, and the finding stays visible afterwards.</figcaption>
+          <div class="shot-pan" tabindex="0">
+          <div class="shot-frame" style="--w:708px">
+            <img src="../assets/Screenshots/ShareCare/ShareCare05.png"
+                 alt="A finding on OneDrive: medium severity, edit access granted directly to an
+                      outlook.com address with no expiry, risk score 45 out of 100, a score breakdown
+                      reading edit access +25, no expiry +10 and freemail domain +10, the root cause,
+                      and buttons to remediate, accept the risk, or revoke all sharing."
+                 width="708" height="906" loading="lazy" decoding="async">
+            <b class="pin" style="--x:88%; --y:49.5%" aria-hidden="true">1</b>
+            <b class="pin" style="--x:88%; --y:88%" aria-hidden="true">2</b>
+            <b class="pin" style="--x:43%; --y:97%" aria-hidden="true">3</b>
+          </div>
+          </div>
         </figure>
 
-        <figure class="shot">
-          <img src="../assets/Screenshots/ShareCare/ShareCare02.png"
+        <div>
+          <h3>No number you cannot take apart</h3>
+          <p>A score you have to trust is a score you will argue with. Every one on this screen opens
+            into the reasons that produced it, and every reason names something you can change.</p>
+          <ol class="notes">
+            <li><b>The arithmetic, in the open.</b> Edit access +25, no expiry +10, freemail domain
+              +10. Change any one of those and the score moves — you can see in advance by how much.</li>
+            <li><b>A cause, then a fix.</b> Not &ldquo;this file is risky&rdquo; but who was granted
+              what, directly on which resource, and the one action that ends it.</li>
+            <li><b>Accepting the risk is a real answer.</b> Some sharing is the business working. Accept
+              it and it stops nagging — but it stays on the record, with your name on the decision.</li>
+          </ol>
+          <p class="cta-under"><a class="btn btn-primary" href="../contact.html">See it on your own
+            tenant</a></p>
+        </div>
+      </div>
+
+      <figure class="shot shot-cap" style="--w:907px; margin-top:2.4rem">
+        <div class="shot-pan" tabindex="0">
+        <div class="shot-frame" style="--w:907px">
+          <img src="../assets/Screenshots/ShareCare/scan-detail.png"
                alt="Scan detail: seven technologies in scope, SharePoint, Teams, Entra, Exchange, Power
                     Apps and Power Automate complete, OneDrive still scanning, Power BI marked not
                     licensed, Box and Slack marked not connected."
                width="907" height="636" loading="lazy" decoding="async">
-          <figcaption><b>A scan in progress, plane by plane.</b> Note what it says about Power BI and
-            Slack: <em>not licensed</em> and <em>not connected</em>, rather than a silent pass. A plane
-            we could not read is never scored as clean.</figcaption>
-        </figure>
-      </div>
-
-      <div class="shot-pair">
-        <figure class="shot">
-          <img src="../assets/Screenshots/ShareCare/ShareCare03.png"
-               alt="Exposure by technology: OneDrive with four exposed shares and Entra with five, both
-                    marked high risk."
-               width="500" height="294" loading="lazy" decoding="async">
-          <figcaption><b>Start at the workload.</b> Where the exposure is concentrated, ranked by the
-            worst thing in it.</figcaption>
-        </figure>
-        <figure class="shot">
-          <img src="../assets/Screenshots/ShareCare/ShareCare04.png"
-               alt="Drill-down into OneDrive: an Attachments folder with two exposed shares rated high,
-                    and Test.docx with one rated medium."
-               width="500" height="265" loading="lazy" decoding="async">
-          <figcaption><b>Then drill to the container, then the item.</b> Three clicks from a score to the
-            file and the person it is shared with.</figcaption>
-        </figure>
-      </div>
+          <b class="pin" style="--x:77%; --y:56%" aria-hidden="true">1</b>
+          <b class="pin" style="--x:77%; --y:78%" aria-hidden="true">2</b>
+        </div>
+        </div>
+        <figcaption>
+          <b>A scan that admits what it could not see.</b> Every plane reports for itself, and two of
+          them report that they were never read.
+          <ol class="notes">
+            <li><b>Not licensed.</b> The plane exists in your tenant but nothing here can reach it.
+              It is excluded from the score rather than counted as clean.</li>
+            <li><b>Not connected.</b> Same again for anything outside Microsoft 365. A silent pass on
+              a plane nobody scanned is the failure mode we refuse to ship.</li>
+          </ol>
+        </figcaption>
+      </figure>
     </div>
   </section>
 

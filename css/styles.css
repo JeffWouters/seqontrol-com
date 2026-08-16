@@ -827,6 +827,95 @@ a[href^="https://jeffops.com"]:hover,
 
 .hero .shot { box-shadow: var(--el-lg); }
 
+/* Annotated shots: numbered pins over the image, the same numbers down the
+   caption. The pins are drawn in CSS rather than burnt into the PNG so they
+   stay sharp at any width and the words stay selectable, translatable and
+   readable by a screen reader. Coordinates are percentages of the frame, so
+   they hold as the image scales. The pins are decoration — every one of them
+   repeats a numbered line below — so they are hidden from assistive tech. */
+.shot-frame { position: relative; }
+.shot-frame img { display: block; width: 100%; }
+
+/* A 1200px-wide capture squeezed into a phone is back to being texture. Below
+   the width where it can be read, the shot holds its own size and pans instead
+   — the same bargain the wide tables make, focusable so it works from the
+   keyboard as well as the thumb. --w is the capture's own width. */
+.shot-pan { overflow-x: auto; }
+.shot-pan .shot-frame { width: 100%; }
+@media (max-width: 60rem) {
+  .shot-pan .shot-frame { width: var(--w); }
+}
+.pin {
+  position: absolute;
+  left: var(--x); top: var(--y);
+  transform: translate(-50%, -50%);
+  width: 1.5rem; height: 1.5rem;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: var(--brand); color: #fff;
+  font-size: .78rem; font-weight: 700; font-variant-numeric: tabular-nums;
+  /* the outer ring lifts the pin off whatever product UI sits under it */
+  box-shadow: 0 0 0 2px var(--bg-deep), 0 2px 6px rgba(0, 0, 0, .55);
+}
+.notes {
+  list-style: none;
+  counter-reset: pin;
+  margin: .75rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: .5rem;
+}
+/* The marker is positioned out of flow rather than given its own grid column:
+   an <li> laid out as a grid splits "<b>lead.</b> trailing text" into two items
+   and squeezes the sentence into a 1.5rem column. */
+.notes li {
+  counter-increment: pin;
+  position: relative;
+  margin: 0;
+  padding-left: 2.05rem;
+}
+.notes li::before {
+  content: counter(pin);
+  position: absolute;
+  left: 0; top: .02rem;
+  width: 1.5rem; height: 1.5rem;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: var(--brand); color: #fff;
+  font-size: .78rem; font-weight: 700; font-variant-numeric: tabular-nums;
+}
+.notes b { color: var(--text); font-weight: 620; }
+
+@media (max-width: 34rem) {
+  .pin { width: 1.25rem; height: 1.25rem; font-size: .68rem; }
+}
+
+/* One screenshot given the room to carry a section on its own: the image on
+   one side, what it proves and what to do next on the other. A tall portrait
+   shot stretched edge to edge would only be upscaled, so the image column is
+   capped and the argument takes the space instead. */
+.shot-feature {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+  align-items: start;
+  margin: 1.6rem 0 0;
+}
+/* The image column is sized to the capture's own width. Shrinking a screenshot
+   to fit a tidy column is how it stopped being readable in the first place, so
+   the split only happens once there is room for the image at full size. */
+@media (min-width: 72rem) {
+  .shot-feature { grid-template-columns: minmax(0, 44rem) minmax(0, 1fr); gap: 2.4rem; }
+}
+.shot-feature h3 { margin: 0 0 .5rem; font-size: 1.24rem; }
+.shot-feature > div > p { color: var(--muted); }
+.shot-feature .notes { margin-top: 1.1rem; }
+.shot-feature .cta-under { margin: 1.4rem 0 0; }
+
+/* Cap a shot at the width it was captured at. Stretching a capture past its own
+   pixels blurs exactly the small type the crop existed to rescue. */
+.shot-cap { max-width: var(--w); margin-inline: auto; }
+
 /* side-by-side pair on wide screens, stacked below */
 .shot-pair { display: grid; gap: 1.1rem; grid-template-columns: 1fr; margin: 1.6rem 0; }
 @media (min-width: 60rem) { .shot-pair { grid-template-columns: 1fr 1fr; align-items: start; } }

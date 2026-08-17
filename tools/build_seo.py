@@ -116,6 +116,11 @@ META = {
         "The access SeQontrol asks for, what it does with it, how the audit trail works, and how "
         "to report a vulnerability.",
         "Security"),
+    "surface-report.html": (
+        "SeQontrol - Free scan - Your public surface, graded",
+        "A free grade of your public web surface: TLS, HTTP headers, cookies, DNS, content and "
+        "infrastructure, each failure with the standard it breaks and the fix.",
+        "Free surface scan"),
     "products/index.html": (
         "SeQontrol - Products - Each stands alone, all connect",
         "Eight products on one platform: ShareCare, SecurityPortal, WebScan, CompliancePortal, "

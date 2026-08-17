@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SeQontrol - Free report - Who is sending as you</title>
-<meta name="description" content="A free check of your domain's email authentication: SPF, DKIM, DMARC, BIMI and MTA-STS, plus every source currently sending mail as you.">
-<link rel="canonical" href="https://seqontrol.com/spoofing-report.html">
+<title>SeQontrol - Free scan - Your public surface, graded</title>
+<meta name="description" content="A free grade of your public web surface: TLS, HTTP headers, cookies, DNS, content and infrastructure, each failure with the standard it breaks and the fix.">
+<link rel="canonical" href="https://seqontrol.com/surface-report.html">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="SeQontrol">
 <meta property="og:locale" content="en">
-<meta property="og:title" content="SeQontrol - Free report - Who is sending as you">
-<meta property="og:description" content="A free check of your domain's email authentication: SPF, DKIM, DMARC, BIMI and MTA-STS, plus every source currently sending mail as you.">
-<meta property="og:url" content="https://seqontrol.com/spoofing-report.html">
+<meta property="og:title" content="SeQontrol - Free scan - Your public surface, graded">
+<meta property="og:description" content="A free grade of your public web surface: TLS, HTTP headers, cookies, DNS, content and infrastructure, each failure with the standard it breaks and the fix.">
+<meta property="og:url" content="https://seqontrol.com/surface-report.html">
 <meta property="og:image" content="https://seqontrol.com/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -23,7 +23,7 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://seqontrol.com/" },
-    { "@type": "ListItem", "position": 2, "name": "Free spoofing check", "item": "https://seqontrol.com/spoofing-report.html" }
+    { "@type": "ListItem", "position": 2, "name": "Free surface scan", "item": "https://seqontrol.com/surface-report.html" }
   ]
 }
 </script>
@@ -68,51 +68,58 @@
   <section class="hero">
     <div class="wrap wrap-narrow">
       <span class="eyebrow">Free assessment</span>
-      <h1>Find out who is sending email as your domain</h1>
-      <p class="lede">A free check of SPF, DKIM, DMARC, BIMI and MTA-STS — and, once reports are flowing, a list of every source sending mail as you. No tenant access required.</p>
+      <h1>Find out what your attacker sees first</h1>
+      <p class="lede">A free grade of your public surface — TLS, HTTP headers, cookies, DNS, content and infrastructure — with the standard behind every failure and the fix next to it. No tenant, no consent, no onboarding.</p>
     </div>
   </section>
 
   <section>
     <div class="wrap wrap-narrow">
 
+      <h2>The one you can start with today</h2>
+      <p>Every other assessment on this site needs an administrator to consent to something. This one does
+        not. WebScan reads what any anonymous visitor can read, so there is nothing to install, nothing to
+        approve, and no reason to involve anyone before you know whether there is a problem.</p>
+      <p>Send a URL. You get the grade back, usually the same working day.</p>
+
       <h2>What you get back</h2>
       <ul>
-        <li><strong>Your posture, record by record</strong> — what SPF actually authorises, whether DKIM is
-          signing, what your DMARC policy does today, and whether MTA-STS and BIMI are in play.</li>
-        <li><strong>Whether you can be spoofed right now</strong>, stated plainly rather than as a score.
-          Most domains sit at <code>p=none</code>, which monitors and blocks nothing.</li>
-        <li><strong>Every sender using your domain</strong> — from real DMARC aggregate reports once
-          collection is running. Legitimate services you had forgotten about, and anyone else.</li>
-        <li><strong>A staged path to enforcement</strong> that will not drop the mail your business depends
-          on, which is the actual reason most DMARC projects stall at monitoring.</li>
+        <li><strong>A grade, and the four counts behind it</strong> — passed, failed, not assessed and not
+          applicable, kept apart so a low score can be read rather than argued with.</li>
+        <li><strong>Every failure with the standard it breaks.</strong> Not "the scanner says so" but the
+          RFC number, which is what turns a finding into a change request somebody approves.</li>
+        <li><strong>Why it matters, then the fix</strong>, on each one — in the words you would use to
+          justify the work to whoever has to schedule it.</li>
+        <li><strong>What could not be assessed</strong>, said out loud. A check we could not run is never
+          quietly counted as a pass.</li>
       </ul>
 
-      <h2>The easiest one to start with</h2>
-      <p>It needs no access to your tenant. Email authentication is published in public DNS, so the first
-        pass costs you nothing but the domain name. The sender inventory needs a mailbox to receive DMARC
-        reports — we will tell you exactly how to point them at it.</p>
+      <h2>And it stays free</h2>
+      <p>This is not a sample of a paid product. <a href="products/webscan.html">WebScan</a>'s free tier
+        runs the complete check set, shows every result, and is included with every SeQontrol tenant, on as
+        many sites as you like, for as long as you keep the tenant. Nothing is held back to make the paid
+        version look better.</p>
+      <p>What the free tier does not do is <em>remember</em>. Nothing is written down when the scan
+        finishes — so there is no history, no trend, no schedule, no alert when a passing check regresses,
+        and no evidence to hand an auditor. That is the whole of what the licence buys, and it is also why
+        the free tier can be free: a free scan is a short-lived function with no storage behind it.</p>
 
-      <h2>Why now</h2>
-      <p>Major mailbox providers now require DMARC for bulk senders, inbox brand indicators require
-        enforcement, and business email compromise remains among the most expensive attacks in circulation.
-        Reaching <code>p=reject</code> is the proven defence; doing it without breaking legitimate mail is
-        the hard part, and it is what this is designed around.</p>
+      <div class="note honest">
+        <h2>What this is not</h2>
+        <p class="mb0">Not a penetration test. It grades configuration against published standards; it does
+          not attempt exploitation and it cannot see anything behind a login. It requests pages and reads
+          DNS the way any visitor does — no fuzzing, no load. And it never writes anywhere.</p>
+      </div>
 
-      <h2>If you want it continuously</h2>
-      <p>That is <a href="products/mailtrust.html">MailTrust</a> — across one domain or every domain your
-        clients own, writing the DNS records itself for supported providers rather than handing you a
-        ticket for another team.</p>
-
-      <h2 id="request">Check my domain</h2>
-      <p>Send the domain name. A person replies, usually the same working day.</p>
+      <h2 id="request">Scan my site</h2>
+      <p>Send a URL. No tenant, no consent, no call first.</p>
 
       <!-- FORM ENDPOINT: paste the URL into BOTH action and data-endpoint.
            With it set the form posts normally and works without JavaScript;
            left empty it falls back to composing a mailto, which can fail
            silently on webmail — see README. -->
       <form id="contact-form" method="post" action="" data-endpoint="" novalidate>
-        <input type="hidden" id="cf-topic" name="topic" value="Free spoofing / DMARC check">
+        <input type="hidden" id="cf-topic" name="topic" value="Free public surface scan">
         <div class="field">
           <label for="cf-name">Name</label>
           <input id="cf-name" name="name" type="text" autocomplete="name" required>
@@ -127,14 +134,14 @@
           <input id="cf-org" name="org" type="text" autocomplete="organization">
         </div>
         <div class="field">
-          <label for="cf-estate">Domain</label>
-          <input id="cf-estate" name="estate" type="text" placeholder="yourcompany.com — or several, comma separated">
+          <label for="cf-estate">Site</label>
+          <input id="cf-estate" name="estate" type="text" placeholder="https://yourcompany.com — or several, comma separated">
         </div>
         <div class="field">
           <label for="cf-message">Anything we should know?</label>
           <textarea id="cf-message" name="message" rows="4"></textarea>
         </div>
-        <button class="btn btn-primary" type="submit" id="cf-submit">Check my domain</button>
+        <button class="btn btn-primary" type="submit" id="cf-submit">Scan my site</button>
         <p class="hint" id="cf-status" role="status" aria-live="polite"></p>
         <p class="hint">Or email <a href="mailto:jeff@jeffops.com">jeff@jeffops.com</a> directly.</p>
       </form>

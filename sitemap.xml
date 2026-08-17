@@ -115,6 +115,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://seqontrol.com/surface-report.html</loc>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://seqontrol.com/products/</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>

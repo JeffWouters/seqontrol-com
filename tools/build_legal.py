@@ -256,6 +256,59 @@ PAGES = {
       <p>Send the domain name. A person replies, usually the same working day.</p>
 """),
 
+    "surface-report.html": dict(
+        title="SeQontrol - Free scan - Your public surface, graded",
+        desc="A free grade of your public web surface: TLS, HTTP headers, cookies, DNS, content and "
+             "infrastructure, each failure with the standard it breaks and the fix.",
+        eyebrow="Free assessment",
+        h1="Find out what your attacker sees first",
+        lede="A free grade of your public surface — TLS, HTTP headers, cookies, DNS, content and "
+             "infrastructure — with the standard behind every failure and the fix next to it. No tenant, "
+             "no consent, no onboarding.",
+        form=dict(topic="Free public surface scan",
+                  button="Scan my site",
+                  estate_label="Site",
+                  estate_hint="https://yourcompany.com — or several, comma separated"),
+        body="""
+      <h2>The one you can start with today</h2>
+      <p>Every other assessment on this site needs an administrator to consent to something. This one does
+        not. WebScan reads what any anonymous visitor can read, so there is nothing to install, nothing to
+        approve, and no reason to involve anyone before you know whether there is a problem.</p>
+      <p>Send a URL. You get the grade back, usually the same working day.</p>
+
+      <h2>What you get back</h2>
+      <ul>
+        <li><strong>A grade, and the four counts behind it</strong> — passed, failed, not assessed and not
+          applicable, kept apart so a low score can be read rather than argued with.</li>
+        <li><strong>Every failure with the standard it breaks.</strong> Not "the scanner says so" but the
+          RFC number, which is what turns a finding into a change request somebody approves.</li>
+        <li><strong>Why it matters, then the fix</strong>, on each one — in the words you would use to
+          justify the work to whoever has to schedule it.</li>
+        <li><strong>What could not be assessed</strong>, said out loud. A check we could not run is never
+          quietly counted as a pass.</li>
+      </ul>
+
+      <h2>And it stays free</h2>
+      <p>This is not a sample of a paid product. <a href="products/webscan.html">WebScan</a>'s free tier
+        runs the complete check set, shows every result, and is included with every SeQontrol tenant, on as
+        many sites as you like, for as long as you keep the tenant. Nothing is held back to make the paid
+        version look better.</p>
+      <p>What the free tier does not do is <em>remember</em>. Nothing is written down when the scan
+        finishes — so there is no history, no trend, no schedule, no alert when a passing check regresses,
+        and no evidence to hand an auditor. That is the whole of what the licence buys, and it is also why
+        the free tier can be free: a free scan is a short-lived function with no storage behind it.</p>
+
+      <div class="note honest">
+        <h2>What this is not</h2>
+        <p class="mb0">Not a penetration test. It grades configuration against published standards; it does
+          not attempt exploitation and it cannot see anything behind a login. It requests pages and reads
+          DNS the way any visitor does — no fuzzing, no load. And it never writes anywhere.</p>
+      </div>
+
+      <h2 id="request">Scan my site</h2>
+      <p>Send a URL. No tenant, no consent, no call first.</p>
+"""),
+
     "vs-grc-platforms.html": dict(
         title="SeQontrol - vs GRC platforms - Where each one wins",
         desc="How SeQontrol compares with questionnaire-first GRC platforms on Microsoft 365 control "

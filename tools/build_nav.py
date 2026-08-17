@@ -30,8 +30,24 @@ PRODUCTS = [
     ("dredd.html",             "Dredd",             "--t-dredd",      False),
 ]
 
+# The footer's Company column carries the three free assessments — one per
+# product a prospect can start with before talking to anyone. It was duplicated
+# in the same 28 files as the product list, so it is owned here too.
+COMPANY = [
+    ("exposure-report.html", "Free exposure report"),
+    ("spoofing-report.html", "Free spoofing check"),
+    ("surface-report.html",  "Free surface scan"),
+    ("guides/index.html",    "Guides"),
+    ("about.html",           "About"),
+    ("platform.html",        "Platform"),
+    ("for-msps.html",        "For MSPs"),
+    ("pricing.html",         "Pricing"),
+    ("contact.html",         "Contact"),
+]
+
 SUBNAV = re.compile(r'( *)<ul class="subnav">.*?</ul>', re.S)
 FOOTER = re.compile(r'( *)<h2>Products</h2>\n *<ul>.*?</ul>', re.S)
+COMPANY_RE = re.compile(r'( *)<h2>Company</h2>\n *<ul>.*?</ul>', re.S)
 
 
 def prefix(rel: str) -> str:
@@ -40,6 +56,19 @@ def prefix(rel: str) -> str:
     if d == "products":
         return ""
     return "../products/" if d else "products/"
+
+
+def root(rel: str) -> str:
+    """How a page at `rel` reaches the site root."""
+    return "../" if os.path.dirname(rel) else ""
+
+
+def company(pad: str, up: str) -> str:
+    out = [f'{pad}<h2>Company</h2>', f'{pad}<ul>']
+    for href, name in COMPANY:
+        out.append(f'{pad}  <li><a href="{up}{href}">{name}</a></li>')
+    out.append(f'{pad}</ul>')
+    return "\n".join(out)
 
 
 def subnav(pad: str, pre: str) -> str:
@@ -72,8 +101,11 @@ def main() -> None:
             src = open(path, encoding="utf-8").read()
             pre = prefix(rel)
 
+            up = root(rel)
+
             out = SUBNAV.sub(lambda m: subnav(m.group(1), pre), src)
             out = FOOTER.sub(lambda m: footer(m.group(1), pre), out)
+            out = COMPANY_RE.sub(lambda m: company(m.group(1), up), out)
 
             if out != src:
                 open(path, "w", encoding="utf-8", newline="\n").write(out)

@@ -142,12 +142,14 @@
         </div>
 
         <div class="note plain">
-          <h3>What it is not</h3>
-          <p class="mb0">Not a penetration test. WebScan grades configuration against published standards; it
-            does not attempt exploitation, and it cannot see anything behind a login. And it never writes —
-            not to your DNS, not to your web server. DNS write-back belongs to
-            <a href="mailtrust.html">MailTrust</a>, which also owns SPF, DKIM and DMARC. Those are mail
-            authentication, not web surface, and they are not duplicated here.</p>
+          <h3>What it is not, today</h3>
+          <p>Not a penetration test. WebScan grades configuration against published standards; as it stands it
+            does not attempt exploitation and cannot see anything behind a login. Active testing and
+            authenticated scanning are <a href="#roadmap">on the roadmap</a> — until they ship, this paragraph
+            is the accurate description.</p>
+          <p class="mb0">What will not change: it never writes — not to your DNS, not to your web server. DNS
+            write-back belongs to <a href="mailtrust.html">MailTrust</a>, which also owns SPF, DKIM and DMARC.
+            Those are mail authentication rather than web surface, and they will not be duplicated here.</p>
         </div>
       </div>
 
@@ -168,6 +170,8 @@
           <li>CAA, DNSSEC and DNS hygiene</li>
           <li>Content and infrastructure exposure</li>
         </ul>
+        <h3>Not yet</h3>
+        <ul><li><a href="#roadmap">Asset discovery, CT monitoring and more</a> — named, not shipped</li></ul>
         <h3>Pairs with</h3>
         <ul>
           <li><a href="complianceportal.html">CompliancePortal</a> — findings become evidence</li>
@@ -288,8 +292,87 @@
         <article class="card">
           <h3>"Can it break my site?"</h3>
           <p>It requests pages and reads DNS the way any visitor does. No exploitation, no fuzzing, no load.
-            If a scan could take your site down, an ordinary crawler already would have.</p>
+            If a scan could take your site down, an ordinary crawler already would have. Should active
+            testing ever ship — it is <a href="#roadmap">on the roadmap</a> — it will be a separate,
+            explicitly consented mode, never something the default scan starts doing.</p>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="roadmap">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow" style="color: var(--t-webscan)">Named, not shipped</span>
+        <h2>What WebScan does not check yet</h2>
+        <p>Everything below is something a competing tool does today and WebScan does not. It is written
+          here rather than discovered during an evaluation. None of it is built, none of it is dated, and
+          none of it is included in a licence you buy today.</p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card" style="--tone: var(--t-webscan)">
+          <h3>Finding what you did not list</h3>
+          <p>Today you tell WebScan which sites to scan, which means it can only grade what you remembered.
+            The gap closes with:</p>
+          <ul class="checklist" style="--tone: var(--t-webscan)">
+            <li><strong>Subdomain and asset discovery</strong> — the hosts nobody wrote down</li>
+            <li><strong>Certificate transparency monitoring</strong> — certificates issued for your names,
+              by anyone. The natural partner to the CAA check, which only says who <em>may</em> issue</li>
+            <li><strong>API endpoint discovery</strong></li>
+          </ul>
+          <p class="mb0"><strong>First in the queue.</strong> An unlisted host is the one most likely to be
+            misconfigured, precisely because nobody remembered it.</p>
+        </article>
+
+        <article class="card" style="--tone: var(--t-webscan)">
+          <h3>More depth on what it already sees</h3>
+          <p>WebScan reports the software a server discloses. It does not yet say whether that version has
+            known problems.</p>
+          <ul class="checklist" style="--tone: var(--t-webscan)">
+            <li><strong>Known-CVE correlation</strong> against disclosed software versions</li>
+            <li><strong>Open port and exposed service scanning</strong></li>
+            <li><strong>TLS client handshake simulation</strong> — which real clients can actually connect</li>
+            <li><strong>IPv6 and modern protocol readiness</strong></li>
+          </ul>
+          <p class="mb0">Each of these extends a check that already runs, rather than adding a new kind of
+            scanning.</p>
+        </article>
+
+        <article class="card" style="--tone: var(--t-webscan)">
+          <h3>Actively testing, not just grading</h3>
+          <p>This is a change in kind, not degree, and it is the one to be most careful about — it brings
+            false positives, scan windows and permission-to-test paperwork with it.</p>
+          <ul class="checklist" style="--tone: var(--t-webscan)">
+            <li><strong>Active vulnerability testing</strong> — injection, cross-site scripting and the rest</li>
+            <li><strong>Authenticated scanning</strong>, behind a login</li>
+          </ul>
+          <p class="mb0">If these arrive they will be an explicit, separately consented mode. The free tier
+            will stay what it is now: unauthenticated, non-intrusive, and safe to run on anything.</p>
+        </article>
+
+        <article class="card" style="--tone: var(--t-webscan)">
+          <h3>Signals from beyond the site itself</h3>
+          <p>Things that say something about your exposure without being a property of your web
+            configuration.</p>
+          <ul class="checklist" style="--tone: var(--t-webscan)">
+            <li><strong>Leaked credential and breach exposure</strong></li>
+            <li><strong>Lookalike and typosquatted domains</strong></li>
+            <li><strong>IP and domain reputation, blocklist presence</strong></li>
+            <li><strong>Malware and defacement detection</strong> on served content</li>
+            <li><strong>Third-party portfolio scoring</strong> — rating the vendors you depend on</li>
+          </ul>
+          <p class="mb0">The last one would take WebScan into third-party risk management, which is a
+            different buyer and a different product. It is on the list because it was asked for, not because
+            it is settled.</p>
+        </article>
+      </div>
+
+      <div class="note plain">
+        <h3>One thing that is not a gap</h3>
+        <p class="mb0">Comparison tables will show WebScan missing SPF, DKIM and DMARC. That is deliberate
+          and permanent: mail authentication is <a href="mailtrust.html">MailTrust</a>, on the same domains,
+          feeding the same findings store. It is not absent from the platform — only from this product.</p>
       </div>
     </div>
   </section>

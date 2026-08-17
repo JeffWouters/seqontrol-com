@@ -333,9 +333,13 @@ PAGES = {
 
       <div class="note honest">
         <h2>What this is not</h2>
-        <p class="mb0">Not a penetration test. It grades configuration against published standards; it does
-          not attempt exploitation and it cannot see anything behind a login. It requests pages and reads
-          DNS the way any visitor does — no fuzzing, no load. And it never writes anywhere.</p>
+        <p class="mb0">Not a penetration test. It grades configuration against published standards; as it
+          stands it does not attempt exploitation and cannot see anything behind a login. It requests pages
+          and reads DNS the way any visitor does — no fuzzing, no load, and it never writes anywhere. Active
+          testing and authenticated scanning are on the
+          <a href="products/webscan.html#roadmap">WebScan roadmap</a>; the free scan will stay
+          unauthenticated and non-intrusive either way, so it is always safe to point at anything you
+          own.</p>
       </div>
 
       <h2 id="request">Scan my site</h2>

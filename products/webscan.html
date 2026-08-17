@@ -92,9 +92,10 @@
       <span class="eyebrow">External attack surface</span>
       <h1>What your attacker sees first</h1>
       <p class="lede">
-        WebScan grades the public face of every domain you own — TLS, HTTP headers, cookies, DNS, content
-        and infrastructure — against the published standards that define each one, and tells you what to
-        change. <strong>No tenant, no consent, no agent</strong>: it sees what an anonymous visitor sees.
+        WebScan finds the public face of your organisation — including the hosts nobody wrote down — and
+        grades it against the published standards that define it. TLS, HTTP headers, cookies, DNS, exposed
+        services, content and infrastructure. <strong>No tenant, no consent, no agent</strong>: it sees what
+        an anonymous visitor sees.
       </p>
       <div class="oneline"><strong>In one line:</strong> the outside-in half of your posture — free to run, priced only when you keep it.</div>
       <div class="btn-row">
@@ -109,15 +110,23 @@
       <div>
         <h2>What it does</h2>
         <ul class="checklist" style="--tone: var(--t-webscan)">
+          <li><strong>Finds what you did not list</strong> — subdomain and asset discovery turns up the
+            hosts nobody remembered, and certificate transparency monitoring catches certificates issued for
+            your names by anyone. The natural partner to the CAA check: CAA says who <em>may</em> issue,
+            transparency logs say who <em>did</em>.</li>
           <li><strong>Transport and certificates</strong> — TLS versions and cipher suites, the certificate
-            chain and its expiry, HSTS. The checks that decide whether the connection was ever private.</li>
+            chain and its expiry, HSTS, and a client handshake simulation that answers the question a version
+            list cannot: which browsers and clients can actually connect.</li>
           <li><strong>The HTTP surface</strong> — security headers, cookie flags, the redirect chain. Small
             configuration facts that are individually dull and collectively the difference between a
             contained mistake and a session hijack.</li>
           <li><strong>DNS hygiene</strong> — CAA, DNSSEC, nameserver and record hygiene. Who is allowed to
             issue a certificate for your name, and can anyone tell if the answer changed.</li>
           <li><strong>Content and infrastructure</strong> — exposed paths and files, a published
-            <code>security.txt</code>, and what your server volunteers about itself.</li>
+            <code>security.txt</code>, open ports and services reachable from outside, and what your server
+            volunteers about itself.</li>
+          <li><strong>Modern protocol readiness</strong> — IPv6 and the current transport stack, because
+            reachability is part of posture and the answer is rarely what people assume.</li>
           <li><strong>Every check cites its standard</strong> — the RFC or specification is printed next to
             the finding, which is what turns "the scanner says so" into a change request someone approves.</li>
           <li><strong>Free on every tenant</strong> — run it on demand, as often as you like, at no cost.
@@ -164,14 +173,18 @@
         <ul><li>No. It scans public endpoints, so it works on a domain you do not own yet.</li></ul>
         <h3>Covers</h3>
         <ul>
-          <li>TLS configuration and certificates</li>
+          <li>Subdomain and asset discovery</li>
+          <li>Certificate transparency monitoring</li>
+          <li>TLS configuration, certificates and client handshake</li>
           <li>HTTP security headers</li>
           <li>Cookie flags</li>
           <li>CAA, DNSSEC and DNS hygiene</li>
+          <li>Open ports and exposed services</li>
+          <li>IPv6 and protocol readiness</li>
           <li>Content and infrastructure exposure</li>
         </ul>
         <h3>Not yet</h3>
-        <ul><li><a href="#roadmap">Asset discovery, CT monitoring and more</a> — named, not shipped</li></ul>
+        <ul><li><a href="#roadmap">CVE correlation, active testing and more</a> — named, not shipped</li></ul>
         <h3>Pairs with</h3>
         <ul>
           <li><a href="complianceportal.html">CompliancePortal</a> — findings become evidence</li>
@@ -310,51 +323,34 @@
           none of it is included in a licence you buy today.</p>
       </div>
 
-      <div class="grid grid-2">
+      <div class="grid grid-3">
         <article class="card" style="--tone: var(--t-webscan)">
-          <h3>Finding what you did not list</h3>
-          <p>Today you tell WebScan which sites to scan, which means it can only grade what you remembered.
-            The gap closes with:</p>
-          <ul class="checklist" style="--tone: var(--t-webscan)">
-            <li><strong>Subdomain and asset discovery</strong> — the hosts nobody wrote down</li>
-            <li><strong>Certificate transparency monitoring</strong> — certificates issued for your names,
-              by anyone. The natural partner to the CAA check, which only says who <em>may</em> issue</li>
-            <li><strong>API endpoint discovery</strong></li>
-          </ul>
-          <p class="mb0"><strong>First in the queue.</strong> An unlisted host is the one most likely to be
-            misconfigured, precisely because nobody remembered it.</p>
-        </article>
-
-        <article class="card" style="--tone: var(--t-webscan)">
-          <h3>More depth on what it already sees</h3>
-          <p>WebScan reports the software a server discloses. It does not yet say whether that version has
-            known problems.</p>
+          <h3>Correlating what it already finds</h3>
+          <p>WebScan reports the software a server discloses and the endpoints it can see. It does not yet
+            join those facts to anything.</p>
           <ul class="checklist" style="--tone: var(--t-webscan)">
             <li><strong>Known-CVE correlation</strong> against disclosed software versions</li>
-            <li><strong>Open port and exposed service scanning</strong></li>
-            <li><strong>TLS client handshake simulation</strong> — which real clients can actually connect</li>
-            <li><strong>IPv6 and modern protocol readiness</strong></li>
+            <li><strong>API endpoint discovery</strong></li>
           </ul>
-          <p class="mb0">Each of these extends a check that already runs, rather than adding a new kind of
-            scanning.</p>
+          <p class="mb0">Both extend a check that already runs. CVE correlation also brings a vulnerability
+            database to keep current, which is a maintenance commitment rather than a feature.</p>
         </article>
 
         <article class="card" style="--tone: var(--t-webscan)">
           <h3>Actively testing, not just grading</h3>
-          <p>This is a change in kind, not degree, and it is the one to be most careful about — it brings
-            false positives, scan windows and permission-to-test paperwork with it.</p>
+          <p>A change in kind, not degree, and the one to be most careful about — it brings false positives,
+            scan windows and permission-to-test paperwork with it.</p>
           <ul class="checklist" style="--tone: var(--t-webscan)">
             <li><strong>Active vulnerability testing</strong> — injection, cross-site scripting and the rest</li>
             <li><strong>Authenticated scanning</strong>, behind a login</li>
           </ul>
           <p class="mb0">If these arrive they will be an explicit, separately consented mode. The free tier
-            will stay what it is now: unauthenticated, non-intrusive, and safe to run on anything.</p>
+            stays what it is now: unauthenticated, non-intrusive, and safe to point at anything.</p>
         </article>
 
         <article class="card" style="--tone: var(--t-webscan)">
           <h3>Signals from beyond the site itself</h3>
-          <p>Things that say something about your exposure without being a property of your web
-            configuration.</p>
+          <p>Things that say something about exposure without being a property of your web configuration.</p>
           <ul class="checklist" style="--tone: var(--t-webscan)">
             <li><strong>Leaked credential and breach exposure</strong></li>
             <li><strong>Lookalike and typosquatted domains</strong></li>
@@ -362,9 +358,8 @@
             <li><strong>Malware and defacement detection</strong> on served content</li>
             <li><strong>Third-party portfolio scoring</strong> — rating the vendors you depend on</li>
           </ul>
-          <p class="mb0">The last one would take WebScan into third-party risk management, which is a
-            different buyer and a different product. It is on the list because it was asked for, not because
-            it is settled.</p>
+          <p class="mb0">The last would take WebScan into third-party risk management, a different buyer and
+            a different product. It is listed because it was asked for, not because it is settled.</p>
         </article>
       </div>
 

@@ -213,9 +213,11 @@ PAGES = {
         </table>
       </div>
 
-      <p>WebScan carries a small floor of its own on top of that, because a five-site licence alone does not
-        cover the platform underneath it. Like the platform minimum, it is in the number you get back rather
-        than a line you discover later.</p>
+      <p><strong>A WebScan-only tenant is the exception</strong>, and it goes the other way: the $99 does not
+        apply. A tenant that arrived through a free scan is one we would not otherwise have, and quoting $99
+        against a couple of dozen dollars of monitoring converts nobody — the floor would eat the funnel it
+        sits downstream of. WebScan on its own carries a smaller minimum instead. Add any second product and
+        the $99 applies from that point.</p>
 
       <h2>What moves the number</h2>
       <ul>
@@ -317,6 +319,8 @@ PAGES = {
           RFC number, which is what turns a finding into a change request somebody approves.</li>
         <li><strong>Why it matters, then the fix</strong>, on each one — in the words you would use to
           justify the work to whoever has to schedule it.</li>
+        <li><strong>The hosts you did not send us.</strong> Discovery looks for the subdomains and assets
+          attached to the name you gave, which is usually where the surprise is.</li>
         <li><strong>What could not be assessed</strong>, said out loud. A check we could not run is never
           quietly counted as a pass.</li>
       </ul>

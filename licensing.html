@@ -342,14 +342,16 @@
         </header>
         <div class="tech">
           <h4>Technologies covered</h4>
+          <span class="group-label">Discovery</span>
+          <ul class="tags"><li class="tag on">Subdomain and asset discovery</li><li class="tag on">Certificate transparency monitoring</li></ul>
           <span class="group-label">Transport</span>
-          <ul class="tags"><li class="tag on">TLS versions and cipher suites</li><li class="tag on">Certificate chain and expiry</li><li class="tag on">HSTS</li></ul>
+          <ul class="tags"><li class="tag on">TLS versions and cipher suites</li><li class="tag on">Certificate chain and expiry</li><li class="tag on">Client handshake simulation</li><li class="tag on">HSTS</li><li class="tag on">IPv6 and protocol readiness</li></ul>
           <span class="group-label">HTTP</span>
           <ul class="tags"><li class="tag on">Security headers</li><li class="tag on">Cookie flags</li><li class="tag on">Redirect chain</li></ul>
           <span class="group-label">DNS</span>
           <ul class="tags"><li class="tag on">CAA</li><li class="tag on">DNSSEC</li><li class="tag on">Nameserver and record hygiene</li></ul>
           <span class="group-label">Content and infrastructure</span>
-          <ul class="tags"><li class="tag on">Exposed paths and files</li><li class="tag on">security.txt (RFC 9116)</li><li class="tag on">Server and technology disclosure</li></ul>
+          <ul class="tags"><li class="tag on">Exposed paths and files</li><li class="tag on">Open ports and exposed services</li><li class="tag on">security.txt (RFC 9116)</li><li class="tag on">Server and technology disclosure</li></ul>
         </div>
         <div class="table-wrap table-scroll" tabindex="0" role="group" aria-label="Licence comparison">
           <table class="matrix">
@@ -360,6 +362,8 @@
               <tr class="group"><th colspan="3" scope="colgroup">The scan itself</th></tr>
               <tr><th scope="row">On-demand scan, whenever you want one</th><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
               <tr><th scope="row">The complete check set — nothing withheld from the free tier</th><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
+              <tr><th scope="row">Subdomain and asset discovery</th><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
+              <tr><th scope="row">Certificate transparency lookup</th><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
               <tr><th scope="row">Graded score with the four result states kept apart</th><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
               <tr><th scope="row">Standard and RFC references on every check</th><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
               <tr><th scope="row">Why it matters, and the fix, on every failure</th><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
@@ -369,6 +373,8 @@
               <tr><th scope="row">Scan history and trend over time</th><td><span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
               <tr><th scope="row">Scheduled scans</th><td><span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
               <tr><th scope="row">Alerting when a passing check regresses</th><td><span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
+              <tr><th scope="row">Certificate transparency monitoring — alerting on new issuance</th><td><span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
+              <tr><th scope="row">Alerting when discovery turns up a new asset</th><td><span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
               <tr class="group"><th colspan="3" scope="colgroup">Governance and evidence</th></tr>
               <tr><th scope="row">Waivers and risk acceptance, with mandatory expiry</th><td><span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
               <tr><th scope="row">Control-reference tags, feeding CompliancePortal as evidence</th><td><span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>

@@ -49,9 +49,9 @@
           <li><a href="products/securityportal.html"><span class="dot" style="--tone: var(--t-security)"></span>SecurityPortal</a></li>
           <li><a href="products/webscan.html"><span class="dot" style="--tone: var(--t-webscan)"></span>WebScan</a></li>
           <li><a href="products/complianceportal.html"><span class="dot" style="--tone: var(--t-compliance)"></span>CompliancePortal</a></li>
-          <li><a href="products/postureportal.html"><span class="dot" style="--tone: var(--t-posture)"></span>PosturePortal<span class="soon-tag">Soon</span></a></li>
+          <li><a href="products/postureportal.html"><span class="dot" style="--tone: var(--t-posture)"></span>PosturePortal</a></li>
           <li><a href="products/mailtrust.html"><span class="dot" style="--tone: var(--t-mailtrust)"></span>MailTrust</a></li>
-          <li><a href="products/dredd.html"><span class="dot" style="--tone: var(--t-dredd)"></span>Dredd<span class="soon-tag">Soon</span></a></li>
+          <li><a href="products/dredd.html"><span class="dot" style="--tone: var(--t-dredd)"></span>Dredd</a></li>
         </ul>
       </li>
       <li><a href="pricing.html">Pricing</a></li>
@@ -80,10 +80,10 @@
       <ul>
         <li><strong>App-only, and read-first.</strong> Scanning uses application permissions, not a
           user's session. There is no agent to install and no user-facing disruption.</li>
-        <li><strong>One consent, scoped and documented.</strong> A single Entra application declares
-          the permissions every product needs. Enabling a further product does not ask you for new
-          permissions — though it does require an administrator to switch that product's connector
-          on.</li>
+        <li><strong>Consent is per product, scoped and documented.</strong> Each product has its own
+          Entra application, declaring only the permissions that product needs. Enabling a further product
+          means a further admin consent — so nothing inherits permissions it has no use for, and revoking
+          one product revokes exactly one.</li>
         <li><strong>Write access is separate.</strong> Remediation requires its own explicit consent
           on top of the read grant. Withdrawing it stops all write paths and leaves your findings and
           evidence intact.</li>

@@ -55,9 +55,9 @@
           <li><a href="products/securityportal.html"><span class="dot" style="--tone: var(--t-security)"></span>SecurityPortal</a></li>
           <li><a href="products/webscan.html"><span class="dot" style="--tone: var(--t-webscan)"></span>WebScan</a></li>
           <li><a href="products/complianceportal.html"><span class="dot" style="--tone: var(--t-compliance)"></span>CompliancePortal</a></li>
-          <li><a href="products/postureportal.html"><span class="dot" style="--tone: var(--t-posture)"></span>PosturePortal<span class="soon-tag">Soon</span></a></li>
+          <li><a href="products/postureportal.html"><span class="dot" style="--tone: var(--t-posture)"></span>PosturePortal</a></li>
           <li><a href="products/mailtrust.html"><span class="dot" style="--tone: var(--t-mailtrust)"></span>MailTrust</a></li>
-          <li><a href="products/dredd.html"><span class="dot" style="--tone: var(--t-dredd)"></span>Dredd<span class="soon-tag">Soon</span></a></li>
+          <li><a href="products/dredd.html"><span class="dot" style="--tone: var(--t-dredd)"></span>Dredd</a></li>
         </ul>
       </li>
       <li><a href="pricing.html">Pricing</a></li>
@@ -335,7 +335,7 @@
       <div class="product-licence" role="tabpanel" id="panel-webscan" aria-labelledby="tab-webscan" tabindex="0" style="--tone: var(--t-webscan)">
         <header>
           <h3>WebScan</h3>
-          <p class="counted">Counted per domain &middot; free tier on every tenant</p>
+          <p class="counted">Counted per site &middot; five-site minimum &middot; free tier on every tenant</p>
         </header>
         <div class="tech">
           <h4>Technologies covered</h4>
@@ -351,7 +351,7 @@
         <div class="table-wrap table-scroll" tabindex="0" role="group" aria-label="Licence comparison">
           <table class="matrix">
             <thead>
-              <tr><th scope="col">Capability</th><th class="rung-head" scope="col">Free<small>on every tenant</small></th><th class="rung-head" scope="col">Licensed<small>per domain</small></th></tr>
+              <tr><th scope="col">Capability</th><th class="rung-head" scope="col">Free<small>on every tenant</small></th><th class="rung-head" scope="col">Licensed<small>per site</small></th></tr>
             </thead>
             <tbody>
               <tr class="group"><th colspan="3" scope="colgroup">The scan itself</th></tr>
@@ -360,7 +360,7 @@
               <tr><th scope="row">Graded score with the four result states kept apart</th><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
               <tr><th scope="row">Standard and RFC references on every check</th><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
               <tr><th scope="row">Why it matters, and the fix, on every failure</th><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
-              <tr><th scope="row">Domains you may scan</th><td>Unlimited</td><td>Unlimited</td></tr>
+              <tr><th scope="row">Sites you may scan</th><td>Unlimited</td><td>Unlimited</td></tr>
               <tr class="group"><th colspan="3" scope="colgroup">What happens afterwards</th></tr>
               <tr><th scope="row">Results kept once you close the page</th><td><span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
               <tr><th scope="row">Scan history and trend over time</th><td><span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
@@ -379,7 +379,7 @@
         <div class="note plain" style="margin-top:0">
           <p class="mb0"><strong>The free tier is the whole scanner, and that is deliberate.</strong> Nothing is held back to make the paid version look better — the free tier runs every check and shows every result. What it does not do is remember. There is no history, no schedule, no evidence and no audit trail, because nothing is written down when the scan finishes. That is also what makes it free to give away: a free scan is a short-lived function with no storage behind it, it is on demand only so nothing can schedule itself into a bill, and its cost ends when the scan does.</p>
         </div>
-        <p class="after">Counted per domain, like MailTrust, and for the same reason: a domain is the thing being assessed and the thing a customer already counts. No rung caps how many domains you may add. WebScan never writes anywhere — DNS write-back belongs to MailTrust, which also owns SPF, DKIM and DMARC; those are mail authentication rather than web surface and are not duplicated here.</p>
+        <p class="after">Counted per site rather than per domain, because a site is what gets scanned: one domain can front several, and each is its own configuration to grade. The five-site minimum is there because a single-site licence does not cover the platform underneath it — MailTrust counts domains, which is a different question about the same names. Nothing caps how many sites you may add; the count is trued up, never a hard stop. WebScan never writes anywhere — DNS write-back belongs to MailTrust, which also owns SPF, DKIM and DMARC; those are mail authentication rather than web surface and are not duplicated here.</p>
       </div>
       <div class="product-licence" role="tabpanel" id="panel-complianceportal" aria-labelledby="tab-complianceportal" tabindex="0" style="--tone: var(--t-compliance)">
         <header>
@@ -427,18 +427,18 @@
       </div>
       <div class="product-licence" role="tabpanel" id="panel-postureportal" aria-labelledby="tab-postureportal" tabindex="0" style="--tone: var(--t-posture)">
         <header>
-          <h3>PosturePortal <span class="status soon">Coming soon</span></h3>
-          <p class="counted">Bundled — it will come with SecurityPortal or any ShareCare tier</p>
+          <h3>PosturePortal</h3>
+          <p class="counted">Bundled — it comes with SecurityPortal or any ShareCare tier</p>
         </header>
         <div class="tech">
           <h4>Technologies covered</h4>
           <span class="group-label">Reads from</span>
-          <ul class="tags"><li class="tag on">ShareCare</li><li class="tag on">SecurityPortal</li><li class="tag on">CompliancePortal</li><li class="tag on">MailTrust</li><li class="tag on">Connector health</li></ul>
+          <ul class="tags"><li class="tag on">ShareCare</li><li class="tag on">SecurityPortal</li><li class="tag on">WebScan</li><li class="tag on">CompliancePortal</li><li class="tag on">MailTrust</li><li class="tag on">Dredd</li><li class="tag on">Connector health</li></ul>
         </div>
         <div class="table-wrap table-scroll" tabindex="0" role="group" aria-label="Licence comparison">
           <table class="matrix">
             <thead>
-              <tr><th scope="col">Capability</th><th class="rung-head" scope="col">Included<small>when it lands</small></th></tr>
+              <tr><th scope="col">Capability</th><th class="rung-head" scope="col">Included<small>one tier</small></th></tr>
             </thead>
             <tbody>
               <tr><th scope="row">Cross-product findings aggregation</th><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
@@ -494,7 +494,7 @@
       </div>
       <div class="product-licence" role="tabpanel" id="panel-dredd" aria-labelledby="tab-dredd" tabindex="0" style="--tone: var(--t-dredd)">
         <header>
-          <h3>Dredd <span class="status soon">Coming soon</span></h3>
+          <h3>Dredd</h3>
           <p class="counted">Counted per monitored configuration scope</p>
         </header>
         <div class="tech">
@@ -503,7 +503,7 @@
           <ul class="tags"><li class="tag on">Microsoft Entra ID</li><li class="tag off">Microsoft 365 tenant config — designed</li><li class="tag off">Intune — designed</li></ul>
         </div>
         <div class="note plain" style="margin-top:0">
-          <p class="mb0">Dredd is not on the licence list yet. Its unit metric is the one we understand least, and rather than guess a shape and reprice it six months later, it is being set against real configuration scopes first. The full capability set is on the <a href="products/dredd.html">Dredd page</a>.</p>
+          <p class="mb0"><strong>Dredd runs; its licence shape is still being set.</strong> The product is built and the governance, remediation and bulk-heal paths are live — what is not settled is the unit it should be counted on. It is the metric we understand least, and rather than guess a shape and reprice it six months later, it is being set against real configuration scopes first. Ask and you will get a number. The full capability set is on the <a href="products/dredd.html">Dredd page</a>.</p>
         </div>
       </div>
       </div>

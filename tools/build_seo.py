@@ -27,9 +27,9 @@ META = {
         "CompliancePortal turns both into audit evidence, MailTrust stops spoofing.",
         None),
     "platform.html": (
-        "SeQontrol - Platform - Connect once, secure &amp; prove it all",
-        "One tenancy model, one Entra app, one findings store and a tamper-evident audit trail "
-        "— the layer every SeQontrol product is built on.",
+        "SeQontrol - Platform - The layer under every product",
+        "One tenancy model, one findings store and a hash-chained audit trail — with a separate, "
+        "scoped Entra app and consent for each product.",
         "Platform"),
     "licensing.html": (
         "SeQontrol - Licensing - Visibility, Governance, Automation",
@@ -144,7 +144,7 @@ META = {
     "products/postureportal.html": (
         "SeQontrol - PosturePortal - The answer, not the raw scan",
         "The read-only board that aggregates findings, risk and coverage from every SeQontrol "
-        "product into one per-tenant and fleet-wide view. Coming soon.",
+        "product into one per-tenant and fleet-wide view.",
         "PosturePortal"),
     "products/mailtrust.html": (
         "SeQontrol - MailTrust - SPF, DKIM, DMARC and more, enforced",
@@ -154,7 +154,7 @@ META = {
     "products/dredd.html": (
         "SeQontrol - Dredd - Revert it, or ratify it",
         "Hold your approved Entra configuration as a versioned baseline, catch every unapproved "
-        "change, and force the decision: revert it, or ratify it. Coming soon.",
+        "change, and force the decision: revert it, or ratify it.",
         "Dredd"),
 }
 

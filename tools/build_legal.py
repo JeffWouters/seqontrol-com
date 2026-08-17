@@ -174,12 +174,18 @@ PAGES = {
             <tr><th scope="row">ShareCare</th><td>Microsoft 365 users, with a 25-user minimum</td></tr>
             <tr><th scope="row">SecurityPortal</th><td>Users — or included with any ShareCare tier</td></tr>
             <tr><th scope="row">CompliancePortal</th><td>Per tenant, banded by how many frameworks are in scope</td></tr>
-            <tr><th scope="row">WebScan</th><td>Per domain — with a free tier on every tenant</td></tr>
+            <tr><th scope="row">WebScan</th><td>Per site, with a five-site minimum — and a free tier on every tenant</td></tr>
             <tr><th scope="row">MailTrust</th><td>Per domain</td></tr>
             <tr><th scope="row">PosturePortal</th><td>Bundled, never a separate line</td></tr>
           </tbody>
         </table>
       </div>
+
+      <p>Two floors sit under all of that, and they are easier to hear now than at quote time. There is a
+        <strong>monthly platform minimum</strong> on the total, which covers the tenancy, auth, audit,
+        findings, reporting and scheduling every product runs on. And WebScan on its own carries its own
+        small floor, because a five-site licence on its own does not cover the platform underneath it.
+        Neither is a surprise line: ask for a quote and both are in the number you get back.</p>
 
       <h2>What moves the number</h2>
       <ul>
@@ -379,7 +385,8 @@ PAGES = {
       <ol>
         <li>You tell us the tenant and roughly how big it is.</li>
         <li>We agree the scope and a date before anything connects.</li>
-        <li>An administrator grants read-only consent to one Entra application.</li>
+        <li>An administrator grants read-only consent to the Entra application for the product being
+          assessed — scoped to that product, and nothing else.</li>
         <li>The crawl runs. Large estates are swept in stages so nothing is throttled.</li>
         <li>You get the report, and a walkthrough of it if you want one.</li>
       </ol>
@@ -408,13 +415,15 @@ PAGES = {
         that are trying to persuade you.</p>
 
 <div class="note honest">
-        <h2>"Connect once" means the permission grant, not zero-touch</h2>
-        <p class="mb0">One Entra app covers every product, so your admin consents once and enabling a product
-          never asks for new permissions. It is not zero-touch: each product's connector still has to be switched
-          on by an administrator, write-back is a separate opt-in, and Exchange admin, Power Platform, Azure and
-          DNS each need their own one-time setup. The
-          <a href="platform.html">platform page lists every step</a> rather than letting you find them during
-          onboarding.</p>
+        <h2>Every product asks for its own consent</h2>
+        <p class="mb0">There is no single grant that switches the platform on. Each product has its own Entra
+          application and its own admin consent, scoped to that product's permissions — so adding a product
+          means going back to an administrator, not flipping a switch. The upside is real: nothing inherits
+          permissions it has no use for, and revoking one product revokes exactly one. But if you were told
+          this was a one-consent platform, it is not, and you would have found out during onboarding. On top
+          of that, write-back is a separate opt-in again, and Exchange admin, Power Platform, Azure and DNS
+          each need their own one-time setup. The
+          <a href="platform.html">platform page lists every step</a>.</p>
       </div>
 
 <div class="note honest">
@@ -466,9 +475,10 @@ PAGES = {
         all was built for somebody managing forty tenants rather than one.</p>
 
       <h2>The bet</h2>
-      <p>That the platform matters more than any single scanner. One consented connection, one findings
-        store, one audit trail — so a security finding becomes compliance evidence without a second
-        integration, and so the tenth tenant costs no more thought than the first.</p>
+      <p>That the platform matters more than any single scanner. One findings store, one audit trail, one
+        console — so a security finding becomes compliance evidence without a second integration, and so the
+        tenth tenant costs no more thought than the first. Each product still asks for its own consent; what
+        the platform saves you is everything after that.</p>
       <p>And that security sits above compliance. A waived control turns a report green without
         changing anything real; we would rather show you the finding that is still there.
         <a href="index.html#principle">The full argument is on the home page.</a></p>
@@ -604,10 +614,10 @@ PAGES = {
       <ul>
         <li><strong>App-only, and read-first.</strong> Scanning uses application permissions, not a
           user's session. There is no agent to install and no user-facing disruption.</li>
-        <li><strong>One consent, scoped and documented.</strong> A single Entra application declares
-          the permissions every product needs. Enabling a further product does not ask you for new
-          permissions — though it does require an administrator to switch that product's connector
-          on.</li>
+        <li><strong>Consent is per product, scoped and documented.</strong> Each product has its own
+          Entra application, declaring only the permissions that product needs. Enabling a further product
+          means a further admin consent — so nothing inherits permissions it has no use for, and revoking
+          one product revokes exactly one.</li>
         <li><strong>Write access is separate.</strong> Remediation requires its own explicit consent
           on top of the read grant. Withdrawing it stops all write paths and leaves your findings and
           evidence intact.</li>

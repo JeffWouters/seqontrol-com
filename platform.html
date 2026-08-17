@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SeQontrol - Platform - Connect once, secure &amp; prove it all</title>
-<meta name="description" content="One tenancy model, one Entra app, one findings store and a tamper-evident audit trail — the layer every SeQontrol product is built on.">
+<title>SeQontrol - Platform - The layer under every product</title>
+<meta name="description" content="One tenancy model, one findings store and a hash-chained audit trail — with a separate, scoped Entra app and consent for each product.">
 <meta name="theme-color" content="#0b0f17">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
@@ -15,8 +15,8 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="SeQontrol">
 <meta property="og:locale" content="en">
-<meta property="og:title" content="SeQontrol - Platform - Connect once, secure &amp; prove it all">
-<meta property="og:description" content="One tenancy model, one Entra app, one findings store and a tamper-evident audit trail — the layer every SeQontrol product is built on.">
+<meta property="og:title" content="SeQontrol - Platform - The layer under every product">
+<meta property="og:description" content="One tenancy model, one findings store and a hash-chained audit trail — with a separate, scoped Entra app and consent for each product.">
 <meta property="og:url" content="https://seqontrol.com/platform.html">
 <meta property="og:image" content="https://seqontrol.com/assets/og-card.png">
 <meta property="og:image:width" content="1200">
@@ -55,9 +55,9 @@
           <li><a href="products/securityportal.html"><span class="dot" style="--tone: var(--t-security)"></span>SecurityPortal</a></li>
           <li><a href="products/webscan.html"><span class="dot" style="--tone: var(--t-webscan)"></span>WebScan</a></li>
           <li><a href="products/complianceportal.html"><span class="dot" style="--tone: var(--t-compliance)"></span>CompliancePortal</a></li>
-          <li><a href="products/postureportal.html"><span class="dot" style="--tone: var(--t-posture)"></span>PosturePortal<span class="soon-tag">Soon</span></a></li>
+          <li><a href="products/postureportal.html"><span class="dot" style="--tone: var(--t-posture)"></span>PosturePortal</a></li>
           <li><a href="products/mailtrust.html"><span class="dot" style="--tone: var(--t-mailtrust)"></span>MailTrust</a></li>
-          <li><a href="products/dredd.html"><span class="dot" style="--tone: var(--t-dredd)"></span>Dredd<span class="soon-tag">Soon</span></a></li>
+          <li><a href="products/dredd.html"><span class="dot" style="--tone: var(--t-dredd)"></span>Dredd</a></li>
         </ul>
       </li>
       <li><a href="pricing.html">Pricing</a></li>
@@ -77,8 +77,8 @@
       <h1>The layer underneath is the actual product</h1>
       <p class="lede">
         Anyone can ship a scanner. What is hard — and what makes the next product cheap to add — is everything
-        a scanner has to sit on: <strong>one tenancy model, one connector, one findings substrate, one audit
-        trail, one entitlement catalog.</strong>
+        a scanner has to sit on: <strong>one tenancy model, one connector plane, one findings substrate, one
+        audit trail, one entitlement catalog.</strong>
       </p>
     </div>
   </section>
@@ -98,13 +98,15 @@
             inside a managed tenant. Every product gets multi-client support without building it.</p>
         </article>
         <article class="card">
-          <h3>One Entra app for the whole platform</h3>
-          <p>The customer's admin consents once, and that grant covers every product's Graph permissions —
-            so enabling a new product never asks them for new permissions. Turning a product on is still a
-            step: each product gets its own connector, which an administrator activates against the consent
-            that already exists.</p>
-          <p class="mb0">The adjacent planes are separate, deliberately: Exchange admin, Power Platform, Azure
-            and DNS each need their own one-time setup, and write-back is its own opt-in consent on top of the
+          <h3>One connector plane, one Entra app per product</h3>
+          <p>Every product registers its connector through the same plane, with the same onboarding flow, the
+            same secret handling and the same audit trail. What is <em>not</em> shared is the grant: each
+            product has its own Entra application and asks for its own consent, scoped to the permissions
+            that product actually needs.</p>
+          <p class="mb0">That is a deliberate trade. It means enabling a second product is a second consent
+            rather than a switch — but it also means no product inherits another's permissions, and revoking
+            one revokes exactly one. The adjacent planes are separate again: Exchange admin, Power Platform,
+            Azure and DNS each need their own one-time setup, and write-back is its own opt-in on top of the
             read grant.</p>
         </article>
         <article class="card">
@@ -118,6 +120,10 @@
           <p>A hash-chained audit trail across the platform. When a client or an auditor asks what was checked,
             what changed, and who approved it, the answer is a record that can be shown to have not been edited
             after the fact.</p>
+          <p class="mb0">Worth being exact about what that covers: the chain protects the <strong>audit trail</strong>
+            and the <strong>evidence snapshots</strong> taken from a point in time. Findings themselves are live
+            records — they open, change severity and close as the estate does. Chaining them would make them
+            immutable, which is the opposite of what a finding is for.</p>
         </article>
         <article class="card">
           <h3>Entitlements and metered billing</h3>
@@ -134,8 +140,8 @@
       </div>
 
       <h3 style="margin-top:3rem">What connecting actually involves</h3>
-      <p class="muted">&ldquo;Connect once&rdquo; is true of the Microsoft Graph permission grant, and we would
-        rather be precise about the rest than let you discover it during onboarding.</p>
+      <p class="muted">Onboarding is one flow you learn once, not one grant that covers everything. We would
+        rather be precise about that here than let you discover it during onboarding.</p>
       <div class="table-wrap table-scroll" tabindex="0">
         <table>
           <thead>
@@ -144,12 +150,12 @@
           <tbody>
             <tr>
               <th scope="row">Microsoft 365 and Entra</th>
-              <td>One admin consent for the platform's Entra app, declaring the union of every product's Graph permissions</td>
-              <td>Once per tenant</td>
+              <td>An admin consent for the product's own Entra app, declaring only that product's Graph permissions</td>
+              <td>Once per product</td>
             </tr>
             <tr>
-              <th scope="row">Enabling a product</th>
-              <td>An administrator activates that product's connector against the grant that already exists. No new permission prompt — but it is a step, and the product does not run until it happens</td>
+              <th scope="row">Enabling another product</th>
+              <td>Its own Entra app and its own admin consent, through the same flow. Nothing inherits another product's permissions, and revoking one revokes exactly one</td>
               <td>Once per product</td>
             </tr>
             <tr>

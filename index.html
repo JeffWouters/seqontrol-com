@@ -69,9 +69,9 @@
           <li><a href="products/securityportal.html"><span class="dot" style="--tone: var(--t-security)"></span>SecurityPortal</a></li>
           <li><a href="products/webscan.html"><span class="dot" style="--tone: var(--t-webscan)"></span>WebScan</a></li>
           <li><a href="products/complianceportal.html"><span class="dot" style="--tone: var(--t-compliance)"></span>CompliancePortal</a></li>
-          <li><a href="products/postureportal.html"><span class="dot" style="--tone: var(--t-posture)"></span>PosturePortal<span class="soon-tag">Soon</span></a></li>
+          <li><a href="products/postureportal.html"><span class="dot" style="--tone: var(--t-posture)"></span>PosturePortal</a></li>
           <li><a href="products/mailtrust.html"><span class="dot" style="--tone: var(--t-mailtrust)"></span>MailTrust</a></li>
-          <li><a href="products/dredd.html"><span class="dot" style="--tone: var(--t-dredd)"></span>Dredd<span class="soon-tag">Soon</span></a></li>
+          <li><a href="products/dredd.html"><span class="dot" style="--tone: var(--t-dredd)"></span>Dredd</a></li>
         </ul>
       </li>
       <li><a href="pricing.html">Pricing</a></li>
@@ -98,8 +98,8 @@
           tenant or five hundred.
         </p>
         <div class="oneline">
-          <strong>App-only and read-only.</strong> No agent, no user disruption, and nothing is written
-          to your tenant without a separate, explicit consent.
+          <strong>App-only, no agent, no user disruption.</strong> Scanning reads. Anything that writes to
+          your tenant is a separate product decision and a separate, explicit consent.
         </div>
         <div class="btn-row">
           <a class="btn btn-primary" href="exposure-report.html">Get my free exposure report</a>
@@ -140,9 +140,8 @@
       <div class="section-head">
         <span class="eyebrow">The products</span>
         <h2>What each product finds, proves and fixes</h2>
-        <p><strong>Five are running today.</strong> Each answers a question you are already being asked,
-           and each is useful on its own — run one, or run all of them against the same connection.
-           Three more are in build, and they are labelled as such rather than sold as if they were here.</p>
+        <p><strong>All eight are running today.</strong> Each answers a question you are already being asked,
+           and each is useful on its own — run one, or run all of them into the same findings store.</p>
       </div>
 
       <!-- the three portals, grouped -->
@@ -150,8 +149,7 @@
         <div class="suite-head">
           <h2>Three products. <span class="sep">·</span> One platform. <span class="sep">·</span> Zero compromise.</h2>
           <p>SecurityPortal finds the weaknesses, CompliancePortal turns them into evidence, and PosturePortal
-             will put the whole picture on one board. They are sold separately and they work as one. The first
-             two are running today; PosturePortal is coming soon.</p>
+             puts the whole picture on one board. They are sold separately and they work as one.</p>
         </div>
         <div class="grid grid-3">
           <article class="pcard" style="--tone: var(--t-security)">
@@ -172,7 +170,7 @@
           </article>
           <article class="pcard" style="--tone: var(--t-posture)">
             <span class="kicker">Single pane</span>
-            <h3><a href="products/postureportal.html">PosturePortal</a> <span class="status soon">Coming soon</span></h3>
+            <h3><a href="products/postureportal.html">PosturePortal</a></h3>
             <p>The read-only board that aggregates findings, risk and coverage from every product into one
                per-tenant and fleet-wide view — top risks, trends, connector health, saved views and annotations.</p>
             <a class="arrow-link" href="products/postureportal.html">PosturePortal</a>
@@ -236,7 +234,7 @@
         <h2 class="sr-only" id="flow-heading">How SeQontrol works</h2>
         <div class="flow-step">
           <span class="flow-num">1</span>
-          <div><h3>Connect</h3><p>One app-only Entra app for the whole platform. The admin consents once, covering every product's permissions.</p></div>
+          <div><h3>Connect</h3><p>An app-only Entra app per product, each asking only for what that product needs. Same onboarding flow every time.</p></div>
         </div>
         <div class="flow-step">
           <span class="flow-num">2</span>
@@ -252,26 +250,23 @@
         </div>
         <div class="flow-step">
           <span class="flow-num">5</span>
-          <div><h3>Govern</h3><p>Waivers expire, approvals are recorded, and the audit trail is hash-chained and tamper-evident.</p></div>
+          <div><h3>Govern</h3><p>Waivers expire, approvals are recorded, and the audit trail is hash-chained. Findings are live records that change as the estate changes; what is chained is the trail of what was done and the evidence snapshots taken from it.</p></div>
         </div>
       </div>
 
-      <h3 style="margin-top:3rem">In build, not yet available</h3>
-      <p class="muted" style="max-width:62ch">Listed because you will find them in the platform and we
-        would rather you knew the roadmap than discovered it. None of them is on the price list.</p>
-      <div class="grid grid-3">
-        <article class="pcard soon" style="--tone: var(--t-dredd)">
+      <div class="grid grid-3" style="margin-top:1.15rem">
+        <article class="pcard" style="--tone: var(--t-dredd)">
           <span class="kicker">Drift governance</span>
-          <h3><a href="products/dredd.html">Dredd</a> <span class="status soon">Coming soon</span></h3>
+          <h3><a href="products/dredd.html">Dredd</a></h3>
           <p>Holds your approved configuration as a versioned baseline, catches every deviation, and forces the
              decision: revert it or ratify it. Not "this is unwise" — <em>"this is not what you approved."</em></p>
           <a class="arrow-link" href="products/dredd.html">Dredd</a>
         </article>
-        <article class="pcard soon" style="--tone: var(--t-soon)">
-          <span class="kicker">Coming soon</span>
-          <h3>ConditionalAccessPortal <span class="status soon">Coming soon</span></h3>
+        <article class="pcard" style="--tone: var(--t-condaccess)">
+          <span class="kicker">Policy governance</span>
+          <h3>ConditionalAccessPortal</h3>
           <p>Conditional Access policy inventory, baseline coverage gaps and approval-gated policy write-back
-             for the Entra estate. In the platform catalog; not yet on the price list.</p>
+             for the Entra estate. Running today; its own page on this site is still being written.</p>
         </article>
       </div>
     </div>
@@ -352,7 +347,7 @@
       <div class="section-head">
         <span class="eyebrow">Underneath</span>
         <h2>Why running two products costs less than running two tools</h2>
-        <p>The products share one connection, one findings store and one audit trail. That is not an
+        <p>The products share one console, one findings store and one audit trail. That is not an
            architecture diagram — it is the reason ShareCare's exposure shows up as CompliancePortal's
            evidence without anyone exporting a spreadsheet.</p>
       </div>
@@ -364,9 +359,10 @@
              thing your auditor sees, with no export in between.</p>
         </article>
         <article class="card">
-          <h3>One consent covers all of them</h3>
-          <p>Your admin approves one Entra app. Adding a second product never asks them for new permissions —
-             it needs a connector switched on, not another trip through onboarding.</p>
+          <h3>Each product asks for its own consent</h3>
+          <p>Every product has its own Entra app, scoped to what that product needs — so nothing inherits
+             permissions it has no use for, and revoking one product revokes exactly one. Adding a product is
+             a second consent, through the same onboarding you already know.</p>
         </article>
         <article class="card">
           <h3>Every product answers to the same trail</h3>
@@ -447,7 +443,7 @@
             waiting on somebody proving what it can reach, and an audit is either underway or coming.</p>
           <ul class="checklist" style="--tone: var(--t-security)">
             <li>Start with the free exposure report on your own tenant</li>
-            <li>Priced per user, with a 25-user minimum</li>
+            <li>Priced on what each product counts — users, domains, sites or tenant, with a monthly platform floor</li>
             <li>Findings become audit evidence without a second tool</li>
           </ul>
           <div class="btn-row">
@@ -494,8 +490,8 @@
           are one anonymous link away from a Copilot leak" is a conversation that sells remediation work — and it
           only exists if one tool sees every tenant.</p>
         <h3>Quarterly reviews</h3>
-        <p class="small muted mb0">PosturePortal — coming soon — becomes the client-facing artefact: one board per
-          client, annotated and saved, instead of an afternoon of assembling exports by hand.</p>
+        <p class="small muted mb0">PosturePortal is the client-facing artefact: one board per client, annotated
+          and saved, instead of an afternoon of assembling exports by hand.</p>
       </aside>
     </div>
   </section>

@@ -18,9 +18,8 @@ N = '<span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not
 LADDER = [("Visibility", "see it"), ("Governance", "govern it"), ("Automation", "act on it")]
 BANDS = [("1 framework", "single regime"), ("3 frameworks", "the usual mix"), ("Unlimited", "every regime")]
 ONE = [("Included", "one tier")]
-SOON = [("Included", "when it lands")]
 # WebScan does not have depth rungs. It has a memory.
-KEPT = [("Free", "on every tenant"), ("Licensed", "per domain")]
+KEPT = [("Free", "on every tenant"), ("Licensed", "per site")]
 
 
 def rows(items, cols):
@@ -127,7 +126,7 @@ PRODUCTS = [
     ),
     dict(
         key="webscan", name="WebScan", tone="--t-webscan", status=None,
-        counted="Counted per domain &middot; free tier on every tenant",
+        counted="Counted per site &middot; five-site minimum &middot; free tier on every tenant",
         tech=[("Transport", [("TLS versions and cipher suites", 1), ("Certificate chain and expiry", 1),
                              ("HSTS", 1)]),
               ("HTTP", [("Security headers", 1), ("Cookie flags", 1), ("Redirect chain", 1)]),
@@ -142,7 +141,7 @@ PRODUCTS = [
               ("Graded score with the four result states kept apart", [Y, Y]),
               ("Standard and RFC references on every check", [Y, Y]),
               ("Why it matters, and the fix, on every failure", [Y, Y]),
-              ("Domains you may scan", ["Unlimited", "Unlimited"]),
+              ("Sites you may scan", ["Unlimited", "Unlimited"]),
               "What happens afterwards",
               ("Results kept once you close the page", [N, Y]),
               ("Scan history and trend over time", [N, Y]),
@@ -161,10 +160,13 @@ PRODUCTS = [
               "trail, because nothing is written down when the scan finishes. That is also what makes it free "
               "to give away: a free scan is a short-lived function with no storage behind it, it is on demand "
               "only so nothing can schedule itself into a bill, and its cost ends when the scan does."),
-        after=("Counted per domain, like MailTrust, and for the same reason: a domain is the thing being "
-               "assessed and the thing a customer already counts. No rung caps how many domains you may add. "
-               "WebScan never writes anywhere — DNS write-back belongs to MailTrust, which also owns SPF, DKIM "
-               "and DMARC; those are mail authentication rather than web surface and are not duplicated here."),
+        after=("Counted per site rather than per domain, because a site is what gets scanned: one domain can "
+               "front several, and each is its own configuration to grade. The five-site minimum is there "
+               "because a single-site licence does not cover the platform underneath it — MailTrust counts "
+               "domains, which is a different question about the same names. Nothing caps how many sites you "
+               "may add; the count is trued up, never a hard stop. WebScan never writes anywhere — DNS "
+               "write-back belongs to MailTrust, which also owns SPF, DKIM and DMARC; those are mail "
+               "authentication rather than web surface and are not duplicated here."),
     ),
     dict(
         key="complianceportal", name="CompliancePortal", tone="--t-compliance", status=None,
@@ -206,11 +208,12 @@ PRODUCTS = [
                "whole-company compliance programme."),
     ),
     dict(
-        key="postureportal", name="PosturePortal", tone="--t-posture", status="Coming soon",
-        counted="Bundled — it will come with SecurityPortal or any ShareCare tier",
-        tech=[("Reads from", [("ShareCare", 1), ("SecurityPortal", 1), ("CompliancePortal", 1),
-                              ("MailTrust", 1), ("Connector health", 1)])],
-        cols=SOON,
+        key="postureportal", name="PosturePortal", tone="--t-posture", status=None,
+        counted="Bundled — it comes with SecurityPortal or any ShareCare tier",
+        tech=[("Reads from", [("ShareCare", 1), ("SecurityPortal", 1), ("WebScan", 1),
+                              ("CompliancePortal", 1), ("MailTrust", 1), ("Dredd", 1),
+                              ("Connector health", 1)])],
+        cols=ONE,
         rows=[("Cross-product findings aggregation", [Y]),
               ("Posture scores, top risks and trends", [Y]),
               ("Connector health and coverage visibility", [Y]),
@@ -251,16 +254,19 @@ PRODUCTS = [
                "that is part of onboarding."),
     ),
     dict(
-        key="dredd", name="Dredd", tone="--t-dredd", status="Coming soon",
+        key="dredd", name="Dredd", tone="--t-dredd", status=None,
         counted="Counted per monitored configuration scope",
         tech=[("Control planes", [("Microsoft Entra ID", 1), ("Microsoft 365 tenant config — designed", 0),
                                   ("Intune — designed", 0)])],
         cols=None,
         rows=None,
         after=None,
-        note=("Dredd is not on the licence list yet. Its unit metric is the one we understand least, and rather "
-              "than guess a shape and reprice it six months later, it is being set against real configuration "
-              "scopes first. The full capability set is on the <a href=\"products/dredd.html\">Dredd page</a>."),
+        note=("<strong>Dredd runs; its licence shape is still being set.</strong> The product is built and the "
+              "governance, remediation and bulk-heal paths are live — what is not settled is the unit it should "
+              "be counted on. It is the metric we understand least, and rather than guess a shape and reprice "
+              "it six months later, it is being set against real configuration scopes first. Ask and you will "
+              "get a number. The full capability set is on the "
+              "<a href=\"products/dredd.html\">Dredd page</a>."),
     ),
 ]
 

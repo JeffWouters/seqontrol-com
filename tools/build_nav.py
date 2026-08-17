@@ -25,9 +25,9 @@ PRODUCTS = [
     ("securityportal.html",    "SecurityPortal",    "--t-security",   False),
     ("webscan.html",           "WebScan",           "--t-webscan",    False),
     ("complianceportal.html",  "CompliancePortal",  "--t-compliance", False),
-    ("postureportal.html",     "PosturePortal",     "--t-posture",    True),
+    ("postureportal.html",     "PosturePortal",     "--t-posture",    False),
     ("mailtrust.html",         "MailTrust",         "--t-mailtrust",  False),
-    ("dredd.html",             "Dredd",             "--t-dredd",      True),
+    ("dredd.html",             "Dredd",             "--t-dredd",      False),
 ]
 
 SUBNAV = re.compile(r'( *)<ul class="subnav">.*?</ul>', re.S)

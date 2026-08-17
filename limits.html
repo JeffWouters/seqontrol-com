@@ -49,9 +49,9 @@
           <li><a href="products/securityportal.html"><span class="dot" style="--tone: var(--t-security)"></span>SecurityPortal</a></li>
           <li><a href="products/webscan.html"><span class="dot" style="--tone: var(--t-webscan)"></span>WebScan</a></li>
           <li><a href="products/complianceportal.html"><span class="dot" style="--tone: var(--t-compliance)"></span>CompliancePortal</a></li>
-          <li><a href="products/postureportal.html"><span class="dot" style="--tone: var(--t-posture)"></span>PosturePortal<span class="soon-tag">Soon</span></a></li>
+          <li><a href="products/postureportal.html"><span class="dot" style="--tone: var(--t-posture)"></span>PosturePortal</a></li>
           <li><a href="products/mailtrust.html"><span class="dot" style="--tone: var(--t-mailtrust)"></span>MailTrust</a></li>
-          <li><a href="products/dredd.html"><span class="dot" style="--tone: var(--t-dredd)"></span>Dredd<span class="soon-tag">Soon</span></a></li>
+          <li><a href="products/dredd.html"><span class="dot" style="--tone: var(--t-dredd)"></span>Dredd</a></li>
         </ul>
       </li>
       <li><a href="pricing.html">Pricing</a></li>
@@ -81,13 +81,15 @@
         that are trying to persuade you.</p>
 
 <div class="note honest">
-        <h2>"Connect once" means the permission grant, not zero-touch</h2>
-        <p class="mb0">One Entra app covers every product, so your admin consents once and enabling a product
-          never asks for new permissions. It is not zero-touch: each product's connector still has to be switched
-          on by an administrator, write-back is a separate opt-in, and Exchange admin, Power Platform, Azure and
-          DNS each need their own one-time setup. The
-          <a href="platform.html">platform page lists every step</a> rather than letting you find them during
-          onboarding.</p>
+        <h2>Every product asks for its own consent</h2>
+        <p class="mb0">There is no single grant that switches the platform on. Each product has its own Entra
+          application and its own admin consent, scoped to that product's permissions — so adding a product
+          means going back to an administrator, not flipping a switch. The upside is real: nothing inherits
+          permissions it has no use for, and revoking one product revokes exactly one. But if you were told
+          this was a one-consent platform, it is not, and you would have found out during onboarding. On top
+          of that, write-back is a separate opt-in again, and Exchange admin, Power Platform, Azure and DNS
+          each need their own one-time setup. The
+          <a href="platform.html">platform page lists every step</a>.</p>
       </div>
 
 <div class="note honest">

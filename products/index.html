@@ -55,9 +55,9 @@
           <li><a href="securityportal.html"><span class="dot" style="--tone: var(--t-security)"></span>SecurityPortal</a></li>
           <li><a href="webscan.html"><span class="dot" style="--tone: var(--t-webscan)"></span>WebScan</a></li>
           <li><a href="complianceportal.html"><span class="dot" style="--tone: var(--t-compliance)"></span>CompliancePortal</a></li>
-          <li><a href="postureportal.html"><span class="dot" style="--tone: var(--t-posture)"></span>PosturePortal<span class="soon-tag">Soon</span></a></li>
+          <li><a href="postureportal.html"><span class="dot" style="--tone: var(--t-posture)"></span>PosturePortal</a></li>
           <li><a href="mailtrust.html"><span class="dot" style="--tone: var(--t-mailtrust)"></span>MailTrust</a></li>
-          <li><a href="dredd.html"><span class="dot" style="--tone: var(--t-dredd)"></span>Dredd<span class="soon-tag">Soon</span></a></li>
+          <li><a href="dredd.html"><span class="dot" style="--tone: var(--t-dredd)"></span>Dredd</a></li>
         </ul>
       </li>
       <li><a href="../pricing.html">Pricing</a></li>
@@ -74,11 +74,12 @@
   <section class="hero">
     <div class="wrap">
       <span class="eyebrow">Products</span>
-      <h1>All products stand alone, and share one connection</h1>
+      <h1>All products stand alone, and share one platform</h1>
       <p class="lede">
-        The products share one Entra app and one findings store. The admin's consent covers every product's
-        permissions, so buying a second product is an entitlement change and a connector to switch on — not a
-        new permission request, and not another integration project.
+        One console, one findings store, one audit trail, one onboarding flow. Consent is the part that is
+        <strong>not</strong> shared: each product has its own Entra application and asks for its own grant,
+        scoped to what that product needs. So adding a product is a second consent — but it is never a second
+        integration project, and no product carries permissions it has no use for.
       </p>
     </div>
   </section>
@@ -89,10 +90,10 @@
       <div class="suite">
         <div class="suite-head">
           <h2>Three products. <span class="sep">·</span> One platform. <span class="sep">·</span> Zero compromise.</h2>
-          <p>SecurityPortal finds the weaknesses. CompliancePortal turns them into evidence. PosturePortal will
-            put the whole picture on one board. Each is sold on its own; together they close the loop from
-            "what is wrong" to "here is the proof" without a single manual hand-off. SecurityPortal and
-            CompliancePortal are running today; PosturePortal is coming soon.</p>
+          <p>SecurityPortal finds the weaknesses. CompliancePortal turns them into evidence. PosturePortal
+            puts the whole picture on one board. Each is sold on its own; together they close the loop from
+            "what is wrong" to "here is the proof" without a single manual hand-off. All three are
+            running today.</p>
         </div>
         <div class="grid grid-3">
           <article class="pcard" style="--tone: var(--t-security)">
@@ -115,7 +116,7 @@
 
           <article class="pcard" style="--tone: var(--t-posture)">
             <span class="kicker">Single pane</span>
-            <h3><a href="postureportal.html">PosturePortal</a> <span class="status soon">Coming soon</span></h3>
+            <h3><a href="postureportal.html">PosturePortal</a> <span class="status built">Built</span></h3>
             <p>Read-only by design. Aggregates findings, risk scores, trends, connector health and coverage from
               every product into one per-tenant and fleet-wide board, with saved views and annotations for client
               and board reporting.</p>
@@ -131,9 +132,8 @@
     <div class="wrap">
       <div class="section-head">
         <h2>And five that stand on their own</h2>
-        <p>Each of these is a complete answer to a question you are probably already being asked — and each one feeds the
-          same shared findings store as everything else. ShareCare, WebScan and MailTrust are available now; Dredd and
-          ConditionalAccessPortal are coming soon.</p>
+        <p>Each of these is a complete answer to a question you are probably already being asked — and each one
+          feeds the same shared findings store as everything else. All five are running today.</p>
       </div>
 
       <div class="grid grid-3">
@@ -165,20 +165,19 @@
 
         <article class="pcard" style="--tone: var(--t-dredd)">
           <span class="kicker">Drift governance</span>
-          <h3><a href="dredd.html">Dredd</a> <span class="status soon">Coming soon</span></h3>
+          <h3><a href="dredd.html">Dredd</a> <span class="status built">Built</span></h3>
           <p>Your approved configuration as a versioned baseline. Every deviation becomes a finding with two
             answers: revert it, or ratify it into the baseline. Both are recorded, attributed and versioned.</p>
           <a class="arrow-link" href="dredd.html">Dredd</a>
         </article>
-      </div>
 
-      <div class="grid grid-3" style="margin-top:1.15rem">
-        <article class="pcard soon" style="--tone: var(--t-soon)">
-          <span class="kicker">Coming soon</span>
-          <h3>ConditionalAccessPortal <span class="status soon">Coming soon</span></h3>
+        <article class="pcard" style="--tone: var(--t-condaccess)">
+          <span class="kicker">Policy governance</span>
+          <h3>ConditionalAccessPortal <span class="status built">Built</span></h3>
           <p>Conditional Access policy inventory and metering, baseline coverage gaps, and approval-gated policy
-            write-back — on the same Visibility / Governance / Automation ladder as the rest. It exists in the
-            platform catalog, and it is not yet available to buy.</p>
+            write-back — on the same Visibility / Governance / Automation ladder as the rest. Its Entra app asks
+            for read scope only until write-back is consented separately. Running today; its own page on this
+            site is still being written.</p>
         </article>
       </div>
     </div>
@@ -218,7 +217,7 @@
               <td>No — it maps, scores, evidences and attests</td>
             </tr>
             <tr>
-              <td><a href="postureportal.html">PosturePortal</a> <span class="status soon">Soon</span></td>
+              <td><a href="postureportal.html">PosturePortal</a></td>
               <td>So what? What do I show the client or the board?</td>
               <td>No — read-only by design</td>
             </tr>
@@ -228,21 +227,22 @@
               <td>Yes — DNS write-back on the Automation rung</td>
             </tr>
             <tr>
-              <td><a href="dredd.html">Dredd</a> <span class="status soon">Soon</span></td>
+              <td><a href="dredd.html">Dredd</a></td>
               <td>What changed since we approved this, and who ratified it?</td>
               <td>Yes — approval-gated restore of the approved state</td>
             </tr>
             <tr>
-              <td>ConditionalAccessPortal <span class="status soon">Soon</span></td>
+              <td>ConditionalAccessPortal</td>
               <td>Do our Conditional Access policies actually cover what we think?</td>
               <td>Yes — approval-gated policy write-back</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <p class="small dim" style="margin-top:1rem">"Built" means the capability exists and runs today.
-        "Coming soon" means it is not yet available to buy — the page describes what it does and what is still
-        outstanding. We would rather label that plainly than let you find out in month two.</p>
+      <p class="small dim" style="margin-top:1rem">"Built" means the capability exists and runs today. Every
+        product on this page is built. Where a product is younger than the others, or a plane is detected but
+        not yet remediable, its own page says so — we would rather label that plainly than let you find out in
+        month two.</p>
     </div>
   </section>
 

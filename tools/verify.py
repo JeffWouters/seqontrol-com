@@ -169,9 +169,26 @@ CONTENT_RULES = [
     (r"\b\d+\s?%\s?(off|discount)", "a discount percentage"),
     (r"testimonial|customer logo|reference customer|pre-revenue|no customers",
      "a customer reference or a statement about their absence"),
-    (r"consents once, not once per product|never means going back through onboarding"
-     r"|without re-onboarding|no second consent",
-     "the consent overclaim (consent is per connector — see README)"),
+    # The consent overclaim has now come back twice, each time in a phrasing the
+    # previous rule did not match. Consent is PER PRODUCT: each product has its
+    # own Entra app, verified in AppHost.cs, Connectors/Program.cs and Dredd's
+    # GraphDirectoryRefResolver. So this matches the *shape* of the claim rather
+    # than the wording that happened to be used last time.
+    (r"consents? once|one Entra app(?! per product)|single Entra app"
+     r"|one consent|consent covers (every|all)|covers every product's"
+     r"|never asks (them |the admin )?for new permissions"
+     r"|not (another|a second) trip through onboarding|without re-onboarding"
+     r"|no second consent|share one connection|same connection",
+     "the consent overclaim — each product has its own Entra app and its own "
+     "consent (see README, and the code references in the rule above)"),
+    # Four products write into the customer's tenant: Security's
+    # RemediationEngine, ConditionalAccess's PolicyWriteBackService, MailTrust's
+    # DnsAutomationService and ShareCare's remediation. "Read-only" is true of a
+    # scan, of the Visibility rung and of PosturePortal — never of the platform.
+    (r"app-only and read-only|platform is read-only|everything is read-only"
+     r"|entirely read-only|wholly read-only",
+     "a platform-wide read-only claim — four products write to the tenant; "
+     "scope it to a scan, to the Visibility rung, or to PosturePortal"),
 ]
 
 

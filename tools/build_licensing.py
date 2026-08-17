@@ -66,13 +66,16 @@ def tech(groups):
 PRODUCTS = [
     dict(
         key="sharecare", name="ShareCare", tone="--t-sharecare", status=None,
-        counted="Counted per Microsoft 365 user &middot; 25-user minimum",
+        counted="Counted per Microsoft 365 user &middot; 25-user minimum &middot; $2 / $4 / $8 per user, per month",
         tech=[("Microsoft 365", [("SharePoint", 1), ("OneDrive", 1), ("Teams", 1),
                                  ("Entra ID app consents", 1), ("Exchange Online forwarding", 1),
                                  ("Power Platform", 1), ("Power BI", 1)]),
               ("Beyond Microsoft 365", [("Box", 1), ("Slack Connect", 1), ("Google Workspace — roadmap", 0)])],
         cols=LADDER,
-        rows=["Cadence",
+        rows=["Price",
+              ("Per Microsoft 365 user, per month", ["$2", "$4", "$8"]),
+              ("At 100 users, per month", ["$200", "$400", "$800"]),
+              "Cadence",
               ("On-demand scan, whenever you want one", [Y, Y, Y]),
               ("Scheduled scan cadence", ["Daily", "Every 6 hours", "Hourly"]),
               "Inventory and detection",
@@ -329,7 +332,8 @@ SECTION = """  <!-- ---------------------------------------------------------- p
           <table>
             <thead><tr><th scope="col">Term</th><th scope="col">What it does</th></tr></thead>
             <tbody>
-              <tr><td>Platform minimum</td><td>A monthly floor on the total — covers tenancy, auth, audit, findings, reporting and scheduling</td></tr>
+              <tr><td>Platform minimum</td><td>$99 a month on the total, as greater-of rather than added on top — covers tenancy, auth, audit, findings, reporting and scheduling</td></tr>
+              <tr><td>Volume</td><td>Less 10 per cent above 100 users, less 20 per cent above 500, less 30 per cent above 2,000</td></tr>
               <tr><td>Suite discount</td><td>Taking all products costs meaningfully less than the sum of the parts</td></tr>
               <tr><td>Annual or monthly</td><td>A payment term, not a discount — a year costs twelve months</td></tr>
               <tr><td>Provider pooling</td><td>Users and domains pool across managed tenants, with a per-tenant floor applied as greater-of</td></tr>

@@ -152,19 +152,51 @@ PAGES = {
              "how to get a real number against your own estate.",
         eyebrow="Pricing",
         h1="What sets your number",
-        lede="No published list price, and here is the honest reason why — plus everything that "
-             "determines what you would actually pay, so you can size it before you ask.",
+        lede="ShareCare is listed in full. Everything else is quoted, and this page says which is "
+             "which — plus every factor that moves the number, so you can size it before you ask.",
         form=dict(topic="Pricing for my estate",
                   button="Get a real number",
                   estate_label="Your estate",
                   estate_hint="e.g. 150 users, 2 domains — or 60 managed tenants"),
         body="""
-      <h2>Why there is no price on this page</h2>
-      <p>Because we would be guessing, and you would hold us to the guess. The pricing model is settled;
-        the levels are still being set against real estates rather than against a spreadsheet. Publishing
-        a number we expect to move would be the kind of thing this site otherwise refuses to do.</p>
-      <p>What we will not do is make you sit through a call to find out whether this is a four-figure or
-        a five-figure decision. Ask, and you get a number back — usually the same working day.</p>
+      <h2>ShareCare, in figures</h2>
+      <p>This page carried no numbers for a while, for a stated reason: the model was settled but the levels
+        were not, and publishing a figure we expected to move is the kind of thing this site refuses to do.
+        The levels are now set, so here they are.</p>
+      <div class="table-wrap table-scroll" tabindex="0">
+        <table class="matrix">
+          <thead>
+            <tr>
+              <th scope="col">Per Microsoft 365 user, per month</th>
+              <th class="rung-head" scope="col">Visibility<small>see it</small></th>
+              <th class="rung-head" scope="col">Governance<small>govern it</small></th>
+              <th class="rung-head" scope="col">Automation<small>act on it</small></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">List</th><td>$2</td><td>$4</td><td>$8</td></tr>
+            <tr><th scope="row">100 users</th><td>$200</td><td>$400</td><td>$800</td></tr>
+            <tr><th scope="row">500 users, less 10 per cent</th><td>$900</td><td>$1,800</td><td>$3,600</td></tr>
+            <tr><th scope="row">2,000 users, less 20 per cent</th><td>$3,200</td><td>$6,400</td><td>$12,800</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small dim">Volume: less 10 per cent above 100 users, less 20 per cent above 500, less 30 per
+        cent above 2,000. A year costs twelve months — see <a href="#never">what never moves it</a>.</p>
+
+      <div class="note plain">
+        <h3>The floor, before you do the multiplication</h3>
+        <p class="mb0">A <strong>monthly platform minimum of $99</strong> applies to the total. It covers the
+          tenancy, auth, audit trail, findings store, reporting and scheduling that every product runs on, and
+          it is charged as greater-of rather than added on top. In practice it only bites on Visibility, and
+          only below 50 users — a 30-user tenant computes $60 and pays $99. On Governance and Automation the
+          25-user minimum already clears it, so the per-user arithmetic is the whole bill. Better to hear that
+          here than at quote time.</p>
+      </div>
+
+      <p>Every other product is quoted rather than listed. Not evasion — those levels genuinely are still
+        being set against real estates, and we would rather say so than publish a number we expect to move.
+        Ask, and you get one back, usually the same working day.</p>
 
       <h2>What each product counts</h2>
       <div class="table-wrap table-scroll" tabindex="0">
@@ -181,11 +213,9 @@ PAGES = {
         </table>
       </div>
 
-      <p>Two floors sit under all of that, and they are easier to hear now than at quote time. There is a
-        <strong>monthly platform minimum</strong> on the total, which covers the tenancy, auth, audit,
-        findings, reporting and scheduling every product runs on. And WebScan on its own carries its own
-        small floor, because a five-site licence on its own does not cover the platform underneath it.
-        Neither is a surprise line: ask for a quote and both are in the number you get back.</p>
+      <p>WebScan carries a small floor of its own on top of that, because a five-site licence alone does not
+        cover the platform underneath it. Like the platform minimum, it is in the number you get back rather
+        than a line you discover later.</p>
 
       <h2>What moves the number</h2>
       <ul>
@@ -197,7 +227,7 @@ PAGES = {
           per-tenant floor applied as greater-of rather than added on top.</li>
       </ul>
 
-      <h2>What never moves it</h2>
+      <h2 id="never">What never moves it</h2>
       <p>How often you scan, how many findings you have, how much you remediate, or how much evidence you
         export. None of those are metered, deliberately — charging for them would teach you to look less
         often, which is the one behaviour this product exists to prevent.</p>

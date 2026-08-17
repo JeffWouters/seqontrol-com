@@ -68,8 +68,8 @@ META = {
         "Evidence auditors accept"),
     "pricing.html": (
         "SeQontrol - Pricing - What sets your number",
-        "How SeQontrol is priced: what each product counts, what makes a quote go up or down, and how "
-        "to get a real number against your own estate.",
+        "ShareCare priced in full, per user per month, with the platform floor and volume bands "
+        "stated — and what each of the other products counts.",
         "Pricing"),
     "spoofing-report.html": (
         "SeQontrol - Free report - Who is sending as you",

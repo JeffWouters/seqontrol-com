@@ -165,7 +165,11 @@ def check_a11y(page: str, src: str) -> None:
 # Each rule is a decision made deliberately; see README "Content rules".
 CONTENT_RULES = [
     (r"\bCIS\b|CIS-[A-Z]", "CIS framework reference (site names other frameworks only)"),
-    (r"\$\s?\d", "a price (the site carries no figures)"),
+    # Prices are published deliberately, and only where a buyer goes looking
+    # for them. Everywhere else a figure is a leak — a number in a product
+    # page or the home hero ages badly and contradicts the two pages that
+    # are maintained. PRICE_PAGES below is the allowlist.
+    (r"\$\s?\d", "a price outside the pages that carry pricing"),
     (r"\b\d+\s?%\s?(off|discount)", "a discount percentage"),
     (r"testimonial|customer logo|reference customer|pre-revenue|no customers",
      "a customer reference or a statement about their absence"),
@@ -192,9 +196,17 @@ CONTENT_RULES = [
 ]
 
 
+# The only two pages allowed to carry figures. Both are generated, so the
+# numbers live in one place each and cannot drift apart by hand.
+PRICE_PAGES = {"pricing.html", "licensing.html"}
+
+
 def check_content(page: str, src: str) -> None:
+    rel = os.path.relpath(page, ROOT).replace(os.sep, "/")
     text = re.sub(r"<[^>]+>", " ", src)
     for pattern, why in CONTENT_RULES:
+        if pattern.startswith(r"\$") and rel in PRICE_PAGES:
+            continue
         m = re.search(pattern, text, re.IGNORECASE)
         if m:
             fail(page, f"content rule: {why} — found {m.group(0)!r}")

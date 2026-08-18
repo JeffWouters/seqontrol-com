@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SeQontrol - Pricing - What sets your number</title>
-<meta name="description" content="ShareCare priced in full, per user per month, with the platform floor and volume bands stated — and what each of the other products counts.">
+<meta name="description" content="ShareCare and WebScan priced in full, with the platform floor, the WebScan-only minimum and the volume bands stated — and what each other product counts.">
 <link rel="canonical" href="https://seqontrol.com/pricing.html">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="SeQontrol">
 <meta property="og:locale" content="en">
 <meta property="og:title" content="SeQontrol - Pricing - What sets your number">
-<meta property="og:description" content="ShareCare priced in full, per user per month, with the platform floor and volume bands stated — and what each of the other products counts.">
+<meta property="og:description" content="ShareCare and WebScan priced in full, with the platform floor, the WebScan-only minimum and the volume bands stated — and what each other product counts.">
 <meta property="og:url" content="https://seqontrol.com/pricing.html">
 <meta property="og:image" content="https://seqontrol.com/assets/og-card.png">
 <meta property="og:image:width" content="1200">
@@ -76,7 +76,7 @@
   <section>
     <div class="wrap wrap-narrow">
 
-      <h2>ShareCare, in figures</h2>
+      <h2 id="figures">ShareCare and WebScan, in figures</h2>
       <p>This page carried no numbers for a while, for a stated reason: the model was settled but the levels
         were not, and publishing a figure we expected to move is the kind of thing this site refuses to do.
         The levels are now set, so here they are.</p>
@@ -91,10 +91,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr><th scope="row">List</th><td>$2</td><td>$4</td><td>$8</td></tr>
-            <tr><th scope="row">100 users</th><td>$200</td><td>$400</td><td>$800</td></tr>
-            <tr><th scope="row">500 users, less 10 per cent</th><td>$900</td><td>$1,800</td><td>$3,600</td></tr>
-            <tr><th scope="row">2,000 users, less 20 per cent</th><td>$3,200</td><td>$6,400</td><td>$12,800</td></tr>
+            <tr><th scope="row">List</th><td>$2</td><td>$3.50</td><td>$5</td></tr>
+            <tr><th scope="row">100 users</th><td>$200</td><td>$350</td><td>$500</td></tr>
+            <tr><th scope="row">500 users, less 10 per cent</th><td>$900</td><td>$1,575</td><td>$2,250</td></tr>
+            <tr><th scope="row">2,000 users, less 20 per cent</th><td>$3,200</td><td>$5,600</td><td>$8,000</td></tr>
           </tbody>
         </table>
       </div>
@@ -105,10 +105,41 @@
         <h3>The floor, before you do the multiplication</h3>
         <p class="mb0">A <strong>monthly platform minimum of $99</strong> applies to the total. It covers the
           tenancy, auth, audit trail, findings store, reporting and scheduling that every product runs on, and
-          it is charged as greater-of rather than added on top. In practice it only bites on Visibility, and
-          only below 50 users — a 30-user tenant computes $60 and pays $99. On Governance and Automation the
-          25-user minimum already clears it, so the per-user arithmetic is the whole bill. Better to hear that
-          here than at quote time.</p>
+          it is charged as greater-of rather than added on top. Where it bites: on Visibility up to 49 users,
+          on Governance up to 28, and on Automation never — the 25-user minimum already clears it there. A
+          30-user tenant on Visibility computes $60 and pays $99. Better to hear that here than at quote
+          time.</p>
+      </div>
+
+      <h3 style="margin-top:2.6rem">WebScan — per monitored site, per month</h3>
+      <p>Priced the other way round from everything else here. The scan is free on every tenant, forever,
+        with no site count attached to it. What is counted is the sites you asked us to keep.</p>
+      <div class="table-wrap table-scroll" tabindex="0">
+        <table class="matrix">
+          <thead>
+            <tr>
+              <th scope="col">Per monitored site, per month</th>
+              <th class="rung-head" scope="col">Free<small>on every tenant</small></th>
+              <th class="rung-head" scope="col">Monitoring<small>keep it</small></th>
+              <th class="rung-head" scope="col">Automation<small>keep it automatically</small></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">List</th><td>$0</td><td>$4</td><td>$8</td></tr>
+            <tr><th scope="row">5 sites, the minimum</th><td>$0</td><td>$20</td><td>$40</td></tr>
+            <tr><th scope="row">25 sites</th><td>$0</td><td>$100</td><td>$200</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small dim">Five-site minimum on either paid rung. Scanning is never counted — only sites you
+        chose to keep, once per billing period each, however often they are scanned.</p>
+
+      <div class="note plain">
+        <h3>A WebScan-only tenant does not pay the $99</h3>
+        <p class="mb0">It pays <strong>$25 a month</strong> instead. A tenant that arrived through a free scan
+          is one we would not otherwise have, and quoting $99 against $20 of monitoring converts nobody — the
+          floor would eat the funnel it sits downstream of. Add any second product and the $99 applies from
+          that point.</p>
       </div>
 
       <p>Every other product is quoted rather than listed. Not evasion — those levels genuinely are still
@@ -130,11 +161,8 @@
         </table>
       </div>
 
-      <p><strong>A WebScan-only tenant is the exception</strong>, and it goes the other way: the $99 does not
-        apply. A tenant that arrived through a free scan is one we would not otherwise have, and quoting $99
-        against a couple of dozen dollars of monitoring converts nobody — the floor would eat the funnel it
-        sits downstream of. WebScan on its own carries a smaller minimum instead. Add any second product and
-        the $99 applies from that point.</p>
+      <p>WebScan is the exception to that floor, and it goes the other way — see
+        <a href="#figures">its figures above</a>.</p>
 
       <h2>What moves the number</h2>
       <ul>

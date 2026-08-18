@@ -68,8 +68,8 @@ META = {
         "Evidence auditors accept"),
     "pricing.html": (
         "SeQontrol - Pricing - What sets your number",
-        "ShareCare priced in full, per user per month, with the platform floor and volume bands "
-        "stated — and what each of the other products counts.",
+        "ShareCare and WebScan priced in full, with the platform floor, the WebScan-only minimum and "
+        "the volume bands stated — and what each other product counts.",
         "Pricing"),
     "spoofing-report.html": (
         "SeQontrol - Free report - Who is sending as you",

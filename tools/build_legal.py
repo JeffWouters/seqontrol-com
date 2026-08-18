@@ -204,7 +204,7 @@ PAGES = {
               <th scope="col">Per monitored site, per month</th>
               <th class="rung-head" scope="col">Free<small>on every tenant</small></th>
               <th class="rung-head" scope="col">Monitoring<small>keep it</small></th>
-              <th class="rung-head" scope="col">Automation<small>keep it automatically</small></th>
+              <th class="rung-head" scope="col">Continuous<small>on your cadence</small></th>
             </tr>
           </thead>
           <tbody>
@@ -237,7 +237,7 @@ PAGES = {
             <tr><th scope="row">ShareCare</th><td>Microsoft 365 users, with a 25-user minimum</td></tr>
             <tr><th scope="row">SecurityPortal</th><td>Users — or included with any ShareCare tier</td></tr>
             <tr><th scope="row">CompliancePortal</th><td>Per tenant, banded by how many frameworks are in scope</td></tr>
-            <tr><th scope="row">WebScan</th><td>Free on every tenant; Monitoring and Automation per monitored site, five-site minimum</td></tr>
+            <tr><th scope="row">WebScan</th><td>Free on every tenant; Monitoring and Continuous per monitored site, five-site minimum</td></tr>
             <tr><th scope="row">MailTrust</th><td>Per domain</td></tr>
             <tr><th scope="row">PosturePortal</th><td>Bundled, never a separate line</td></tr>
           </tbody>

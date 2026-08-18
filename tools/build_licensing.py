@@ -20,7 +20,7 @@ BANDS = [("1 framework", "single regime"), ("3 frameworks", "the usual mix"), ("
 ONE = [("Included", "one tier")]
 # WebScan's ladder is not see -> govern -> act. It is scan -> keep -> keep
 # automatically: the free rung runs everything and remembers nothing.
-KEPT = [("Free", "on every tenant"), ("Monitoring", "per site"), ("Automation", "per site")]
+KEPT = [("Free", "on every tenant"), ("Monitoring", "per site"), ("Continuous", "per site")]
 
 
 def rows(items, cols):
@@ -170,7 +170,7 @@ PRODUCTS = [
               ("Alerting when discovery turns up a new asset", [N, Y, Y]),
               ("Alerting when a passing check regresses", [N, Y, Y]),
               "Running without you",
-              ("Recurring scheduled scans", [N, N, Y]),
+              ("Scheduled scans", ["&mdash;", "Monthly", "A cadence you set"]),
               "Minimums",
               ("Monthly minimum for a WebScan-only tenant", ["&mdash;", "$25", "$25"]),
               "Write access",
@@ -181,11 +181,15 @@ PRODUCTS = [
               "ranges on somebody's blocklist. The ceiling is what lets the tier stay genuinely free rather than "
               "becoming a trial with an expiry date. Register your own site, check it as often as a working day "
               "needs, and pay only when you want more than one or want it remembered.<br><br>"
-              "<strong>Two paid rungs, not three, and the gap between them is small on purpose.</strong> There is "
-              "nothing between <em>keep it</em> and <em>keep it automatically</em> worth a rung of its own. "
-              "Monitoring is where a site becomes a thing we remember — history, findings, waivers, an audit "
-              "trail, and the daily watches that warn you about a certificate before it lapses rather than after. "
-              "Automation adds one thing: the scans run themselves.<br><br>"
+              "<strong>Two paid rungs, and the difference is how often, not how much.</strong> Monitoring is where "
+              "a site becomes a thing we remember — history, findings, waivers, an audit trail, and the daily "
+              "watches that warn you about a certificate before it lapses rather than after. It scans monthly, "
+              "because retained history is worth very little if nothing generates it. Continuous is the same "
+              "product on a cadence you choose.<br><br>"
+              "<strong>Not called Automation, deliberately.</strong> On every other product here that word "
+              "means the rung that writes to your tenant, and it is a separate consent for that reason. "
+              "WebScan never writes anywhere — so borrowing the word would have made a safety promise mean "
+              "two different things on one page.<br><br>"
               "<strong>The free tier is the whole scanner, and that is deliberate.</strong> Nothing is held back "
               "to make the paid version look better — the free tier runs every check and shows every result. "
               "What it does not do is remember. There is no history, no schedule, no evidence and no audit "

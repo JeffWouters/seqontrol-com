@@ -76,225 +76,9 @@
   <section>
     <div class="wrap wrap-narrow">
 
-      <h2 id="figures">What it costs, product by product</h2>
-      <p>This page carried no numbers for a while, for a stated reason: the model was settled but the levels
-        were not, and publishing a figure we expected to move is the kind of thing this site refuses to do.
-        The levels are now set, so here they are.</p>
-      <div class="table-wrap table-scroll" tabindex="0">
-        <table class="matrix">
-          <thead>
-            <tr>
-              <th scope="col">Per Microsoft 365 user, per month</th>
-              <th class="rung-head" scope="col">Visibility<small>see it</small></th>
-              <th class="rung-head" scope="col">Governance<small>govern it</small></th>
-              <th class="rung-head" scope="col">Automation<small>act on it</small></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><th scope="row">List</th><td>$2</td><td>$4</td><td>$6.50</td></tr>
-            <tr><th scope="row">100 users</th><td>$200</td><td>$400</td><td>$650</td></tr>
-            <tr><th scope="row">500 users, less 10 per cent</th><td>$900</td><td>$1,800</td><td>$2,925</td></tr>
-            <tr><th scope="row">2,000 users, less 20 per cent</th><td>$3,200</td><td>$6,400</td><td>$10,400</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="small dim">Volume: less 10 per cent above 100 users, less 20 per cent above 500, less 30 per
-        cent above 2,000. A year costs twelve months — see <a href="#never">what never moves it</a>.</p>
-
-      <div class="note plain">
-        <h3>The floor, before you do the multiplication</h3>
-        <p class="mb0">A <strong>monthly platform minimum of $99</strong> applies to the total. It covers the
-          tenancy, auth, audit trail, findings store, reporting and scheduling that every product runs on, and
-          it is charged as greater-of rather than added on top. It bites on Visibility up to 49 users and
-          nowhere else — on Governance and Automation the 25-user minimum already clears it. A 30-user tenant
-          on Visibility computes $60 and pays $99. Better to hear that here than at quote time.</p>
-      </div>
-
-      <h3 style="margin-top:2.6rem">WebScan — per monitored site, per month</h3>
-      <p>Priced the other way round from everything else here. The scan is free on every tenant, forever,
-        with no site count attached to it. What is counted is the sites you asked us to keep.</p>
-      <div class="table-wrap table-scroll" tabindex="0">
-        <table class="matrix">
-          <thead>
-            <tr>
-              <th scope="col">Per monitored site, per month</th>
-              <th class="rung-head" scope="col">Free<small>on every tenant</small></th>
-              <th class="rung-head" scope="col">Pro<small>kept and scheduled</small></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><th scope="row">List</th><td>$0</td><td>$20</td></tr>
-            <tr><th scope="row">5 sites, the minimum</th><td>$0</td><td>$100</td></tr>
-            <tr><th scope="row">25 sites</th><td>$0</td><td>$500</td></tr>
-            <tr><th scope="row">Included with any ShareCare or SecurityPortal tier</th><td>&mdash;</td><td>3 sites</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="small dim">One paid licence, not a ladder — keeping a scan and scheduling it were separate
-        rungs, and that sold a distinction nobody makes: a saved site nobody re-scans is a stale record, and a
-        schedule that keeps nothing is a cron job with no output. Five-site minimum. Scanning is never
-        counted — only sites you chose to keep, once per billing period each, however often they run.</p>
-
-      <div class="note plain">
-        <h3>A WebScan-only tenant does not pay the $99</h3>
-        <p class="mb0">The five-site minimum is the floor, and nothing else applies. A tenant that arrived
-          through a free scan is one we would not otherwise have, and putting a platform minimum in front of
-          them would eat the funnel it sits downstream of. Add any second product and the $99 applies from
-          that point.</p>
-      </div>
-
-      <h3 style="margin-top:2.6rem">MailTrust — per domain, per month</h3>
-      <div class="table-wrap table-scroll" tabindex="0">
-        <table class="matrix">
-          <thead>
-            <tr>
-              <th scope="col">Per domain, per month</th>
-              <th class="rung-head" scope="col">Visibility<small>see it</small></th>
-              <th class="rung-head" scope="col">Governance<small>govern it</small></th>
-              <th class="rung-head" scope="col">Automation<small>act on it</small></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><th scope="row">Sending domain</th><td>$15</td><td>$30</td><td>$40</td></tr>
-            <tr><th scope="row">Parked domain</th><td>$3</td><td>$3</td><td>$3</td></tr>
-            <tr><th scope="row">3 sending, 40 parked</th><td>$120</td><td>$165</td><td>$195</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="small dim">Five parked domains included with every sending domain — the example above prices
-        the remaining 25.</p>
-
-      <div class="note plain">
-        <h3>Why a parked domain costs $3 and not $15</h3>
-        <p>Most organisations own far more domains than they send from: acquisitions, retired brands,
-          defensive and typo registrations. Those are exactly the ones worth spoofing — no real mail flows,
-          so nothing breaks and nobody notices.</p>
-        <p class="mb0">Charging full rate for them makes the rational decision <em>protect fewer domains</em>,
-          which is the behaviour this product exists to prevent. A parked domain needs a policy, a null MX and
-          a daily check that nobody quietly changed them, and it sends us almost no report volume — so it is
-          priced for what it is. The classification is measured, not asserted: a domain is parked when it has
-          produced no DMARC report volume and no DKIM signing for a full period, and it reclassifies itself
-          the moment you start sending from it.</p>
-      </div>
-
-      <div class="note honest">
-        <h3>What Automation writes, and where it does not</h3>
-        <p class="mb0">DNS write-back is live for <strong>Azure DNS and DNSimple</strong>. Anywhere else,
-          Automation gives you a staged rollout and the exact records to apply yourself — guidance, not
-          automation. That is why the rung is $40 rather than the $50 the capability would be worth if it
-          wrote everywhere. Cloudflare and Route 53 are next, and the price moves when they ship, not before.
-          Better to read that here than to discover it after buying the top rung.</p>
-      </div>
-
-      <h3 style="margin-top:2.6rem">SecurityPortal — per user, per month</h3>
-      <p><strong>$1.50 per user with any ShareCare tier</strong>, which is the usual case, or <strong>$3.50
-        standalone.</strong> Same denominator as ShareCare, so it adds to an existing line rather than starting
-        a new negotiation.</p>
-      <div class="note plain">
-        <h3>A $50 monthly minimum per tenant</h3>
-        <p class="mb0">Charged greater-of, and it exists because roughly half of what this product checks does
-          not shrink with headcount. A 20-seat tenant has about as many Conditional Access policies, app
-          registrations and configuration settings as a 2,000-seat one, and every one of them is evaluated
-          either way. Per-user alone would price a full posture scan of a small tenant at thirty dollars. The
-          floor bites below 34 users; above that the per-user arithmetic is the whole bill.</p>
-      </div>
-
-      <h3 style="margin-top:2.6rem">CompliancePortal — per tenant, per month</h3>
-      <div class="table-wrap table-scroll" tabindex="0">
-        <table class="matrix">
-          <thead>
-            <tr>
-              <th scope="col">Per tenant, per month</th>
-              <th class="rung-head" scope="col">1 framework<small>single regime</small></th>
-              <th class="rung-head" scope="col">3 frameworks<small>the usual mix</small></th>
-              <th class="rung-head" scope="col">Unlimited<small>every regime</small></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><th scope="row">Evidence</th><td>$300</td><td>$600</td><td>$900</td></tr>
-            <tr><th scope="row">Attested</th><td>$450</td><td>$900</td><td>$1,350</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="small dim">Priced per tenant rather than per user, because a framework is the same amount of
-        work to prove whether you have forty people or four hundred.</p>
-
-      <div class="note plain">
-        <h3>Two questions, two axes</h3>
-        <p>How many frameworks you need is <strong>scope</strong>. Whether you want sign-off and automatic
-          capture is <strong>depth</strong>. Those used to share one number, which meant a company doing SOC 2
-          alone had to buy every framework in the catalogue to reach attestation — paying for twenty-three
-          regimes it would never open, to get one capability.</p>
-        <p class="mb0"><strong>Evidence</strong> is the catalogue, the crosswalk, automated probes, assessments,
-          the evidence repository and time-boxed auditor access. <strong>Attested</strong> adds attestation and
-          sign-off with four-eyes and expiry, control ownership, and automated evidence capture — at half again
-          the band price, whichever band you are on.</p>
-      </div>
-
-      <h4 style="margin-top:2.2rem">If you are a provider: pooled framework licences</h4>
-      <p>Per-tenant compliance pricing does not survive a fleet. Sixty clients on the entry band would be
-        $18,000 a month, which is not a price, it is a decline. So for providers the two cost drivers are
-        separated and charged for individually.</p>
-      <div class="table-wrap table-scroll" tabindex="0">
-        <table>
-          <thead><tr><th scope="col">Component</th><th scope="col">Price</th><th scope="col">Why it is charged this way</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">Framework licence, across your whole book</th><td>$750 / framework / month</td><td>Building and maintaining a crosswalk costs the same whether one client uses it or sixty</td></tr>
-            <tr><th scope="row">— or every framework, across your whole book</th><td>$3,000 / month</td><td>For providers who standardise on more than two or three</td></tr>
-            <tr><th scope="row">Per managed tenant — Evidence</th><td>$50 / month</td><td>Probes, evidence and retention are genuinely per client</td></tr>
-            <tr><th scope="row">Per managed tenant — Attested</th><td>$75 / month</td><td>Adds sign-off and automated capture, per client — half again, as it is at every band</td></tr>
-            <tr><th scope="row">Retention</th><td>36 months included &middot; 84 months +$10 / tenant</td><td>Off the framework axis entirely, because a provider on one framework may still need seven years</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="small dim">Minimum ten managed tenants, on a provider agreement. Below that the arithmetic
-        stops describing pooling and starts describing a discount.</p>
-
-      <div class="note plain">
-        <h3>What that comes to</h3>
-        <p class="mb0">Sixty tenants on one framework with sign-off: $750 + 60 &times; $75 =
-          <strong>$5,250 a month</strong>, about $88 a client. Thirty tenants on two frameworks without
-          sign-off: $1,500 + 30 &times; $50 = <strong>$3,000</strong>, $100 a client. The whole catalogue with
-          sign-off across sixty tenants: $3,000 + $4,500 = <strong>$7,500</strong>. Compare the first of those
-          with the $27,000 the same book would cost at per-tenant rates — that gap is not a discount, it is
-          what happens when you stop charging sixty times for one crosswalk.</p>
-      </div>
-
-      <div class="note honest">
-        <h3>Provider-scoped licences are not built yet</h3>
-        <p class="mb0">Entitlements in this platform resolve per tenant. A licence that says "this provider may
-          assess SOC 2 against any client in its book" is a different shape — granted at the provider, enforced
-          at the tenant — and it does not exist in the catalogue today. Until it does, a pooled framework
-          licence is a commercial agreement rather than something the software enforces, and we would rather
-          write that down than let you assume otherwise. The prices above are what you will be quoted; the
-          gate behind them is work in progress.</p>
-      </div>
-
-      <div class="note honest">
-        <h3>Assessments do not run on a schedule yet</h3>
-        <p class="mb0">You raise an assessment when you want one; there is no recurring cadence to buy, and the
-          licence table says so rather than quietly implying otherwise. What <em>is</em> continuous is the
-          evidence underneath it — SecurityPortal, ShareCare, WebScan and MailTrust scan on their own
-          schedules, and their control-tagged findings are what an assessment reuses. So the evidence covers a
-          period even though the assessment is a moment you choose.</p>
-      </div>
-
-      <h3 style="margin-top:2.6rem">ConditionalAccessPortal — per user, per month</h3>
-      <p><strong>$1.50 per user</strong>, on the same denominator and the same $50 monthly tenant minimum as
-        SecurityPortal, because it answers the same question about the same estate. Conditional Access policy
-        inventory, baseline coverage gaps and approval-gated policy write-back. It is running today; its own
-        page on this site is still being written, which is a documentation gap rather than a pricing one.</p>
-
-      <p><a href="products/dredd.html">Dredd</a> is quoted rather than listed.
-        Not evasion — its unit is monitored configuration scope, which is the metric we understand least, and
-        it is being set against real estates rather than guessed. Ask, and you get a number back, usually the
-        same working day.</p>
-      <p><a href="products/postureportal.html">PosturePortal</a> carries no price at all, because it is still
-        in development. It will not be a separate line when it arrives — it connects to nothing and reads the
-        shared findings store — but exactly how it is packaged is unsettled, and a price against something
-        still being built is how a price list stops being worth reading.</p>
-
       <h2>What each product counts</h2>
+      <p>Every product is priced on the thing that actually drives its cost and its value to you. Those are not
+        the same unit, and forcing them into one would misprice most of the portfolio.</p>
       <div class="table-wrap table-scroll" tabindex="0">
         <table>
           <thead><tr><th scope="col">Product</th><th scope="col">Priced on</th></tr></thead>
@@ -302,25 +86,197 @@
             <tr><th scope="row">ShareCare</th><td>Microsoft 365 users, with a 25-user minimum</td></tr>
             <tr><th scope="row">SecurityPortal</th><td>Users, at a lower rate with any ShareCare tier &middot; $50 monthly tenant minimum</td></tr>
             <tr><th scope="row">ConditionalAccessPortal</th><td>Users, on the same terms as SecurityPortal</td></tr>
+            <tr><th scope="row">WebScan</th><td>Monitored sites, five-site minimum &middot; free on every tenant</td></tr>
+            <tr><th scope="row">MailTrust</th><td>Sending domains; parked domains at a lower rate, five included with each</td></tr>
             <tr><th scope="row">CompliancePortal</th><td>Per tenant, banded by how many frameworks are in scope</td></tr>
-            <tr><th scope="row">WebScan</th><td>Free on every tenant; Pro per monitored site, five-site minimum</td></tr>
-            <tr><th scope="row">MailTrust</th><td>Per sending domain; parked domains at a lower rate, five included with each</td></tr>
-            <tr><th scope="row">PosturePortal</th><td>Not yet priced — still in development</td></tr>
+            <tr><th scope="row">Dredd</th><td>Monitored configuration scope &mdash; quoted, not listed</td></tr>
+            <tr><th scope="row">PosturePortal</th><td>Not yet priced &mdash; still in development</td></tr>
           </tbody>
         </table>
       </div>
 
-      <p>WebScan is the exception to that floor, and it goes the other way — see
-        <a href="#figures">its figures above</a>.</p>
+      <h2 id="figures" style="margin-top:3rem">The figures, product by product</h2>
+      <p>Pick the one you are buying. Everything that applies to the whole account &mdash; the floor, the
+        volume bands, and what does and does not move your number &mdash; is below, outside the tabs, because
+        it applies whichever you pick.</p>
+
+      <div data-tabs class="tabs-v">
+        <div class="tablist" role="tablist" aria-label="Products">
+          <button type="button" role="tab" id="tab-sharecare" aria-controls="panel-sharecare" aria-selected="true" tabindex="0" style="--tone: var(--t-sharecare)">ShareCare</button>
+          <button type="button" role="tab" id="tab-security" aria-controls="panel-security" aria-selected="false" tabindex="-1" style="--tone: var(--t-security)">SecurityPortal</button>
+          <button type="button" role="tab" id="tab-condaccess" aria-controls="panel-condaccess" aria-selected="false" tabindex="-1" style="--tone: var(--t-condaccess)">ConditionalAccessPortal</button>
+          <button type="button" role="tab" id="tab-webscan" aria-controls="panel-webscan" aria-selected="false" tabindex="-1" style="--tone: var(--t-webscan)">WebScan</button>
+          <button type="button" role="tab" id="tab-mailtrust" aria-controls="panel-mailtrust" aria-selected="false" tabindex="-1" style="--tone: var(--t-mailtrust)">MailTrust</button>
+          <button type="button" role="tab" id="tab-compliance" aria-controls="panel-compliance" aria-selected="false" tabindex="-1" style="--tone: var(--t-compliance)">CompliancePortal</button>
+          <button type="button" role="tab" id="tab-quoted" aria-controls="panel-quoted" aria-selected="false" tabindex="-1" style="--tone: var(--t-soon)">Quoted and unpriced</button>
+        </div>
+      <div class="product-licence" role="tabpanel" id="panel-sharecare" aria-labelledby="tab-sharecare" tabindex="0" style="--tone: var(--t-sharecare)">
+        <header>
+          <h3>ShareCare</h3>
+          <p class="counted">Per Microsoft 365 user, per month &middot; 25-user minimum</p>
+        </header>
+        <div class="table-wrap table-scroll" tabindex="0">
+          <table class="matrix">
+            <thead>
+              <tr><th scope="col">&nbsp;</th><th class="rung-head" scope="col">Visibility<small>see it</small></th><th class="rung-head" scope="col">Governance<small>govern it</small></th><th class="rung-head" scope="col">Automation<small>act on it</small></th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">List</th><td>$2</td><td>$4</td><td>$6.50</td></tr>
+              <tr><th scope="row">100 users</th><td>$200</td><td>$400</td><td>$650</td></tr>
+              <tr><th scope="row">500 users, less 10 per cent</th><td>$900</td><td>$1,800</td><td>$2,925</td></tr>
+              <tr><th scope="row">2,000 users, less 20 per cent</th><td>$3,200</td><td>$6,400</td><td>$10,400</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="small dim">Volume: less 10 per cent above 100 users, less 20 above 500, less 30 above 2,000.</p>
+        <p class="after">The $99 platform minimum bites on Visibility up to 49 users and nowhere else &mdash; on the paid rungs the 25-user minimum already clears it. What each rung unlocks is on the <a href="licensing.html#sharecare">licensing page</a>.</p>
+      </div>
+      <div class="product-licence" role="tabpanel" id="panel-security" aria-labelledby="tab-security" tabindex="0" style="--tone: var(--t-security)">
+        <header>
+          <h3>SecurityPortal</h3>
+          <p class="counted">Per user, per month</p>
+        </header>
+        <p><strong>$1.50 per user with any ShareCare tier</strong>, which is the usual case, or <strong>$3.50 standalone.</strong> Same denominator as ShareCare, so it adds to an existing line rather than starting a new negotiation.</p>
+        <div class="note plain">
+          <h3>A $50 monthly minimum per tenant</h3>
+          <p class="mb0">Charged greater-of, and it exists because roughly half of what this product checks does not shrink with headcount. A 20-seat tenant has about as many Conditional Access policies, app registrations and configuration settings as a 2,000-seat one, and every one of them is evaluated either way. Per-user alone would price a full posture scan of a small tenant at thirty dollars. The floor bites below 34 users; above that the per-user arithmetic is the whole bill.</p>
+        </div>
+        <p class="after">Capabilities on the <a href="licensing.html#securityportal">licensing page</a>.</p>
+      </div>
+      <div class="product-licence" role="tabpanel" id="panel-condaccess" aria-labelledby="tab-condaccess" tabindex="0" style="--tone: var(--t-condaccess)">
+        <header>
+          <h3>ConditionalAccessPortal</h3>
+          <p class="counted">Per user, per month</p>
+        </header>
+        <p><strong>$1.50 per user</strong>, on the same denominator and the same $50 monthly tenant minimum as SecurityPortal, because it answers the same question about the same estate &mdash; Conditional Access policy inventory, baseline coverage gaps and approval-gated policy write-back.</p>
+        <p class="after">It is running today. Its own page on this site is still being written, which is a documentation gap rather than a pricing one.</p>
+      </div>
+      <div class="product-licence" role="tabpanel" id="panel-webscan" aria-labelledby="tab-webscan" tabindex="0" style="--tone: var(--t-webscan)">
+        <header>
+          <h3>WebScan</h3>
+          <p class="counted">Per monitored site, per month &middot; five-site minimum</p>
+        </header>
+        <div class="table-wrap table-scroll" tabindex="0">
+          <table class="matrix">
+            <thead>
+              <tr><th scope="col">&nbsp;</th><th class="rung-head" scope="col">Free<small>on every tenant</small></th><th class="rung-head" scope="col">Pro<small>kept and scheduled</small></th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">List</th><td>$0</td><td>$20</td></tr>
+              <tr><th scope="row">5 sites, the minimum</th><td>$0</td><td>$100</td></tr>
+              <tr><th scope="row">25 sites</th><td>$0</td><td>$500</td></tr>
+              <tr><th scope="row">Included with any ShareCare or SecurityPortal tier</th><td>&mdash;</td><td>3 sites</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="small dim">One paid licence, not a ladder &mdash; keeping a scan and scheduling it were separate rungs, and that sold a distinction nobody makes: a saved site nobody re-scans is a stale record, and a schedule that keeps nothing is a cron job with no output.</p>
+        <div class="note plain">
+          <h3>A WebScan-only tenant pays no platform floor</h3>
+          <p class="mb0">The five-site minimum is the floor and nothing else applies. A tenant that arrived through a free scan is one we would not otherwise have, and putting a platform minimum in front of them would eat the funnel it sits downstream of. Add any second product and the $99 applies from that point.</p>
+        </div>
+        <p class="after">Scanning is never counted &mdash; only sites you chose to keep, once per billing period each, however often they run. <a href="licensing.html#webscan">What the licence includes</a>.</p>
+      </div>
+      <div class="product-licence" role="tabpanel" id="panel-mailtrust" aria-labelledby="tab-mailtrust" tabindex="0" style="--tone: var(--t-mailtrust)">
+        <header>
+          <h3>MailTrust</h3>
+          <p class="counted">Per domain, per month</p>
+        </header>
+        <div class="table-wrap table-scroll" tabindex="0">
+          <table class="matrix">
+            <thead>
+              <tr><th scope="col">&nbsp;</th><th class="rung-head" scope="col">Visibility<small>see it</small></th><th class="rung-head" scope="col">Governance<small>govern it</small></th><th class="rung-head" scope="col">Automation<small>act on it</small></th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Sending domain</th><td>$15</td><td>$30</td><td>$40</td></tr>
+              <tr><th scope="row">Parked domain</th><td>$3</td><td>$3</td><td>$3</td></tr>
+              <tr><th scope="row">3 sending, 40 parked</th><td>$120</td><td>$165</td><td>$195</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="small dim">Five parked domains included with every sending domain &mdash; the example above prices the remaining 25.</p>
+        <div class="note plain">
+          <h3>Why a parked domain costs $3 and not $15</h3>
+          <p>Most organisations own far more domains than they send from: acquisitions, retired brands, defensive and typo registrations. Those are exactly the ones worth spoofing &mdash; no real mail flows, so nothing breaks and nobody notices.</p>
+          <p class="mb0">Charging full rate for them makes the rational decision <em>protect fewer domains</em>, which is the behaviour this product exists to prevent. The classification is measured, not asserted: a domain is parked when it has produced no DMARC report volume and no DKIM signing for a full period, and it reclassifies itself the moment you start sending from it.</p>
+        </div>
+        <div class="note honest">
+          <h3>What Automation writes, and where it does not</h3>
+          <p class="mb0">DNS write-back is live for <strong>Azure DNS and DNSimple</strong>. Anywhere else, Automation gives you a staged rollout and the exact records to apply yourself &mdash; guidance, not automation. That is why the rung is $40 rather than the $50 the capability would be worth if it wrote everywhere. Cloudflare and Route 53 are next, and the price moves when they ship, not before.</p>
+        </div>
+      </div>
+      <div class="product-licence" role="tabpanel" id="panel-compliance" aria-labelledby="tab-compliance" tabindex="0" style="--tone: var(--t-compliance)">
+        <header>
+          <h3>CompliancePortal</h3>
+          <p class="counted">Per tenant, per month &middot; banded by frameworks in scope</p>
+        </header>
+        <div class="table-wrap table-scroll" tabindex="0">
+          <table class="matrix">
+            <thead>
+              <tr><th scope="col">&nbsp;</th><th class="rung-head" scope="col">1 framework<small>single regime</small></th><th class="rung-head" scope="col">3 frameworks<small>the usual mix</small></th><th class="rung-head" scope="col">Unlimited<small>every regime</small></th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Evidence</th><td>$300</td><td>$600</td><td>$900</td></tr>
+              <tr><th scope="row">Attested</th><td>$450</td><td>$900</td><td>$1,350</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="small dim">Priced per tenant rather than per user, because a framework is the same amount of work to prove whether you have forty people or four hundred.</p>
+        <div class="note plain">
+          <h3>Two questions, two axes</h3>
+          <p>How many frameworks you need is <strong>scope</strong>. Whether you want sign-off and automatic capture is <strong>depth</strong>. Those used to share one number, which meant a company doing SOC 2 alone had to buy every framework in the catalogue to reach attestation &mdash; paying for twenty-three regimes it would never open, to get one capability.</p>
+          <p class="mb0"><strong>Evidence</strong> is the catalogue, the crosswalk, automated probes, assessments, the evidence repository and time-boxed auditor access. <strong>Attested</strong> adds attestation and sign-off with four-eyes and expiry, control ownership, and automated evidence capture &mdash; at half again the band price, whichever band you are on.</p>
+        </div>
+        <h4 style="margin-top:2rem">If you are a provider: pooled framework licences</h4>
+        <p>Per-tenant compliance pricing does not survive a fleet. Sixty clients on the entry band would be $18,000 a month, which is not a price, it is a decline. So for providers the two cost drivers are separated and charged for individually.</p>
+        <div class="table-wrap table-scroll" tabindex="0">
+          <table class="matrix">
+            <thead>
+              <tr><th scope="col">&nbsp;</th><th class="rung-head" scope="col">Price<small>per month</small></th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Framework licence, across your whole book</th><td>$750</td></tr>
+              <tr><th scope="row">&mdash; or every framework, across your whole book</th><td>$3,000</td></tr>
+              <tr><th scope="row">Per managed tenant &mdash; Evidence</th><td>$50</td></tr>
+              <tr><th scope="row">Per managed tenant &mdash; Attested</th><td>$75</td></tr>
+              <tr><th scope="row">Retention</th><td>36 months included &middot; 84 months +$10 / tenant</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="small dim">Minimum ten managed tenants, on a provider agreement. Below that the arithmetic stops describing pooling and starts describing a discount.</p>
+        <div class="note plain">
+          <h3>What that comes to</h3>
+          <p class="mb0">Sixty tenants on one framework with sign-off: $750 + 60 &times; $75 = <strong>$5,250 a month</strong>, about $88 a client. Thirty tenants on two frameworks without sign-off: $1,500 + 30 &times; $50 = <strong>$3,000</strong>, $100 a client. Compare the first with the $27,000 the same book would cost at per-tenant rates &mdash; that gap is not a discount, it is what happens when you stop charging sixty times for one crosswalk.</p>
+        </div>
+        <div class="note honest">
+          <h3>Two things this page will not pretend about</h3>
+          <p><strong>Provider-scoped licences are not built.</strong> Entitlements in this platform resolve per tenant. A licence saying "this provider may assess SOC 2 against any client in its book" is granted at the provider and enforced at the tenant, and that shape does not exist in the catalogue today. The prices above are what you will be quoted; the gate behind them is work in progress.</p>
+          <p class="mb0"><strong>Assessments do not run on a schedule yet.</strong> You raise one when you want one. What <em>is</em> continuous is the evidence underneath &mdash; SecurityPortal, ShareCare, WebScan and MailTrust scan on their own schedules, and their control-tagged findings are what an assessment reuses.</p>
+        </div>
+      </div>
+      <div class="product-licence" role="tabpanel" id="panel-quoted" aria-labelledby="tab-quoted" tabindex="0" style="--tone: var(--t-soon)">
+        <header>
+          <h3>Dredd and PosturePortal</h3>
+          <p class="counted">One quoted, one not yet priced</p>
+        </header>
+        <p><strong><a href="products/dredd.html">Dredd</a> is quoted rather than listed.</strong> Its unit is monitored configuration scope, which is the metric this model understands least, and it is being set against real estates rather than guessed. Ask, and you get a number back, usually the same working day.</p>
+        <p><strong><a href="products/postureportal.html">PosturePortal</a> carries no price at all</strong>, because it is still in development. It will not be a separate line when it arrives &mdash; it connects to nothing and reads the shared findings store &mdash; but exactly how it is packaged is unsettled, and a price against something still being built is how a price list stops being worth reading.</p>
+        <p class="after">Everything else on this page is listed in full.</p>
+      </div>
+      </div>
+
+      <h2 style="margin-top:3rem">The floor under all of it</h2>
+      <p>A <strong>monthly platform minimum of $99</strong> applies to the total. It covers the tenancy, auth,
+        audit trail, findings store, reporting and scheduling that every product runs on, and it is charged as
+        <strong>greater-of rather than added on top</strong>. A 30-user tenant on ShareCare Visibility computes
+        $60 and pays $99. A WebScan-only tenant is the exception and pays no platform floor at all.</p>
 
       <h2>What moves the number</h2>
       <ul>
-        <li><strong>Which rung you buy.</strong> Visibility, Governance or Automation — see
-          <a href="licensing.html">what each licence includes</a>.</li>
+        <li><strong>Which rung you buy.</strong> See <a href="licensing.html">what each licence includes</a>.</li>
         <li><strong>How big the estate is</strong>, in the unit that product counts.</li>
-        <li><strong>Whether you are a provider.</strong> Users, sites and domains pool across managed
-          tenants, compliance frameworks are licensed once across the book, and the per-tenant floor applies
-          as greater-of rather than added on top.</li>
+        <li><strong>Whether you are a provider.</strong> Users, sites and domains pool across managed tenants,
+          compliance frameworks are licensed once across the book, and the per-tenant floor applies as
+          greater-of rather than added on top.</li>
       </ul>
 
       <h2 id="never">What never moves it</h2>

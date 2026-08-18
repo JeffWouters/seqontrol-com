@@ -88,9 +88,13 @@
     // Deep links: /licensing.html#mailtrust opens that product's tab.
     var wanted = window.location.hash.replace('#', '');
     var start = 0;
+    var deep = false;
     panels.forEach(function (panel, i) {
-      if (panel.id === 'panel-' + wanted) start = i;
+      if (panel.id === 'panel-' + wanted) { start = i; deep = true; }
     });
     select(start);
+    // The hash names a panel, not an element the browser can find, so nothing
+    // scrolled. On the pricing page the tabs sit well below the fold.
+    if (deep) root.scrollIntoView({ block: 'start' });
   });
 })();

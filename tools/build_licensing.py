@@ -18,9 +18,10 @@ N = '<span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not
 LADDER = [("Visibility", "see it"), ("Governance", "govern it"), ("Automation", "act on it")]
 BANDS = [("1 framework", "single regime"), ("3 frameworks", "the usual mix"), ("Unlimited", "every regime")]
 ONE = [("Included", "one tier")]
-# WebScan's ladder is not see -> govern -> act. It is scan -> keep -> keep
-# automatically: the free rung runs everything and remembers nothing.
-KEPT = [("Free", "on every tenant"), ("Monitoring", "per site"), ("Continuous", "per site")]
+# Two licences, not a ladder. The free one runs everything and remembers
+# nothing; Pro is the one that keeps and schedules. Splitting those apart sold
+# a distinction no buyer makes.
+KEPT = [("Free", "on every tenant"), ("Pro", "per monitored site")]
 
 
 def rows(items, cols):
@@ -67,15 +68,15 @@ def tech(groups):
 PRODUCTS = [
     dict(
         key="sharecare", name="ShareCare", tone="--t-sharecare", status=None,
-        counted="Counted per Microsoft 365 user &middot; 25-user minimum &middot; $2 / $3.50 / $5 per user, per month",
+        counted="Counted per Microsoft 365 user &middot; 25-user minimum &middot; $2 / $4 / $6.50 per user, per month",
         tech=[("Microsoft 365", [("SharePoint", 1), ("OneDrive", 1), ("Teams", 1),
                                  ("Entra ID app consents", 1), ("Exchange Online forwarding", 1),
                                  ("Power Platform", 1), ("Power BI", 1)]),
               ("Beyond Microsoft 365", [("Box", 1), ("Slack Connect", 1), ("Google Workspace — roadmap", 0)])],
         cols=LADDER,
         rows=["Price",
-              ("Per Microsoft 365 user, per month", ["$2", "$3.50", "$5"]),
-              ("At 100 users, per month", ["$200", "$350", "$500"]),
+              ("Per Microsoft 365 user, per month", ["$2", "$4", "$6.50"]),
+              ("At 100 users, per month", ["$200", "$400", "$650"]),
               "Cadence",
               ("On-demand scan, whenever you want one", [Y, Y, Y]),
               ("Scheduled scan cadence", ["Daily", "Every 6 hours", "Hourly"]),
@@ -108,14 +109,15 @@ PRODUCTS = [
     ),
     dict(
         key="securityportal", name="SecurityPortal", tone="--t-security", status=None,
-        counted="$1.50 per user, per month &middot; or included with any ShareCare tier",
+        counted="$1.50 per user with any ShareCare tier &middot; $3.50 standalone &middot; $50 monthly tenant minimum",
         tech=[("Microsoft 365 and Entra", [("Conditional Access", 1), ("MFA enforcement", 1),
                                            ("Entra ID app permissions", 1), ("Sign-in risk signals", 1),
                                            ("Log Analytics (KQL checks)", 1)])],
         cols=ONE,
         rows=["Price",
-              ("Per user, per month", ["$1.50"]),
-              ("With any ShareCare tier", ["Included"]),
+              ("Per user, per month — with any ShareCare tier", ["$1.50"]),
+              ("Per user, per month — standalone", ["$3.50"]),
+              ("Monthly minimum per tenant, greater-of", ["$50"]),
               "Capability",
               ("On-demand scan, whenever you want one", [Y]),
               ("Scheduled scan cadence — daily", [Y]),
@@ -126,7 +128,12 @@ PRODUCTS = [
               ("Findings history and reports", [Y]),
               ("Fleet-wide across managed tenants", [Y]),
               ("Write access to your tenant", [N])],
-        after=("One tier, not a ladder: SecurityPortal is scan-only, so there is no write access to sell on a "
+        after=("<strong>Why a per-tenant minimum on a per-user product.</strong> Roughly half of what this "
+               "checks does not shrink with headcount — a 20-seat tenant has about as many Conditional Access "
+               "policies, app registrations and configuration settings as a 2,000-seat one, and every one is "
+               "evaluated either way. Per-user alone would price a full posture scan of a small tenant at "
+               "thirty dollars. The floor bites below 34 users and does nothing above it.<br><br>"
+               "One tier, not a ladder: SecurityPortal is scan-only, so there is no write access to sell on a "
                "higher rung. Remediation lives in the products built to write safely. The log-analytics checks "
                "need the tenant to export activity logs; without that export they report &ldquo;not "
                "assessed&rdquo; rather than a pass. The public web and domain surface is "
@@ -134,7 +141,7 @@ PRODUCTS = [
     ),
     dict(
         key="webscan", name="WebScan", tone="--t-webscan", status=None,
-        counted="Free on every tenant &middot; $4 / $8 per monitored site, per month &middot; five-site minimum",
+        counted="Free on every tenant &middot; Pro $20 per monitored site, per month &middot; five-site minimum",
         tech=[("Discovery", [("Subdomain and asset discovery", 1),
                              ("Certificate transparency monitoring", 1)]),
               ("Transport", [("TLS versions and cipher suites", 1), ("Certificate chain and expiry", 1),
@@ -148,65 +155,55 @@ PRODUCTS = [
                                               ("Server and technology disclosure", 1)])],
         cols=KEPT,
         rows=["Price",
-              ("Per monitored site, per month", ["$0", "$4", "$8"]),
-              ("At the five-site minimum", ["$0", "$20", "$40"]),
+              ("Per monitored site, per month", ["$0", "$20"]),
+              ("At the five-site minimum", ["$0", "$100"]),
+              ("Monitored sites included with any ShareCare or SecurityPortal tier", ["&mdash;", "3"]),
               "The scan itself",
-              ("On-demand scan, whenever you want one", [Y, Y, Y]),
-              ("The complete check set — nothing withheld from the free tier", [Y, Y, Y]),
-              ("Scan a site you have not onboarded", [N, Y, Y]),
-              ("Subdomain and asset discovery", [Y, Y, Y]),
-              ("Certificate transparency lookup", [Y, Y, Y]),
-              ("Certificate expiry, checked on every scan", [Y, Y, Y]),
-              ("Graded score with the four result states kept apart", [Y, Y, Y]),
-              ("Standard and RFC references on every check", [Y, Y, Y]),
-              ("Why it matters, and the fix, on every failure", [Y, Y, Y]),
-              ("Sites you may scan", ["1", "Unlimited", "Unlimited"]),
-              ("On-demand scans per day", ["3", "Unlimited", "Unlimited"]),
+              ("On-demand scan, whenever you want one", [Y, Y]),
+              ("The complete check set", [Y, Y]),
+              ("Scan a site you have not onboarded", [N, Y]),
+              ("Subdomain and asset discovery", [Y, Y]),
+              ("Certificate transparency lookup", [Y, Y]),
+              ("Certificate expiry, checked on every scan", [Y, Y]),
+              ("Graded score with the four result states kept apart", [Y, Y]),
+              ("Standard and RFC references on every check", [Y, Y]),
+              ("Why it matters, and the fix, on every failure", [Y, Y]),
+              ("Sites you may keep", ["&mdash;", "Unlimited"]),
               "What happens afterwards",
-              ("Results kept once you close the page", [N, Y, Y]),
-              ("Scan history and trend over time", [N, Y, Y]),
-              ("Findings, waivers and an audit trail", [N, Y, Y]),
-              ("Control-reference tags, feeding CompliancePortal as evidence", [N, Y, Y]),
-              ("Fleet view across sites and managed tenants", [N, Y, Y]),
+              ("Results kept once you close the page", [N, Y]),
+              ("Scan history and trend over time", [N, Y]),
+              ("Findings, waivers and an audit trail", [N, Y]),
+              ("Control-reference tags, feeding CompliancePortal as evidence", [N, Y]),
+              ("Fleet view across sites and managed tenants", [N, Y]),
               "Watched on a clock, between scans",
-              ("Certificate expiry warned before it lapses, not after", [N, Y, Y]),
-              ("Certificate transparency monitoring — alerting on new issuance", [N, Y, Y]),
-              ("Alerting when discovery turns up a new asset", [N, Y, Y]),
-              ("Alerting when a passing check regresses", [N, Y, Y]),
+              ("Certificate expiry warned before it lapses, not after", [N, Y]),
+              ("Certificate transparency monitoring — alerting on new issuance", [N, Y]),
+              ("Alerting when discovery turns up a new asset", [N, Y]),
+              ("Alerting when a passing check regresses", [N, Y]),
               "Running without you",
-              ("Scheduled scans", ["&mdash;", "Monthly", "A cadence you set"]),
-              "Minimums",
-              ("Monthly minimum for a WebScan-only tenant", ["&mdash;", "$25", "$25"]),
+              ("Scheduled scans, on a cadence you set", [N, Y]),
               "Write access",
-              ("Write access to your DNS or web server", [N, N, N])],
-        note=("<strong>The free tier has a ceiling, and it is a small one.</strong> One site, three scans a day. "
-              "That is deliberate and it is about abuse rather than margin: an uncapped scanner pointed at domains "
-              "the caller does not own is reconnaissance run from our addresses, and it ends with our egress "
-              "ranges on somebody's blocklist. The ceiling is what lets the tier stay genuinely free rather than "
-              "becoming a trial with an expiry date. Register your own site, check it as often as a working day "
-              "needs, and pay only when you want more than one or want it remembered.<br><br>"
-              "<strong>Two paid rungs, and the difference is how often, not how much.</strong> Monitoring is where "
-              "a site becomes a thing we remember — history, findings, waivers, an audit trail, and the daily "
-              "watches that warn you about a certificate before it lapses rather than after. It scans monthly, "
-              "because retained history is worth very little if nothing generates it. Continuous is the same "
-              "product on a cadence you choose.<br><br>"
-              "<strong>Not called Automation, deliberately.</strong> On every other product here that word "
-              "means the rung that writes to your tenant, and it is a separate consent for that reason. "
-              "WebScan never writes anywhere — so borrowing the word would have made a safety promise mean "
-              "two different things on one page.<br><br>"
-              "<strong>The free tier is the whole scanner, and that is deliberate.</strong> Nothing is held back "
-              "to make the paid version look better — the free tier runs every check and shows every result. "
-              "What it does not do is remember. There is no history, no schedule, no evidence and no audit "
-              "trail, because nothing is written down when the scan finishes. That is also what makes it free "
-              "to give away: a free scan is a short-lived function with no storage behind it, it is on demand "
-              "only so nothing can schedule itself into a bill, and its cost ends when the scan does."),
+              ("Write access to your DNS or web server", [N, N])],
+        note=("<strong>Two licences, not a ladder, and the reason is that the ladder sold a distinction "
+              "nobody makes.</strong> Keeping a scan and running it on a schedule were separate rungs; but a "
+              "saved site nobody re-scans is a stale record, and a schedule that keeps nothing is a cron job "
+              "with no output. Pro grants both.<br><br>"
+              "<strong>The free tier is the whole scanner, and that is deliberate.</strong> Every check, the "
+              "same severity-weighted score a paid run produces. What it does not do is remember: one URL at "
+              "a time, fire and forget, nothing written down when the scan finishes. That is what makes it "
+              "free to give away rather than a trial with an expiry date — and it is auto-granted to every "
+              "tenant rather than sold."),
         after=("Counted per site rather than per domain, because a site is what gets scanned: one domain can "
-               "front several, and each is its own configuration to grade. The five-site minimum is there "
-               "because a single-site licence does not cover the platform underneath it — MailTrust counts "
-               "domains, which is a different question about the same names. Nothing caps how many sites you "
-               "may add; the count is trued up, never a hard stop. WebScan never writes anywhere — DNS "
-               "write-back belongs to MailTrust, which also owns SPF, DKIM and DMARC; those are mail "
-               "authentication rather than web surface and are not duplicated here."),
+               "front several, and each is its own configuration to grade. Nothing caps how many sites you "
+               "may add; the count is trued up, never a hard stop.<br><br>"
+               "<strong>Pro is $20 against a category that starts an order of magnitude higher.</strong> The "
+               "nearest paid comparables run from roughly $60 per asset per month to several hundred, and "
+               "they include active vulnerability testing that WebScan does not do. At the other end the free "
+               "graders charge nothing and retain nothing. The gap between those two is where this sits, and "
+               "it was empty.<br><br>"
+               "WebScan never writes anywhere — DNS write-back belongs to MailTrust, which also owns SPF, "
+               "DKIM and DMARC; those are mail authentication rather than web surface and are not duplicated "
+               "here."),
     ),
     dict(
         key="complianceportal", name="CompliancePortal", tone="--t-compliance", status=None,

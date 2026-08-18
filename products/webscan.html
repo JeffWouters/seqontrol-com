@@ -129,8 +129,8 @@
             reachability is part of posture and the answer is rarely what people assume.</li>
           <li><strong>Every check cites its standard</strong> — the RFC or specification is printed next to
             the finding, which is what turns "the scanner says so" into a change request someone approves.</li>
-          <li><strong>Free on every tenant</strong> — one site, three scans a day, every check, at no cost
-            and with no expiry date. You pay when you want a second site, or want the answer kept.</li>
+          <li><strong>Free on every tenant</strong> — one URL at a time, fire and forget. Every check, at no
+            cost and with no expiry date. You pay when you want the answer kept.</li>
         </ul>
 
         <h2 style="margin-top:2.8rem">Why it matters</h2>
@@ -148,10 +148,10 @@
             your tenant, and on the free tier nothing is written down when the scan finishes — which is
             precisely what makes it free to give away. It is also why free scans are on demand only: nothing
             schedules itself, so a free scan costs what it costs and then stops.</p>
-          <p class="mb0">The free tier is capped at one site and three scans a day, and the reason is not
-            margin. An uncapped scanner aimed at domains the caller does not own is reconnaissance run from
-            our addresses — that ends with our egress ranges on a blocklist and somebody else's abuse report.
-            The ceiling is what lets the tier stay free indefinitely instead of becoming a trial.</p>
+          <p class="mb0">The free tier runs one URL at a time and keeps nothing, which is what lets it stay
+            free indefinitely rather than becoming a trial. It is also authenticated — an anonymous scanner
+            aimed at domains the caller does not own is reconnaissance run from our addresses, and that ends
+            with our egress ranges on a blocklist and somebody else's abuse report.</p>
         </div>
 
         <div class="note plain">
@@ -170,8 +170,8 @@
         <h3>Status</h3>
         <ul><li><span class="status built">Built</span> Running today</li></ul>
         <h3>Metered on</h3>
-        <ul><li>Free on every tenant. Monitoring and Continuous counted per monitored site, five-site
-          minimum.</li></ul>
+        <ul><li>Free on every tenant. Pro counted per monitored site, five-site minimum, with three sites
+          included alongside ShareCare or SecurityPortal.</li></ul>
         <h3>Writes to your tenant?</h3>
         <ul><li>No. It never writes anywhere.</li></ul>
         <h3>Needs a connection?</h3>
@@ -248,47 +248,42 @@
   <section>
     <div class="wrap">
       <div class="section-head">
-        <span class="eyebrow">Free, Monitoring, Continuous</span>
+        <span class="eyebrow">Free and Pro</span>
         <h2>A scan you do not keep cannot prove anything</h2>
         <p>The free tier is a complete scanner, not a teaser — every check, every result, on one site three
           times a day. What it does not do is remember, and remembering is the whole of the paid product.
           Three rungs: scan it, keep it, keep it automatically.</p>
       </div>
 
-      <div class="grid grid-3">
+      <div class="grid grid-2">
         <article class="card" style="--tone: var(--t-webscan)">
           <h3>Free</h3>
-          <p class="small dim mb0" style="margin-top:-.4rem">On every tenant</p>
-          <p>Every check, every result, discovery included — on <strong>one site, three times a day</strong>.
-            Nothing is withheld from the check set; what is capped is how much of it you can point at how
-            often. When you close the page it is gone: no history, no evidence, nothing watching between
-            scans.</p>
-          <p class="mb0"><strong>Good for:</strong> your own site, checked whenever you want to know. Proving
-            a fix landed. Deciding whether the paid rungs are worth it on evidence rather than a demo.</p>
+          <p class="small dim mb0" style="margin-top:-.4rem">On every tenant, automatically</p>
+          <p>Every check, every result, discovery included — one URL at a time, fire and forget. Nothing is
+            withheld from the check set; what it does not do is remember. When you close the page it is gone:
+            no history, no evidence, nothing watching between scans.</p>
+          <p class="mb0"><strong>Good for:</strong> checking a site whenever you want to know. Proving a fix
+            landed. Deciding whether Pro is worth it on evidence rather than on a demo.</p>
         </article>
 
         <article class="card" style="--tone: var(--t-webscan)">
-          <h3>Monitoring</h3>
+          <h3>Pro</h3>
           <p class="small dim mb0" style="margin-top:-.4rem">Per monitored site</p>
-          <p>The site becomes something we remember. Runs are retained, history plots, findings and waivers
-            exist, the audit trail records who decided what, and control tags carry into
-            <a href="complianceportal.html">CompliancePortal</a>. It scans monthly on its own, because a
-            history nothing generates is not a history.</p>
-          <p class="mb0">It also starts the daily watches: a certificate expiring in thirty days is a fact
-            that arrives on a clock, not on a scan, so you hear about it before it lapses rather than after.
-            Those cost one query and send nothing to your site — which is why they are not held back for the
-            dearer rung.</p>
+          <p>The site becomes something we remember, and something that re-scans itself on a cadence you set.
+            Runs are retained, history plots, findings and waivers exist, the audit trail records who decided
+            what, and control tags carry into <a href="complianceportal.html">CompliancePortal</a>.</p>
+          <p class="mb0">It also starts the daily watches: a certificate expiring in thirty days is a fact that
+            arrives on a clock, not on a scan. Those read stored data and send nothing to your site — which is
+            why they need a saved site to exist at all, and why free cannot have them.</p>
         </article>
+      </div>
 
-        <article class="card" style="--tone: var(--t-webscan)">
-          <h3>Continuous</h3>
-          <p class="small dim mb0" style="margin-top:-.4rem">Per monitored site</p>
-          <p>The same product on a cadence you choose rather than the monthly floor — hourly, nightly,
-            whatever the site's rate of change deserves. A regression gets caught by the product instead of
-            by whoever remembered to look.</p>
-          <p class="mb0">Not called Automation on purpose. Everywhere else here that word means the rung that
-            writes to your tenant. WebScan never writes anywhere, so it does not get to borrow it.</p>
-        </article>
+      <div class="note plain">
+        <h3>One paid licence, not a ladder</h3>
+        <p class="mb0">Keeping a scan and scheduling it used to be separate rungs. That sold a distinction
+          nobody actually makes: a saved site nobody re-scans is a stale record, and a schedule that keeps
+          nothing is a cron job with no output. Pro grants both, and there is nothing between them worth
+          charging for.</p>
       </div>
 
       <h2 style="margin-top:3rem">Capability and what you get from it</h2>
@@ -323,8 +318,8 @@
         <article class="card">
           <h3>"Is the free tier crippled?"</h3>
           <p>Not in what it checks — the check set is identical and so is the result. It is capped in reach:
-            one site, three scans a day. Nothing is held back to make the paid version look cleverer; what
-            you buy is more sites, and the memory to keep them.</p>
+            one URL at a time, and it forgets. Nothing is held back to make the paid version look cleverer;
+            what you buy is the memory.</p>
         </article>
         <article class="card">
           <h3>"Can it break my site?"</h3>

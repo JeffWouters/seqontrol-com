@@ -174,10 +174,10 @@ PAGES = {
             </tr>
           </thead>
           <tbody>
-            <tr><th scope="row">List</th><td>$2</td><td>$3.50</td><td>$5</td></tr>
-            <tr><th scope="row">100 users</th><td>$200</td><td>$350</td><td>$500</td></tr>
-            <tr><th scope="row">500 users, less 10 per cent</th><td>$900</td><td>$1,575</td><td>$2,250</td></tr>
-            <tr><th scope="row">2,000 users, less 20 per cent</th><td>$3,200</td><td>$5,600</td><td>$8,000</td></tr>
+            <tr><th scope="row">List</th><td>$2</td><td>$4</td><td>$6.50</td></tr>
+            <tr><th scope="row">100 users</th><td>$200</td><td>$400</td><td>$650</td></tr>
+            <tr><th scope="row">500 users, less 10 per cent</th><td>$900</td><td>$1,800</td><td>$2,925</td></tr>
+            <tr><th scope="row">2,000 users, less 20 per cent</th><td>$3,200</td><td>$6,400</td><td>$10,400</td></tr>
           </tbody>
         </table>
       </div>
@@ -188,10 +188,9 @@ PAGES = {
         <h3>The floor, before you do the multiplication</h3>
         <p class="mb0">A <strong>monthly platform minimum of $99</strong> applies to the total. It covers the
           tenancy, auth, audit trail, findings store, reporting and scheduling that every product runs on, and
-          it is charged as greater-of rather than added on top. Where it bites: on Visibility up to 49 users,
-          on Governance up to 28, and on Automation never — the 25-user minimum already clears it there. A
-          30-user tenant on Visibility computes $60 and pays $99. Better to hear that here than at quote
-          time.</p>
+          it is charged as greater-of rather than added on top. It bites on Visibility up to 49 users and
+          nowhere else — on Governance and Automation the 25-user minimum already clears it. A 30-user tenant
+          on Visibility computes $60 and pays $99. Better to hear that here than at quote time.</p>
       </div>
 
       <h3 style="margin-top:2.6rem">WebScan — per monitored site, per month</h3>
@@ -203,25 +202,27 @@ PAGES = {
             <tr>
               <th scope="col">Per monitored site, per month</th>
               <th class="rung-head" scope="col">Free<small>on every tenant</small></th>
-              <th class="rung-head" scope="col">Monitoring<small>keep it</small></th>
-              <th class="rung-head" scope="col">Continuous<small>on your cadence</small></th>
+              <th class="rung-head" scope="col">Pro<small>kept and scheduled</small></th>
             </tr>
           </thead>
           <tbody>
-            <tr><th scope="row">List</th><td>$0</td><td>$4</td><td>$8</td></tr>
-            <tr><th scope="row">5 sites, the minimum</th><td>$0</td><td>$20</td><td>$40</td></tr>
-            <tr><th scope="row">25 sites</th><td>$0</td><td>$100</td><td>$200</td></tr>
+            <tr><th scope="row">List</th><td>$0</td><td>$20</td></tr>
+            <tr><th scope="row">5 sites, the minimum</th><td>$0</td><td>$100</td></tr>
+            <tr><th scope="row">25 sites</th><td>$0</td><td>$500</td></tr>
+            <tr><th scope="row">Included with any ShareCare or SecurityPortal tier</th><td>&mdash;</td><td>3 sites</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="small dim">Five-site minimum on either paid rung. Scanning is never counted — only sites you
-        chose to keep, once per billing period each, however often they are scanned.</p>
+      <p class="small dim">One paid licence, not a ladder — keeping a scan and scheduling it were separate
+        rungs, and that sold a distinction nobody makes: a saved site nobody re-scans is a stale record, and a
+        schedule that keeps nothing is a cron job with no output. Five-site minimum. Scanning is never
+        counted — only sites you chose to keep, once per billing period each, however often they run.</p>
 
       <div class="note plain">
         <h3>A WebScan-only tenant does not pay the $99</h3>
-        <p class="mb0">It pays <strong>$25 a month</strong> instead. A tenant that arrived through a free scan
-          is one we would not otherwise have, and quoting $99 against $20 of monitoring converts nobody — the
-          floor would eat the funnel it sits downstream of. Add any second product and the $99 applies from
+        <p class="mb0">The five-site minimum is the floor, and nothing else applies. A tenant that arrived
+          through a free scan is one we would not otherwise have, and putting a platform minimum in front of
+          them would eat the funnel it sits downstream of. Add any second product and the $99 applies from
           that point.</p>
       </div>
 
@@ -269,9 +270,17 @@ PAGES = {
       </div>
 
       <h3 style="margin-top:2.6rem">SecurityPortal — per user, per month</h3>
-      <p><strong>$1.50 per user</strong> — or <strong>nothing at all</strong> if you have any ShareCare tier,
-        which is the usual case. Same denominator as ShareCare, so it adds to an existing line rather than
-        starting a new negotiation.</p>
+      <p><strong>$1.50 per user with any ShareCare tier</strong>, which is the usual case, or <strong>$3.50
+        standalone.</strong> Same denominator as ShareCare, so it adds to an existing line rather than starting
+        a new negotiation.</p>
+      <div class="note plain">
+        <h3>A $50 monthly minimum per tenant</h3>
+        <p class="mb0">Charged greater-of, and it exists because roughly half of what this product checks does
+          not shrink with headcount. A 20-seat tenant has about as many Conditional Access policies, app
+          registrations and configuration settings as a 2,000-seat one, and every one of them is evaluated
+          either way. Per-user alone would price a full posture scan of a small tenant at thirty dollars. The
+          floor bites below 34 users; above that the per-user arithmetic is the whole bill.</p>
+      </div>
 
       <h3 style="margin-top:2.6rem">CompliancePortal — per tenant, per month</h3>
       <div class="table-wrap table-scroll" tabindex="0">
@@ -353,10 +362,16 @@ PAGES = {
           period even though the assessment is a moment you choose.</p>
       </div>
 
-      <p><a href="products/dredd.html">Dredd</a> and ConditionalAccessPortal are quoted rather than listed.
-        Not evasion — Dredd's unit is monitored configuration scope, which is the metric we understand least,
-        and it is being set against real estates rather than guessed. Ask, and you get a number back, usually
-        the same working day.</p>
+      <h3 style="margin-top:2.6rem">ConditionalAccessPortal — per user, per month</h3>
+      <p><strong>$1.50 per user</strong>, on the same denominator and the same $50 monthly tenant minimum as
+        SecurityPortal, because it answers the same question about the same estate. Conditional Access policy
+        inventory, baseline coverage gaps and approval-gated policy write-back. It is running today; its own
+        page on this site is still being written, which is a documentation gap rather than a pricing one.</p>
+
+      <p><a href="products/dredd.html">Dredd</a> is quoted rather than listed.
+        Not evasion — its unit is monitored configuration scope, which is the metric we understand least, and
+        it is being set against real estates rather than guessed. Ask, and you get a number back, usually the
+        same working day.</p>
       <p><a href="products/postureportal.html">PosturePortal</a> carries no price at all, because it is still
         in development. It will not be a separate line when it arrives — it connects to nothing and reads the
         shared findings store — but exactly how it is packaged is unsettled, and a price against something
@@ -368,9 +383,10 @@ PAGES = {
           <thead><tr><th scope="col">Product</th><th scope="col">Priced on</th></tr></thead>
           <tbody>
             <tr><th scope="row">ShareCare</th><td>Microsoft 365 users, with a 25-user minimum</td></tr>
-            <tr><th scope="row">SecurityPortal</th><td>Users — or included with any ShareCare tier</td></tr>
+            <tr><th scope="row">SecurityPortal</th><td>Users, at a lower rate with any ShareCare tier &middot; $50 monthly tenant minimum</td></tr>
+            <tr><th scope="row">ConditionalAccessPortal</th><td>Users, on the same terms as SecurityPortal</td></tr>
             <tr><th scope="row">CompliancePortal</th><td>Per tenant, banded by how many frameworks are in scope</td></tr>
-            <tr><th scope="row">WebScan</th><td>Free on every tenant; Monitoring and Continuous per monitored site, five-site minimum</td></tr>
+            <tr><th scope="row">WebScan</th><td>Free on every tenant; Pro per monitored site, five-site minimum</td></tr>
             <tr><th scope="row">MailTrust</th><td>Per sending domain; parked domains at a lower rate, five included with each</td></tr>
             <tr><th scope="row">PosturePortal</th><td>Not yet priced — still in development</td></tr>
           </tbody>
@@ -403,10 +419,10 @@ PAGES = {
         cash-flow decision, not a lever: there is no discount for committing and no penalty for not. If you
         would rather pay yearly because it is one invoice instead of twelve, do that — it will not change
         the number, and nobody here will pretend it should.</p>
-      <p><a href="products/webscan.html">WebScan</a> takes that further: every tenant scans one site three
-        times a day at no cost, indefinitely. The licence buys more sites and what happens <em>after</em> the
-        scan — the history, the schedule, the audit trail and the evidence. A scan you do not keep cannot
-        prove anything, and the one you do keep is the one we charge for.</p>
+      <p><a href="products/webscan.html">WebScan</a> takes that further: every tenant scans at no cost,
+        indefinitely, one URL at a time. The licence buys what happens <em>after</em> the scan — the history,
+        the schedule, the audit trail and the evidence. A scan you do not keep cannot prove anything, and the
+        one you do keep is the one we charge for.</p>
 
       <h2 id="request">Get a number</h2>
       <p>Tell us the size of the estate. You will get a real figure back, not a discovery call.</p>
@@ -493,10 +509,9 @@ PAGES = {
 
       <h2>And it stays free</h2>
       <p>This is not a sample of a paid product. <a href="products/webscan.html">WebScan</a>'s free tier
-        runs the complete check set and shows every result, on your own site, three scans a day, for as long
-        as you keep the tenant and with no expiry date on it. Nothing is held back from the check set — the
-        cap is on reach, not on depth, and it exists so an uncapped scanner cannot be pointed at domains
-        nobody owns.</p>
+        runs the complete check set and shows every result — one URL at a time, for as long as you keep the
+        tenant and with no expiry date on it. Nothing is held back from the check set. What it does not do is
+        remember, and remembering is the whole of the paid product.</p>
       <p>What the free tier does not do is <em>remember</em>. Nothing is written down when the scan
         finishes — so there is no history, no trend, no schedule, no alert when a passing check regresses,
         and no evidence to hand an auditor. That is the whole of what the licence buys, and it is also why

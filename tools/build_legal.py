@@ -257,6 +257,15 @@ PAGES = {
           <h3>A WebScan-only tenant pays no platform floor</h3>
           <p class="mb0">The five-site minimum is the floor and nothing else applies. A tenant that arrived through a free scan is one we would not otherwise have, and putting a platform minimum in front of them would eat the funnel it sits downstream of. Add any second product and the $99 applies from that point.</p>
         </div>
+        <div class="note plain">
+          <h3>Discovered subdomains are free, and stay free until you say otherwise</h3>
+          <p class="mb0">Pro looks for hostnames under a site you already pay for and lists what it finds &mdash; the
+            name, whether it still resolves, where it last pointed. That costs nothing and is never billed, however
+            many turn up. They are listed, not scanned. Promoting one to a monitored site is a button you press, and
+            only then does it get the full check suite and only then does it count. Nothing here can raise your bill
+            on its own, which is deliberate: an estate that grows on a timer would be an invoice that grows on a
+            timer. Coverage is partial and improving &mdash; the <a href="limits.html">limits page</a> says how.</p>
+        </div>
         <p class="after">Scanning is never counted &mdash; only sites you chose to keep, once per billing period each, however often they run. <a href="licensing.html#webscan">What the licence includes</a>.</p>
       </div>
       <div class="product-licence" role="tabpanel" id="panel-mailtrust" aria-labelledby="tab-mailtrust" tabindex="0" style="--tone: var(--t-mailtrust)">
@@ -663,6 +672,20 @@ PAGES = {
         <p class="mb0">Where a plane can be remediated app-only, it is. Where it cannot — Exchange, SharePoint
           site roles, Power Platform and delegated-admin relationships today — the product says so, with the
           precise reason, rather than guessing or quietly failing.</p>
+      </div>
+
+<div class="note honest">
+        <h2>Subdomain discovery is not a complete estate</h2>
+        <p>WebScan finds hostnames two ways, and only one of them is immediate. The names carried on the
+          certificate your site already served are read on its first scan. The rest come from public
+          certificate transparency logs, which we follow ourselves — so we hold nothing logged before we
+          started watching, and a certificate renewed on a ninety-day cycle can take that long to appear.</p>
+        <p>We also do not read every log. Let’s Encrypt retired the log format we read in February 2026 and
+          moved to a new one we have not implemented yet, so issuance by the largest certificate authority is
+          not currently in our index.</p>
+        <p class="mb0">Which means an empty or short list is a statement about our coverage, not about your
+          estate, and nothing in the product will present it as one. Read it as “what we have seen so
+          far” and it is useful. Read it as “what exists” and it is wrong.</p>
       </div>
 
 <div class="note honest">

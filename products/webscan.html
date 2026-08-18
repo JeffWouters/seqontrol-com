@@ -111,9 +111,11 @@
         <h2>What it does</h2>
         <ul class="checklist" style="--tone: var(--t-webscan)">
           <li><strong>Finds what you did not list</strong> — subdomain and asset discovery turns up the
-            hosts nobody remembered, and certificate transparency monitoring catches certificates issued for
-            your names by anyone. The natural partner to the CAA check: CAA says who <em>may</em> issue,
-            transparency logs say who <em>did</em>.</li>
+            hosts nobody remembered. Two sources, and they are not equally prompt: the names on the
+            certificate your site already served are read on the first scan, while certificate transparency
+            builds up as certificates are logged. The natural partner to the CAA check — CAA says who
+            <em>may</em> issue, transparency logs say who <em>did</em> — with the coverage caveat on the
+            <a href="../limits.html">limits page</a>, which you should read before relying on it.</li>
           <li><strong>Transport and certificates</strong> — TLS versions and cipher suites, the certificate
             chain and its expiry, HSTS, and a client handshake simulation that answers the question a version
             list cannot: which browsers and clients can actually connect.</li>
@@ -178,8 +180,8 @@
         <ul><li>No. It scans public endpoints, so it works on a domain you do not own yet.</li></ul>
         <h3>Covers</h3>
         <ul>
-          <li>Subdomain and asset discovery</li>
-          <li>Certificate transparency monitoring</li>
+          <li>Subdomain and asset discovery <span class="dim">(Pro)</span></li>
+          <li>Certificate transparency monitoring <span class="dim">(Pro)</span></li>
           <li>TLS configuration, certificates and client handshake</li>
           <li>HTTP security headers</li>
           <li>Cookie flags</li>
@@ -252,16 +254,19 @@
         <h2>A scan you do not keep cannot prove anything</h2>
         <p>The free tier is a complete scanner, not a teaser — every check, every result, on one site three
           times a day. What it does not do is remember, and remembering is the whole of the paid product.
-          Three rungs: scan it, keep it, keep it automatically.</p>
+          Two licences: scan it, or keep it.</p>
       </div>
 
       <div class="grid grid-2">
         <article class="card" style="--tone: var(--t-webscan)">
           <h3>Free</h3>
           <p class="small dim mb0" style="margin-top:-.4rem">On every tenant, automatically</p>
-          <p>Every check, every result, discovery included — one URL at a time, fire and forget. Nothing is
-            withheld from the check set; what it does not do is remember. When you close the page it is gone:
-            no history, no evidence, nothing watching between scans.</p>
+          <p>Every check, every result — one URL at a time, fire and forget. Nothing is withheld from the
+            check set; what it does not do is remember. When you close the page it is gone: no history, no
+            evidence, nothing watching between scans.</p>
+          <p class="mb0"><strong>Discovery is not part of free</strong>, and not as a lever: it is an
+            inventory of what appeared and when, so it needs a saved site to attach to and a yesterday to
+            compare against. Free has neither.</p>
           <p class="mb0"><strong>Good for:</strong> checking a site whenever you want to know. Proving a fix
             landed. Deciding whether Pro is worth it on evidence rather than on a demo.</p>
         </article>
@@ -272,9 +277,13 @@
           <p>The site becomes something we remember, and something that re-scans itself on a cadence you set.
             Runs are retained, history plots, findings and waivers exist, the audit trail records who decided
             what, and control tags carry into <a href="complianceportal.html">CompliancePortal</a>.</p>
-          <p class="mb0">It also starts the daily watches: a certificate expiring in thirty days is a fact that
+          <p>It also starts the daily watches: a certificate expiring in thirty days is a fact that
             arrives on a clock, not on a scan. Those read stored data and send nothing to your site — which is
             why they need a saved site to exist at all, and why free cannot have them.</p>
+          <p class="mb0"><strong>Discovery is included and never billed.</strong> Hostnames found under a site
+            you already pay for cost nothing and are listed, not scanned — the name, whether it still
+            resolves, and where it pointed. Turning one into a monitored site is your decision and a button;
+            only then is it scanned, and only then does it count.</p>
         </article>
       </div>
 

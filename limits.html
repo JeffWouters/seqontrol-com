@@ -100,6 +100,20 @@
       </div>
 
 <div class="note honest">
+        <h2>Subdomain discovery is not a complete estate</h2>
+        <p>WebScan finds hostnames two ways, and only one of them is immediate. The names carried on the
+          certificate your site already served are read on its first scan. The rest come from public
+          certificate transparency logs, which we follow ourselves — so we hold nothing logged before we
+          started watching, and a certificate renewed on a ninety-day cycle can take that long to appear.</p>
+        <p>We also do not read every log. Let’s Encrypt retired the log format we read in February 2026 and
+          moved to a new one we have not implemented yet, so issuance by the largest certificate authority is
+          not currently in our index.</p>
+        <p class="mb0">Which means an empty or short list is a statement about our coverage, not about your
+          estate, and nothing in the product will present it as one. Read it as “what we have seen so
+          far” and it is useful. Read it as “what exists” and it is wrong.</p>
+      </div>
+
+<div class="note honest">
         <h2>We are Microsoft-first</h2>
         <p class="mb0">Microsoft 365 and Entra are the deep estate. Box and Slack sharing planes ship today, and
           CompliancePortal covers Google Cloud and AWS through read-only connectors. Everything else is roadmap,

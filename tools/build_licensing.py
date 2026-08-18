@@ -18,8 +18,9 @@ N = '<span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not
 LADDER = [("Visibility", "see it"), ("Governance", "govern it"), ("Automation", "act on it")]
 BANDS = [("1 framework", "single regime"), ("3 frameworks", "the usual mix"), ("Unlimited", "every regime")]
 ONE = [("Included", "one tier")]
-# WebScan does not have depth rungs. It has a memory.
-KEPT = [("Free", "on every tenant"), ("Licensed", "per site")]
+# WebScan's ladder is not see -> govern -> act. It is scan -> keep -> keep
+# automatically: the free rung runs everything and remembers nothing.
+KEPT = [("Free", "on every tenant"), ("Monitoring", "per site"), ("Automation", "per site")]
 
 
 def rows(items, cols):
@@ -129,7 +130,7 @@ PRODUCTS = [
     ),
     dict(
         key="webscan", name="WebScan", tone="--t-webscan", status=None,
-        counted="Counted per site &middot; five-site minimum &middot; free tier on every tenant",
+        counted="Free on every tenant &middot; Monitoring and Automation counted per monitored site &middot; five-site minimum",
         tech=[("Discovery", [("Subdomain and asset discovery", 1),
                              ("Certificate transparency monitoring", 1)]),
               ("Transport", [("TLS versions and cipher suites", 1), ("Certificate chain and expiry", 1),
@@ -143,29 +144,36 @@ PRODUCTS = [
                                               ("Server and technology disclosure", 1)])],
         cols=KEPT,
         rows=["The scan itself",
-              ("On-demand scan, whenever you want one", [Y, Y]),
-              ("The complete check set — nothing withheld from the free tier", [Y, Y]),
-              ("Subdomain and asset discovery", [Y, Y]),
-              ("Certificate transparency lookup", [Y, Y]),
-              ("Graded score with the four result states kept apart", [Y, Y]),
-              ("Standard and RFC references on every check", [Y, Y]),
-              ("Why it matters, and the fix, on every failure", [Y, Y]),
-              ("Sites you may scan", ["Unlimited", "Unlimited"]),
+              ("On-demand scan, whenever you want one", [Y, Y, Y]),
+              ("The complete check set — nothing withheld from the free tier", [Y, Y, Y]),
+              ("Subdomain and asset discovery", [Y, Y, Y]),
+              ("Certificate transparency lookup", [Y, Y, Y]),
+              ("Certificate expiry, checked on every scan", [Y, Y, Y]),
+              ("Graded score with the four result states kept apart", [Y, Y, Y]),
+              ("Standard and RFC references on every check", [Y, Y, Y]),
+              ("Why it matters, and the fix, on every failure", [Y, Y, Y]),
+              ("Sites you may scan", ["Unlimited", "Unlimited", "Unlimited"]),
               "What happens afterwards",
-              ("Results kept once you close the page", [N, Y]),
-              ("Scan history and trend over time", [N, Y]),
-              ("Scheduled scans", [N, Y]),
-              ("Alerting when a passing check regresses", [N, Y]),
-              ("Certificate transparency monitoring — alerting on new issuance", [N, Y]),
-              ("Alerting when discovery turns up a new asset", [N, Y]),
-              "Governance and evidence",
-              ("Waivers and risk acceptance, with mandatory expiry", [N, Y]),
-              ("Control-reference tags, feeding CompliancePortal as evidence", [N, Y]),
-              ("Immutable audit trail of scans and decisions", [N, Y]),
-              ("Fleet view across domains and managed tenants", [N, Y]),
+              ("Results kept once you close the page", [N, Y, Y]),
+              ("Scan history and trend over time", [N, Y, Y]),
+              ("Findings, waivers and an audit trail", [N, Y, Y]),
+              ("Control-reference tags, feeding CompliancePortal as evidence", [N, Y, Y]),
+              ("Fleet view across sites and managed tenants", [N, Y, Y]),
+              "Watched on a clock, between scans",
+              ("Certificate expiry warned before it lapses, not after", [N, Y, Y]),
+              ("Certificate transparency monitoring — alerting on new issuance", [N, Y, Y]),
+              ("Alerting when discovery turns up a new asset", [N, Y, Y]),
+              ("Alerting when a passing check regresses", [N, Y, Y]),
+              "Running without you",
+              ("Recurring scheduled scans", [N, N, Y]),
               "Write access",
-              ("Write access to your DNS or web server", [N, N])],
-        note=("<strong>The free tier is the whole scanner, and that is deliberate.</strong> Nothing is held back "
+              ("Write access to your DNS or web server", [N, N, N])],
+        note=("<strong>Two paid rungs, not three, and the gap between them is small on purpose.</strong> There is "
+              "nothing between <em>keep it</em> and <em>keep it automatically</em> worth a rung of its own. "
+              "Monitoring is where a site becomes a thing we remember — history, findings, waivers, an audit "
+              "trail, and the daily watches that warn you about a certificate before it lapses rather than after. "
+              "Automation adds one thing: the scans run themselves.<br><br>"
+              "<strong>The free tier is the whole scanner, and that is deliberate.</strong> Nothing is held back "
               "to make the paid version look better — the free tier runs every check and shows every result. "
               "What it does not do is remember. There is no history, no schedule, no evidence and no audit "
               "trail, because nothing is written down when the scan finishes. That is also what makes it free "

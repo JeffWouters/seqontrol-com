@@ -305,6 +305,45 @@ PAGES = {
           the band price, whichever band you are on.</p>
       </div>
 
+      <h4 style="margin-top:2.2rem">If you are a provider: pooled framework licences</h4>
+      <p>Per-tenant compliance pricing does not survive a fleet. Sixty clients on the entry band would be
+        $18,000 a month, which is not a price, it is a decline. So for providers the two cost drivers are
+        separated and charged for individually.</p>
+      <div class="table-wrap table-scroll" tabindex="0">
+        <table>
+          <thead><tr><th scope="col">Component</th><th scope="col">Price</th><th scope="col">Why it is charged this way</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Framework licence, across your whole book</th><td>$750 / framework / month</td><td>Building and maintaining a crosswalk costs the same whether one client uses it or sixty</td></tr>
+            <tr><th scope="row">— or every framework, across your whole book</th><td>$3,000 / month</td><td>For providers who standardise on more than two or three</td></tr>
+            <tr><th scope="row">Per managed tenant — Evidence</th><td>$25 / month</td><td>Probes, evidence and retention are genuinely per client</td></tr>
+            <tr><th scope="row">Per managed tenant — Attested</th><td>$40 / month</td><td>Adds sign-off and automated capture, per client</td></tr>
+            <tr><th scope="row">Retention</th><td>36 months included &middot; 84 months +$10 / tenant</td><td>Off the framework axis entirely, because a provider on one framework may still need seven years</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small dim">Minimum ten managed tenants, on a provider agreement. Below that the arithmetic
+        stops describing pooling and starts describing a discount.</p>
+
+      <div class="note plain">
+        <h3>What that comes to</h3>
+        <p class="mb0">Sixty tenants on one framework with sign-off: $750 + 60 &times; $40 =
+          <strong>$3,150 a month</strong>, or about $53 a client. Thirty tenants on two frameworks without
+          sign-off: $1,500 + 30 &times; $25 = <strong>$2,250</strong>, about $75 a client. The whole catalogue
+          with sign-off across sixty tenants: $3,000 + $2,400 = <strong>$5,400</strong>. Compare the first of
+          those with the $27,000 the same book would cost at per-tenant rates — that gap is not a discount,
+          it is what happens when you stop charging sixty times for one crosswalk.</p>
+      </div>
+
+      <div class="note honest">
+        <h3>Provider-scoped licences are not built yet</h3>
+        <p class="mb0">Entitlements in this platform resolve per tenant. A licence that says "this provider may
+          assess SOC 2 against any client in its book" is a different shape — granted at the provider, enforced
+          at the tenant — and it does not exist in the catalogue today. Until it does, a pooled framework
+          licence is a commercial agreement rather than something the software enforces, and we would rather
+          write that down than let you assume otherwise. The prices above are what you will be quoted; the
+          gate behind them is work in progress.</p>
+      </div>
+
       <div class="note honest">
         <h3>Assessments do not run on a schedule yet</h3>
         <p class="mb0">You raise an assessment when you want one; there is no recurring cadence to buy, and the
@@ -346,8 +385,9 @@ PAGES = {
         <li><strong>Which rung you buy.</strong> Visibility, Governance or Automation — see
           <a href="licensing.html">what each licence includes</a>.</li>
         <li><strong>How big the estate is</strong>, in the unit that product counts.</li>
-        <li><strong>Whether you are a provider.</strong> Pooled capacity across managed tenants, with a
-          per-tenant floor applied as greater-of rather than added on top.</li>
+        <li><strong>Whether you are a provider.</strong> Users, sites and domains pool across managed
+          tenants, compliance frameworks are licensed once across the book, and the per-tenant floor applies
+          as greater-of rather than added on top.</li>
       </ul>
 
       <h2 id="never">What never moves it</h2>

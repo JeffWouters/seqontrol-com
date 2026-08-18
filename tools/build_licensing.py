@@ -210,7 +210,7 @@ PRODUCTS = [
     ),
     dict(
         key="complianceportal", name="CompliancePortal", tone="--t-compliance", status=None,
-        counted="Counted per tenant &middot; $250 / $600 / $1,200 by frameworks in scope",
+        counted="Counted per tenant &middot; $300 / $600 / $900 by frameworks &middot; Attested adds half again",
         tech=[("Microsoft", [("Entra ID", 1), ("Exchange Online", 1), ("SharePoint", 1), ("Teams", 1),
                              ("Intune", 1), ("Azure", 1), ("Purview", 1), ("Power Platform", 1), ("Power BI", 1)]),
               ("Other clouds", [("Google Cloud", 1), ("Amazon Web Services", 1)]),
@@ -226,10 +226,11 @@ PRODUCTS = [
                   ("A first-party set", 1)])],
         cols=BANDS,
         rows=["Price",
-              ("Per tenant, per month", ["$250", "$600", "$1,200"]),
+              ("Evidence — per tenant, per month", ["$300", "$600", "$900"]),
+              ("Attested — per tenant, per month", ["$450", "$900", "$1,350"]),
               "In every band",
               ("On-demand assessment, whenever you want one", [Y, Y, Y]),
-              ("Scheduled assessment cadence — daily", [Y, Y, Y]),
+              ("Recurring scheduled assessments", [N, N, N]),
               ("Framework and benchmark catalog", [Y, Y, Y]),
               ("Multi-framework crosswalk — one piece of evidence, many controls", [Y, Y, Y]),
               ("Automated control probes across the connected planes", [Y, Y, Y]),
@@ -238,16 +239,29 @@ PRODUCTS = [
               ("Assessment workflow and immutable snapshot trail", [Y, Y, Y]),
               ("Evidence repository and provided-by-client requests", [Y, Y, Y]),
               ("Time-boxed auditor access", [Y, Y, Y]),
-              ("Control ownership and remediation tasks", [Y, Y, Y]),
               "Scales with the band",
               ("Frameworks in scope", ["1", "3", "Unlimited"]),
               ("Evidence retention", ["12 months", "36 months", "84 months"]),
-              ("Attestation and sign-off, with four-eyes and expiry", [N, Y, Y]),
-              ("Automated evidence capture", [N, N, Y])],
-        after=("Depth here is not see → govern → act. It is <strong>how many frameworks are in scope, how long "
-               "the evidence is kept, and how much of it is captured automatically.</strong> The scope still "
-               "holds: this proves the technical controls on the platforms SeQontrol connects to, not a "
-               "whole-company compliance programme."),
+              "Attested adds, at any band",
+              ("Attestation and sign-off, with four-eyes and expiry", [Y, Y, Y]),
+              ("Automated evidence capture", [Y, Y, Y]),
+              ("Control ownership and remediation tasks", [Y, Y, Y])],
+        after=("<strong>Two questions, two axes, so neither answer is bought to get the other.</strong> How many "
+               "frameworks you need is scope. Whether you want sign-off and automatic capture is depth. Until "
+               "now those shared one number, which meant a company doing SOC 2 alone had to buy every framework "
+               "in the catalogue to reach attestation — paying for twenty-three regimes it would never open, to "
+               "get one capability. Attested is half again the band price at any band instead.<br><br>"
+               "<strong>Not called Automation, and not an accident.</strong> On the ladder products that word "
+               "is the rung that writes to your tenant. CompliancePortal writes nothing — it maps, scores, "
+               "evidences and attests. Automated evidence <em>capture</em> reads from the estate; it does not "
+               "act on it.<br><br>"
+               "<strong>Assessments do not yet run on a schedule.</strong> They are raised on demand and the "
+               "product has no recurring cadence to sell, which is why that row is empty in all three bands "
+               "rather than quietly ticked. What <em>is</em> continuous is the evidence underneath: "
+               "SecurityPortal, ShareCare, WebScan and MailTrust scan on their own schedules, and their "
+               "control-tagged findings are what an assessment reuses. The scope still holds either way — this "
+               "proves the technical controls on the platforms SeQontrol connects to, not a whole-company "
+               "compliance programme."),
     ),
     dict(
         key="postureportal", name="PosturePortal", tone="--t-posture", status="Coming soon",

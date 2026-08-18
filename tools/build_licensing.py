@@ -250,8 +250,8 @@ PRODUCTS = [
                "whole-company compliance programme."),
     ),
     dict(
-        key="postureportal", name="PosturePortal", tone="--t-posture", status=None,
-        counted="Bundled &middot; no separate charge, ever &middot; comes with SecurityPortal or any ShareCare tier",
+        key="postureportal", name="PosturePortal", tone="--t-posture", status="Coming soon",
+        counted="Not yet priced &middot; still in development",
         tech=[("Reads from", [("ShareCare", 1), ("SecurityPortal", 1), ("WebScan", 1),
                               ("CompliancePortal", 1), ("MailTrust", 1), ("Dredd", 1),
                               ("Connector health", 1)])],
@@ -262,9 +262,11 @@ PRODUCTS = [
               ("Saved views and annotations", [Y]),
               ("Fleet overview across managed tenants", [Y]),
               ("Write access to your tenant", [N])],
-        after=("PosturePortal connects to nothing itself — it reads the shared findings store, which is why it "
-               "costs nothing extra to run and why it is bundled rather than sold as a separate line. An "
-               "aggregation layer is only worth having once two or more products feed it."),
+        after=("<strong>Still in development, and deliberately not on the price list.</strong> PosturePortal "
+               "connects to nothing itself — it reads the shared findings store — so it costs almost nothing to "
+               "run and will not be sold as a separate line. Exactly how it is packaged is not settled, and "
+               "putting a number against something still being built is how a price list stops being trusted. "
+               "The capabilities below describe what it does; none of them is something you can buy today."),
     ),
     dict(
         key="mailtrust", name="MailTrust", tone="--t-mailtrust", status=None,
@@ -392,7 +394,6 @@ SECTION = """  <!-- ---------------------------------------------------------- p
             <tbody>
               <tr><td>Platform minimum</td><td>$99 a month on the total, as greater-of rather than added on top — covers tenancy, auth, audit, findings, reporting and scheduling</td></tr>
               <tr><td>Volume</td><td>Less 10 per cent above 100 users, less 20 per cent above 500, less 30 per cent above 2,000</td></tr>
-              <tr><td>Suite discount</td><td>Taking all products costs meaningfully less than the sum of the parts</td></tr>
               <tr><td>Annual or monthly</td><td>A payment term, not a discount — a year costs twelve months</td></tr>
               <tr><td>Provider pooling</td><td>Users and domains pool across managed tenants, with a per-tenant floor applied as greater-of</td></tr>
             </tbody>

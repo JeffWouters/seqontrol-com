@@ -268,11 +268,10 @@ PAGES = {
           Better to read that here than to discover it after buying the top rung.</p>
       </div>
 
-      <h3 style="margin-top:2.6rem">SecurityPortal and PosturePortal — per user, per month</h3>
+      <h3 style="margin-top:2.6rem">SecurityPortal — per user, per month</h3>
       <p><strong>$1.50 per user</strong> — or <strong>nothing at all</strong> if you have any ShareCare tier,
         which is the usual case. Same denominator as ShareCare, so it adds to an existing line rather than
-        starting a new negotiation. PosturePortal is never a separate charge: it reads the shared findings
-        store and connects to nothing itself, so there is no second cost to pass on.</p>
+        starting a new negotiation.</p>
 
       <h3 style="margin-top:2.6rem">CompliancePortal — per tenant, per month</h3>
       <div class="table-wrap table-scroll" tabindex="0">
@@ -294,18 +293,14 @@ PAGES = {
         work to prove whether you have forty people or four hundred. Depth here is evidence retention,
         attestation and automated capture — not the see / govern / act ladder.</p>
 
-      <div class="note plain">
-        <h3>Taking the suite</h3>
-        <p class="mb0">All products together cost <strong>less 40 per cent on the sum</strong> of the parts.
-          That is a large number and it is deliberate: the products are worth more to you attached than
-          separately, and we would rather have the attach rate than the margin. It is applied to the total,
-          after every other adjustment.</p>
-      </div>
-
       <p><a href="products/dredd.html">Dredd</a> and ConditionalAccessPortal are quoted rather than listed.
         Not evasion — Dredd's unit is monitored configuration scope, which is the metric we understand least,
         and it is being set against real estates rather than guessed. Ask, and you get a number back, usually
         the same working day.</p>
+      <p><a href="products/postureportal.html">PosturePortal</a> carries no price at all, because it is still
+        in development. It will not be a separate line when it arrives — it connects to nothing and reads the
+        shared findings store — but exactly how it is packaged is unsettled, and a price against something
+        still being built is how a price list stops being worth reading.</p>
 
       <h2>What each product counts</h2>
       <div class="table-wrap table-scroll" tabindex="0">
@@ -317,7 +312,7 @@ PAGES = {
             <tr><th scope="row">CompliancePortal</th><td>Per tenant, banded by how many frameworks are in scope</td></tr>
             <tr><th scope="row">WebScan</th><td>Free on every tenant; Monitoring and Continuous per monitored site, five-site minimum</td></tr>
             <tr><th scope="row">MailTrust</th><td>Per sending domain; parked domains at a lower rate, five included with each</td></tr>
-            <tr><th scope="row">PosturePortal</th><td>Bundled, never a separate line</td></tr>
+            <tr><th scope="row">PosturePortal</th><td>Not yet priced — still in development</td></tr>
           </tbody>
         </table>
       </div>
@@ -330,12 +325,16 @@ PAGES = {
         <li><strong>Which rung you buy.</strong> Visibility, Governance or Automation — see
           <a href="licensing.html">what each licence includes</a>.</li>
         <li><strong>How big the estate is</strong>, in the unit that product counts.</li>
-        <li><strong>How many products.</strong> The full suite is less 40 per cent on the sum of the parts.</li>
         <li><strong>Whether you are a provider.</strong> Pooled capacity across managed tenants, with a
           per-tenant floor applied as greater-of rather than added on top.</li>
       </ul>
 
       <h2 id="never">What never moves it</h2>
+      <p><strong>How many products you take.</strong> There is no suite discount. Each product is priced on
+        its own and adding one costs what that product costs — no bundle, no package, no number that only
+        appears if you buy everything. What running more than one does get you is structural rather than
+        promotional: one platform minimum across the account instead of one per product, and findings that
+        land somewhere they are already useful.</p>
       <p>How often you scan, how many findings you have, how much you remediate, or how much evidence you
         export. None of those are metered, deliberately — charging for them would teach you to look less
         often, which is the one behaviour this product exists to prevent.</p>

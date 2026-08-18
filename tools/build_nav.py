@@ -25,7 +25,7 @@ PRODUCTS = [
     ("securityportal.html",    "SecurityPortal",    "--t-security",   False),
     ("webscan.html",           "WebScan",           "--t-webscan",    False),
     ("complianceportal.html",  "CompliancePortal",  "--t-compliance", False),
-    ("postureportal.html",     "PosturePortal",     "--t-posture",    False),
+    ("postureportal.html",     "PosturePortal",     "--t-posture",    True),
     ("mailtrust.html",         "MailTrust",         "--t-mailtrust",  False),
     ("dredd.html",             "Dredd",             "--t-dredd",      False),
 ]

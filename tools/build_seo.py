@@ -149,7 +149,7 @@ META = {
     "products/postureportal.html": (
         "SeQontrol - PosturePortal - The answer, not the raw scan",
         "The read-only board that aggregates findings, risk and coverage from every SeQontrol "
-        "product into one per-tenant and fleet-wide view.",
+        "product into one per-tenant and fleet-wide view. Still in development.",
         "PosturePortal"),
     "products/mailtrust.html": (
         "SeQontrol - MailTrust - SPF, DKIM, DMARC and more, enforced",

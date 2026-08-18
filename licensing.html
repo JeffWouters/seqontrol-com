@@ -473,14 +473,16 @@
       <div class="product-licence" role="tabpanel" id="panel-mailtrust" aria-labelledby="tab-mailtrust" tabindex="0" style="--tone: var(--t-mailtrust)">
         <header>
           <h3>MailTrust</h3>
-          <p class="counted">Counted per domain</p>
+          <p class="counted">Counted per sending domain &middot; $15 / $30 / $40 &middot; parked domains $3</p>
         </header>
         <div class="tech">
           <h4>Technologies covered</h4>
           <span class="group-label">Standards</span>
           <ul class="tags"><li class="tag on">SPF</li><li class="tag on">DKIM</li><li class="tag on">DMARC</li><li class="tag on">BIMI</li><li class="tag on">MTA-STS</li></ul>
-          <span class="group-label">DNS write-back</span>
-          <ul class="tags"><li class="tag on">Azure DNS</li><li class="tag on">DNSimple</li><li class="tag off">Other providers — guided steps</li></ul>
+          <span class="group-label">DNS write-back — live</span>
+          <ul class="tags"><li class="tag on">Azure DNS</li><li class="tag on">DNSimple</li></ul>
+          <span class="group-label">DNS write-back — not yet</span>
+          <ul class="tags"><li class="tag off">Cloudflare</li><li class="tag off">Route 53</li><li class="tag off">Everything else — guided steps</li></ul>
         </div>
         <div class="table-wrap table-scroll" tabindex="0" role="group" aria-label="Licence comparison">
           <table class="matrix">
@@ -488,6 +490,10 @@
               <tr><th scope="col">Capability</th><th class="rung-head" scope="col">Visibility<small>see it</small></th><th class="rung-head" scope="col">Governance<small>govern it</small></th><th class="rung-head" scope="col">Automation<small>act on it</small></th></tr>
             </thead>
             <tbody>
+              <tr class="group"><th colspan="4" scope="colgroup">Price</th></tr>
+              <tr><th scope="row">Per sending domain, per month</th><td>$15</td><td>$30</td><td>$40</td></tr>
+              <tr><th scope="row">Per parked domain, per month</th><td>$3</td><td>$3</td><td>$3</td></tr>
+              <tr><th scope="row">Parked domains included, per sending domain</th><td>5</td><td>5</td><td>5</td></tr>
               <tr class="group"><th colspan="4" scope="colgroup">Cadence</th></tr>
               <tr><th scope="row">On-demand scan, whenever you want one</th><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
               <tr><th scope="row">Scheduled scan cadence</th><td>Daily</td><td>Every 6 hours</td><td>Hourly</td></tr>
@@ -496,6 +502,7 @@
               <tr><th scope="row">DMARC aggregate report ingestion and sender analysis</th><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
               <tr><th scope="row">Findings history and reports</th><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
               <tr><th scope="row">Unlimited domains on every rung</th><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
+              <tr><th scope="row">Parked domains watched for silent record changes</th><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
               <tr class="group"><th colspan="4" scope="colgroup">Governance</th></tr>
               <tr><th scope="row">Guided staged rollout toward enforcement</th><td><span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
               <tr><th scope="row">Deliverability and authentication alerting</th><td><span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
@@ -506,9 +513,9 @@
           </table>
         </div>
         <div class="note plain" style="margin-top:0">
-          <p class="mb0"><strong>Report volume carries an allowance.</strong> Ingesting, parsing and storing DMARC aggregate reports is a real cost that scales with how much mail a domain sends, not with how many domains you have — so each domain includes an allowance sized to normal sending volume, and unusually high-volume domains buy additional blocks. Same test as the deliverability allowance: a genuine external cost, optional, and bursty. Posture, findings and reports stay uncapped.</p>
+          <p class="mb0"><strong>A parked domain is not priced like a sending one.</strong> Most organisations own far more domains than they send from — acquisitions, retired brands, defensive and typo registrations — and those are exactly the ones worth spoofing, because no real mail flows so nothing breaks and nobody notices. Charging full rate for them would make the rational decision <em>protect fewer domains</em>, which is the behaviour this product exists to prevent. So a parked domain is $3, five come with every sending domain, and the classification is measured rather than asserted: a domain is parked when it has produced no DMARC report volume and no DKIM signing for a full period. Start sending from it and it reclassifies itself.<br><br><strong>Report volume carries an allowance.</strong> Ingesting, parsing and storing DMARC aggregate reports is a real cost that scales with how much mail a domain sends, not with how many domains you have — so each domain includes an allowance sized to normal sending volume, and unusually high-volume domains buy additional blocks. Same test as the deliverability allowance: a genuine external cost, optional, and bursty. Posture, findings and reports stay uncapped.</p>
         </div>
-        <p class="after">No rung caps how many domains you may add — the count is a commercial measurement, trued up on the next invoice, never a hard stop. Ingesting DMARC reports needs a mailbox to receive them; that is part of onboarding.</p>
+        <p class="after">No rung caps how many domains you may add — the count is a commercial measurement, trued up on the next invoice, never a hard stop. Ingesting DMARC reports needs a mailbox to receive them; that is part of onboarding.<br><br><strong>Automation is priced at $40 rather than higher, and the reason is honest:</strong> DNS write-back is live for Azure DNS and DNSimple only. If your DNS is anywhere else, that rung gives you a staged rollout and guided records to apply yourself, not automation — so it is not priced as though it wrote them for you. Cloudflare and Route 53 are the next two, and the price goes up when they land rather than before.</p>
       </div>
       <div class="product-licence" role="tabpanel" id="panel-dredd" aria-labelledby="tab-dredd" tabindex="0" style="--tone: var(--t-dredd)">
         <header>

@@ -76,7 +76,7 @@
   <section>
     <div class="wrap wrap-narrow">
 
-      <h2 id="figures">ShareCare and WebScan, in figures</h2>
+      <h2 id="figures">ShareCare, WebScan and MailTrust, in figures</h2>
       <p>This page carried no numbers for a while, for a stated reason: the model was settled but the levels
         were not, and publishing a figure we expected to move is the kind of thing this site refuses to do.
         The levels are now set, so here they are.</p>
@@ -142,9 +142,53 @@
           that point.</p>
       </div>
 
-      <p>Every other product is quoted rather than listed. Not evasion — those levels genuinely are still
-        being set against real estates, and we would rather say so than publish a number we expect to move.
-        Ask, and you get one back, usually the same working day.</p>
+      <h3 style="margin-top:2.6rem">MailTrust — per domain, per month</h3>
+      <div class="table-wrap table-scroll" tabindex="0">
+        <table class="matrix">
+          <thead>
+            <tr>
+              <th scope="col">Per domain, per month</th>
+              <th class="rung-head" scope="col">Visibility<small>see it</small></th>
+              <th class="rung-head" scope="col">Governance<small>govern it</small></th>
+              <th class="rung-head" scope="col">Automation<small>act on it</small></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Sending domain</th><td>$15</td><td>$30</td><td>$40</td></tr>
+            <tr><th scope="row">Parked domain</th><td>$3</td><td>$3</td><td>$3</td></tr>
+            <tr><th scope="row">3 sending, 40 parked</th><td>$120</td><td>$165</td><td>$195</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small dim">Five parked domains included with every sending domain — the example above prices
+        the remaining 25.</p>
+
+      <div class="note plain">
+        <h3>Why a parked domain costs $3 and not $15</h3>
+        <p>Most organisations own far more domains than they send from: acquisitions, retired brands,
+          defensive and typo registrations. Those are exactly the ones worth spoofing — no real mail flows,
+          so nothing breaks and nobody notices.</p>
+        <p class="mb0">Charging full rate for them makes the rational decision <em>protect fewer domains</em>,
+          which is the behaviour this product exists to prevent. A parked domain needs a policy, a null MX and
+          a daily check that nobody quietly changed them, and it sends us almost no report volume — so it is
+          priced for what it is. The classification is measured, not asserted: a domain is parked when it has
+          produced no DMARC report volume and no DKIM signing for a full period, and it reclassifies itself
+          the moment you start sending from it.</p>
+      </div>
+
+      <div class="note honest">
+        <h3>What Automation writes, and where it does not</h3>
+        <p class="mb0">DNS write-back is live for <strong>Azure DNS and DNSimple</strong>. Anywhere else,
+          Automation gives you a staged rollout and the exact records to apply yourself — guidance, not
+          automation. That is why the rung is $40 rather than the $50 the capability would be worth if it
+          wrote everywhere. Cloudflare and Route 53 are next, and the price moves when they ship, not before.
+          Better to read that here than to discover it after buying the top rung.</p>
+      </div>
+
+      <p>SecurityPortal, CompliancePortal, PosturePortal, Dredd and ConditionalAccessPortal are quoted rather
+        than listed. Not evasion — those levels genuinely are still being set against real estates, and we
+        would rather say so than publish a number we expect to move. Ask, and you get one back, usually the
+        same working day.</p>
 
       <h2>What each product counts</h2>
       <div class="table-wrap table-scroll" tabindex="0">
@@ -155,7 +199,7 @@
             <tr><th scope="row">SecurityPortal</th><td>Users — or included with any ShareCare tier</td></tr>
             <tr><th scope="row">CompliancePortal</th><td>Per tenant, banded by how many frameworks are in scope</td></tr>
             <tr><th scope="row">WebScan</th><td>Free on every tenant; Monitoring and Continuous per monitored site, five-site minimum</td></tr>
-            <tr><th scope="row">MailTrust</th><td>Per domain</td></tr>
+            <tr><th scope="row">MailTrust</th><td>Per sending domain; parked domains at a lower rate, five included with each</td></tr>
             <tr><th scope="row">PosturePortal</th><td>Bundled, never a separate line</td></tr>
           </tbody>
         </table>

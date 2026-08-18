@@ -110,7 +110,8 @@
         <h2>What it does</h2>
         <ul class="checklist" style="--tone: var(--t-mailtrust)">
           <li><strong>Email-authentication posture</strong> — evaluates SPF, DKIM, DMARC, BIMI and MTA-STS for
-            every domain, continuously rather than at project time.</li>
+            every domain, continuously rather than at project time. Free tools will draw you a DMARC dashboard;
+            none of them puts that posture next to your Microsoft 365 posture in one audit trail.</li>
           <li><strong>Real sender inventory</strong> — ingests and analyses DMARC aggregate reports to reveal
             every source sending as your domain: legitimate services and spoofers alike. This is the prerequisite
             to enforcing safely, and it is the step most projects skip.</li>
@@ -121,6 +122,11 @@
             another team.</li>
           <li><strong>Drift monitoring</strong> — records change and new senders appear. MailTrust keeps watching
             after you reach enforcement, which is the half a one-off consulting project cannot do.</li>
+          <li><strong>Parked domains, covered properly</strong> — the acquisitions, retired brands and
+            defensive registrations nobody sends from. They are the easiest to spoof, because no real mail
+            flows so nothing breaks and nobody notices. They are watched for silent record changes and
+            <a href="../pricing.html#figures">priced at a fraction of a sending domain</a>, so covering all of
+            them is never the expensive choice.</li>
           <li><strong>Fleet-ready</strong> — every client domain in one console, feeding the shared findings store
             so email authentication shows up on the board and as control evidence.</li>
         </ul>
@@ -148,12 +154,13 @@
         <h3>Status</h3>
         <ul><li><span class="status built">Built</span> Running today</li></ul>
         <h3>Metered on</h3>
-        <ul><li>Per domain</li></ul>
+        <ul><li>Per sending domain. Parked domains at a much lower rate, five included with each
+          sending domain — <a href="../pricing.html#figures">see the figures</a>.</li></ul>
         <h3>License flavours</h3>
         <ul>
-          <li><strong>Visibility</strong> — monitoring, sender analysis, reports</li>
+          <li><strong>Visibility</strong> — sender inventory, posture, fleet, evidence</li>
           <li><strong>Governance</strong> — guided rollout, alerting, multi-domain fleet</li>
-          <li><strong>Automation</strong> — DNS write-back</li>
+          <li><strong>Automation</strong> — DNS write-back, where the provider is supported</li>
         </ul>
         <h3>Standards covered</h3>
         <ul>

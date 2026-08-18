@@ -262,11 +262,17 @@ PRODUCTS = [
     ),
     dict(
         key="mailtrust", name="MailTrust", tone="--t-mailtrust", status=None,
-        counted="Counted per domain",
+        counted="Counted per sending domain &middot; $15 / $30 / $40 &middot; parked domains $3",
         tech=[("Standards", [("SPF", 1), ("DKIM", 1), ("DMARC", 1), ("BIMI", 1), ("MTA-STS", 1)]),
-              ("DNS write-back", [("Azure DNS", 1), ("DNSimple", 1), ("Other providers — guided steps", 0)])],
+              ("DNS write-back — live", [("Azure DNS", 1), ("DNSimple", 1)]),
+              ("DNS write-back — not yet", [("Cloudflare", 0), ("Route 53", 0),
+                                            ("Everything else — guided steps", 0)])],
         cols=LADDER,
-        rows=["Cadence",
+        rows=["Price",
+              ("Per sending domain, per month", ["$15", "$30", "$40"]),
+              ("Per parked domain, per month", ["$3", "$3", "$3"]),
+              ("Parked domains included, per sending domain", ["5", "5", "5"]),
+              "Cadence",
               ("On-demand scan, whenever you want one", [Y, Y, Y]),
               ("Scheduled scan cadence", ["Daily", "Every 6 hours", "Hourly"]),
               "Assessment",
@@ -274,20 +280,33 @@ PRODUCTS = [
               ("DMARC aggregate report ingestion and sender analysis", [Y, Y, Y]),
               ("Findings history and reports", [Y, Y, Y]),
               ("Unlimited domains on every rung", [Y, Y, Y]),
+              ("Parked domains watched for silent record changes", [Y, Y, Y]),
               "Governance",
               ("Guided staged rollout toward enforcement", [N, Y, Y]),
               ("Deliverability and authentication alerting", [N, Y, Y]),
               ("Multi-domain fleet view", [N, Y, Y]),
               "Write access",
               ("DNS write-back for supported providers", [N, N, Y])],
-        note=("<strong>Report volume carries an allowance.</strong> Ingesting, parsing and storing DMARC "
+        note=("<strong>A parked domain is not priced like a sending one.</strong> Most organisations own far "
+              "more domains than they send from — acquisitions, retired brands, defensive and typo registrations "
+              "— and those are exactly the ones worth spoofing, because no real mail flows so nothing breaks and "
+              "nobody notices. Charging full rate for them would make the rational decision <em>protect fewer "
+              "domains</em>, which is the behaviour this product exists to prevent. So a parked domain is $3, "
+              "five come with every sending domain, and the classification is measured rather than asserted: a "
+              "domain is parked when it has produced no DMARC report volume and no DKIM signing for a full "
+              "period. Start sending from it and it reclassifies itself.<br><br>"
+              "<strong>Report volume carries an allowance.</strong> Ingesting, parsing and storing DMARC "
               "aggregate reports is a real cost that scales with how much mail a domain sends, not with how many "
               "domains you have — so each domain includes an allowance sized to normal sending volume, and "
               "unusually high-volume domains buy additional blocks. Same test as the deliverability allowance: a "
               "genuine external cost, optional, and bursty. Posture, findings and reports stay uncapped."),
         after=("No rung caps how many domains you may add — the count is a commercial measurement, trued up on "
                "the next invoice, never a hard stop. Ingesting DMARC reports needs a mailbox to receive them; "
-               "that is part of onboarding."),
+               "that is part of onboarding.<br><br><strong>Automation is priced at $40 rather than higher, and "
+               "the reason is honest:</strong> DNS write-back is live for Azure DNS and DNSimple only. If your "
+               "DNS is anywhere else, that rung gives you a staged rollout and guided records to apply "
+               "yourself, not automation — so it is not priced as though it wrote them for you. Cloudflare and "
+               "Route 53 are the next two, and the price goes up when they land rather than before."),
     ),
     dict(
         key="dredd", name="Dredd", tone="--t-dredd", status=None,

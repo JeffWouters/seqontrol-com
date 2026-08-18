@@ -265,10 +265,10 @@ PAGES = {
         cash-flow decision, not a lever: there is no discount for committing and no penalty for not. If you
         would rather pay yearly because it is one invoice instead of twelve, do that — it will not change
         the number, and nobody here will pretend it should.</p>
-      <p><a href="products/webscan.html">WebScan</a> takes that further and costs nothing at all to run: every
-        tenant can scan any domain, on demand, as often as it likes. The licence buys what happens
-        <em>after</em> the scan — the history, the schedule, the audit trail and the evidence. A scan you do
-        not keep cannot prove anything, and it also costs us nothing to give you.</p>
+      <p><a href="products/webscan.html">WebScan</a> takes that further: every tenant scans one site three
+        times a day at no cost, indefinitely. The licence buys more sites and what happens <em>after</em> the
+        scan — the history, the schedule, the audit trail and the evidence. A scan you do not keep cannot
+        prove anything, and the one you do keep is the one we charge for.</p>
 
       <h2 id="request">Get a number</h2>
       <p>Tell us the size of the estate. You will get a real figure back, not a discovery call.</p>
@@ -355,9 +355,10 @@ PAGES = {
 
       <h2>And it stays free</h2>
       <p>This is not a sample of a paid product. <a href="products/webscan.html">WebScan</a>'s free tier
-        runs the complete check set, shows every result, and is included with every SeQontrol tenant, on as
-        many sites as you like, for as long as you keep the tenant. Nothing is held back to make the paid
-        version look better.</p>
+        runs the complete check set and shows every result, on your own site, three scans a day, for as long
+        as you keep the tenant and with no expiry date on it. Nothing is held back from the check set — the
+        cap is on reach, not on depth, and it exists so an uncapped scanner cannot be pointed at domains
+        nobody owns.</p>
       <p>What the free tier does not do is <em>remember</em>. Nothing is written down when the scan
         finishes — so there is no history, no trend, no schedule, no alert when a passing check regresses,
         and no evidence to hand an auditor. That is the whole of what the licence buys, and it is also why

@@ -129,8 +129,8 @@
             reachability is part of posture and the answer is rarely what people assume.</li>
           <li><strong>Every check cites its standard</strong> — the RFC or specification is printed next to
             the finding, which is what turns "the scanner says so" into a change request someone approves.</li>
-          <li><strong>Free on every tenant</strong> — run it on demand, as often as you like, at no cost.
-            You pay when you want the results kept.</li>
+          <li><strong>Free on every tenant</strong> — one site, three scans a day, every check, at no cost
+            and with no expiry date. You pay when you want a second site, or want the answer kept.</li>
         </ul>
 
         <h2 style="margin-top:2.8rem">Why it matters</h2>
@@ -148,6 +148,10 @@
             your tenant, and on the free tier nothing is written down when the scan finishes — which is
             precisely what makes it free to give away. It is also why free scans are on demand only: nothing
             schedules itself, so a free scan costs what it costs and then stops.</p>
+          <p class="mb0">The free tier is capped at one site and three scans a day, and the reason is not
+            margin. An uncapped scanner aimed at domains the caller does not own is reconnaissance run from
+            our addresses — that ends with our egress ranges on a blocklist and somebody else's abuse report.
+            The ceiling is what lets the tier stay free indefinitely instead of becoming a trial.</p>
         </div>
 
         <div class="note plain">
@@ -246,20 +250,21 @@
       <div class="section-head">
         <span class="eyebrow">Free, Monitoring, Automation</span>
         <h2>A scan you do not keep cannot prove anything</h2>
-        <p>The free tier is a complete scanner, not a teaser. It runs every check and shows you every result.
-          What it does not do is remember — and remembering is the whole of the paid product. Three rungs:
-          scan it, keep it, keep it automatically.</p>
+        <p>The free tier is a complete scanner, not a teaser — every check, every result, on one site three
+          times a day. What it does not do is remember, and remembering is the whole of the paid product.
+          Three rungs: scan it, keep it, keep it automatically.</p>
       </div>
 
       <div class="grid grid-3">
         <article class="card" style="--tone: var(--t-webscan)">
           <h3>Free</h3>
           <p class="small dim mb0" style="margin-top:-.4rem">On every tenant</p>
-          <p>Every check, every result, on demand, as often as you want, across as many sites as you want.
-            Discovery included. When you close the page it is gone: nothing stored, so no history, no
-            evidence, and nothing watching between scans.</p>
-          <p class="mb0"><strong>Good for:</strong> checking a site right now. Checking a prospect's site
-            before the first meeting. Confirming a fix landed.</p>
+          <p>Every check, every result, discovery included — on <strong>one site, three times a day</strong>.
+            Nothing is withheld from the check set; what is capped is how much of it you can point at how
+            often. When you close the page it is gone: no history, no evidence, nothing watching between
+            scans.</p>
+          <p class="mb0"><strong>Good for:</strong> your own site, checked whenever you want to know. Proving
+            a fix landed. Deciding whether the paid rungs are worth it on evidence rather than a demo.</p>
         </article>
 
         <article class="card" style="--tone: var(--t-webscan)">
@@ -287,7 +292,7 @@
         <table>
           <thead><tr><th scope="col">Capability</th><th scope="col">What it means for you</th></tr></thead>
           <tbody>
-            <tr><td>Unauthenticated, from outside</td><td>Works on any domain, including one you have not onboarded</td></tr>
+            <tr><td>Unauthenticated, from outside</td><td>No consent to arrange; a licensed site can be one you do not own yet</td></tr>
             <tr><td>Standard references on every check</td><td>The finding is a specification, not an opinion</td></tr>
             <tr><td>Four result states, kept apart</td><td>An unreadable check never becomes a quiet pass</td></tr>
             <tr><td>Scheduled scans and retained history</td><td>Proof the configuration held between audits</td></tr>
@@ -313,8 +318,9 @@
         </article>
         <article class="card">
           <h3>"Is the free tier crippled?"</h3>
-          <p>No. It runs the identical check set and shows the identical result. The only thing it lacks is
-            persistence — which is a real product boundary, not a lever.</p>
+          <p>Not in what it checks — the check set is identical and so is the result. It is capped in reach:
+            one site, three scans a day. Nothing is held back to make the paid version look cleverer; what
+            you buy is more sites, and the memory to keep them.</p>
         </article>
         <article class="card">
           <h3>"Can it break my site?"</h3>
@@ -389,8 +395,8 @@
   <section class="cta">
     <div class="wrap">
       <h2>Pick a domain and find out</h2>
-      <p>Yours, or a client's. The free scan is the whole scan — you will see exactly what the licensed
-        version would have recorded.</p>
+      <p>Your own, free, three times a day. You will see exactly what the licensed version would have
+        recorded — the difference is what happens to it afterwards.</p>
       <div class="btn-row">
         <a class="btn btn-primary" href="../surface-report.html">Scan my site, free</a>
         <a class="btn btn-ghost" href="index.html">All products</a>

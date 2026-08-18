@@ -149,13 +149,15 @@ PRODUCTS = [
               "The scan itself",
               ("On-demand scan, whenever you want one", [Y, Y, Y]),
               ("The complete check set — nothing withheld from the free tier", [Y, Y, Y]),
+              ("Scan a site you have not onboarded", [N, Y, Y]),
               ("Subdomain and asset discovery", [Y, Y, Y]),
               ("Certificate transparency lookup", [Y, Y, Y]),
               ("Certificate expiry, checked on every scan", [Y, Y, Y]),
               ("Graded score with the four result states kept apart", [Y, Y, Y]),
               ("Standard and RFC references on every check", [Y, Y, Y]),
               ("Why it matters, and the fix, on every failure", [Y, Y, Y]),
-              ("Sites you may scan", ["Unlimited", "Unlimited", "Unlimited"]),
+              ("Sites you may scan", ["1", "Unlimited", "Unlimited"]),
+              ("On-demand scans per day", ["3", "Unlimited", "Unlimited"]),
               "What happens afterwards",
               ("Results kept once you close the page", [N, Y, Y]),
               ("Scan history and trend over time", [N, Y, Y]),
@@ -173,7 +175,13 @@ PRODUCTS = [
               ("Monthly minimum for a WebScan-only tenant", ["&mdash;", "$25", "$25"]),
               "Write access",
               ("Write access to your DNS or web server", [N, N, N])],
-        note=("<strong>Two paid rungs, not three, and the gap between them is small on purpose.</strong> There is "
+        note=("<strong>The free tier has a ceiling, and it is a small one.</strong> One site, three scans a day. "
+              "That is deliberate and it is about abuse rather than margin: an uncapped scanner pointed at domains "
+              "the caller does not own is reconnaissance run from our addresses, and it ends with our egress "
+              "ranges on somebody's blocklist. The ceiling is what lets the tier stay genuinely free rather than "
+              "becoming a trial with an expiry date. Register your own site, check it as often as a working day "
+              "needs, and pay only when you want more than one or want it remembered.<br><br>"
+              "<strong>Two paid rungs, not three, and the gap between them is small on purpose.</strong> There is "
               "nothing between <em>keep it</em> and <em>keep it automatically</em> worth a rung of its own. "
               "Monitoring is where a site becomes a thing we remember — history, findings, waivers, an audit "
               "trail, and the daily watches that warn you about a certificate before it lapses rather than after. "

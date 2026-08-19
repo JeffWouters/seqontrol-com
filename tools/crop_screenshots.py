@@ -111,7 +111,7 @@ if __name__ == "__main__":
     crop("SecurityPortal", "SecurityPortal01", (18, 196, 1186, 320), "ladder-strip")
 
     # The tier-rule panel from this same screenshot is already cut as
-    # posture-rung-detail.png and carries the principle section on the home page.
+    # posture-tier-detail.png and carries the principle section on the home page.
 
     # Category rows, with the unassessed count sitting next to the failures.
     crop("SecurityPortal", "SecurityPortal01", (6, 1008, 1202, 1522), "category-rows")

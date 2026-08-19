@@ -83,11 +83,28 @@ PRICING_SUB = [
     ("licensing.html", "What each licence includes"),
 ]
 
+# A product's availability was being stated in five places: the nav badge (here), the Status line on its
+# own page, two counts on index.html, a sentence on products/index.html and the pricing panel. Three of
+# them were wrong simultaneously on 2026-08-19. The badge and the Status line are now the same fact
+# rendered twice from this list; the prose counts still are not, and remain the drift risk.
+STATUS = {
+    None:       ("built", "Built",          "Running today"),
+    "Soon":     ("built", "Built",          "Coming soon &mdash; not yet released"),
+    "In dev":   ("soon",  "In development", "Not yet available"),
+}
+
+STATUS_RE = re.compile(r'( *)<h3>Status</h3>\s*<ul>.*?</ul>', re.S)
 NAVLINKS = re.compile(r'( *)<ul class="nav-links".*?</ul>\s*</nav>', re.S)
 SUBNAV = re.compile(r'( *)<ul class="subnav">.*?</ul>', re.S)
 FOOTER = re.compile(r'( *)<h2>Products</h2>\n *<ul>.*?</ul>', re.S)
 COMPANY_RE = re.compile(r'( *)<h2>Company</h2>\n *<ul>.*?</ul>', re.S)
 COMPARE_RE = re.compile(r'( *)<h2>Compare</h2>\n *<ul>.*?</ul>', re.S)
+
+
+def status_block(pad: str, label: str | None) -> str:
+    css, badge, text = STATUS[label]
+    return (f'{pad}<h3>Status</h3>\n'
+            f'{pad}<ul><li><span class="status {css}">{badge}</span> {text}</li></ul>')
 
 
 def prefix(rel: str) -> str:
@@ -175,6 +192,13 @@ def main() -> None:
             up = root(rel)
 
             out = NAVLINKS.sub(lambda m: navlinks(m.group(1), pre, up), src)
+
+            # A product page's Status line is the same fact as its nav badge, so it is rendered from
+            # the same row rather than kept in step by hand.
+            if rel.startswith("products/"):
+                label = next((lab for href, _n, _t, lab in PRODUCTS if rel == f"products/{href}"), "__none__")
+                if label != "__none__":
+                    out = STATUS_RE.sub(lambda m: status_block(m.group(1), label), out)
             out = FOOTER.sub(lambda m: footer(m.group(1), pre), out)
             out = COMPANY_RE.sub(lambda m: company(m.group(1), up), out)
             out = COMPARE_RE.sub(lambda m: compare(m.group(1), up), out)

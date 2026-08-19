@@ -234,6 +234,11 @@ PAGES = {
           </table>
         </div>
         <p class="small dim">Volume: 10% off above 100 users, 20% above 500, 30% above 2,000. The discount applies to the whole bill, not just the users past the threshold.</p>
+        <ul class="tier-lines">
+          <li><b>Visibility</b> — Read-only inventory of sharing and permissions, with risk scoring, findings history, fleet view and daily scheduled scans.</li>
+          <li><b>Governance</b> — Adds oversharing and advanced detections, policies, access reviews, approvals, waivers, evidence packs, and six-hourly scans.</li>
+          <li><b>Automation</b> — Adds hourly scans plus OneDrive permission and sharing-link write-back with undo, requiring a separate connector remediation consent.</li>
+        </ul>
         <p class="after">There is no seat minimum: a twelve-person company pays for twelve people. The $99 platform floor is the only bar, and it bites below 50 users on Visibility, 25 on Governance and 16 on Automation. What each tier unlocks is on the <a href="licensing.html#sharecare">licensing page</a>.</p>
       </div>
       <div class="product-licence" role="tabpanel" id="panel-security" aria-labelledby="tab-security" tabindex="0" style="--tone: var(--t-security)">
@@ -246,7 +251,7 @@ PAGES = {
           <h3>A $50 monthly minimum per tenant</h3>
           <p class="mb0">Charged greater-of, and it exists because roughly half of what this product checks does not shrink with headcount. A 20-seat tenant has about as many Conditional Access policies, app registrations and configuration settings as a 2,000-seat one, and every one of them is evaluated either way. Per-user alone would price a full posture scan of a small tenant at thirty dollars. The floor bites below 34 users; above that the per-user arithmetic is the whole bill.</p>
         </div>
-        <p class="after">Capabilities on the <a href="licensing.html#securityportal">licensing page</a>.</p>
+        <p class="after"><b>What you get</b> — read-only Microsoft 365 and Entra posture scans, on demand or daily, with findings history across managed tenants. <a href="licensing.html#securityportal">Full matrix</a>.</p>
       </div>
       <div class="product-licence" role="tabpanel" id="panel-condaccess" aria-labelledby="tab-condaccess" tabindex="0" style="--tone: var(--t-condaccess)">
         <header>
@@ -275,6 +280,10 @@ PAGES = {
           </table>
         </div>
         <p class="small dim">One paid licence, not a ladder &mdash; keeping a scan and scheduling it were separate tiers, and that sold a distinction nobody makes: a saved site nobody re-scans is a stale record, and a schedule that keeps nothing is a cron job with no output.</p>
+        <ul class="tier-lines">
+          <li><b>Free</b> — The complete check set on demand, graded with references and fixes — nothing kept once you close the page.</li>
+          <li><b>Pro</b> — Keeps results, history and audit trail, scans on a schedule, and alerts on expiry, new assets and regressions.</li>
+        </ul>
         <div class="note plain">
           <h3>A WebScan-only tenant pays no platform floor</h3>
           <p class="mb0">The five-site minimum is the floor and nothing else applies. A tenant that arrived through a free scan is one we would not otherwise have, and putting a platform minimum in front of them would eat the funnel it sits downstream of. Add any second product and the $99 applies from that point.</p>
@@ -308,6 +317,11 @@ PAGES = {
           </table>
         </div>
         <p class="small dim">Five parked domains included with every sending domain &mdash; the example above prices the remaining 25.</p>
+        <ul class="tier-lines">
+          <li><b>Visibility</b> — Daily and on-demand scans of SPF, DKIM, DMARC, BIMI and MTA-STS, plus DMARC aggregate report ingestion.</li>
+          <li><b>Governance</b> — Adds guided staged rollout toward enforcement, deliverability and authentication alerting, multi-domain fleet view, and six-hourly scans.</li>
+          <li><b>Automation</b> — Adds hourly scans; DNS write-back, on separate connector consent, live for Azure DNS and DNSimple only.</li>
+        </ul>
         <div class="note plain">
           <h3>Why a parked domain costs $3 and not $15</h3>
           <p>Most organisations own far more domains than they send from: acquisitions, retired brands, defensive and typo registrations. Those are exactly the ones worth spoofing &mdash; no real mail flows, so nothing breaks and nobody notices.</p>
@@ -353,6 +367,10 @@ PAGES = {
           </table>
         </div>
         <p class="small dim">Priced per tenant rather than per user, because a framework is the same amount of work to prove whether you have forty people or four hundred.</p>
+        <ul class="tier-lines">
+          <li><b>Evidence</b> — On-demand assessments run automated probes; crosswalked results populate the evidence repository, with time-boxed auditor access.</li>
+          <li><b>Attested</b> — Adds attestation and sign-off with four-eyes and expiry, automated evidence capture, control ownership and remediation tasks.</li>
+        </ul>
         <div class="note plain">
           <h3>Two questions, two axes</h3>
           <p>How many frameworks you need is <strong>scope</strong>. Whether you want sign-off and automatic capture is <strong>depth</strong>. Those used to share one number, which meant a company doing SOC 2 alone had to buy every framework in the catalogue to reach attestation &mdash; paying for twenty-three regimes it would never open, to get one capability.</p>

@@ -954,3 +954,13 @@ a[href^="https://jeffops.com"]:hover,
   font-size: .82rem; letter-spacing: .1em; text-transform: uppercase;
   color: var(--muted); margin: 0 0 1.1rem; font-weight: 600;
 }
+
+/* One line per tier inside a pricing panel. The figures and the capabilities live on two different
+   pages by design, and the panels used to send the reader to licensing.html for every question —
+   these answer the common one in place so only the buyer who wants the full matrix leaves. */
+.tier-lines { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; gap: .55rem; }
+.tier-lines li {
+  margin: 0; font-size: .93rem; color: var(--muted);
+  padding-left: .9rem; border-left: 2px solid var(--tone, var(--border));
+}
+.tier-lines b { color: var(--text); font-weight: 620; }

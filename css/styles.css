@@ -946,3 +946,11 @@ a[href^="https://jeffops.com"]:hover,
 /* side-by-side pair on wide screens, stacked below */
 .shot-pair { display: grid; gap: 1.1rem; grid-template-columns: 1fr; margin: 1.6rem 0; }
 @media (min-width: 60rem) { .shot-pair { grid-template-columns: 1fr 1fr; align-items: start; } }
+
+/* Availability headings in the products grid. The site sells eight products and four of them cannot be
+   bought yet, so the grid is grouped by what a visitor can actually do rather than by the narrative the
+   suite was originally written around. */
+.avail-head {
+  font-size: .82rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--muted); margin: 0 0 1.1rem; font-weight: 600;
+}

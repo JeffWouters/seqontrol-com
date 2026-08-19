@@ -38,7 +38,7 @@ def rows(items, cols):
 
 
 def table(cols, items):
-    head = "".join('<th class="rung-head" scope="col">%s<small>%s</small></th>' % (n, s) for n, s in cols)
+    head = "".join('<th class="tier-head" scope="col">%s<small>%s</small></th>' % (n, s) for n, s in cols)
     return ('        <div class="table-wrap table-scroll" tabindex="0" role="group"'
             ' aria-label="Licence comparison">\n'
             '          <table class="matrix">\n'
@@ -134,7 +134,7 @@ PRODUCTS = [
                "evaluated either way. Per-user alone would price a full posture scan of a small tenant at "
                "thirty dollars. The floor bites below 34 users and does nothing above it.<br><br>"
                "One tier, not a ladder: SecurityPortal is scan-only, so there is no write access to sell on a "
-               "higher rung. Remediation lives in the products built to write safely. The log-analytics checks "
+               "higher tier. Remediation lives in the products built to write safely. The log-analytics checks "
                "need the tenant to export activity logs; without that export they report &ldquo;not "
                "assessed&rdquo; rather than a pass. The public web and domain surface is "
                "<a href=\"products/webscan.html\">WebScan</a>, licensed separately and free to run."),
@@ -185,7 +185,7 @@ PRODUCTS = [
               "Write access",
               ("Write access to your DNS or web server", [N, N])],
         note=("<strong>Two licences, not a ladder, and the reason is that the ladder sold a distinction "
-              "nobody makes.</strong> Keeping a scan and running it on a schedule were separate rungs; but a "
+              "nobody makes.</strong> Keeping a scan and running it on a schedule were separate tiers; but a "
               "saved site nobody re-scans is a stale record, and a schedule that keeps nothing is a cron job "
               "with no output. Pro grants both.<br><br>"
               "<strong>The free tier is the whole scanner, and that is deliberate.</strong> Every check, the "
@@ -249,7 +249,7 @@ PRODUCTS = [
                "in the catalogue to reach attestation — paying for twenty-three regimes it would never open, to "
                "get one capability. Attested is half again the band price at any band instead.<br><br>"
                "<strong>Not called Automation, and not an accident.</strong> On the ladder products that word "
-               "is the rung that writes to your tenant. CompliancePortal writes nothing — it maps, scores, "
+               "is the tier that writes to your tenant. CompliancePortal writes nothing — it maps, scores, "
                "evidences and attests. Automated evidence <em>capture</em> reads from the estate; it does not "
                "act on it.<br><br>"
                "<strong>Assessments do not yet run on a schedule.</strong> They are raised on demand and the "
@@ -298,7 +298,7 @@ PRODUCTS = [
               ("SPF, DKIM, DMARC, BIMI and MTA-STS posture", [Y, Y, Y]),
               ("DMARC aggregate report ingestion and sender analysis", [Y, Y, Y]),
               ("Findings history and reports", [Y, Y, Y]),
-              ("Unlimited domains on every rung", [Y, Y, Y]),
+              ("Unlimited domains on every tier", [Y, Y, Y]),
               ("Parked domains watched for silent record changes", [Y, Y, Y]),
               "Governance",
               ("Guided staged rollout toward enforcement", [N, Y, Y]),
@@ -319,11 +319,11 @@ PRODUCTS = [
               "domains you have — so each domain includes an allowance sized to normal sending volume, and "
               "unusually high-volume domains buy additional blocks. Same test as the deliverability allowance: a "
               "genuine external cost, optional, and bursty. Posture, findings and reports stay uncapped."),
-        after=("No rung caps how many domains you may add — the count is a commercial measurement, trued up on "
+        after=("No tier caps how many domains you may add — the count is a commercial measurement, trued up on "
                "the next invoice, never a hard stop. Ingesting DMARC reports needs a mailbox to receive them; "
                "that is part of onboarding.<br><br><strong>Automation is priced at $40 rather than higher, and "
                "the reason is honest:</strong> DNS write-back is live for Azure DNS and DNSimple only. If your "
-               "DNS is anywhere else, that rung gives you a staged rollout and guided records to apply "
+               "DNS is anywhere else, that tier gives you a staged rollout and guided records to apply "
                "yourself, not automation — so it is not priced as though it wrote them for you. Cloudflare and "
                "Route 53 are the next two, and the price goes up when they land rather than before."),
     ),
@@ -384,7 +384,7 @@ SECTION = """  <!-- ---------------------------------------------------------- p
         <span class="eyebrow">Product by product</span>
         <h2>What each licence includes</h2>
         <p>The technologies each product covers, the unit it counts, and exactly which capabilities each flavour
-          unlocks. Every rung contains the one before it, so the ticks accumulate left to right.</p>
+          unlocks. Every tier contains the one before it, so the ticks accumulate left to right.</p>
       </div>
 
       <div data-tabs class="tabs-v">

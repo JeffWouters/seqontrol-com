@@ -402,8 +402,8 @@ tbody tr:hover td { background: rgba(148,163,184,.03); }
 .matrix th:not(:first-child),
 .matrix td:not(:first-child) { text-align: center; width: 8.5rem; }
 .matrix tbody td { font-family: var(--mono); font-size: .88rem; color: var(--text); }
-.matrix .rung-head { color: var(--text); }
-.matrix .rung-head small {
+.matrix .tier-head { color: var(--text); }
+.matrix .tier-head small {
   display: block; font-weight: 500; font-size: .72rem; letter-spacing: .04em;
   text-transform: none; color: var(--dim); margin-top: .15rem;
 }
@@ -635,7 +635,7 @@ tbody tr:hover td { background: rgba(148,163,184,.03); }
   border-radius: var(--radius); padding: 1.5rem 1.45rem;
 }
 .flavour.featured { border-color: var(--brand-dark); box-shadow: 0 0 0 1px rgba(107,77,226,.30), var(--el-md); }
-.flavour .rung {
+.flavour .tier {
   font-family: var(--mono); font-size: .72rem; letter-spacing: .12em;
   text-transform: uppercase; color: var(--dim); margin-bottom: .55rem;
 }

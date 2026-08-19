@@ -110,7 +110,7 @@ if __name__ == "__main__":
     # 1536px-tall screenshot.
     crop("SecurityPortal", "SecurityPortal01", (18, 196, 1186, 320), "ladder-strip")
 
-    # The rung-rule panel from this same screenshot is already cut as
+    # The tier-rule panel from this same screenshot is already cut as
     # posture-rung-detail.png and carries the principle section on the home page.
 
     # Category rows, with the unassessed count sitting next to the failures.

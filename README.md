@@ -310,13 +310,13 @@ What that involved, and why, so it does not get undone:
 
 1. **Contact address.** Every mailto points at `jeff@jeffops.com`. Swap it for a product address
    (e.g. `hello@seqontrol.com`) if you want the product identity separate from the personal one.
-2. **ShareCare's Automation rung.** The site — including the licensing matrix — describes the intended
+2. **ShareCare's Automation tier.** The site — including the licensing matrix — describes the intended
    ladder, with remediation write-back at Automation. In the seeded catalog today
    `sharecare.autoremediate` is bundled into *Governance*, so Automation currently grants an identical
    set. This is the one cell in the matrices that does not match the catalog. Reconcile the catalog (move
    the flag up) or move that tick down to Governance.
 3. **Scan cadence is sold but not yet enforced.** The licensing page now gates *scheduled* scan frequency
-   by rung (daily / every 6 hours / hourly), with on-demand scans unlimited on every rung. **No
+   by tier (daily / every 6 hours / hourly), with on-demand scans unlimited on every tier. **No
    entitlement gates the scheduler today.** Shipping this copy before the gate exists is precisely the
    "checkbox an operator can sell that nothing could honour" failure `CatalogSeeder.cs` warns about — so
    either add the gate first or pull those rows. Suggested shape: a numeric

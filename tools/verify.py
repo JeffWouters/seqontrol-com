@@ -195,11 +195,11 @@ CONTENT_RULES = [
     # Four products write into the customer's tenant: Security's
     # RemediationEngine, ConditionalAccess's PolicyWriteBackService, MailTrust's
     # DnsAutomationService and ShareCare's remediation. "Read-only" is true of a
-    # scan, of the Visibility rung and of PosturePortal — never of the platform.
+    # scan, of the Visibility tier and of PosturePortal — never of the platform.
     (r"app-only and read-only|platform is read-only|everything is read-only"
      r"|entirely read-only|wholly read-only",
      "a platform-wide read-only claim — four products write to the tenant; "
-     "scope it to a scan, to the Visibility rung, or to PosturePortal"),
+     "scope it to a scan, to the Visibility tier, or to PosturePortal"),
 ]
 
 

@@ -61,6 +61,29 @@ COMPARE = [
     ("vs-secure-score.html",    "vs Secure Score"),
 ]
 
+# The top-level nav, owned here for the same reason as everything else below. It was uniform in
+# CONTENT across all 32 pages and varied only by relative depth, which is exactly the thing this file
+# already computes — and the moment a second entry needed a submenu, the old approach broke: the
+# SUBNAV regex replaced EVERY ul.subnav on the page, so a pricing submenu would have been overwritten
+# with the product list on the next run.
+NAV = [
+    ("platform.html",      "Platform", None),
+    ("products/index.html", "Products", "products"),
+    ("pricing.html",       "Pricing",  "pricing"),
+    ("for-msps.html",      "For MSPs", None),
+    ("guides/index.html",  "Guides",   None),
+    ("contact.html",       "Contact",  None),
+]
+
+# Two pages answer two different money questions and cross-reference each other constantly: pricing is
+# "how much", licensing is "what you get". licensing.html is the LONGER of the two and had no nav entry
+# at all, so the page explaining the tier ladder was reachable only from the footer.
+PRICING_SUB = [
+    ("pricing.html",   "What it costs"),
+    ("licensing.html", "What each licence includes"),
+]
+
+NAVLINKS = re.compile(r'( *)<ul class="nav-links".*?</ul>\s*</nav>', re.S)
 SUBNAV = re.compile(r'( *)<ul class="subnav">.*?</ul>', re.S)
 FOOTER = re.compile(r'( *)<h2>Products</h2>\n *<ul>.*?</ul>', re.S)
 COMPANY_RE = re.compile(r'( *)<h2>Company</h2>\n *<ul>.*?</ul>', re.S)
@@ -96,6 +119,29 @@ def compare(pad: str, up: str) -> str:
     return "\n".join(out)
 
 
+def pricing_sub(pad: str, up: str) -> str:
+    out = [f'{pad}<ul class="subnav">']
+    for href, name in PRICING_SUB:
+        out.append(f'{pad}  <li><a href="{up}{href}">{name}</a></li>')
+    out.append(f'{pad}</ul>')
+    return "\n".join(out)
+
+
+def navlinks(pad: str, pre: str, up: str) -> str:
+    """The whole nav, submenus included, at this page's depth."""
+    out = [f'{pad}<ul class="nav-links" id="nav-links">']
+    for href, label, kind in NAV:
+        if kind is None:
+            out.append(f'{pad}  <li><a href="{up}{href}">{label}</a></li>')
+            continue
+        out.append(f'{pad}  <li class="has-sub"><a href="{up}{href}">{label}</a>')
+        out.append(subnav(pad + "    ", pre) if kind == "products" else pricing_sub(pad + "    ", up))
+        out.append(f'{pad}  </li>')
+    out.append(f'{pad}</ul>')
+    out.append(pad[:-2] + "</nav>")
+    return "\n".join(out)
+
+
 def subnav(pad: str, pre: str) -> str:
     out = [f'{pad}<ul class="subnav">']
     for href, name, tone, label in PRODUCTS:
@@ -128,7 +174,7 @@ def main() -> None:
 
             up = root(rel)
 
-            out = SUBNAV.sub(lambda m: subnav(m.group(1), pre), src)
+            out = NAVLINKS.sub(lambda m: navlinks(m.group(1), pre, up), src)
             out = FOOTER.sub(lambda m: footer(m.group(1), pre), out)
             out = COMPANY_RE.sub(lambda m: company(m.group(1), up), out)
             out = COMPARE_RE.sub(lambda m: compare(m.group(1), up), out)

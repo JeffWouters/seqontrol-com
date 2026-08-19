@@ -106,9 +106,11 @@
           certificate your site already served are read on its first scan. The rest come from public
           certificate transparency logs, which we follow ourselves — so we hold nothing logged before we
           started watching, and a certificate renewed on a ninety-day cycle can take that long to appear.</p>
-        <p>We also do not read every log. Let’s Encrypt retired the log format we read in February 2026 and
-          moved to a new one we have not implemented yet, so issuance by the largest certificate authority is
-          not currently in our index.</p>
+        <p>We also do not follow every log that exists, and the set we do follow changes as the public logs
+          themselves do — they are retired and replaced on a schedule the whole industry runs on. More to the
+          point: <strong>a log starts counting for us on the day we add it.</strong> Adding one widens what we
+          will see from that day forward. It does not fill in what that log recorded before, and no amount of
+          following will ever recover it.</p>
         <p class="mb0">Which means an empty or short list is a statement about our coverage, not about your
           estate, and nothing in the product will present it as one. Read it as “what we have seen so
           far” and it is useful. Read it as “what exists” and it is wrong.</p>

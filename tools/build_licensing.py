@@ -68,7 +68,7 @@ def tech(groups):
 PRODUCTS = [
     dict(
         key="sharecare", name="ShareCare", tone="--t-sharecare", status=None,
-        counted="Counted per Microsoft 365 user &middot; 25-user minimum &middot; $2 / $4 / $6.50 per user, per month",
+        counted="Counted per Microsoft 365 user &middot; no seat minimum &middot; $2 / $4 / $6.50 per user, per month",
         tech=[("Microsoft 365", [("SharePoint", 1), ("OneDrive", 1), ("Teams", 1),
                                  ("Entra ID app consents", 1), ("Exchange Online forwarding", 1),
                                  ("Power Platform", 1), ("Power BI", 1)]),

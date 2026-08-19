@@ -272,11 +272,16 @@ What that involved, and why, so it does not get undone:
   and no statements about their *absence* either. Where trust needs building, the site does it with
   concrete product limits (which planes are read-only, what Dredd has not shipped, Microsoft-first
   scope) rather than by discussing the customer base. Keep it that way when editing.
-- **No prices anywhere.** No figures, no discount percentages, no worked bills. `licensing.html`
-  describes the flavours, what each unlocks, the metering principles, and **what each product counts**
-  (users / domains / tenants / configuration scope) — the commercial terms (platform minimum, suite
-  discount, annual commit, per-tenant floor as greater-of) are named without numbers. Everything is
-  quoted against the buyer's actual estate.
+- **Prices live on two pages and nowhere else.** `pricing.html` and `licensing.html` carry the figures,
+  the discount percentages and the worked bills; `verify.py` refuses both on every other page
+  (`PRICE_PAGES` is the allowlist, `PRICE_RULES` picks which rules it covers). This used to read "no
+  prices anywhere", which stopped being true when the model was published — and the stale half of it
+  did damage: the discount rule was never added to the allowlist, so the volume bands were written as
+  "less 10 per cent" to slip past it, phrasing that reads just as easily as "less *than* 10 per cent".
+  A figure on a product page or the home hero is still a leak: it ages badly and contradicts the two
+  pages that are maintained.
+- **There is no suite discount, and that is a decision rather than an omission.** Each product is
+  priced on its own. Volume bands on the buyer's own estate are a different thing and are published.
 - **The licensing matrices are a commitment, so keep them true to the catalog.** The per-product tables
   in `licensing.html` were built from the seeded entitlement catalog (Billing's `CatalogSeeder.cs`), not
   invented: ShareCare and MailTrust ride the Visibility/Governance/Automation ladder, CompliancePortal

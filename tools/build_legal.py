@@ -224,12 +224,12 @@ PAGES = {
             <tbody>
               <tr><th scope="row">List</th><td>$2</td><td>$4</td><td>$6.50</td></tr>
               <tr><th scope="row">100 users</th><td>$200</td><td>$400</td><td>$650</td></tr>
-              <tr><th scope="row">500 users, less 10 per cent</th><td>$900</td><td>$1,800</td><td>$2,925</td></tr>
-              <tr><th scope="row">2,000 users, less 20 per cent</th><td>$3,200</td><td>$6,400</td><td>$10,400</td></tr>
+              <tr><th scope="row">250 users, 10% off</th><td>$450</td><td>$900</td><td>$1,462.50</td></tr>
+              <tr><th scope="row">1,000 users, 20% off</th><td>$1,600</td><td>$3,200</td><td>$5,200</td></tr>
             </tbody>
           </table>
         </div>
-        <p class="small dim">Volume: less 10 per cent above 100 users, less 20 above 500, less 30 above 2,000.</p>
+        <p class="small dim">Volume: 10% off above 100 users, 20% above 500, 30% above 2,000. The discount applies to the whole bill, not just the users past the threshold.</p>
         <p class="after">The $99 platform minimum bites on Visibility up to 49 users and nowhere else &mdash; on the paid rungs the 25-user minimum already clears it. What each rung unlocks is on the <a href="licensing.html#sharecare">licensing page</a>.</p>
       </div>
       <div class="product-licence" role="tabpanel" id="panel-security" aria-labelledby="tab-security" tabindex="0" style="--tone: var(--t-security)">

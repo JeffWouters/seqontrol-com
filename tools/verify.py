@@ -170,7 +170,14 @@ CONTENT_RULES = [
     # page or the home hero ages badly and contradicts the two pages that
     # are maintained. PRICE_PAGES below is the allowlist.
     (r"\$\s?\d", "a price outside the pages that carry pricing"),
-    (r"\b\d+\s?%\s?(off|discount)", "a discount percentage"),
+    (r"\b\d+\s?%\s?(off|discount)", "a discount percentage outside the pages that carry pricing"),
+    # A percentage off IS a price, and it was never exempted on the pricing
+    # pages when they started carrying figures. The cost of that was invisible:
+    # the volume bands got written as "less 10 per cent" -- which reads just as
+    # easily as "less THAN 10 per cent" -- because that is the phrasing that got
+    # past this line. A guard that quietly degrades the copy it exists to protect
+    # is worse than no guard, so it is now scoped like the price rule it belongs
+    # with: allowed on the two maintained pricing pages, refused everywhere else.
     (r"testimonial|customer logo|reference customer|pre-revenue|no customers",
      "a customer reference or a statement about their absence"),
     # The consent overclaim has now come back twice, each time in a phrasing the
@@ -200,12 +207,19 @@ CONTENT_RULES = [
 # numbers live in one place each and cannot drift apart by hand.
 PRICE_PAGES = {"pricing.html", "licensing.html"}
 
+# Which CONTENT_RULES state a FIGURE rather than a claim, and are therefore
+# allowed on those two pages. Held as indexes rather than sniffed from the
+# pattern text: "does it start with a dollar sign" stopped describing the rule
+# the moment a second money rule existed, and the second one went unexempted
+# for exactly that reason.
+PRICE_RULES = {1, 2}   # the $-figure rule and the discount-percentage rule
+
 
 def check_content(page: str, src: str) -> None:
     rel = os.path.relpath(page, ROOT).replace(os.sep, "/")
     text = re.sub(r"<[^>]+>", " ", src)
-    for pattern, why in CONTENT_RULES:
-        if pattern.startswith(r"\$") and rel in PRICE_PAGES:
+    for i, (pattern, why) in enumerate(CONTENT_RULES):
+        if i in PRICE_RULES and rel in PRICE_PAGES:
             continue
         m = re.search(pattern, text, re.IGNORECASE)
         if m:

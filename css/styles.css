@@ -73,8 +73,20 @@
   --radius:    10px;   /* platform tokens.radius */
   --radius-lg: 16px;
 
-  --maxw: 1140px;
-  --gut: 24px;
+  /* THE SPACE BESIDE THE CONTENT, CUT BY 30% AT EVERY WIDTH. Two tokens govern it and they take
+     turns: below ~1190px the content fills the viewport and --gut is the whole margin; above it the
+     content is centred at --maxw and the margin is whatever is left over. Changing one alone would
+     have moved the edge on half the screens and left the other half untouched.
+
+     The formula is the request, solved. Old margin each side is (vw - 1140) / 2; 70% of that is
+     (vw - maxw) / 2, which rearranges to maxw = 0.3vw + 798px. At 1440 that is 1230px, at 1920 it is
+     1374px -- 273px of margin where there used to be 390.
+
+     Clamped at both ends and neither bound is arbitrary. The floor keeps it from ever being NARROWER
+     than it was. The ceiling stops an ultrawide monitor stretching tables and grids to a width nobody
+     designed for -- prose is already capped in ch and does not care, but a ten-column table does. */
+  --maxw: clamp(1140px, calc(30vw + 798px), 1500px);
+  --gut: 17px;   /* was 24px */
 
   --font: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
@@ -816,6 +828,14 @@ a[href^="https://jeffops.com"]:hover,
    skeuomorphic. Captions carry the claim the image is evidence for. */
 .shot {
   margin: 0;
+  /* CAPPED AT THE OLD CONTENT WIDTH, AND NOT AS A STYLE CHOICE. `.shot img` is width:100%, so a shot
+     sitting directly in a .wrap renders at whatever --maxw is. The source images top out at 1212px
+     intrinsic, so widening --maxw would have upscaled 24 of them -- softening product UI full of
+     small type, which is the one thing on this site that has to survive being looked at closely.
+     Capped and centred, every screenshot renders at or below its natural size exactly as before;
+     text, tables and grids get the extra width. */
+  max-width: 1140px;
+  margin-inline: auto;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;

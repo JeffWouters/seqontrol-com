@@ -18,17 +18,22 @@ import re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# order is deliberate: what is running, roughly by how often it is bought,
-# then what is coming.
+# order is deliberate: what is running, roughly by how often it is bought, then what is coming.
+#
+# The fourth field is the availability LABEL, not a boolean, because "not running" is two
+# different states and the site was rendering them as one. "Soon" means built and close;
+# "In dev" means real work is still happening. Collapsing them told a visitor that
+# PosturePortal and CompliancePortal were equally far away, which is not true in either
+# direction. None means it is running today.
 PRODUCTS = [
-    ("sharecare.html",         "ShareCare",         "--t-sharecare",  False),
-    ("securityportal.html",    "SecurityPortal",    "--t-security",   False),
-    ("conditionalaccessportal.html", "ConditionalAccessPortal", "--t-condaccess", False),
-    ("webscan.html",           "WebScan",           "--t-webscan",    False),
-    ("complianceportal.html",  "CompliancePortal",  "--t-compliance", False),
-    ("postureportal.html",     "PosturePortal",     "--t-posture",    True),
-    ("mailtrust.html",         "MailTrust",         "--t-mailtrust",  False),
-    ("dredd.html",             "Dredd",             "--t-dredd",      False),
+    ("sharecare.html",         "ShareCare",         "--t-sharecare",  None),
+    ("securityportal.html",    "SecurityPortal",    "--t-security",   None),
+    ("conditionalaccessportal.html", "ConditionalAccessPortal", "--t-condaccess", "Soon"),
+    ("webscan.html",           "WebScan",           "--t-webscan",    None),
+    ("complianceportal.html",  "CompliancePortal",  "--t-compliance", "Soon"),
+    ("postureportal.html",     "PosturePortal",     "--t-posture",    "In dev"),
+    ("mailtrust.html",         "MailTrust",         "--t-mailtrust",  None),
+    ("dredd.html",             "Dredd",             "--t-dredd",      "In dev"),
 ]
 
 # The footer's Company column carries the three free assessments — one per
@@ -93,8 +98,8 @@ def compare(pad: str, up: str) -> str:
 
 def subnav(pad: str, pre: str) -> str:
     out = [f'{pad}<ul class="subnav">']
-    for href, name, tone, soon in PRODUCTS:
-        tag = '<span class="soon-tag">Soon</span>' if soon else ""
+    for href, name, tone, label in PRODUCTS:
+        tag = f'<span class="soon-tag">{label}</span>' if label else ""
         out.append(f'{pad}  <li><a href="{pre}{href}">'
                    f'<span class="dot" style="--tone: var({tone})"></span>{name}{tag}</a></li>')
     out.append(f'{pad}</ul>')
@@ -103,7 +108,7 @@ def subnav(pad: str, pre: str) -> str:
 
 def footer(pad: str, pre: str) -> str:
     out = [f'{pad}<h2>Products</h2>', f'{pad}<ul>']
-    for href, name, _tone, _soon in PRODUCTS:
+    for href, name, _tone, _label in PRODUCTS:
         out.append(f'{pad}  <li><a href="{pre}{href}">{name}</a></li>')
     out.append(f'{pad}</ul>')
     return "\n".join(out)

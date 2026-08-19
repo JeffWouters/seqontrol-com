@@ -180,6 +180,10 @@ PAGES = {
       <h2>What each product counts</h2>
       <p>Every product is priced on the thing that actually drives its cost and its value to you. Those are not
         the same unit, and forcing them into one would misprice most of the portfolio.</p>
+      <p><strong>Four of these are available today</strong> &mdash; ShareCare, SecurityPortal, WebScan and
+        MailTrust. ConditionalAccessPortal and CompliancePortal are built and close but not released; their
+        prices are published so the number is settled before they ship rather than negotiated after. Dredd and
+        PosturePortal are further out, and neither carries a list price.</p>
       <div class="table-wrap table-scroll" tabindex="0">
         <table>
           <thead><tr><th scope="col">Product</th><th scope="col">Priced on</th></tr></thead>
@@ -247,10 +251,10 @@ PAGES = {
       <div class="product-licence" role="tabpanel" id="panel-condaccess" aria-labelledby="tab-condaccess" tabindex="0" style="--tone: var(--t-condaccess)">
         <header>
           <h3>ConditionalAccessPortal</h3>
-          <p class="counted">Per user, per month</p>
+          <p class="counted">Per user, per month &middot; <strong>not released yet</strong></p>
         </header>
         <p><strong>$1.50 per user</strong>, on the same denominator and the same $50 monthly tenant minimum as SecurityPortal, because it answers the same question about the same estate &mdash; Conditional Access policy inventory, baseline coverage gaps and approval-gated policy write-back.</p>
-        <p class="after">Running today &mdash; <a href="products/conditionalaccessportal.html">what it does, and what it does not</a>.</p>
+        <p class="after"><strong>Not released yet.</strong> Built, running and close &mdash; the price is published so it is not a surprise when it ships, not because you can buy it today. <a href="products/conditionalaccessportal.html">What it does, and what it does not</a>.</p>
       </div>
       <div class="product-licence" role="tabpanel" id="panel-webscan" aria-labelledby="tab-webscan" tabindex="0" style="--tone: var(--t-webscan)">
         <header>
@@ -335,7 +339,7 @@ PAGES = {
       <div class="product-licence" role="tabpanel" id="panel-compliance" aria-labelledby="tab-compliance" tabindex="0" style="--tone: var(--t-compliance)">
         <header>
           <h3>CompliancePortal</h3>
-          <p class="counted">Per tenant, per month &middot; banded by frameworks in scope</p>
+          <p class="counted">Per tenant, per month &middot; banded by frameworks in scope &middot; <strong>not released yet</strong></p>
         </header>
         <div class="table-wrap table-scroll" tabindex="0">
           <table class="matrix">
@@ -386,7 +390,7 @@ PAGES = {
           <h3>Dredd and PosturePortal</h3>
           <p class="counted">One quoted, one not yet priced</p>
         </header>
-        <p><strong><a href="products/dredd.html">Dredd</a> is quoted rather than listed.</strong> Its unit is monitored configuration scope, which is the metric this model understands least, and it is being set against real estates rather than guessed. Ask, and you get a number back, usually the same working day.</p>
+        <p><strong><a href="products/dredd.html">Dredd</a> is still in development, and quoted rather than listed when it lands.</strong> Its unit is monitored configuration scope, which is the metric this model understands least, and it is being set against real estates rather than guessed.</p>
         <p><strong><a href="products/postureportal.html">PosturePortal</a> carries no price at all</strong>, because it is still in development. It will not be a separate line when it arrives &mdash; it connects to nothing and reads the shared findings store &mdash; but exactly how it is packaged is unsettled, and a price against something still being built is how a price list stops being worth reading.</p>
         <p class="after">Everything else on this page is listed in full.</p>
       </div>

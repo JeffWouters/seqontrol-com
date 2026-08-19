@@ -407,6 +407,22 @@ PAGES = {
           greater-of rather than added on top.</li>
       </ul>
 
+      <h2>Your own tenant, if you are a partner</h2>
+      <p><strong>$50 a month, every product, every tier, on the tenant you run your own business from.</strong>
+        The same estate computes somewhere between $260 and $640 at list, so this is not a discount and is not
+        described as one &mdash; it is deliberately below the platform floor, which means it costs us money and
+        is meant to.</p>
+      <p>The reasoning is plain enough to publish: a provider who runs this on themselves every day can
+        demonstrate it from a live tenant instead of a slide, and will find our mistakes before your clients
+        do. That is worth more to us than the margin on one small tenant.</p>
+      <ul>
+        <li>Your <strong>own</strong> tenant &mdash; the domain on your provider agreement, checked against it.</li>
+        <li>Requires an active provider agreement. It is a partner benefit, not a tier to sign up for.</li>
+        <li>Everything included, up to 50 users. Past that it becomes ordinary pricing, because past that you
+          are not a small business running a tool, you are an estate using one.</li>
+        <li>Not for client tenants, and not resellable. Client tenants are priced as client tenants.</li>
+      </ul>
+
       <h2 id="never">What never moves it</h2>
       <p><strong>How many products you take.</strong> There is no suite discount. Each product is priced on
         its own and adding one costs what that product costs — no bundle, no package, no number that only

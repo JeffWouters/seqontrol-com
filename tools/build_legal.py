@@ -9,8 +9,18 @@ FACTS THIS SCRIPT DOES NOT KNOW — fill them in before relying on these pages:
   · where product data is hosted (region) and the subprocessor list
   · retention periods for product data, if they differ from what is stated
 Everything else here is either verifiable from the platform code or is a
-commitment the site already makes elsewhere. These are solid drafts, not
-lawyer-reviewed documents; have them reviewed before they carry weight.
+commitment the site already makes elsewhere.
+
+REVIEWED BY A LAWYER, 2026-08-19. That is a fact about the text as it stood on
+that date, so a later edit to the wording below is unreviewed again until
+somebody says otherwise — which is worth knowing before treating a change here
+as cosmetic.
+
+AND THE WORDING LIVES HERE, NOT IN THE HTML. privacy.html, terms.html and
+security.html are OUTPUT: this script rewrites them whole on every run, so an
+edit made directly to a generated page survives until the next build and then
+vanishes without a trace. Any correction — a lawyer's, anyone's — has to land in
+this file to exist at all.
 
 Run: python tools/build_legal.py
 """

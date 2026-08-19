@@ -6,7 +6,7 @@ drift from the rest of the site. Only the <main> differs.
 
 FACTS THIS SCRIPT DOES NOT KNOW — fill them in before relying on these pages:
   · the VAT number, if one is issued (the KvK number is recorded below)
-  · where product data is hosted (region) and the subprocessor list
+  · the subprocessor list beyond Azure itself — the hosting region IS recorded (West Europe)
   · retention periods for product data, if they differ from what is stated
 Everything else here is either verifiable from the platform code or is a
 commitment the site already makes elsewhere.
@@ -821,6 +821,16 @@ PAGES = {
         publishing a DNS record, restoring an approved configuration — requires a separate, explicit
         consent that is distinct from the read grant, and can be withdrawn without losing the
         findings and evidence you already hold.</p>
+
+      <h2>Where it is kept</h2>
+      <p>Everything SeQontrol stores about your tenant — findings, evidence, scan history and the
+        audit trail — lives in <strong>Microsoft Azure, West Europe region</strong>, which is in the
+        Netherlands. Same jurisdiction as the company that operates it. It is not replicated to a
+        region outside the EU.</p>
+      <p class="mb0">Two things that follow, and are worth being explicit about. Microsoft is
+        therefore a processor for the hosting itself. And the data in your own Microsoft 365 tenant
+        never moves — SeQontrol reads it where it already is; what lives in West Europe is the
+        findings and evidence produced from that reading, not a copy of your estate.</p>
 
       <h2>How long it is kept</h2>
       <p>Findings and evidence are retained for the period your licence sets, because the value of

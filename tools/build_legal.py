@@ -309,6 +309,24 @@ PAGES = {
           <p>Most organisations own far more domains than they send from: acquisitions, retired brands, defensive and typo registrations. Those are exactly the ones worth spoofing &mdash; no real mail flows, so nothing breaks and nobody notices.</p>
           <p class="mb0">Charging full rate for them makes the rational decision <em>protect fewer domains</em>, which is the behaviour this product exists to prevent. The classification is measured, not asserted: a domain is parked when it has produced no DMARC report volume and no DKIM signing for a full period, and it reclassifies itself the moment you start sending from it.</p>
         </div>
+        <h4 style="margin-top:2rem">If you are a provider: partner rates</h4>
+        <p>The list price above is a retail price, and a provider is not a retail buyer. MSP-focused DMARC platforms sell partners a wholesale rate precisely because the partner does the onboarding, the sender inventory and the support conversation, then sets their own retail. Charging a reseller list would ask them to buy at several times what a competitor charges them, which is not a price either.</p>
+        <div class="table-wrap table-scroll" tabindex="0">
+          <table class="matrix">
+            <thead>
+              <tr><th scope="col">&nbsp;</th><th class="tier-head" scope="col">Visibility<small>see it</small></th><th class="tier-head" scope="col">Governance<small>govern it</small></th><th class="tier-head" scope="col">Automation<small>act on it</small></th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Sending domain, across your whole book</th><td>$5</td><td>$10</td><td>$13</td></tr>
+              <tr><th scope="row">Parked domain</th><td>$1</td><td>$1</td><td>$1</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="small dim">A third of list, rounded to the dollar. Minimum ten managed tenants, on a provider agreement &mdash; the same bar as pooled compliance, and for the same reason: below it the arithmetic stops describing wholesale and starts describing a discount. Five parked domains still included with every sending domain, and domains pool across your managed tenants.</p>
+        <div class="note plain">
+          <h3>What that comes to</h3>
+          <p class="mb0">Sixty clients averaging three sending domains each is 180 domains. On Governance that is <strong>$1,800 a month</strong> against $5,400 at list. Resold at a typical managed-DMARC rate it is the highest-margin line in the stack &mdash; which is the point: you are buying the platform, not the retail price of it.</p>
+        </div>
         <div class="note honest">
           <h3>What Automation writes, and where it does not</h3>
           <p class="mb0">DNS write-back is live for <strong>Azure DNS and DNSimple</strong>. Anywhere else, Automation gives you a staged rollout and the exact records to apply yourself &mdash; guidance, not automation. That is why the tier is $40 rather than the $50 the capability would be worth if it wrote everywhere. Cloudflare and Route 53 are next, and the price moves when they ship, not before.</p>
@@ -513,6 +531,61 @@ PAGES = {
 
       <h2 id="request">Scan my site</h2>
       <p>Send a URL. No tenant, no consent, no call first.</p>
+"""),
+
+    "vs-m365-governance.html": dict(
+        title="SeQontrol - vs M365 governance tools - Where each one wins",
+        desc="How SeQontrol compares with Microsoft 365 permission and governance specialists such as "
+             "Syskit Point, CoreView, AvePoint and Varonis — and when to pick them instead.",
+        eyebrow="Comparison",
+        h1="SeQontrol and the Microsoft 365 governance tools",
+        lede="Syskit Point, CoreView, AvePoint and Varonis all report on Microsoft 365 permissions and "
+             "sharing. Here is the honest split, including where they are the better buy.",
+        body="""
+      <h2>What they are better at</h2>
+      <p>Said first, because it is true and because you will find it out anyway. These are mature,
+        focused products with years of work in them, and on the specific job of <em>administering</em>
+        a Microsoft 365 estate they go deeper than we do: workspace lifecycle and provisioning,
+        access reviews as a recurring process, content-level data classification, bulk permission
+        surgery on a large SharePoint estate.</p>
+      <p><strong>If your problem is "we have one large tenant and need to run permissions as an
+        ongoing administrative discipline", buy one of those.</strong> That is what they are for, and
+        the entry price on a per-seat basis is genuinely lower than ours. We would rather say that
+        here than have you discover it after a trial.</p>
+
+      <h2>What we are better at</h2>
+      <p><strong>Producing evidence rather than a report.</strong> A permission report tells you what
+        is true today. What an auditor, an insurer or a customer questionnaire wants is that a control
+        held over a period, at control granularity, with the exceptions named and time-boxed. Our
+        findings are written to a shared store already tagged to the controls they prove, so a
+        ShareCare scan becomes CompliancePortal evidence with no export and no second integration.</p>
+      <p><strong>Breadth on one connection.</strong> Sharing is one surface. The same estate also has
+        Conditional Access coverage, application consents, email authentication and a public web
+        surface — and those live in four different tools, or in one platform with one onboarding, one
+        audit trail and one bill.</p>
+      <p><strong>Small tenants, and a lot of them.</strong> This is the sharpest split. The
+        governance specialists start at a hundred-seat minimum or an enterprise contract; the average
+        tenant a provider manages is nowhere near that. If your book is sixty clients of twenty-odd
+        users, most of this category cannot sell to you at all, and the ones that can are priced for a
+        single large estate rather than a fleet of small ones.</p>
+
+      <h2>On price, plainly</h2>
+      <p>Per seat, on the permissions job alone, the specialists are cheaper. We are not going to
+        pretend the arithmetic says otherwise, and if permissions reporting on one large tenant is the
+        entire requirement, that is the honest recommendation.</p>
+      <p>The comparison changes when the requirement is three or four of those surfaces plus evidence
+        that survives an audit, or when it is a fleet rather than a tenant. Then you are comparing one
+        platform against three products and an integration project, and the per-seat line stops being
+        the number that decides it. <a href="pricing.html">The figures are published in full</a>;
+        work it out against your own estate rather than ours.</p>
+
+      <h2>What we will not claim</h2>
+      <p>We do not do content classification, and we do not read your documents — SeQontrol records
+        that a file is shared with an external address, never what is in it. If your requirement is
+        finding regulated data inside files, that is a data-security product and we are not one.</p>
+      <p class="mb0">We do not do workspace provisioning, lifecycle or recurring access-review
+        workflow. Those are administration, we are assurance, and a product that claimed both would be
+        worse at each.</p>
 """),
 
     "vs-grc-platforms.html": dict(

@@ -46,9 +46,19 @@ COMPANY = [
     ("contact.html",         "Contact"),
 ]
 
+# The footer's Compare column, owned here for the same reason as the two above: it was three
+# list items copied into 30 files at two depths, and a third comparison page meant writing it
+# 30 times or not at all.
+COMPARE = [
+    ("vs-grc-platforms.html",   "vs GRC platforms"),
+    ("vs-m365-governance.html", "vs M365 governance"),
+    ("vs-secure-score.html",    "vs Secure Score"),
+]
+
 SUBNAV = re.compile(r'( *)<ul class="subnav">.*?</ul>', re.S)
 FOOTER = re.compile(r'( *)<h2>Products</h2>\n *<ul>.*?</ul>', re.S)
 COMPANY_RE = re.compile(r'( *)<h2>Company</h2>\n *<ul>.*?</ul>', re.S)
+COMPARE_RE = re.compile(r'( *)<h2>Compare</h2>\n *<ul>.*?</ul>', re.S)
 
 
 def prefix(rel: str) -> str:
@@ -67,6 +77,14 @@ def root(rel: str) -> str:
 def company(pad: str, up: str) -> str:
     out = [f'{pad}<h2>Company</h2>', f'{pad}<ul>']
     for href, name in COMPANY:
+        out.append(f'{pad}  <li><a href="{up}{href}">{name}</a></li>')
+    out.append(f'{pad}</ul>')
+    return "\n".join(out)
+
+
+def compare(pad: str, up: str) -> str:
+    out = [f'{pad}<h2>Compare</h2>', f'{pad}<ul>']
+    for href, name in COMPARE:
         out.append(f'{pad}  <li><a href="{up}{href}">{name}</a></li>')
     out.append(f'{pad}</ul>')
     return "\n".join(out)
@@ -107,6 +125,7 @@ def main() -> None:
             out = SUBNAV.sub(lambda m: subnav(m.group(1), pre), src)
             out = FOOTER.sub(lambda m: footer(m.group(1), pre), out)
             out = COMPANY_RE.sub(lambda m: company(m.group(1), up), out)
+            out = COMPARE_RE.sub(lambda m: compare(m.group(1), up), out)
 
             if out != src:
                 open(path, "w", encoding="utf-8", newline="\n").write(out)

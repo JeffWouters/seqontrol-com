@@ -209,6 +209,24 @@
           <p>Most organisations own far more domains than they send from: acquisitions, retired brands, defensive and typo registrations. Those are exactly the ones worth spoofing &mdash; no real mail flows, so nothing breaks and nobody notices.</p>
           <p class="mb0">Charging full rate for them makes the rational decision <em>protect fewer domains</em>, which is the behaviour this product exists to prevent. The classification is measured, not asserted: a domain is parked when it has produced no DMARC report volume and no DKIM signing for a full period, and it reclassifies itself the moment you start sending from it.</p>
         </div>
+        <h4 style="margin-top:2rem">If you are a provider: partner rates</h4>
+        <p>The list price above is a retail price, and a provider is not a retail buyer. MSP-focused DMARC platforms sell partners a wholesale rate precisely because the partner does the onboarding, the sender inventory and the support conversation, then sets their own retail. Charging a reseller list would ask them to buy at several times what a competitor charges them, which is not a price either.</p>
+        <div class="table-wrap table-scroll" tabindex="0">
+          <table class="matrix">
+            <thead>
+              <tr><th scope="col">&nbsp;</th><th class="tier-head" scope="col">Visibility<small>see it</small></th><th class="tier-head" scope="col">Governance<small>govern it</small></th><th class="tier-head" scope="col">Automation<small>act on it</small></th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Sending domain, across your whole book</th><td>$5</td><td>$10</td><td>$13</td></tr>
+              <tr><th scope="row">Parked domain</th><td>$1</td><td>$1</td><td>$1</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="small dim">A third of list, rounded to the dollar. Minimum ten managed tenants, on a provider agreement &mdash; the same bar as pooled compliance, and for the same reason: below it the arithmetic stops describing wholesale and starts describing a discount. Five parked domains still included with every sending domain, and domains pool across your managed tenants.</p>
+        <div class="note plain">
+          <h3>What that comes to</h3>
+          <p class="mb0">Sixty clients averaging three sending domains each is 180 domains. On Governance that is <strong>$1,800 a month</strong> against $5,400 at list. Resold at a typical managed-DMARC rate it is the highest-margin line in the stack &mdash; which is the point: you are buying the platform, not the retail price of it.</p>
+        </div>
         <div class="note honest">
           <h3>What Automation writes, and where it does not</h3>
           <p class="mb0">DNS write-back is live for <strong>Azure DNS and DNSimple</strong>. Anywhere else, Automation gives you a staged rollout and the exact records to apply yourself &mdash; guidance, not automation. That is why the tier is $40 rather than the $50 the capability would be worth if it wrote everywhere. Cloudflare and Route 53 are next, and the price moves when they ship, not before.</p>
@@ -411,6 +429,7 @@
         <h2>Compare</h2>
         <ul>
           <li><a href="vs-grc-platforms.html">vs GRC platforms</a></li>
+          <li><a href="vs-m365-governance.html">vs M365 governance</a></li>
           <li><a href="vs-secure-score.html">vs Secure Score</a></li>
         </ul>
         <h2>Trust</h2>

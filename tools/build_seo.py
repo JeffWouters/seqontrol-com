@@ -76,6 +76,11 @@ META = {
         "A free check of your domain's email authentication: SPF, DKIM, DMARC, BIMI and MTA-STS, plus "
         "every source currently sending mail as you.",
         "Free spoofing check"),
+    "vs-m365-governance.html": (
+        "SeQontrol - vs M365 governance tools",
+        "How SeQontrol compares with Microsoft 365 permission and governance specialists, and when "
+        "one of those is the better buy.",
+        "Comparison"),
     "vs-grc-platforms.html": (
         "SeQontrol - vs GRC platforms - Where each one wins",
         "How SeQontrol compares with questionnaire-first GRC platforms on Microsoft 365 control "

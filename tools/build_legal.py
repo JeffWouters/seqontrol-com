@@ -335,7 +335,7 @@ PAGES = {
           <p class="counted">Per user, per month &middot; <strong>not released yet</strong></p>
         </header>
         <p><strong>$1.50 per user</strong>, on the same denominator and the same $50 monthly tenant minimum as SecurityPortal, because it answers the same question about the same estate &mdash; Conditional Access policy inventory, baseline coverage gaps and approval-gated policy write-back.</p>
-        <p class="after"><strong>Not released yet.</strong> Built, running and close &mdash; the price is published so it is not a surprise when it ships, not because you can buy it today. <a href="products/conditionalaccessportal.html">What it does, and what it does not</a>.</p>
+        <p class="after"><strong>Not released yet.</strong> Built, running and close &mdash; the price is published so it is not a surprise when it ships, not because you can buy it today. <a href="products/coming.html#conditionalaccessportal">What it does, and what it does not</a>.</p>
       </div>
       <div class="product-licence" role="tabpanel" id="panel-webscan" aria-labelledby="tab-webscan" tabindex="0" style="--tone: var(--t-webscan)">
         <header>
@@ -487,8 +487,8 @@ PAGES = {
           <h3>Dredd and PosturePortal</h3>
           <p class="counted">One quoted, one not yet priced</p>
         </header>
-        <p><strong><a href="products/dredd.html">Dredd</a> is still in development, and quoted rather than listed when it lands.</strong> Its unit is monitored configuration scope, which is the metric this model understands least, and it is being set against real estates rather than guessed.</p>
-        <p><strong><a href="products/postureportal.html">PosturePortal</a> carries no price at all</strong>, because it is still in development. It will not be a separate line when it arrives &mdash; it connects to nothing and reads the shared findings store &mdash; but exactly how it is packaged is unsettled, and a price against something still being built is how a price list stops being worth reading.</p>
+        <p><strong><a href="products/coming.html#dredd">Dredd</a> is still in development, and quoted rather than listed when it lands.</strong> Its unit is monitored configuration scope, which is the metric this model understands least, and it is being set against real estates rather than guessed.</p>
+        <p><strong><a href="products/coming.html#postureportal">PosturePortal</a> carries no price at all</strong>, because it is still in development. It will not be a separate line when it arrives &mdash; it connects to nothing and reads the shared findings store &mdash; but exactly how it is packaged is unsettled, and a price against something still being built is how a price list stops being worth reading.</p>
         <p class="after">Everything else on this page is listed in full.</p>
 <!--CAPS:dredd,postureportal-->
       </div>

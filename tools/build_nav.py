@@ -28,12 +28,12 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PRODUCTS = [
     ("sharecare.html",         "ShareCare",         "--t-sharecare",  None),
     ("securityportal.html",    "SecurityPortal",    "--t-security",   None),
-    ("conditionalaccessportal.html", "ConditionalAccessPortal", "--t-condaccess", "Soon"),
+    ("coming.html#conditionalaccessportal", "ConditionalAccessPortal", "--t-condaccess", "Soon"),
     ("webscan.html",           "WebScan",           "--t-webscan",    None),
-    ("complianceportal.html",  "CompliancePortal",  "--t-compliance", "Soon"),
-    ("postureportal.html",     "PosturePortal",     "--t-posture",    "In dev"),
+    ("coming.html#complianceportal",  "CompliancePortal",  "--t-compliance", "Soon"),
+    ("coming.html#postureportal",     "PosturePortal",     "--t-posture",    "In dev"),
     ("mailtrust.html",         "MailTrust",         "--t-mailtrust",  None),
-    ("dredd.html",             "Dredd",             "--t-dredd",      "In dev"),
+    ("coming.html#dredd",             "Dredd",             "--t-dredd",      "In dev"),
 ]
 
 # The footer's Company column carries the three free assessments — one per
@@ -190,7 +190,8 @@ def main() -> None:
             out = NAVLINKS.sub(lambda m: navlinks(m.group(1), pre, up), src)
 
             # A product page's Status line is the same fact as its nav badge, so it is rendered from
-            # the same row rather than kept in step by hand.
+            # the same row rather than kept in step by hand. Only the shipped products still have
+            # their own page; the rest share products/coming.html and carry no Status block.
             if rel.startswith("products/"):
                 label = next((lab for href, _n, _t, lab in PRODUCTS if rel == f"products/{href}"), "__none__")
                 if label != "__none__":

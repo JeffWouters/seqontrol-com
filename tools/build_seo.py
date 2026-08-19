@@ -141,36 +141,21 @@ META = {
         "Continuous Microsoft 365 and Entra security posture on a ladder you climb with scan "
         "evidence, every finding tagged to the control it proves.",
         "SecurityPortal"),
+    "products/coming.html": (
+        "SeQontrol - What is coming - Four products you cannot buy yet",
+        "ConditionalAccessPortal and CompliancePortal are built and close; Dredd and PosturePortal are "
+        "still being written. What each will do, and what none does yet.",
+        "What is coming"),
     "products/webscan.html": (
         "SeQontrol - WebScan - What your attacker sees first",
         "Grade the public face of every domain you own — TLS, headers, cookies, DNS, content and "
         "infrastructure — against the standards that define it. Free to run.",
         "WebScan"),
-    "products/conditionalaccessportal.html": (
-        "SeQontrol - ConditionalAccessPortal - What your policies allow",
-        "Inventory every Conditional Access policy, check the coverage baselines, and map who reaches "
-        "what — with a sample confirmed against Microsoft's own evaluator.",
-        "ConditionalAccessPortal"),
-    "products/complianceportal.html": (
-        "SeQontrol - CompliancePortal - Many frameworks, one crosswalk",
-        "Turn the scans you already run into framework-mapped, audit-ready evidence for the "
-        "technical controls on the platforms SeQontrol connects to.",
-        "CompliancePortal"),
-    "products/postureportal.html": (
-        "SeQontrol - PosturePortal - The answer, not the raw scan",
-        "The read-only board that aggregates findings, risk and coverage from every SeQontrol "
-        "product into one per-tenant and fleet-wide view. Still in development.",
-        "PosturePortal"),
     "products/mailtrust.html": (
         "SeQontrol - MailTrust - SPF, DKIM, DMARC and more, enforced",
         "Take every domain from DMARC monitoring to safe enforcement: real sender inventory, a "
         "staged rollout, and the DNS records written in-product.",
         "MailTrust"),
-    "products/dredd.html": (
-        "SeQontrol - Dredd - Revert it, or ratify it",
-        "Hold your approved Entra configuration as a versioned baseline, catch every unapproved "
-        "change, and force the decision: revert it, or ratify it.",
-        "Dredd"),
 }
 
 # ---------------------------------------------------------------- analytics

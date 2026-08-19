@@ -354,7 +354,7 @@ PRODUCTS = [
               "be counted on. It is the metric we understand least, and rather than guess a shape and reprice "
               "it six months later, it is being set against real configuration scopes first. Ask and you will "
               "get a number. The full capability set is on the "
-              "<a href=\"products/dredd.html\">Dredd page</a>."),
+              "<a href=\"products/coming.html#dredd\">Dredd section</a>."),
     ),
 ]
 

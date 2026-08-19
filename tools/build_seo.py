@@ -76,6 +76,11 @@ META = {
         "A free check of your domain's email authentication: SPF, DKIM, DMARC, BIMI and MTA-STS, plus "
         "every source currently sending mail as you.",
         "Free spoofing check"),
+    "vs-cipp.html": (
+        "SeQontrol - vs CIPP - Where each one wins",
+        "CIPP manages Microsoft 365 tenants and is free. SeQontrol produces control-tagged evidence. "
+        "The honest split for providers already running it.",
+        "Comparison"),
     "vs-m365-governance.html": (
         "SeQontrol - vs M365 governance tools",
         "How SeQontrol compares with Microsoft 365 permission and governance specialists, and when "

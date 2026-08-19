@@ -50,6 +50,7 @@ COMPANY = [
 # list items copied into 30 files at two depths, and a third comparison page meant writing it
 # 30 times or not at all.
 COMPARE = [
+    ("vs-cipp.html",            "vs CIPP"),
     ("vs-grc-platforms.html",   "vs GRC platforms"),
     ("vs-m365-governance.html", "vs M365 governance"),
     ("vs-secure-score.html",    "vs Secure Score"),

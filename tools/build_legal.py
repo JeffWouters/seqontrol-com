@@ -549,6 +549,54 @@ PAGES = {
       <p>Send a URL. No tenant, no consent, no call first.</p>
 """),
 
+    "vs-cipp.html": dict(
+        title="SeQontrol - vs CIPP - Where each one wins",
+        desc="CIPP manages Microsoft 365 tenants and is free. SeQontrol produces control-tagged evidence. "
+             "The honest split for MSPs already running CIPP.",
+        eyebrow="Comparison",
+        h1="SeQontrol and CIPP",
+        lede="Most providers we speak to already run CIPP, and should keep running it. Here is what it "
+             "does that we do not, and the one thing it was never built to do.",
+        body="""
+      <h2>Keep it</h2>
+      <p>That is the recommendation, not a courtesy. <strong>CIPP is free, open source, and running in
+        production at thousands of providers</strong>, and on multi-tenant administration it does things
+        this platform does not attempt: standards deployment across a book, GDAP management, identity
+        lifecycle, offboarding, licence juggling, the daily operational surface of running Microsoft 365
+        for other people.</p>
+      <p>If your problem is "I need to administer sixty tenants without sixty browser tabs", that is
+        CIPP, it costs nothing, and nothing here replaces it. A provider running both is the normal case
+        rather than an awkward one.</p>
+
+      <h2>What it was not built to do</h2>
+      <p><strong>Produce evidence.</strong> CIPP tells you what a tenant looks like now and lets you change
+        it. What it does not do &mdash; and does not claim to &mdash; is retain a control-tagged record that a
+        control held over a period, with the exceptions named, time-boxed and attributable to whoever
+        accepted them.</p>
+      <p>That distinction does not matter until somebody asks. Then it is the only thing that matters: a
+        cyber-insurance renewal, a client's customer sending a security questionnaire, an auditor asking
+        how you know MFA was enforced in March rather than today. A management plane answers "what is it
+        now". An assurance layer answers "what was it, and can you prove it".</p>
+
+      <h2>The other two differences, stated plainly</h2>
+      <p><strong>Outside-in.</strong> CIPP works through the tenant. Roughly half of what gets a client
+        breached is not in the tenant at all &mdash; an expiring certificate, a spoofable domain, a forgotten
+        subdomain pointing at a service somebody else now controls. Those need scanning from outside, with
+        no credential, and that is a different kind of tool.</p>
+      <p class="mb0"><strong>Who carries the risk.</strong> CIPP runs with your credentials in your Azure
+        subscription, which is exactly right for a management plane and is also a security engineering job
+        you now own: the app registrations, the secret rotation, the upgrade path, the blast radius. That
+        is a reasonable trade for free. It is worth being deliberate that you have made it.</p>
+
+      <h2>What we will not claim</h2>
+      <p>We are not cheaper than free, and we will not pretend the comparison is close on that axis. We do
+        not do tenant administration, and adding it would make us worse at the thing we are for.</p>
+      <p class="mb0">And we will not tell you CIPP is risky, insecure or unprofessional. It is none of
+        those, it is maintained by people who know this platform properly, and a provider running it is
+        making a defensible engineering decision. We are asking for the budget line next to it, not
+        instead of it.</p>
+"""),
+
     "vs-m365-governance.html": dict(
         title="SeQontrol - vs M365 governance tools - Where each one wins",
         desc="How SeQontrol compares with Microsoft 365 permission and governance specialists such as "

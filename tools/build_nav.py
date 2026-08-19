@@ -69,19 +69,15 @@ COMPARE = [
 NAV = [
     ("platform.html",      "Platform", None),
     ("products/index.html", "Products", "products"),
-    ("pricing.html",       "Pricing",  "pricing"),
+    ("pricing.html",       "Pricing",  None),
     ("for-msps.html",      "For MSPs", None),
     ("guides/index.html",  "Guides",   None),
     ("contact.html",       "Contact",  None),
 ]
 
-# Two pages answer two different money questions and cross-reference each other constantly: pricing is
-# "how much", licensing is "what you get". licensing.html is the LONGER of the two and had no nav entry
-# at all, so the page explaining the tier ladder was reachable only from the footer.
-PRICING_SUB = [
-    ("pricing.html",   "What it costs"),
-    ("licensing.html", "What each licence includes"),
-]
+# WAS a Pricing submenu reaching licensing.html. That page was merged into pricing on 2026-08-19 — the
+# submenu existed only to bridge a split that no longer exists, so Pricing is a plain entry again.
+PRICING_SUB = []
 
 # A product's availability was being stated in five places: the nav badge (here), the Status line on its
 # own page, two counts on index.html, a sentence on products/index.html and the pricing panel. Three of

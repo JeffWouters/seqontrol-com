@@ -1,4 +1,17 @@
-"""Rebuild the licensing page's "What each licence includes" section.
+"""Fill the capability matrices into the pricing page's product tabs.
+
+MERGED INTO PRICING, 2026-08-19. This used to write its own page. Two pages then
+answered one question between them — pricing said "how much", licensing said
+"what you get" — and 71% of their combined 6,474 words was TWO TAB SETS over the
+same seven products. A reader tabbed through all seven for a price, then through
+all seven again for the capabilities, guided by cross-links each page put in
+almost every panel. That is one page that had been cut in half.
+
+build_legal.py now emits a <!--CAPS:key--> marker inside each pricing panel and
+this fills it, so a product's price and its capability matrix are one destination.
+The old "Terms that apply to the total" block is gone with the merge: platform
+minimum, volume, annual-or-monthly and provider pooling are all stated on the
+pricing page already, and stating them twice on ONE page would be obvious.
 
 One tab per product; inside each, the technologies it covers and a capability
 matrix. The ticks come from the seeded entitlement catalog (Billing's
@@ -9,8 +22,9 @@ Markup ships with the tab strip hidden and every panel visible, so the content
 survives with JavaScript off; site.js flips it into tabs.
 """
 import io
+import re
 
-PAGE = r"Z:\Websites\SeQontrol.com\licensing.html"
+PAGE = r"Z:\Websites\SeQontrol.com\pricing.html"
 
 Y = '<span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span>'
 N = '<span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span>'
@@ -377,54 +391,40 @@ for i, p in enumerate(PRODUCTS):
         '        </header>\n%s\n      </div>'
         % (p["key"], p["key"], p["tone"], p["name"], badge, p["counted"], "\n".join(body)))
 
-SECTION = """  <!-- ---------------------------------------------------------- per product -->
-  <section>
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Product by product</span>
-        <h2>What each licence includes</h2>
-        <p>The technologies each product covers, the unit it counts, and exactly which capabilities each flavour
-          unlocks. Every tier contains the one before it, so the ticks accumulate left to right.</p>
-      </div>
+# The per-product bodies, keyed for injection. The tab strip, the panel wrapper and the header all
+# belong to the pricing page now — this contributes only what goes INSIDE a panel.
+BODIES = {}
+for p in PRODUCTS:
+    body = [tech(p["tech"])]
+    if p["cols"]:
+        body.append(table(p["cols"], p["rows"]))
+    if p.get("note"):
+        body.append('        <div class="note plain" style="margin-top:0">\n'
+                    '          <p class="mb0">%s</p>\n        </div>' % p["note"])
+    if p.get("after"):
+        body.append('        <p class="after">%s</p>' % p["after"])
+    BODIES[p["key"]] = "\n".join(body)
 
-      <div data-tabs class="tabs-v">
-        <div class="tablist" role="tablist" aria-label="Products">
-{tabs}
-        </div>
-{panels}
-      </div>
+NAMES = {q["key"]: q["name"] for q in PRODUCTS}
 
-      <article class="product-licence" style="margin-top:3.2rem">
-        <header>
-          <h3>Terms that apply to the total</h3>
-          <p class="counted">Not separate line items</p>
-        </header>
-        <div class="table-wrap table-scroll" tabindex="0">
-          <table>
-            <thead><tr><th scope="col">Term</th><th scope="col">What it does</th></tr></thead>
-            <tbody>
-              <tr><td>Platform minimum</td><td>$99 a month on the total, as greater-of rather than added on top — covers tenancy, auth, audit, findings, reporting and scheduling</td></tr>
-              <tr><td>Volume</td><td>10% off above 100 users, 20% above 500, 30% above 2,000 &mdash; on the whole bill, not only the users past the threshold</td></tr>
-              <tr><td>Annual or monthly</td><td>A payment term, not a discount — a year costs twelve months</td></tr>
-              <tr><td>Provider pooling</td><td>Users and domains pool across managed tenants, with a per-tenant floor applied as greater-of</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </article>
 
-      <div class="note plain">
-        <p class="mb0"><strong>Evidence retention is a real lever, and we treat it as one.</strong> Twelve months as
-          standard, three years on Governance, seven years at the top compliance band. It costs us storage and it
-          distorts none of your behaviour — unlike every activity-based metric.</p>
-      </div>
-    </div>
-  </section>
+def fill(match):
+    """One <!--CAPS:a,b--> marker becomes the capability block(s) for those products."""
+    keys = [k for k in match.group(1).split(",") if k]
+    out = []
+    for k in keys:
+        if k not in BODIES:
+            raise SystemExit("build_licensing: no product named %r to fill a marker with" % k)
+        # A panel holding two products (the quoted tab) has to say which matrix is whose.
+        label = ("What the %s licence includes" % NAMES[k]) if len(keys) > 1 else "What the licence includes"
+        out.append('        <h4 style="margin-top:2rem">%s</h4>\n%s' % (label, BODIES[k]))
+    return "\n".join(out)
 
-"""
 
 s = io.open(PAGE, encoding="utf-8").read()
-start = s.index("  <!-- ---------------------------------------------------------- per product -->")
-end = s.index('  <section class="cta">')
-new = SECTION.format(tabs="\n".join(tabs), panels="\n".join(panels))
-io.open(PAGE, "w", encoding="utf-8").write(s[:start] + new + s[end:])
-print("tabs:", len(tabs), "| panels:", len(panels), "| matrices:", new.count('class="matrix"'))
+before = s
+s, filled = re.subn(r'<!--CAPS:([a-z,]*)-->', fill, s)
+if filled == 0:
+    raise SystemExit("build_licensing: no CAPS markers in pricing.html — run build_legal.py first")
+io.open(PAGE, "w", encoding="utf-8", newline="\n").write(s)
+print("capability blocks filled:", filled, "| matrices:", s.count('class="matrix"') - before.count('class="matrix"'))

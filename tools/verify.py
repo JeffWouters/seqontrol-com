@@ -203,9 +203,9 @@ CONTENT_RULES = [
 ]
 
 
-# The only two pages allowed to carry figures. Both are generated, so the
-# numbers live in one place each and cannot drift apart by hand.
-PRICE_PAGES = {"pricing.html", "licensing.html"}
+# The ONE page allowed to carry figures. licensing.html used to be the second;
+# it was merged into pricing on 2026-08-19, which is one fewer place to drift.
+PRICE_PAGES = {"pricing.html"}
 
 # Which CONTENT_RULES state a FIGURE rather than a claim, and are therefore
 # allowed on those two pages. Held as indexes rather than sniffed from the

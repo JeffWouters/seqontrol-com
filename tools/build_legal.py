@@ -200,6 +200,80 @@ PAGES = {
         </table>
       </div>
 
+<section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">License flavours</span>
+        <h2>See it. Govern it. Act on it.</h2>
+        <p>Each tier contains the one below. Moving up is an entitlement change, not a migration or a
+           reinstall — the capability is already in the product, waiting to be switched on.</p>
+      </div>
+
+      <div class="flavours">
+        <div class="flavour">
+          <div class="tier">Tier 1 · Visibility</div>
+          <h3>See it</h3>
+          <div class="verb">Know what is actually there</div>
+          <ul class="checklist">
+            <li><strong>Continuous inventory</strong> of the estate the product covers</li>
+            <li><strong>Risk scoring and findings</strong>, deduplicated and tracked over time</li>
+            <li><strong>Reporting and export</strong>, including scheduled reports</li>
+            <li><strong>Daily scheduled scans</strong>, plus on-demand scans whenever you want one</li>
+            <li>Strictly <strong>read-only</strong> — nothing is written to your tenant on this tier</li>
+          </ul>
+        </div>
+
+        <div class="flavour featured">
+          <span class="badge-top">Most common</span>
+          <div class="tier">Tier 2 · Governance</div>
+          <h3>Govern it</h3>
+          <div class="verb">Decide, record and prove</div>
+          <ul class="checklist">
+            <li>Everything in <strong>Visibility</strong></li>
+            <li><strong>Scheduled scans every six hours</strong></li>
+            <li><strong>Policies and campaigns</strong> — including owner-delegated access reviews</li>
+            <li><strong>Approvals</strong> and four-eyes sign-off on sensitive actions</li>
+            <li><strong>Waivers and risk acceptance</strong> with mandatory expiry, so an exception cannot quietly become permanent</li>
+            <li><strong>Evidence packs</strong> and the tamper-evident trail behind them</li>
+            <li><strong>Fleet views</strong> across every tenant or domain you manage</li>
+          </ul>
+        </div>
+
+        <div class="flavour">
+          <div class="tier">Tier 3 · Automation</div>
+          <h3>Act on it</h3>
+          <div class="verb">Let it fix things</div>
+          <ul class="checklist">
+            <li>Everything in <strong>Governance</strong></li>
+            <li><strong>Hourly scheduled scans</strong> — the tightest loop between a change and its finding</li>
+            <li><strong>Automated remediation and write-back</strong> into the customer's tenant or DNS</li>
+            <li><strong>Simulate, then execute</strong> — with a grace window and undo where the plane supports it</li>
+            <li><strong>Two independent gates:</strong> the license entitlement <em>and</em> the connector's own remediation consent. Either one off means nothing is written</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="note scope">
+        <h3>Why the top tier is separate</h3>
+        <p class="mb0">Tiers 1 and 2 read and record. Tier 3 changes your production tenant. That is a difference in
+          kind, not degree, so it is a distinct purchase and a distinct consent — and it stays revocable without
+          losing the visibility and evidence you already paid for.</p>
+      </div>
+
+      <div class="note plain">
+        <h3>Cadence is a tier feature. Looking is not.</h3>
+        <p>The tiers set how often a scan runs <em>on a schedule</em> — daily, every six hours, hourly. They never
+          limit how often you may look: an <strong>on-demand scan is available on every tier</strong>, at any time,
+          as many times as you need. Nothing about an incident should require a purchase order.</p>
+        <p class="mb0">The distinction matters and it is deliberate. Continuous scanning is the cost we carry on
+          your behalf, and tighter cadence genuinely costs more to run — so a tighter loop between a change and its
+          finding is something you buy. But charging <em>per scan</em> would teach you to look less often, which is
+          the one behaviour this product exists to prevent. A floor on automatic frequency does the opposite: every
+          tier still sees everything, and the higher tiers see it sooner.</p>
+      </div>
+    </div>
+  </section>
+
       <h2 id="figures" style="margin-top:3rem">The figures, product by product</h2>
       <p>Pick the one you are buying. Everything that applies to the whole account &mdash; the floor, the
         volume bands, and what does and does not move your number &mdash; is below, outside the tabs, because
@@ -239,7 +313,8 @@ PAGES = {
           <li><b>Governance</b> — Adds oversharing and advanced detections, policies, access reviews, approvals, waivers, evidence packs, and six-hourly scans.</li>
           <li><b>Automation</b> — Adds hourly scans plus OneDrive permission and sharing-link write-back with undo, requiring a separate connector remediation consent.</li>
         </ul>
-        <p class="after">There is no seat minimum: a twelve-person company pays for twelve people. The $99 platform floor is the only bar, and it bites below 50 users on Visibility, 25 on Governance and 16 on Automation. What each tier unlocks is on the <a href="licensing.html#sharecare">licensing page</a>.</p>
+        <p class="after">There is no seat minimum: a twelve-person company pays for twelve people. The $99 platform floor is the only bar, and it bites below 50 users on Visibility, 25 on Governance and 16 on Automation. What each tier unlocks is on the.</p>
+<!--CAPS:sharecare-->
       </div>
       <div class="product-licence" role="tabpanel" id="panel-security" aria-labelledby="tab-security" tabindex="0" style="--tone: var(--t-security)">
         <header>
@@ -251,7 +326,8 @@ PAGES = {
           <h3>A $50 monthly minimum per tenant</h3>
           <p class="mb0">Charged greater-of, and it exists because roughly half of what this product checks does not shrink with headcount. A 20-seat tenant has about as many Conditional Access policies, app registrations and configuration settings as a 2,000-seat one, and every one of them is evaluated either way. Per-user alone would price a full posture scan of a small tenant at thirty dollars. The floor bites below 34 users; above that the per-user arithmetic is the whole bill.</p>
         </div>
-        <p class="after"><b>What you get</b> — read-only Microsoft 365 and Entra posture scans, on demand or daily, with findings history across managed tenants. <a href="licensing.html#securityportal">Full matrix</a>.</p>
+        <p class="after"><b>What you get</b> — read-only Microsoft 365 and Entra posture scans, on demand or daily, with findings history across managed tenants..</p>
+<!--CAPS:securityportal-->
       </div>
       <div class="product-licence" role="tabpanel" id="panel-condaccess" aria-labelledby="tab-condaccess" tabindex="0" style="--tone: var(--t-condaccess)">
         <header>
@@ -297,7 +373,8 @@ PAGES = {
             on its own, which is deliberate: an estate that grows on a timer would be an invoice that grows on a
             timer. Coverage is partial and improving &mdash; the <a href="limits.html">limits page</a> says how.</p>
         </div>
-        <p class="after">Scanning is never counted &mdash; only sites you chose to keep, once per billing period each, however often they run. <a href="licensing.html#webscan">What the licence includes</a>.</p>
+        <p class="after">Scanning is never counted &mdash; only sites you chose to keep, once per billing period each, however often they run..</p>
+<!--CAPS:webscan-->
       </div>
       <div class="product-licence" role="tabpanel" id="panel-mailtrust" aria-labelledby="tab-mailtrust" tabindex="0" style="--tone: var(--t-mailtrust)">
         <header>
@@ -349,6 +426,7 @@ PAGES = {
           <h3>What Automation writes, and where it does not</h3>
           <p class="mb0">DNS write-back is live for <strong>Azure DNS and DNSimple</strong>. Anywhere else, Automation gives you a staged rollout and the exact records to apply yourself &mdash; guidance, not automation. That is why the tier is $40 rather than the $50 the capability would be worth if it wrote everywhere. Cloudflare and Route 53 are next, and the price moves when they ship, not before.</p>
         </div>
+<!--CAPS:mailtrust-->
       </div>
       <div class="product-licence" role="tabpanel" id="panel-compliance" aria-labelledby="tab-compliance" tabindex="0" style="--tone: var(--t-compliance)">
         <header>
@@ -402,6 +480,7 @@ PAGES = {
           <p><strong>Provider-scoped licences are not built.</strong> Entitlements in this platform resolve per tenant. A licence saying "this provider may assess SOC 2 against any client in its book" is granted at the provider and enforced at the tenant, and that shape does not exist in the catalogue today. The prices above are what you will be quoted; the gate behind them is work in progress.</p>
           <p class="mb0"><strong>Assessments do not run on a schedule yet.</strong> You raise one when you want one. What <em>is</em> continuous is the evidence underneath &mdash; SecurityPortal, ShareCare, WebScan and MailTrust scan on their own schedules, and their control-tagged findings are what an assessment reuses.</p>
         </div>
+<!--CAPS:complianceportal-->
       </div>
       <div class="product-licence" role="tabpanel" id="panel-quoted" aria-labelledby="tab-quoted" tabindex="0" style="--tone: var(--t-soon)">
         <header>
@@ -411,6 +490,7 @@ PAGES = {
         <p><strong><a href="products/dredd.html">Dredd</a> is still in development, and quoted rather than listed when it lands.</strong> Its unit is monitored configuration scope, which is the metric this model understands least, and it is being set against real estates rather than guessed.</p>
         <p><strong><a href="products/postureportal.html">PosturePortal</a> carries no price at all</strong>, because it is still in development. It will not be a separate line when it arrives &mdash; it connects to nothing and reads the shared findings store &mdash; but exactly how it is packaged is unsettled, and a price against something still being built is how a price list stops being worth reading.</p>
         <p class="after">Everything else on this page is listed in full.</p>
+<!--CAPS:dredd,postureportal-->
       </div>
       </div>
 
@@ -422,7 +502,7 @@ PAGES = {
 
       <h2>What moves the number</h2>
       <ul>
-        <li><strong>Which tier you buy.</strong> See <a href="licensing.html">what each licence includes</a>.</li>
+        <li><strong>Which tier you buy.</strong> Each product tab above lists what its tiers include.</li>
         <li><strong>How big the estate is</strong>, in the unit that product counts.</li>
         <li><strong>Whether you are a provider.</strong> Users, sites and domains pool across managed tenants,
           compliance frameworks are licensed once across the book, and the per-tenant floor applies as
@@ -444,6 +524,82 @@ PAGES = {
           are not a small business running a tool, you are an estate using one.</li>
         <li>Not for client tenants, and not resellable. Client tenants are priced as client tenants.</li>
       </ul>
+
+<section class="band">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">How metering works</span>
+        <h2>We meter the estate, never the activity</h2>
+        <p>The rule we hold ourselves to: <strong>never meter the thing we want you to do more of.</strong>
+          Metered scanning teaches you to scan less, discover less and get less value — and then to conclude the
+          product never found anything.</p>
+      </div>
+
+      <div class="grid grid-3">
+        <article class="card">
+          <h3>Never per scan</h3>
+          <p>Scan hourly or nightly; it costs the same. Per-scan pricing would make you widen your schedule to
+             save money, which defeats the entire point of continuous assurance.</p>
+        </article>
+        <article class="card">
+          <h3>Never per finding</h3>
+          <p>"The worse your posture, the more you pay to learn about it" is the most perverse metric in this
+             category. Findings are free. Fixing is free.</p>
+        </article>
+        <article class="card">
+          <h3>Estate, not effort</h3>
+          <p>Users, domains, tenants or monitored scope — depending on the product. Each one correlates with our
+             cost and your value, and each is a number you already know at quote time.</p>
+        </article>
+      </div>
+
+      <h3 style="margin-top:2.6rem">Enforcement: two different failures, two different behaviours</h3>
+      <div class="table-wrap table-scroll" tabindex="0">
+        <table>
+          <thead>
+            <tr><th scope="col">Situation</th><th scope="col">What happens</th><th scope="col">Why</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Not entitled to a product or capability</td>
+              <td>The capability is refused outright</td>
+              <td>An entitlement is a capability gate. If you have not bought write-back, nothing writes back.</td>
+            </tr>
+            <tr>
+              <td>Over your unit count</td>
+              <td>Warning at 100%, a banner at 110%, trued up on the next invoice</td>
+              <td>Units are a commercial measurement, not a kill switch. Growing past your estimate is a billing conversation.</td>
+            </tr>
+            <tr>
+              <td>Drifting over it quietly</td>
+              <td>We review overage monthly and come to you</td>
+              <td>A soft cap only works if somebody reads it. The review is ours to run, so the first you hear of a mismatch is a conversation — not a surprise line on a renewal.</td>
+            </tr>
+            <tr>
+              <td>Any commercial dispute at all</td>
+              <td>Your scans keep running</td>
+              <td>Hard-capping a security scan mid-incident is a security failure. We do not do it.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="margin-top:2.6rem">Where allowances genuinely apply</h3>
+      <p class="muted">Two things carry a real external cost per use, are optional, and are bursty. They get an
+        included allowance rather than being folded into the base price. Everything else — scans, remediation
+        actions, findings, evidence exports — is uncapped.</p>
+      <div class="table-wrap table-scroll" tabindex="0">
+        <table>
+          <thead><tr><th scope="col">Allowance</th><th scope="col">Included</th><th scope="col">Beyond that</th></tr></thead>
+          <tbody>
+            <tr><td>Deliverability tests</td><td>50 per month, per domain</td><td>Charged per test — we send and receive real mail</td></tr>
+            <tr><td>DMARC aggregate report volume</td><td>An allowance per domain, sized to normal sending volume</td><td>Additional blocks — ingesting, parsing and storing reports scales with how much mail you send, not with how many domains you have</td></tr>
+            <tr><td>AI remediation guidance and report narratives</td><td>Fair use</td><td>Add-on packs — there is a real per-call model cost</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
 
       <h2 id="never">What never moves it</h2>
       <p><strong>How many products you take.</strong> There is no suite discount. Each product is priced on

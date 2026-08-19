@@ -31,11 +31,6 @@ META = {
         "One tenancy model, one findings store and a hash-chained audit trail — with a separate, "
         "scoped Entra app and consent for each product.",
         "Platform"),
-    "licensing.html": (
-        "SeQontrol - Licensing - Visibility, Governance, Automation",
-        "Three licence flavours: Visibility, Governance and Automation. See what each one unlocks "
-        "per product, and why scanning itself is never metered.",
-        "Licensing"),
     "for-msps.html": (
         "SeQontrol - For MSPs - Every client or tenant, one screen",
         "Built provider-first: one console across every client tenant, pooled capacity, fleet "
@@ -320,7 +315,7 @@ def sitemap() -> None:
     for rel, (_, _, _) in META.items():
         url = canonical_for(rel)
         priority = "1.0" if rel == "index.html" else (
-            "0.9" if rel in ("products/index.html", "licensing.html") else "0.8")
+            "0.9" if rel == "products/index.html" else "0.8")
         rows.append(f"  <url>\n    <loc>{url}</loc>\n    <lastmod>{today}</lastmod>\n"
                     f"    <changefreq>monthly</changefreq>\n    <priority>{priority}</priority>\n  </url>")
     xml = ('<?xml version="1.0" encoding="UTF-8"?>\n'

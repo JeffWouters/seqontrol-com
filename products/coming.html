@@ -130,15 +130,23 @@
             What-If evaluation, or <em>unconfirmable</em> because we could not sample honestly. Where our
             evaluator and Entra's disagree, you get told &mdash; rather than the map quietly correcting itself
             and hiding that it had been wrong.</p>
-          <p class="mb0">Write-back is included and approval-gated: enable, disable or move a policy to
-            report-only, one approved change at a time. <a href="../pricing.html#condaccess">What it will
-            cost</a>.</p>
+          <p><strong>It also treats your policy set as code.</strong> Connect a Git repository &mdash; GitHub or
+            Azure DevOps &mdash; and it compares what is in there against what is live in the tenant, on a
+            schedule, showing field by field where the two have parted company rather than just flagging that
+            they have. It works in both directions: take a tenant you trust and capture its live policy set back
+            into the repository as a pull request somebody reviews, then hold every other tenant against it.</p>
+          <p class="mb0">Write-back is the top rung, and it is approval-gated: enable, disable or move a policy to
+            report-only, or deploy the repository's policy into a tenant, one approved change at a time and never
+            by the person who requested it. Everything below that rung leaves your directory exactly as it found
+            it. <a href="../pricing.html#condaccess">What it will cost</a>.</p>
         </div>
         <div>
           <div class="note honest">
             <h3>What it will not do on day one</h3>
-            <p>Assessments run when you ask. There is no recurring schedule yet, so "continuous" is a word used
-              about ShareCare and MailTrust and deliberately not about this.</p>
+            <p>Half-scheduled, and the half matters. The repository-versus-tenant comparison runs on a cron you
+              set, and keeps its history. The underlying scan does not &mdash; it runs when you ask. So a
+              scheduled comparison is only ever as current as the last scan somebody ran, and "continuous" stays
+              a word used about ShareCare and MailTrust and deliberately not about this.</p>
             <p>Its findings stay inside the product &mdash; they do not reach PosturePortal rollups, and
               CompliancePortal reads your policies itself rather than taking our verdict.</p>
             <p class="mb0">Confirmation catches disagreement in one direction: we check the paths we drew. A

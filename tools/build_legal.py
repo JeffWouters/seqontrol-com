@@ -5,7 +5,7 @@ Chrome (head, header, footer) is lifted from an existing page so these never
 drift from the rest of the site. Only the <main> differs.
 
 FACTS THIS SCRIPT DOES NOT KNOW — fill them in before relying on these pages:
-  · the legal entity name, registered address and company/VAT number
+  · the VAT number, if one is issued (the KvK number is recorded below)
   · where product data is hosted (region) and the subprocessor list
   · retention periods for product data, if they differ from what is stated
 Everything else here is either verifiable from the platform code or is a
@@ -25,6 +25,14 @@ SOURCE = os.path.join(ROOT, "contact.html")   # chrome donor
 
 OPERATOR = 'JeffOps'
 CONTACT = 'jeff@jeffops.com'
+
+# The registered entity. Named in full on privacy and terms because both are
+# agreements with somebody — a policy that will not say who is bound by it is
+# not one — and because the GDPR requires a controller's identity and address.
+ENTITY = 'JeffOps'
+ADDRESS_LINES = ['Hermesburg 29', '3437 HG Nieuwegein', 'The Netherlands']
+KVK = '99353946'
+ADDRESS_INLINE = ', '.join(ADDRESS_LINES)
 
 # A page with form=<button label> gets the request form inlined. It lives here
 # rather than being pasted into the HTML, because this script regenerates those
@@ -232,7 +240,7 @@ PAGES = {
           <p class="counted">Per user, per month</p>
         </header>
         <p><strong>$1.50 per user</strong>, on the same denominator and the same $50 monthly tenant minimum as SecurityPortal, because it answers the same question about the same estate &mdash; Conditional Access policy inventory, baseline coverage gaps and approval-gated policy write-back.</p>
-        <p class="after">It is running today. Its own page on this site is still being written, which is a documentation gap rather than a pricing one.</p>
+        <p class="after">Running today &mdash; <a href="products/conditionalaccessportal.html">what it does, and what it does not</a>.</p>
       </div>
       <div class="product-licence" role="tabpanel" id="panel-webscan" aria-labelledby="tab-webscan" tabindex="0" style="--tone: var(--t-webscan)">
         <header>
@@ -773,6 +781,14 @@ PAGES = {
         lede="Short, because there is not much of it. This covers the website; the second half "
              "covers what the product reads once a tenant is connected.",
         body="""
+      <h2>Who is responsible</h2>
+      <p>SeQontrol is operated by <strong>{entity}</strong>, {address}, registered with the Dutch
+        Chamber of Commerce (KvK) under number <strong>{kvk}</strong>. For anything on this page,
+        including a request to see or delete what we hold, write to
+        <a href="mailto:{contact}">{contact}</a> and a person will answer.</p>
+      <p>Where this policy says "we", it means that entity and nobody else. No data described here
+        is sold, brokered, or handed to an advertising network.</p>
+
       <h2>This website</h2>
       <p>The site is static. It sets no cookies, runs no advertising or profiling scripts, and makes
         no third-party requests — no fonts, no CDN, no embedded video. Nothing about you is collected
@@ -852,6 +868,16 @@ PAGES = {
         a control that cannot be assessed is reported as "not assessed" rather than as a pass,
         precisely so that the gap is visible to you.</p>
 
+      <h2>Who these terms are with</h2>
+      <p>The other party to these terms is <strong>{entity}</strong>, registered with the Dutch
+        Chamber of Commerce (KvK) under number <strong>{kvk}</strong>:</p>
+      <p class="mb0">{address_html}</p>
+
+      <h2>Governing law</h2>
+      <p>Dutch law applies, and the courts of the Netherlands have jurisdiction. Stated because a
+        contract that is silent on it leaves both sides guessing at the moment they can least afford
+        to — not because anybody expects to use it.</p>
+
       <h2>Contact</h2>
       <p>Questions about these terms: <a href="mailto:{contact}">{contact}</a>.</p>
 """),
@@ -930,7 +956,9 @@ def chrome() -> tuple[str, str]:
 
 def build(name: str, spec: dict) -> None:
     head_open, after_head, footer = chrome()
-    body = spec["body"].format(contact=CONTACT, operator=OPERATOR)
+    body = spec["body"].format(contact=CONTACT, operator=OPERATOR, entity=ENTITY,
+                               kvk=KVK, address=ADDRESS_INLINE,
+                               address_html='<br>'.join(ADDRESS_LINES))
 
     # An offer page carries its own form, so the ask sits where the intent is
     # rather than one click away on the contact page.

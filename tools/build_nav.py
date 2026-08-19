@@ -23,6 +23,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PRODUCTS = [
     ("sharecare.html",         "ShareCare",         "--t-sharecare",  False),
     ("securityportal.html",    "SecurityPortal",    "--t-security",   False),
+    ("conditionalaccessportal.html", "ConditionalAccessPortal", "--t-condaccess", False),
     ("webscan.html",           "WebScan",           "--t-webscan",    False),
     ("complianceportal.html",  "CompliancePortal",  "--t-compliance", False),
     ("postureportal.html",     "PosturePortal",     "--t-posture",    True),

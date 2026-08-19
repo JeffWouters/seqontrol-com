@@ -141,6 +141,11 @@ META = {
         "Grade the public face of every domain you own — TLS, headers, cookies, DNS, content and "
         "infrastructure — against the standards that define it. Free to run.",
         "WebScan"),
+    "products/conditionalaccessportal.html": (
+        "SeQontrol - ConditionalAccessPortal - What your policies allow",
+        "Inventory every Conditional Access policy, check the coverage baselines, and map who reaches "
+        "what — with a sample confirmed against Microsoft's own evaluator.",
+        "ConditionalAccessPortal"),
     "products/complianceportal.html": (
         "SeQontrol - CompliancePortal - Many frameworks, one crosswalk",
         "Turn the scans you already run into framework-mapped, audit-ready evidence for the "

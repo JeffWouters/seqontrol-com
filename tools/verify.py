@@ -363,6 +363,12 @@ SINGLETONS = (
 # ever fires on n > 1 catches a generator that appends and misses a generator that stops emitting.
 MUST_EXIST = ('http-equiv="Content-Security-Policy"', 'name="twitter:card"')
 
+# Which of those a noindex page is allowed to omit. This was written as `needle != MUST_EXIST[0]`,
+# i.e. "the CSP is the one that is never exempt" encoded as "the CSP is listed first". Reorder the
+# tuple and 404.html starts failing for a missing twitter:card while a deleted CSP goes unnoticed;
+# add a third needle and it is silently exempt too. Name the thing instead of indexing it.
+SOCIAL_ONLY = {'name="twitter:card"'}
+
 
 def check_singletons(page: str, src: str) -> None:
     head = src[:src.index("</head>")] if "</head>" in src else src
@@ -374,7 +380,7 @@ def check_singletons(page: str, src: str) -> None:
             # A noindex page carries no social card on purpose - 404.html is deliberately absent
             # from the sitemap, Open Graph and Twitter metadata, because a soft 404 in an index
             # helps nobody. It still needs its CSP: it is the page an attacker probes first.
-            if 'name="robots"' in head and "noindex" in head and needle != MUST_EXIST[0]:
+            if 'name="robots"' in head and "noindex" in head and needle in SOCIAL_ONLY:
                 continue
             fail(page, f"{label} is missing from <head>")
 
@@ -391,23 +397,67 @@ AVAIL_HEADINGS = {
     "Built, and not released yet":  "Coming soon",
     "Still in development":         "Under development",
 }
-AVAIL_SPLIT_RE = re.compile(r'<h3 class="avail-head"[^>]*>([^<]+)</h3>')
+# Tolerant of an extra class and of markup or entities inside the heading. Matching only
+# class="avail-head" exactly meant `class="avail-head tight"` dropped the heading from the split
+# and its cards stopped being checked SILENTLY, which is the worst failure mode a gate can have.
+AVAIL_SPLIT_RE = re.compile(r'<h3[^>]*class="[^"]*\bavail-head\b[^"]*"[^>]*>(.*?)</h3>', re.S)
+
+# </?article, for the same reason as build_nav.PCARD_RE - and it matters more here. Unbounded,
+# a card with no status span was silently SKIPPED and the following card swallowed into its
+# match, so a mis-badged card could be reported under its innocent neighbour's name.
 AVAIL_CARD_RE = re.compile(
-    r'<article class="pcard tone-([a-z]+)">.*?<span class="status [a-z]+">([^<]*)</span>', re.S)
+    r'<article class="pcard tone-([a-z]+)">(?:(?!</?article).)*?<span class="status [a-z]+">([^<]*)</span>', re.S)
+
+# Counted separately so a card with no badge at all is reported rather than passed over.
+AVAIL_OPEN_RE = re.compile(r'<article class="pcard tone-([a-z]+)">')
+
+# The groups live inside the .suite block. Without an end boundary the final chunk ran to </html>,
+# so every product card lower down the page was judged against the last heading - a false deploy
+# block on correct markup, at exactly the spot a card used to sit before it was moved.
+#
+# Found by counting nested <div>, not by matching indentation: the first attempt bounded on
+# "\n      </div>" and silently overshot, because .suite closes at eight spaces and something after
+# it closes at six. Indentation is not structure.
+DIV_RE = re.compile(r"<div\b|</div>")
+
+
+def suite_scope(src: str) -> str:
+    """The .suite block, or the whole page when there is not one."""
+    start = src.find('<div class="suite">')
+    if start < 0:
+        return src
+    depth = 0
+    for m in DIV_RE.finditer(src, start):
+        depth += 1 if m.group(0) != "</div>" else -1
+        if depth == 0:
+            return src[start:m.end()]
+    return src[start:]
 
 
 def check_availability(page: str, src: str) -> None:
-    parts = AVAIL_SPLIT_RE.split(src)
+    if "avail-head" not in src:
+        return
+    parts = AVAIL_SPLIT_RE.split(suite_scope(src))
+    if len(parts) < 3:
+        fail(page, "avail-head is present but no availability heading could be read from it")
+        return
     # split() yields [before, heading, chunk, heading, chunk, ...]
-    for heading, chunk in zip(parts[1::2], parts[2::2]):
-        expected = AVAIL_HEADINGS.get(heading.strip())
+    for raw, chunk in zip(parts[1::2], parts[2::2]):
+        heading = html.unescape(re.sub(r"<[^>]*>", "", raw)).strip()
+        heading = " ".join(heading.split())
+        expected = AVAIL_HEADINGS.get(heading)
         if expected is None:
-            fail(page, f"unknown availability heading {heading.strip()!r}; add it to AVAIL_HEADINGS")
+            fail(page, f"unknown availability heading {heading!r}; add it to AVAIL_HEADINGS")
             continue
-        for tone, badge in AVAIL_CARD_RE.findall(chunk):
+        badged = AVAIL_CARD_RE.findall(chunk)
+        opened = AVAIL_OPEN_RE.findall(chunk)
+        for tone in opened:
+            if tone not in [t for t, _ in badged]:
+                fail(page, f"product card tone-{tone} under \"{heading}\" has no status badge")
+        for tone, badge in badged:
             if badge.strip() != expected:
                 fail(page, f'product card tone-{tone} is badged "{badge.strip()}" but sits under '
-                           f'"{heading.strip()}", which claims "{expected}"')
+                           f'"{heading}", which claims "{expected}"')
 
 
 # ---------------------------------------------------- unfilled generator output
@@ -420,7 +470,14 @@ def check_availability(page: str, src: str) -> None:
 #
 # check_scripts() below looks for the same class of leftover, but only ever opens js/site.js, and
 # check_content strips comments before it scans - so between them the HTML was never examined.
-MARKER_RE = re.compile(r"<!--\s*[A-Z][A-Z0-9_]*\s*:[^>]*-->")
+# An allowlist, like FORMAT_KEYS below, not a wildcard. The pattern used to be any shouty word
+# followed by a colon, which matches ordinary authoring comments: `<!-- NOTE:` and `<!-- TODO:`
+# both failed the gate, with a message blaming a skipped pipeline step. The site's existing
+# `<!-- TO ADD:` and `<!-- FORM ENDPOINT:` comments escaped only by being two words.
+#
+# .*? with re.S rather than [^>]*, so a marker whose payload contains > is still caught.
+MARKER_NAMES = ("CAPS",)
+MARKER_RE = re.compile(r"<!--\s*(?:" + "|".join(MARKER_NAMES) + r")\s*:.*?-->", re.S)
 
 # The keys build_legal.build() passes to str.format(). If one of these survives into shipped HTML the
 # substitution did not happen, which is how "mailto:{contact}" reached production in js/site.js.

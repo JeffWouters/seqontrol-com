@@ -167,7 +167,12 @@ main p a, main li a, main td a, main th a, main figcaption a {
   text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em;
 }
 /* Anything already shaped like a control is exempt: it does not read as body copy to begin with. */
-main .btn, main .arrow-link, main .tag, main .breadcrumb a, main .subnav a { text-decoration: none; }
+/* :not(:hover) on the crumb, because main .breadcrumb a (0,1,2) outranks a:hover (0,1,1) in every
+   state - and .breadcrumb a already overrides the hover colour change, so without this these links
+   had no hover feedback at all. They are the only upward link on a guide page. */
+main .btn, main .arrow-link, main .tag, main .breadcrumb a:not(:hover), main .subnav a {
+  text-decoration: none;
+}
 
 ul, ol { margin: 0 0 1.1em; padding-left: 1.25em; }
 li { margin-bottom: .5em; }
@@ -378,7 +383,14 @@ section.tight { padding-block: clamp(2.4rem, 4vw, 3.4rem); }
 }
 .pcard::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 2px; background: var(--tone, var(--accent)); opacity: .85; }
 .pcard:hover { border-color: var(--border); transform: translateY(-2px); box-shadow: var(--el-md); }
-.pcard h3 { display: flex; align-items: center; gap: .55rem; margin-bottom: .1rem; font-size: 1.1rem; }
+/* flex-wrap matters: .status is nowrap and .pcard is overflow:hidden, and a product name is one
+   unbreakable word, so neither flex item can shrink. Without wrapping, the badge on a long name
+   (ConditionalAccessPortal, CompliancePortal, PosturePortal) runs past the padding box and is
+   clipped away on every common phone width - and those are the cards whose badge carries news. */
+.pcard h3 {
+  display: flex; flex-wrap: wrap; align-items: center; gap: .35rem .55rem;
+  margin-bottom: .1rem; font-size: 1.1rem;
+}
 .pcard h3 a { color: var(--text); text-decoration: none; }
 .pcard h3 a:hover { color: var(--tone, var(--accent)); }
 .pcard .kicker {
@@ -1024,10 +1036,35 @@ a[href^="https://jeffops.com"]:hover,
    existed. Pricing is the page a buyer prints and circulates for sign-off, which makes a silently
    truncated PDF the worst possible failure on it.
 
-   Only the panels are forced back: the tab strip is navigation and means nothing on paper. Both
-   rules are scoped to [data-tabs-ready], which site.js sets, so with JavaScript off the markup is
-   already fully expanded and neither rule has anything to do. */
+   The tab strip is navigation and means nothing on paper, so it goes. Everything here is scoped to
+   [data-tabs-ready], which site.js sets, so with JavaScript off the markup is already expanded and
+   none of this has anything to do.
+
+   Un-hiding the panels is not sufficient on its own, because three other rules assume exactly one
+   panel is visible at a time and all three had to be undone:
+
+     .tabs-v places every panel at grid-column 2 / grid-row 1 — one cell, seven panels. The sheet's
+     own comment says they never fight for space because only one lacks [hidden]. Un-hide them and
+     they superimpose. A narrow-screen breakpoint at 820px happened to save portrait output, but
+     landscape Letter/A4, A3, Tabloid or a reduced print Scale all exceed it and printed six
+     products on top of a seventh.
+
+     margin-bottom: 0 and the suppressed h3::before tone dot exist for the same single-panel reason.
+     Without them restored the seven products ran together with a measured 0px join and no colour
+     marker — the tab strip having been the only other thing distinguishing them.
+
+   Colours are set because the sheet is dark-only and browsers print colour but not backgrounds:
+   #e5e7eb text on the printer's white is 1.24:1. That was true before this block existed, but a
+   printable pricing PDF is only a deliverable now that the panels actually print. */
 @media print {
   [data-tabs-ready] [role="tabpanel"][hidden] { display: block !important; }
   [data-tabs-ready] .tablist { display: none; }
+  [data-tabs-ready].tabs-v { display: block; }
+  [data-tabs-ready] .product-licence { margin-bottom: 3.2rem; break-inside: avoid; }
+  [data-tabs-ready] .product-licence h3::before { display: inline-block; }
+
+  body { background: #fff; color: #111; }
+  a { color: #111; }
+  .muted, .dim, .small, td, .note p, .note li { color: #333; }
+  h1, h2, h3, h4, th { color: #000; }
 }

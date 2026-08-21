@@ -127,13 +127,18 @@ CARD_STATUS = {
 
 TONE_LABEL = {tone[4:]: label for _h, _n, tone, label in PRODUCTS}
 
-# The inner match stops at the next <article>. It used to be a bare .*? under re.S, which is
-# unbounded: a card with no status span of its own would run on and stamp its availability onto the
-# NEXT card's badge. Every card happens to have a span today, but products/index.html already
-# carries an unrelated class="status" span in a table cell for it to reach, and this function exists
-# precisely because four of eight badges were wrong once already.
+# The inner match must not leave the card it started in. It was a bare .*? under re.S, which is
+# unbounded: a card with no status span of its own runs on and stamps its availability onto whatever
+# span comes next. products/index.html carries an unrelated class="status" span in a comparison-table
+# cell, so that is not hypothetical, and this function exists precisely because four of eight badges
+# were wrong once already.
+#
+# The bound is </?article, not <article. Blocking only the OPENING tag stops the match at the next
+# card rather than at the end of this one - which still lets a badge-less card reach past its own
+# </article> and rewrite that table cell. Verified by deleting a card's span and re-running: with
+# <article the table cell was rewritten; with </?article nothing outside the card changes.
 PCARD_RE = re.compile(
-    r'(<article class="pcard tone-([a-z]+)">(?:(?!<article).)*?)<span class="status [a-z]+">[^<]*</span>',
+    r'(<article class="pcard tone-([a-z]+)">(?:(?!</?article).)*?)<span class="status [a-z]+">[^<]*</span>',
     re.S)
 
 

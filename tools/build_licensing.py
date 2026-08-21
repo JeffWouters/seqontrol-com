@@ -29,12 +29,16 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from build_frameworks import FRAMEWORK_COUNT  # noqa: E402
 
-# Derived from __file__ like every other generator. This was the absolute path
-# r"Z:\Websites\SeQontrol.com\pricing.html", which made this the one script in tools/ that could not
-# run from a clone: anywhere else it either aborts or reaches across and rewrites the Z: tree
-# instead of the checkout it was invoked in. It owns every capability matrix and price cell on the
-# only page that carries figures, so it is also the single line standing between this repo and a
-# reproducible build.
+# Derived from __file__ like every other GENERATOR. This was the absolute path
+# r"Z:\Websites\SeQontrol.com\pricing.html", so anywhere but that one machine it either aborted or
+# reached across and rewrote the Z: tree instead of the checkout it was invoked in. It owns every
+# capability matrix and price cell on the only page carrying figures, and it was the last thing
+# stopping the pipeline reproducing itself in CI.
+#
+# Not the last hardcoded Z: path in tools/, though - an earlier version of this comment claimed it
+# was. extract_logo.py, make_icons.py and make_logo_variants.py each still pin ROOT to the absolute
+# path. They are asset scripts nothing in the pipeline runs, so CI is unaffected, but the claim was
+# wrong and worth correcting rather than leaving as a reason not to look.
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAGE = os.path.join(ROOT, "pricing.html")
 

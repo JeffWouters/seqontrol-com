@@ -19,6 +19,11 @@
     // scrolls to just under the header, and the still-open opaque panel covers it. Half the product
     // menu read as dead links on the one page that describes those products.
     links.addEventListener('click', function (e) {
+      // Only close when the click is actually going to navigate this document. A middle-click or a
+      // Ctrl/Cmd/Shift/Alt-click opens a new tab and leaves this page exactly where it was, so
+      // closing the panel would make the menu vanish with nothing having visibly happened - and at
+      // this breakpoint the open class is the only thing rendering it.
+      if (e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.defaultPrevented) return;
       var el = e.target;
       while (el && el !== links && el.tagName !== 'A') el = el.parentNode;
       if (!el || el.tagName !== 'A') return;

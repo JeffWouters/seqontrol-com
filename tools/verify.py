@@ -300,6 +300,56 @@ def check_seo(page: str, src: str) -> None:
             fail(page, f"invalid JSON-LD: {exc}")
 
 
+# ------------------------------------------------------- the script bundle
+
+# On 2026-08-21 the contact-form handler moved out of six generated inline <script> blocks and into
+# the static js/site.js. It took two pieces of Python with it, and both survived review because a
+# static file is never re-read by the generator that used to fix it up:
+#
+#   '{contact}'  was a .format() placeholder. Nothing substitutes it in a .js file, so every
+#                fallback mailto pointed at the literal address "{contact}".
+#   '\n'        was Python's escaping level. In JavaScript a doubled backslash is a LITERAL
+#                backslash, so composed email bodies arrived as one line with visible \n markers.
+#
+# Both were silent: no console error, no failed build, just a dead contact form on the only
+# conversion path the site has. These two checks are cheap and catch the whole class.
+BACKSLASH = chr(92)
+PLACEHOLDER_RE = re.compile(r"\{[a-z_][a-z0-9_]*\}")
+COMMENT_RE = re.compile(r"//[^\n]*|/\*.*?\*/", re.S)
+
+
+def check_scripts() -> None:
+    path = os.path.join(ROOT, "js", "site.js")
+    if not os.path.exists(path):
+        fail("js/site.js", "missing: every page loads it")
+        return
+    with open(path, encoding="utf-8") as fh:
+        src = fh.read()
+    code = COMMENT_RE.sub("", src)   # comments may legitimately quote either pattern
+
+    for name in sorted(set(PLACEHOLDER_RE.findall(code))):
+        fail("js/site.js", f"unsubstituted template placeholder {name} in shipped JavaScript")
+
+    for esc in ("n", "t", "r"):
+        if BACKSLASH + BACKSLASH + esc in code:
+            fail("js/site.js",
+                 f"doubled backslash before '{esc}': in JavaScript that is a literal backslash, "
+                 "not an escape. Python escaping that came along from a generated inline script.")
+
+
+# The form's fallback path composes a mailto from data-contact. Without it the address is empty and
+# the submit button silently does nothing useful, which is the failure this whole section exists to
+# prevent - so it is checked on the page, not just in the script.
+def check_form(page: str, src: str) -> None:
+    if 'id="contact-form"' not in src:
+        return
+    m = re.search(r'<form id="contact-form"[^>]*>', src)
+    if not m or 'data-contact="' not in m.group(0):
+        fail(page, "contact form has no data-contact; the mailto fallback would have no address")
+    elif '@' not in re.search(r'data-contact="([^"]*)"', m.group(0)).group(1):
+        fail(page, "data-contact does not look like an email address")
+
+
 # --------------------------------------------------------------------- main
 
 def main() -> int:
@@ -320,6 +370,9 @@ def main() -> int:
         check_a11y(page, src)
         check_content(page, src)
         check_seo(page, src)
+        check_form(page, src)
+
+    check_scripts()
 
     print(f"checked {len(PAGES)} pages")
     if failures:

@@ -118,6 +118,11 @@
   var fallback = document.getElementById('cf-fallback');
   var submit = document.getElementById('cf-submit');
   var endpoint = (form.getAttribute('data-endpoint') || '').trim();
+  // Stamped onto the form by build_nav.py from build_legal.CONTACT, so the address is written
+  // down once. This was a literal '{contact}' -- a Python .format() placeholder that came along
+  // when the handler moved out of the generated inline scripts, leaving every fallback mailto
+  // pointing at the string "mailto:{contact}" instead of an address.
+  var contact = (form.getAttribute('data-contact') || '').trim();
 
   function say(m) { status.textContent = m; }
 
@@ -137,7 +142,7 @@
       'Request: ' + form.elements.topic.value,
       'Estate: ' + (form.elements.estate.value.trim() || '—'),
       '', form.elements.message.value.trim()
-    ].join('\\n');
+    ].join('\n');
 
     if (endpoint) {
       submit.disabled = true; say('Sending…');
@@ -151,12 +156,18 @@
       return;
     }
 
-    window.location.href = 'mailto:{contact}'
+    if (!contact) {
+      say('Could not open your mail client. Copy the message below and send it to us.');
+      document.getElementById('cf-copy').value = body;
+      fallback.hidden = false;
+      return;
+    }
+    window.location.href = 'mailto:' + contact
       + '?subject=' + encodeURIComponent('SeQontrol — ' + form.elements.topic.value)
       + '&body=' + encodeURIComponent(body);
     say('Opening your mail client…');
     document.getElementById('cf-copy').value =
-      'To: {contact}\\nSubject: SeQontrol — ' + form.elements.topic.value + '\\n\\n' + body;
+      'To: ' + contact + '\nSubject: SeQontrol — ' + form.elements.topic.value + '\n\n' + body;
     window.setTimeout(function () { fallback.hidden = false; }, 1200);
   });
 

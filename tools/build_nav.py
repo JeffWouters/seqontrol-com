@@ -125,6 +125,23 @@ def card_badge(m: "re.Match") -> str:
 # where tabbing past the whole nav costs the most. Every page already had the <main id="main"> target,
 # so only the link was missing. Inserted here rather than pasted into six files, because pasting into
 # six files is how it came to be missing from six files.
+# The contact form's fallback path composes a mailto, and it needs an address. It used to carry a
+# '{contact}' placeholder that build_legal.py substituted while the handler was a generated inline
+# script; when the handler moved into the static js/site.js on 2026-08-21 nothing substituted it any
+# more and every fallback resolved to the literal "mailto:{contact}" - a dead link on the only
+# conversion path the site has. Stamped here instead, from the one constant that defines it, so the
+# address cannot drift from the five forms that use it.
+from build_legal import CONTACT  # noqa: E402
+
+CONTACT_FORM_RE = re.compile(r'<form id="contact-form"([^>]*)>')
+
+
+def stamp_contact(m: "re.Match") -> str:
+    # strip any previous stamp first so a second run is a no-op rather than an append
+    attrs = re.sub(r'\s*data-contact="[^"]*"', "", m.group(1))
+    return '<form id="contact-form"%s data-contact="%s">' % (attrs, CONTACT)
+
+
 SKIP = '<a class="skip-link" href="#main">Skip to content</a>'
 
 
@@ -244,6 +261,7 @@ def main() -> None:
                 if label != "__none__":
                     out = STATUS_RE.sub(lambda m: status_block(m.group(1), label), out)
             out = add_skip(out)
+            out = CONTACT_FORM_RE.sub(stamp_contact, out)
             out = PCARD_RE.sub(card_badge, out)
             out = FOOTER.sub(lambda m: footer(m.group(1), pre), out)
             out = COMPANY_RE.sub(lambda m: company(m.group(1), up), out)

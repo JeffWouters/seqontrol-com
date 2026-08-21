@@ -10,8 +10,20 @@ The three markers below are load-bearing and brittle by nature: `<title>`, `</he
 wrong. With two copies, the next person fixes the one that failed loudly and leaves the other to fail
 quietly on the next run — which is the specific failure mode this file removes.
 
-The donor is contact.html because it is hand-written, small, and carries the full chrome: header,
-nav, footer, script tag. Nothing generates it, so it cannot be rewritten out from under this.
+The donor is contact.html because it is authored by hand, is small, and carries the full chrome:
+header, nav, footer, script tag.
+
+It is NOT, however, untouched by the pipeline, and an earlier version of this docstring claimed it
+was - which was wrong in the direction that makes the coupling look safer than it is. build_nav.py
+rewrites its nav, skip link, footer columns and data-contact; build_seo.py rewrites its title,
+description, CSP, canonical and Open Graph tags. Those are precisely the slices chrome() takes, so
+this module reads a file that two other generators are actively rewriting. That is the coupling.
+
+The invariant that keeps it working: build_seo.META must continue to include contact.html. A page
+outside META goes through apply_csp_only() instead, which injects the CSP straight after <head> -
+so contact.html would start carrying a policy tag inside the head_open slice, and every generated
+page would inherit a second one. It is also why generators must run in the documented order:
+chrome() reads whatever contact.html happens to hold at that moment.
 """
 from __future__ import annotations
 

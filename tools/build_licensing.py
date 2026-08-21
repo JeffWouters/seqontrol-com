@@ -22,9 +22,17 @@ Markup ships with the tab strip hidden and every panel visible, so the content
 survives with JavaScript off; site.js flips it into tabs.
 """
 import io
+import os
 import re
 
-PAGE = r"Z:\Websites\SeQontrol.com\pricing.html"
+# Derived from __file__ like every other generator. This was the absolute path
+# r"Z:\Websites\SeQontrol.com\pricing.html", which made this the one script in tools/ that could not
+# run from a clone: anywhere else it either aborts or reaches across and rewrites the Z: tree
+# instead of the checkout it was invoked in. It owns every capability matrix and price cell on the
+# only page that carries figures, so it is also the single line standing between this repo and a
+# reproducible build.
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PAGE = os.path.join(ROOT, "pricing.html")
 
 Y = '<span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span>'
 N = '<span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span>'

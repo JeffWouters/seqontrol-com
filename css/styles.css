@@ -134,7 +134,12 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font);
-  font-size: 16.5px;
+  /* rem, not px. This was 16.5px and it was the only px font-size in the sheet, so headings,
+     .lede, .section-head p and .card p all scaled with the reader's browser default while the
+     body copy beside them did not - at a 20px default a card paragraph rendered LARGER than the
+     prose around it. Browser default font size, not page zoom, is the setting low-vision readers
+     actually change. 1.03rem is 16.48px at the 16px default: visually identical today. */
+  font-size: 1.03rem;
   line-height: 1.62;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -151,6 +156,18 @@ h4 { font-size: 1rem; }
 p { margin: 0 0 1.1em; }
 a { color: var(--accent); text-decoration: none; }
 a:hover { color: var(--accent-soft); text-decoration: underline; }
+
+/* Inline prose links carry an underline, because colour alone does not distinguish them. --accent
+   against --text is 2.20:1 and against --muted - which td, .note p and .note li all use - it is
+   1.06:1, both under the 3:1 WCAG technique G183 requires when colour is the sole signal. The
+   sheet's own palette notes check --accent against the BACKGROUND, which is the wrong comparison
+   for this: what matters is the surrounding text. A hover underline does not help a touch user or
+   anyone scanning. Scoped to <main> so header, footer and nav keep their current look. */
+main p a, main li a, main td a, main th a, main figcaption a {
+  text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em;
+}
+/* Anything already shaped like a control is exempt: it does not read as body copy to begin with. */
+main .btn, main .arrow-link, main .tag, main .breadcrumb a, main .subnav a { text-decoration: none; }
 
 ul, ol { margin: 0 0 1.1em; padding-left: 1.25em; }
 li { margin-bottom: .5em; }
@@ -257,10 +274,20 @@ section.tight { padding-block: clamp(2.4rem, 4vw, 3.4rem); }
 @media (max-width: 900px) {
   .nav-toggle { display: block; }
   .nav-links {
-    display: none; position: absolute; inset: 62px 0 auto 0;
+    display: none; position: absolute; inset: var(--header-h) 0 auto 0;
     flex-direction: column; align-items: stretch; gap: 0;
     background: var(--bg-deep); border-bottom: 1px solid var(--border-soft);
     padding: .5rem var(--gut) 1.1rem;
+    /* The panel is absolutely positioned inside a position:sticky header, so it is pinned to the
+       viewport and scrolling the page behind it moves nothing. At this breakpoint the submenu is
+       rendered inline and visible (see .subnav below), so the panel carries 14 rows and stands
+       roughly 650px tall - taller than an iPhone SE viewport, and far taller than any phone in
+       landscape. Without these four lines the bottom entries, Guides and Contact among them,
+       cannot be reached by any gesture. dvh second so it wins where supported. */
+    max-height: calc(100vh - var(--header-h));
+    max-height: calc(100dvh - var(--header-h));
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
   .nav-links.open { display: flex; }
   .nav-links a { display: block; padding: .72rem 0; border-bottom: 1px solid var(--border-soft); }
@@ -479,7 +506,7 @@ tbody tr:hover td { background: rgba(148,163,184,.03); }
 }
 [data-tabs-ready].tabs-v .tablist {
   grid-column: 1; grid-row: 1;
-  position: sticky; top: 78px;
+  position: sticky; top: calc(var(--header-h) + 1rem);
   flex-direction: column;
   align-items: stretch;
   gap: .12rem;
@@ -630,7 +657,7 @@ tbody tr:hover td { background: rgba(148,163,184,.03); }
 .split { display: grid; grid-template-columns: 1.55fr .85fr; gap: 3rem; align-items: start; }
 @media (max-width: 940px) { .split { grid-template-columns: 1fr; gap: 2rem; } }
 
-.aside { background: var(--surface); border: 1px solid var(--border-soft); border-radius: var(--radius); padding: 1.3rem; position: sticky; top: 84px; }
+.aside { background: var(--surface); border: 1px solid var(--border-soft); border-radius: var(--radius); padding: 1.3rem; position: sticky; top: calc(var(--header-h) + 1.4rem); }
 @media (max-width: 940px) { .aside { position: static; } }
 .aside h3 { font-size: .74rem; letter-spacing: .11em; text-transform: uppercase; color: var(--dim); margin-bottom: .6rem; font-weight: 700; }
 .aside h3:not(:first-child) { margin-top: 1.35rem; }
@@ -987,3 +1014,20 @@ a[href^="https://jeffops.com"]:hover,
 .tone-mailtrust { --tone: var(--t-mailtrust); }
 .tone-dredd { --tone: var(--t-dredd); }
 .tone-soon { --tone: var(--t-soon); }
+
+
+/* ----------------------------------------------------------------- print */
+
+/* site.js collapses the pricing page into tabs by setting [hidden] on every panel but one, and
+   the UA sheet's [hidden]{display:none} holds through printing - so Save as PDF produced a
+   pricing document containing one product out of seven, with nothing to indicate the other six
+   existed. Pricing is the page a buyer prints and circulates for sign-off, which makes a silently
+   truncated PDF the worst possible failure on it.
+
+   Only the panels are forced back: the tab strip is navigation and means nothing on paper. Both
+   rules are scoped to [data-tabs-ready], which site.js sets, so with JavaScript off the markup is
+   already fully expanded and neither rule has anything to do. */
+@media print {
+  [data-tabs-ready] [role="tabpanel"][hidden] { display: block !important; }
+  [data-tabs-ready] .tablist { display: none; }
+}

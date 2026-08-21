@@ -61,6 +61,25 @@ COMPARE = [
     ("vs-secure-score.html",    "vs Secure Score"),
 ]
 
+# Trust and Elsewhere were the last two footer columns still copied by hand into 28 files, and they
+# had already drifted: the homepage - the most-read page on the site - was missing "What we don't
+# do", so it listed three items where every other page listed four. That is exactly the 1-in-28 drift
+# this module exists to end, and leaving two columns out of it left the door open.
+#
+# "What we don't do" leading the Trust column is deliberate: a limits page that is hard to find is a
+# limits page nobody believes.
+TRUST = [
+    ("limits.html",   "What we don't do"),
+    ("security.html", "Security"),
+    ("privacy.html",  "Privacy"),
+    ("terms.html",    "Terms"),
+]
+
+# Absolute, so unlike every other list here these take no depth prefix.
+ELSEWHERE = [
+    ("https://jeffops.com", "JeffOps"),
+]
+
 # The top-level nav, owned here for the same reason as everything else below. It was uniform in
 # CONTENT across all 32 pages and varied only by relative depth, which is exactly the thing this file
 # already computes — and the moment a second entry needed a submenu, the old approach broke: the
@@ -107,13 +126,23 @@ CARD_STATUS = {
 
 TONE_LABEL = {tone[4:]: label for _h, _n, tone, label in PRODUCTS}
 
+# The inner match stops at the next <article>. It used to be a bare .*? under re.S, which is
+# unbounded: a card with no status span of its own would run on and stamp its availability onto the
+# NEXT card's badge. Every card happens to have a span today, but products/index.html already
+# carries an unrelated class="status" span in a table cell for it to reach, and this function exists
+# precisely because four of eight badges were wrong once already.
 PCARD_RE = re.compile(
-    r'(<article class="pcard tone-([a-z]+)">.*?)<span class="status [a-z]+">[^<]*</span>', re.S)
+    r'(<article class="pcard tone-([a-z]+)">(?:(?!<article).)*?)<span class="status [a-z]+">[^<]*</span>',
+    re.S)
 
 
 def card_badge(m: "re.Match") -> str:
     key = m.group(2)
     if key not in TONE_LABEL:
+        # Silently returning the tag unchanged is how a mis-typed tone class keeps a stale badge
+        # forever. Say so; the run still completes, because a warning that stops the build over a
+        # cosmetic class name would be worse than the drift it prevents.
+        print(f"  WARNING: pcard tone-{key} is not in PRODUCTS; its badge is not being generated")
         return m.group(0)
     css, text = CARD_STATUS[TONE_LABEL[key]]
     return f'{m.group(1)}<span class="status {css}">{text}</span>'
@@ -188,6 +217,8 @@ SUBNAV = re.compile(r'( *)<ul class="subnav">.*?</ul>', re.S)
 FOOTER = re.compile(r'( *)<h2>Products</h2>\n *<ul>.*?</ul>', re.S)
 COMPANY_RE = re.compile(r'( *)<h2>Company</h2>\n *<ul>.*?</ul>', re.S)
 COMPARE_RE = re.compile(r'( *)<h2>Compare</h2>\n *<ul>.*?</ul>', re.S)
+TRUST_RE = re.compile(r'( *)<h2>Trust</h2>\n *<ul>.*?</ul>', re.S)
+ELSEWHERE_RE = re.compile(r'( *)<h2>Elsewhere</h2>\n *<ul>.*?</ul>', re.S)
 
 
 def status_block(pad: str, label: str | None) -> str:
@@ -221,6 +252,23 @@ def compare(pad: str, up: str) -> str:
     out = [f'{pad}<h2>Compare</h2>', f'{pad}<ul>']
     for href, name in COMPARE:
         out.append(f'{pad}  <li><a href="{up}{href}">{name}</a></li>')
+    out.append(f'{pad}</ul>')
+    return "\n".join(out)
+
+
+def trust(pad: str, up: str) -> str:
+    out = [f'{pad}<h2>Trust</h2>', f'{pad}<ul>']
+    for href, name in TRUST:
+        out.append(f'{pad}  <li><a href="{up}{href}">{name}</a></li>')
+    out.append(f'{pad}</ul>')
+    return "\n".join(out)
+
+
+def elsewhere(pad: str) -> str:
+    """No `up` argument: these are absolute URLs and take no depth prefix."""
+    out = [f'{pad}<h2>Elsewhere</h2>', f'{pad}<ul>']
+    for href, name in ELSEWHERE:
+        out.append(f'{pad}  <li><a href="{href}">{name}</a></li>')
     out.append(f'{pad}</ul>')
     return "\n".join(out)
 
@@ -296,6 +344,8 @@ def main() -> None:
             out = FOOTER.sub(lambda m: footer(m.group(1), pre), out)
             out = COMPANY_RE.sub(lambda m: company(m.group(1), up), out)
             out = COMPARE_RE.sub(lambda m: compare(m.group(1), up), out)
+            out = TRUST_RE.sub(lambda m: trust(m.group(1), up), out)
+            out = ELSEWHERE_RE.sub(lambda m: elsewhere(m.group(1)), out)
 
             if out != src:
                 open(path, "w", encoding="utf-8", newline="\n").write(out)

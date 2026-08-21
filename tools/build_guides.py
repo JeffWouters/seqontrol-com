@@ -263,7 +263,12 @@ def page(spec, body_html, offer=None) -> str:
         + after_head
         + '<main id="main">\n\n'
         + '  <section class="hero">\n    <div class="wrap wrap-narrow">\n'
-        + '      <p class="breadcrumb"><a href="index.html">Guides</a></p>\n'
+        # Not href="index.html". depth_fix() rewrites that exact string to ../index.html for the
+        # brand link in the chrome, and it cannot tell the two apart - so this breadcrumb read
+        # "Guides" while pointing at the site homepage, contradicting its own BreadcrumbList JSON-LD.
+        # verify.py could not catch it either: ../index.html exists, so the link check was happy.
+        # The sentinel survives depth_fix untouched and is resolved below, after it has run.
+        + '      <p class="breadcrumb"><a href="__GUIDES_INDEX__">Guides</a></p>\n'
         + f'      <span class="eyebrow">{spec["eyebrow"]}</span>\n'
         + f'      <h1>{spec["h1"]}</h1>\n'
         + f'      <p class="lede">{spec["lede"]}</p>\n'
@@ -274,7 +279,9 @@ def page(spec, body_html, offer=None) -> str:
         + footer
         + '<script src="../js/site.js"></script>\n</body>\n</html>\n'
     )
-    return depth_fix(html)
+    # Resolve the breadcrumb after depth_fix, never before. A guide sits in /guides/, so its link
+    # to the guides index is a plain sibling reference.
+    return depth_fix(html).replace("__GUIDES_INDEX__", "index.html")
 
 
 def build():
@@ -292,7 +299,13 @@ def build():
 
     body = ('      <div class="grid grid-2">\n' + "\n".join(cards) + "\n      </div>\n")
     idx = page(INDEX, body)
-    idx = idx.replace('<p class="breadcrumb"><a href="index.html">Guides</a></p>\n      ', "")
+    # The index does not get a breadcrumb to itself. This used to match the pre-depth_fix string and
+    # so removed nothing at all, leaving guides/index.html with a "Guides" crumb pointing at the site
+    # homepage. Asserting turns the next silent mismatch into a failed build instead of a live page.
+    crumb = '<p class="breadcrumb"><a href="index.html">Guides</a></p>\n      '
+    if crumb not in idx:
+        raise SystemExit("build_guides: breadcrumb markup changed; the index strip no longer matches")
+    idx = idx.replace(crumb, "")
     io.open(os.path.join(OUT, "index.html"), "w", encoding="utf-8").write(idx)
     print("wrote guides/index.html")
 

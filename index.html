@@ -174,7 +174,7 @@
       <div class="section-head">
         <span class="eyebrow">The products</span>
         <h2>What each product finds, proves and fixes</h2>
-        <p><strong>Four are running today; four are still in development.</strong> Each answers a question you are already being asked,
+        <p><strong>Four are running today. Two more are built but not released, and two are still in development.</strong> Each answers a question you are already being asked,
            and each is useful on its own — run one, or run several of them into the same findings store.</p>
       </div>
 
@@ -191,7 +191,7 @@
         <div class="grid grid-2">
         <article class="pcard tone-sharecare">
           <span class="kicker">Data access governance</span>
-          <h3><a href="products/sharecare.html">ShareCare</a></h3>
+          <h3><a href="products/sharecare.html">ShareCare</a> <span class="status built">Built</span></h3>
           <p>Crawls the whole Microsoft 365 sharing and permission surface app-only, scores exposure by
              sensitivity and blast radius, and remediates — with a grace window and undo. The Copilot-readiness
              answer, across every tenant.</p>
@@ -199,7 +199,7 @@
         </article>
           <article class="pcard tone-security">
             <span class="kicker">Posture scanning</span>
-            <h3><a href="products/securityportal.html">SecurityPortal</a></h3>
+            <h3><a href="products/securityportal.html">SecurityPortal</a> <span class="status built">Built</span></h3>
             <p>Continuous Microsoft 365 and Entra security posture — Conditional Access coverage, MFA gaps,
                over-privileged apps, risky sign-in patterns. Every finding carries control tags, and a tier
                you can only climb with evidence.</p>
@@ -207,7 +207,7 @@
           </article>
         <article class="pcard tone-webscan">
           <span class="kicker">External attack surface</span>
-          <h3><a href="products/webscan.html">WebScan</a></h3>
+          <h3><a href="products/webscan.html">WebScan</a> <span class="status built">Built</span></h3>
           <p>Finds the public face of your organisation — including the hosts nobody wrote down — and
              grades it against the standards. Discovery, TLS, headers, cookies, DNS, exposed services and
              infrastructure. No tenant and no consent needed, and the scan is free; you pay to keep it.</p>
@@ -215,7 +215,7 @@
         </article>
         <article class="pcard tone-mailtrust">
           <span class="kicker">Email authentication</span>
-          <h3><a href="products/mailtrust.html">MailTrust</a></h3>
+          <h3><a href="products/mailtrust.html">MailTrust</a> <span class="status built">Built</span></h3>
           <p>Takes every domain from DMARC monitoring to safe enforcement — inventorying real senders from
              aggregate reports, staging the rollout, and writing the DNS records in-product for supported
              providers.</p>
@@ -227,25 +227,39 @@
         <p class="small dim" style="margin:-.4rem 0 1.1rem">Priced where the price is settled, so the number
           is not a negotiation when they ship. <a href="products/coming.html#conditionalaccessportal">ConditionalAccessPortal</a>
           is closest &mdash; policy inventory, baseline coverage and approval-gated write-back for the Entra estate.</p>
-        <div class="grid grid-3">
+        <div class="grid grid-2">
+          <article class="pcard tone-condaccess">
+            <span class="kicker">Policy governance</span>
+            <h3><a href="products/coming.html#conditionalaccessportal">ConditionalAccessPortal</a> <span class="status early">Coming soon</span></h3>
+            <p>Conditional Access policy inventory, baseline coverage gaps and approval-gated policy write-back
+               for the Entra estate. Built and close, but not released yet.</p>
+            <a class="arrow-link" href="products/coming.html#conditionalaccessportal">ConditionalAccessPortal</a>
+          </article>
           <article class="pcard tone-compliance">
             <span class="kicker">Control evidence</span>
-            <h3><a href="products/coming.html#complianceportal">CompliancePortal</a></h3>
+            <h3><a href="products/coming.html#complianceportal">CompliancePortal</a> <span class="status early">Coming soon</span></h3>
             <p>Turns the scans you already run into framework-mapped, audit-ready evidence, with attestation,
                an evidence repository and time-boxed auditor access. It proves the <em>technical</em> controls on
                the platforms SeQontrol supports — it is not a whole-company compliance programme.</p>
             <a class="arrow-link" href="products/coming.html#complianceportal">CompliancePortal</a>
           </article>
-        <article class="pcard tone-dredd">
-          <span class="kicker">Drift governance</span>
-          <h3><a href="products/coming.html#dredd">Dredd</a></h3>
-          <p>Holds your approved configuration as a versioned baseline, catches every deviation, and forces the
-             decision: revert it or ratify it. Not "this is unwise" — <em>"this is not what you approved."</em></p>
-          <a class="arrow-link" href="products/coming.html#dredd">Dredd</a>
-        </article>
+        </div>
+
+        <h3 class="avail-head" style="margin-top:2.6rem">Still in development</h3>
+        <p class="small dim" style="margin:-.4rem 0 1.1rem">Real work is still happening on these, so
+          neither carries a list price &mdash; a price against something still being built is a guess
+          with a currency symbol on it.</p>
+        <div class="grid grid-2">
+          <article class="pcard tone-dredd">
+            <span class="kicker">Drift governance</span>
+            <h3><a href="products/coming.html#dredd">Dredd</a> <span class="status soon">Under development</span></h3>
+            <p>Holds your approved configuration as a versioned baseline, catches every deviation, and forces the
+               decision: revert it or ratify it. Not "this is unwise" — <em>"this is not what you approved."</em></p>
+            <a class="arrow-link" href="products/coming.html#dredd">Dredd</a>
+          </article>
           <article class="pcard tone-posture">
             <span class="kicker">Single pane</span>
-            <h3><a href="products/coming.html#postureportal">PosturePortal</a><span class="soon-tag">In dev</span></h3>
+            <h3><a href="products/coming.html#postureportal">PosturePortal</a> <span class="status soon">Under development</span></h3>
             <p>The read-only board that aggregates findings, risk and coverage from every product into one
                per-tenant and fleet-wide view — top risks, trends, connector health, saved views and annotations.</p>
             <a class="arrow-link" href="products/coming.html#postureportal">PosturePortal</a>
@@ -254,8 +268,6 @@
 
         </div>
 
-      <div class="grid grid-3" style="margin-top:1.15rem">
-      </div>
 
 
       <h3 style="margin-top:3rem">What actually gets crawled</h3>
@@ -306,14 +318,6 @@
         </div>
       </div>
 
-      <div class="grid grid-3" style="margin-top:1.15rem">
-        <article class="pcard tone-condaccess">
-          <span class="kicker">Policy governance</span>
-          <h3>ConditionalAccessPortal</h3>
-          <p>Conditional Access policy inventory, baseline coverage gaps and approval-gated policy write-back
-             for the Entra estate. Built and close, but not released yet.</p>
-        </article>
-      </div>
     </div>
   </section><section class="band">
     <div class="wrap">
@@ -664,6 +668,7 @@
         </ul>
         <h2>Trust</h2>
         <ul>
+          <li><a href="limits.html">What we don't do</a></li>
           <li><a href="security.html">Security</a></li>
           <li><a href="privacy.html">Privacy</a></li>
           <li><a href="terms.html">Terms</a></li>

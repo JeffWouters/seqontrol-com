@@ -1243,9 +1243,17 @@ PAGES = {
 
 def build(name: str, spec: dict) -> None:
     head_open, after_head, footer = chrome()
-    body = spec["body"].format(contact=CONTACT, operator=OPERATOR, entity=ENTITY,
-                               kvk=KVK, address=ADDRESS_INLINE,
-                               address_html='<br>'.join(ADDRESS_LINES))
+
+    # One dict, applied to every prose field rather than to `body` alone. It used to be inlined on
+    # the body call only, while `lede` was interpolated raw further down - so about.html shipped the
+    # literal text "SeQontrol is built by {operator}" to every visitor who opened it. A placeholder
+    # is only substituted on the fields somebody remembered to substitute, which is not a property
+    # worth relying on; both prose fields now go through the same substitution.
+    fields = dict(contact=CONTACT, operator=OPERATOR, entity=ENTITY,
+                  kvk=KVK, address=ADDRESS_INLINE,
+                  address_html='<br>'.join(ADDRESS_LINES))
+    body = spec["body"].format(**fields)
+    spec = {**spec, "lede": spec["lede"].format(**fields)} if "lede" in spec else spec
 
     # An offer page carries its own form, so the ask sits where the intent is
     # rather than one click away on the contact page.

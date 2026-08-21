@@ -328,12 +328,84 @@ SINGLETONS = (
 )
 
 
+# Of the six needles above, four already have an existence check in check_seo: title, description,
+# canonical and og:title. These two do not, so absence was invisible - and one of them is the site's
+# entire security policy, since GitHub Pages serves no headers to carry it instead. A check that only
+# ever fires on n > 1 catches a generator that appends and misses a generator that stops emitting.
+MUST_EXIST = ('http-equiv="Content-Security-Policy"', 'name="twitter:card"')
+
+
 def check_singletons(page: str, src: str) -> None:
     head = src[:src.index("</head>")] if "</head>" in src else src
     for needle, label in SINGLETONS:
         n = head.count(needle)
         if n > 1:
             fail(page, f"{label} appears {n} times in <head>; a generator is appending instead of replacing")
+        elif n == 0 and needle in MUST_EXIST:
+            # A noindex page carries no social card on purpose - 404.html is deliberately absent
+            # from the sitemap, Open Graph and Twitter metadata, because a soft 404 in an index
+            # helps nobody. It still needs its CSP: it is the page an attacker probes first.
+            if 'name="robots"' in head and "noindex" in head and needle != MUST_EXIST[0]:
+                continue
+            fail(page, f"{label} is missing from <head>")
+
+
+# ------------------------------------------------------- availability grouping
+
+# build_nav.py generates each product card's badge, so a badge can no longer disagree with PRODUCTS.
+# What it cannot see is the HEADING a card is filed under. On 2026-08-21 index.html grouped Dredd and
+# PosturePortal - both "In dev" - beneath "Built, and not released yet", and PosturePortal carried a
+# hand-typed "In dev" tag while sitting under that heading. The badge and the heading are the same
+# fact stated twice, so they get checked against each other.
+AVAIL_HEADINGS = {
+    "Available today":              "Built",
+    "Built, and not released yet":  "Coming soon",
+    "Still in development":         "Under development",
+}
+AVAIL_SPLIT_RE = re.compile(r'<h3 class="avail-head"[^>]*>([^<]+)</h3>')
+AVAIL_CARD_RE = re.compile(
+    r'<article class="pcard tone-([a-z]+)">.*?<span class="status [a-z]+">([^<]*)</span>', re.S)
+
+
+def check_availability(page: str, src: str) -> None:
+    parts = AVAIL_SPLIT_RE.split(src)
+    # split() yields [before, heading, chunk, heading, chunk, ...]
+    for heading, chunk in zip(parts[1::2], parts[2::2]):
+        expected = AVAIL_HEADINGS.get(heading.strip())
+        if expected is None:
+            fail(page, f"unknown availability heading {heading.strip()!r}; add it to AVAIL_HEADINGS")
+            continue
+        for tone, badge in AVAIL_CARD_RE.findall(chunk):
+            if badge.strip() != expected:
+                fail(page, f'product card tone-{tone} is badged "{badge.strip()}" but sits under '
+                           f'"{heading.strip()}", which claims "{expected}"')
+
+
+# ---------------------------------------------------- unfilled generator output
+
+# The pipeline has one hard ordering dependency: build_legal.py stamps <!--CAPS:key--> markers into
+# pricing.html and build_licensing.py fills them. README documents it. Nothing enforced it - running
+# the pipeline while skipping build_licensing left pricing.html with seven literal markers and half
+# its capability matrices gone, and verify.py printed "all checks passed" and exited 0. The site's
+# only page carrying figures would have deployed gutted.
+#
+# check_scripts() below looks for the same class of leftover, but only ever opens js/site.js, and
+# check_content strips comments before it scans - so between them the HTML was never examined.
+MARKER_RE = re.compile(r"<!--\s*[A-Z][A-Z0-9_]*\s*:[^>]*-->")
+
+# The keys build_legal.build() passes to str.format(). If one of these survives into shipped HTML the
+# substitution did not happen, which is how "mailto:{contact}" reached production in js/site.js.
+FORMAT_KEYS = ("contact", "operator", "entity", "kvk", "address", "address_html")
+FORMAT_RE = re.compile(r"\{(" + "|".join(FORMAT_KEYS) + r")\}")
+
+
+def check_markers(page: str, src: str) -> None:
+    for m in sorted(set(MARKER_RE.findall(src))):
+        fail(page, f"unfilled generator marker {m!r}: a pipeline step was skipped or failed")
+    # Ignore anything inside a script block - JSON-LD and site.js legitimately contain braces.
+    text = re.sub(r"<script[^>]*>.*?</script>", "", src, flags=re.S)
+    for name in sorted(set(FORMAT_RE.findall(text))):
+        fail(page, f"unsubstituted template placeholder {{{name}}} in shipped HTML")
 
 
 # ------------------------------------------------------- the script bundle
@@ -409,6 +481,8 @@ def main() -> int:
         check_form(page, src)
         check_srcset(page, src)
         check_singletons(page, src)
+        check_markers(page, src)
+        check_availability(page, src)
 
     check_scripts()
 

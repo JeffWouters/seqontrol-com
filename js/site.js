@@ -13,6 +13,19 @@
       toggle.setAttribute('aria-expanded', String(open));
     });
 
+    // Close on navigation. Most menu entries load a new document, which closes the panel for free —
+    // but four do not. build_nav.py emits the unreleased products as coming.html#dredd and friends,
+    // so on products/coming.html itself those are same-document jumps: nothing unloads, the target
+    // scrolls to just under the header, and the still-open opaque panel covers it. Half the product
+    // menu read as dead links on the one page that describes those products.
+    links.addEventListener('click', function (e) {
+      var el = e.target;
+      while (el && el !== links && el.tagName !== 'A') el = el.parentNode;
+      if (!el || el.tagName !== 'A') return;
+      links.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+
     // Close on Escape so keyboard users are not trapped behind the panel.
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && links.classList.contains('open')) {

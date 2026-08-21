@@ -66,7 +66,7 @@ META = {
     "pricing.html": (
         "SeQontrol - Pricing - What sets your number",
         "Every product with a settled price, listed: per user, per site, per domain or per tenant, "
-        "with the platform floor, the suite terms and the volume bands.",
+        "with the suite terms and the volume bands.",
         "Pricing"),
     "spoofing-report.html": (
         "SeQontrol - Free report - Who is sending as you",

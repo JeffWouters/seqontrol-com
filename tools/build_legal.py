@@ -147,7 +147,7 @@ PAGES = {
             <tr><th scope="row">ShareCare</th><td>Microsoft 365 users</td></tr>
             <tr><th scope="row">SecurityPortal</th><td>Users, at a lower rate with any ShareCare tier &middot; $50 monthly tenant minimum</td></tr>
             <tr><th scope="row">ConditionalAccessPortal</th><td>Users, on the same terms as SecurityPortal</td></tr>
-            <tr><th scope="row">WebScan</th><td>Monitored sites, five-site minimum &middot; free on every tenant</td></tr>
+            <tr><th scope="row">WebScan</th><td>Monitored sites &middot; free on every tenant</td></tr>
             <tr><th scope="row">MailTrust</th><td>Sending domains; parked domains at a lower rate, five included with each</td></tr>
             <tr><th scope="row">CompliancePortal</th><td>Per tenant, banded by how many frameworks are in scope</td></tr>
             <tr><th scope="row">Dredd</th><td>Monitored configuration scope &mdash; quoted, not listed</td></tr>
@@ -269,7 +269,7 @@ PAGES = {
           <li><b>Governance</b> — Adds oversharing and advanced detections, policies, access reviews, approvals, waivers, evidence packs, and six-hourly scans.</li>
           <li><b>Automation</b> — Adds hourly scans plus OneDrive permission and sharing-link write-back with undo, requiring a separate connector remediation consent.</li>
         </ul>
-        <p class="after">There is no seat minimum: a twelve-person company pays for twelve people. The $99 platform floor is the only bar, and it bites below 50 users on Visibility, 25 on Governance and 16 on Automation. What each tier unlocks is on the.</p>
+        <p class="after">There is no seat minimum and no platform floor: a twelve-person company pays for twelve people, and nothing is added on top. What each tier unlocks is on the.</p>
 <!--CAPS:sharecare-->
       </div>
       <div class="product-licence tone-security" role="tabpanel" id="panel-security" aria-labelledby="tab-security" tabindex="0">
@@ -314,7 +314,7 @@ PAGES = {
       <div class="product-licence tone-webscan" role="tabpanel" id="panel-webscan" aria-labelledby="tab-webscan" tabindex="0">
         <header>
           <h3>WebScan</h3>
-          <p class="counted">Per monitored site, per month &middot; five-site minimum</p>
+          <p class="counted">Per monitored site, per month</p>
         </header>
         <div class="table-wrap table-scroll" tabindex="0">
           <table class="matrix">
@@ -323,7 +323,7 @@ PAGES = {
             </thead>
             <tbody>
               <tr><th scope="row">List</th><td>$0</td><td>$20</td></tr>
-              <tr><th scope="row">5 sites, the minimum</th><td>$0</td><td>$100</td></tr>
+              <tr><th scope="row">5 sites</th><td>$0</td><td>$100</td></tr>
               <tr><th scope="row">25 sites</th><td>$0</td><td>$500</td></tr>
             </tbody>
           </table>
@@ -334,8 +334,8 @@ PAGES = {
           <li><b>Pro</b> — Keeps results, history and audit trail, scans on a schedule, and alerts on expiry, new assets and regressions.</li>
         </ul>
         <div class="note plain">
-          <h3>A WebScan-only tenant pays no platform floor</h3>
-          <p class="mb0">A tenant that arrived through a free scan is one we would not otherwise have, and putting a platform minimum in front of them would eat the funnel it sits downstream of. Add any second product and the $99 applies from that point.</p>
+          <h3>WebScan is priced on its own</h3>
+          <p class="mb0">A tenant that arrived through a free scan is one we would not otherwise have, and putting a minimum in front of them would eat the funnel it sits downstream of. Nothing is added when a second product applies from that point.</p>
         </div>
         <div class="note plain">
           <h3>Discovered subdomains are free, and stay free until you say otherwise</h3>
@@ -467,11 +467,11 @@ PAGES = {
       </div>
       </div>
 
-      <h2 style="margin-top:3rem">The floor under all of it</h2>
-      <p>A <strong>monthly platform minimum of $99</strong> applies to the total. It covers the tenancy, auth,
-        audit trail, findings store, reporting and scheduling that every product runs on, and it is charged as
-        <strong>greater-of rather than added on top</strong>. A 30-user tenant on ShareCare Visibility computes
-        $60 and pays $99. A WebScan-only tenant is the exception and pays no platform floor at all.</p>
+      <h2 style="margin-top:3rem">What you pay for</h2>
+      <p><strong>There is no platform minimum.</strong> You pay for the products you hold, in the unit each one
+        counts, at any size. The tenancy, auth, audit trail, findings store, reporting and scheduling that every
+        product runs on are included rather than charged separately. A 30-user tenant on ShareCare Visibility
+        computes $60 and pays $60.</p>
 
       <h2>What moves the number</h2>
       <ul>
@@ -485,7 +485,7 @@ PAGES = {
       <h2>Your own tenant, if you are a partner</h2>
       <p><strong>$50 a month, every product, every tier, on the tenant you run your own business from.</strong>
         The same estate computes somewhere between $260 and $640 at list, so this is not a discount and is not
-        described as one &mdash; it is deliberately below the platform floor, which means it costs us money and
+        described as one &mdash; it is deliberately below what a tenant costs to run, which means it costs us money and
         is meant to.</p>
       <p>The reasoning is plain enough to publish: a provider who runs this on themselves every day can
         demonstrate it from a live tenant instead of a slide, and will find our mistakes before your clients
@@ -578,7 +578,7 @@ PAGES = {
       <p><strong>How many products you take.</strong> There is no suite discount. Each product is priced on
         its own and adding one costs what that product costs — no bundle, no package, no number that only
         appears if you buy everything. What running more than one does get you is structural rather than
-        promotional: one platform minimum across the account instead of one per product, and findings that
+        promotional: one tenancy, one identity, one audit trail across the account, and findings that
         land somewhere they are already useful.</p>
       <p>How often you scan, how many findings you have, how much you remediate, or how much evidence you
         export. None of those are metered, deliberately — charging for them would teach you to look less

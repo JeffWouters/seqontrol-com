@@ -194,7 +194,7 @@ PRODUCTS = [
     ),
     dict(
         key="webscan", name="WebScan", tone="--t-webscan", status=None,
-        counted="Free on every tenant &middot; Pro $20 per monitored site, per month &middot; five-site minimum",
+        counted="Free on every tenant &middot; Pro $20 per monitored site, per month",
         tech=[("Discovery", [("Subdomain and asset discovery", 1),
                              ("Certificate transparency monitoring", 1)]),
               ("Transport", [("TLS versions and cipher suites", 1), ("Certificate chain and expiry", 1),
@@ -209,7 +209,7 @@ PRODUCTS = [
         cols=KEPT,
         rows=["Price",
               ("Per monitored site, per month", ["$0", "$20"]),
-              ("At the five-site minimum", ["$0", "$100"]),
+              ("Five sites", ["$0", "$100"]),
               "The scan itself",
               ("On-demand scan, whenever you want one", [Y, Y]),
               ("The complete check set", [Y, Y]),

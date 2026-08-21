@@ -334,7 +334,25 @@ PAGES = {
           <h3>ConditionalAccessPortal</h3>
           <p class="counted">Per user, per month &middot; <strong>not released yet</strong></p>
         </header>
-        <p><strong>$1.50 per user</strong>, on the same denominator and the same $50 monthly tenant minimum as SecurityPortal, because it answers the same question about the same estate &mdash; Conditional Access policy inventory, baseline coverage gaps and approval-gated policy write-back.</p>
+<p>On the same denominator and the same <strong>$50 monthly tenant minimum</strong> as SecurityPortal, because it answers the same question about the same estate.</p>
+        <div class="table-wrap table-scroll" tabindex="0">
+          <table class="matrix">
+            <thead>
+              <tr><th scope="col">&nbsp;</th><th class="tier-head" scope="col">Visibility<small>see it</small></th><th class="tier-head" scope="col">Governance<small>govern it</small></th><th class="tier-head" scope="col">Automation<small>act on it</small></th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Per user, per month</th><td>$0.60</td><td>$1.00</td><td>$1.50</td></tr>
+              <tr><th scope="row">Monthly minimum per tenant, greater-of</th><td>$50</td><td>$50</td><td>$50</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ul class="tier-lines">
+          <li><b>Visibility</b> &mdash; Read-only inventory of every Conditional Access policy, and the access map: which endpoints reach which resources, through which policies, and where a path is allowed or blocked.</li>
+          <li><b>Governance</b> &mdash; Adds baseline coverage gaps, and policy-as-code drift detection: connect a Git repository of policy, compare it against the live tenant on a schedule, and see field by field where the tenant has moved. Adds capture in the other direction too &mdash; take a tenant&rsquo;s live policy set into the repository as a pull request somebody reviews.</li>
+          <li><b>Automation</b> &mdash; Adds approval-gated write-back: enable, disable or move a policy to report-only in your tenant, and deploy the repository&rsquo;s policy to it. Every change needs an approval from somebody other than the person who requested it, and a separate connector consent.</li>
+        </ul>
+<!--CAPS:condaccess-->
+        <p class="after"><strong>Governance reads, Automation writes, and the line between them is the whole ladder.</strong> Everything on Governance &mdash; the baselines, the repository comparison, the schedule, even the capture &mdash; leaves your directory exactly as it found it. Capture writes only to your Git repository, on a new branch, as a pull request somebody has to merge; it never pushes to the branch we read. Automation is the one rung that changes your tenant, and even there the deliberate decision is per change, not per contract: a deployment is approved by somebody other than the person who requested it, and nothing is written without a separate connector consent you grant yourself. Nothing is ever deleted &mdash; a policy your tenant has and the repository does not is reported, never removed.</p>
         <p class="after"><strong>Not released yet.</strong> Built, running and close &mdash; the price is published so it is not a surprise when it ships, not because you can buy it today. <a href="products/coming.html#conditionalaccessportal">What it does, and what it does not</a>.</p>
       </div>
       <div class="product-licence" role="tabpanel" id="panel-webscan" aria-labelledby="tab-webscan" tabindex="0" style="--tone: var(--t-webscan)">

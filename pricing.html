@@ -303,7 +303,54 @@
           <h3>ConditionalAccessPortal</h3>
           <p class="counted">Per user, per month &middot; <strong>not released yet</strong></p>
         </header>
-        <p><strong>$1.50 per user</strong>, on the same denominator and the same $50 monthly tenant minimum as SecurityPortal, because it answers the same question about the same estate &mdash; Conditional Access policy inventory, baseline coverage gaps and approval-gated policy write-back.</p>
+<p>On the same denominator and the same <strong>$50 monthly tenant minimum</strong> as SecurityPortal, because it answers the same question about the same estate.</p>
+        <div class="table-wrap table-scroll" tabindex="0">
+          <table class="matrix">
+            <thead>
+              <tr><th scope="col">&nbsp;</th><th class="tier-head" scope="col">Visibility<small>see it</small></th><th class="tier-head" scope="col">Governance<small>govern it</small></th><th class="tier-head" scope="col">Automation<small>act on it</small></th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Per user, per month</th><td>$0.60</td><td>$1.00</td><td>$1.50</td></tr>
+              <tr><th scope="row">Monthly minimum per tenant, greater-of</th><td>$50</td><td>$50</td><td>$50</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ul class="tier-lines">
+          <li><b>Visibility</b> &mdash; Read-only inventory of every Conditional Access policy, and the access map: which endpoints reach which resources, through which policies, and where a path is allowed or blocked.</li>
+          <li><b>Governance</b> &mdash; Adds baseline coverage gaps, and policy-as-code drift detection: connect a Git repository of policy, compare it against the live tenant on a schedule, and see field by field where the tenant has moved. Adds capture in the other direction too &mdash; take a tenant&rsquo;s live policy set into the repository as a pull request somebody reviews.</li>
+          <li><b>Automation</b> &mdash; Adds approval-gated write-back: enable, disable or move a policy to report-only in your tenant, and deploy the repository&rsquo;s policy to it. Every change needs an approval from somebody other than the person who requested it, and a separate connector consent.</li>
+        </ul>
+        <h4 style="margin-top:2rem">What the licence includes</h4>
+        <div class="tech">
+          <h4>Technologies covered</h4>
+          <span class="group-label">Microsoft 365 and Entra</span>
+          <ul class="tags"><li class="tag on">Conditional Access policies</li><li class="tag on">Named locations</li><li class="tag on">Device filters</li><li class="tag on">Authentication strengths</li></ul>
+          <span class="group-label">Policy as code</span>
+          <ul class="tags"><li class="tag on">GitHub</li><li class="tag on">Azure DevOps</li></ul>
+        </div>
+        <div class="table-wrap table-scroll" tabindex="0" role="group" aria-label="Licence comparison">
+          <table class="matrix">
+            <thead>
+              <tr><th scope="col">Capability</th><th class="tier-head" scope="col">Visibility<small>see it</small></th><th class="tier-head" scope="col">Governance<small>govern it</small></th><th class="tier-head" scope="col">Automation<small>act on it</small></th></tr>
+            </thead>
+            <tbody>
+              <tr class="group"><th colspan="4" scope="colgroup">Price</th></tr>
+              <tr><th scope="row">Per user, per month</th><td>$0.60</td><td>$1.00</td><td>$1.50</td></tr>
+              <tr><th scope="row">Monthly minimum per tenant, greater-of</th><td>$50</td><td>$50</td><td>$50</td></tr>
+              <tr class="group"><th colspan="4" scope="colgroup">Capability</th></tr>
+              <tr><th scope="row">Conditional Access policy inventory</th><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
+              <tr><th scope="row">Access map &mdash; endpoints, policies, resources, allowed and blocked paths</th><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
+              <tr><th scope="row">On-demand scan, fleet-wide across managed tenants</th><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
+              <tr><th scope="row">Baseline coverage gaps</th><td><span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
+              <tr><th scope="row">Policy-as-code drift detection &mdash; Git repository, GitHub or Azure DevOps</th><td><span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
+              <tr><th scope="row">Scheduled repository-versus-tenant comparison, with history</th><td><span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
+              <tr><th scope="row">Baseline capture &mdash; a tenant&rsquo;s live policy into the repository, as a pull request</th><td><span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
+              <tr><th scope="row">Approval-gated policy write-back to your tenant</th><td><span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td><td><span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
+              <tr><th scope="row">Deploy repository policy into your tenant, approval-gated</th><td><span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td><td><span class="no" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td><td><span class="tick" aria-hidden="true">&check;</span><span class="sr-only">Included</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="after"><strong>Governance reads, Automation writes, and the line between them is the whole ladder.</strong> Everything on Governance &mdash; the baselines, the repository comparison, the schedule, even the capture &mdash; leaves your directory exactly as it found it. Capture writes only to your Git repository, on a new branch, as a pull request somebody has to merge; it never pushes to the branch we read. Automation is the one rung that changes your tenant, and even there the deliberate decision is per change, not per contract: a deployment is approved by somebody other than the person who requested it, and nothing is written without a separate connector consent you grant yourself. Nothing is ever deleted &mdash; a policy your tenant has and the repository does not is reported, never removed.</p>
         <p class="after"><strong>Not released yet.</strong> Built, running and close &mdash; the price is published so it is not a surprise when it ships, not because you can buy it today. <a href="products/coming.html#conditionalaccessportal">What it does, and what it does not</a>.</p>
       </div>
       <div class="product-licence" role="tabpanel" id="panel-webscan" aria-labelledby="tab-webscan" tabindex="0" style="--tone: var(--t-webscan)">

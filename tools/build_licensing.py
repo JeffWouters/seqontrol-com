@@ -154,6 +154,30 @@ PRODUCTS = [
                "<a href=\"products/webscan.html\">WebScan</a>, licensed separately and free to run."),
     ),
     dict(
+        # Restored 2026-08-21. This matrix was hand-written straight into pricing.html by the commit that
+        # put Conditional Access back on three tiers, and the next generator run destroyed it — the exact
+        # trap build_legal.py's own header warns about. It lives here now, so it survives a rebuild.
+        key="condaccess", name="ConditionalAccessPortal", tone="--t-condaccess", status="Coming soon",
+        counted="Per user, per month &middot; $50 monthly tenant minimum &middot; not released yet",
+        tech=[("Microsoft 365 and Entra", [("Conditional Access policies", 1), ("Named locations", 1),
+                                           ("Device filters", 1), ("Authentication strengths", 1)]),
+              ("Policy as code", [("GitHub", 1), ("Azure DevOps", 1)])],
+        cols=LADDER,
+        rows=["Price",
+              ("Per user, per month", ["$0.60", "$1.00", "$1.50"]),
+              ("Monthly minimum per tenant, greater-of", ["$50", "$50", "$50"]),
+              "Capability",
+              ("Conditional Access policy inventory", [Y, Y, Y]),
+              ("Access map &mdash; endpoints, policies, resources, allowed and blocked paths", [Y, Y, Y]),
+              ("On-demand scan, fleet-wide across managed tenants", [Y, Y, Y]),
+              ("Baseline coverage gaps", [N, Y, Y]),
+              ("Policy-as-code drift detection &mdash; Git repository, GitHub or Azure DevOps", [N, Y, Y]),
+              ("Scheduled repository-versus-tenant comparison, with history", [N, Y, Y]),
+              ("Baseline capture &mdash; a tenant&rsquo;s live policy into the repository, as a pull request", [N, Y, Y]),
+              ("Approval-gated policy write-back to your tenant", [N, N, Y]),
+              ("Deploy repository policy into your tenant, approval-gated", [N, N, Y])],
+    ),
+    dict(
         key="webscan", name="WebScan", tone="--t-webscan", status=None,
         counted="Free on every tenant &middot; Pro $20 per monitored site, per month &middot; five-site minimum",
         tech=[("Discovery", [("Subdomain and asset discovery", 1),

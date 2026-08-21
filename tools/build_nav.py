@@ -89,6 +89,53 @@ STATUS = {
     "In dev":   ("soon",  "In development", "Not yet available"),
 }
 
+# products/index.html shows the same eight products as cards, and each card's availability badge was
+# typed by hand. On 2026-08-21 four of the eight were wrong: CompliancePortal, ConditionalAccessPortal
+# and Dredd all claimed "Built", so the products index was offering three things nobody can buy, while
+# a fourth (PosturePortal) was oversold as merely "Coming soon". The badge is keyed off the card's tone
+# class, which already names the product, so it is now derived like the nav badge and the Status line.
+#
+# Separate from STATUS above because a card badge stands alone. STATUS pairs a badge with a sentence
+# that carries the nuance ("Built" + "Coming soon - not yet released"); strip the sentence and that
+# badge becomes a lie. Three states, three existing styles: green built, amber close, grey still being
+# written.
+CARD_STATUS = {
+    None:     ("built", "Built"),
+    "Soon":   ("early", "Coming soon"),
+    "In dev": ("soon",  "Under development"),
+}
+
+TONE_LABEL = {tone[4:]: label for _h, _n, tone, label in PRODUCTS}
+
+PCARD_RE = re.compile(
+    r'(<article class="pcard tone-([a-z]+)">.*?)<span class="status [a-z]+">[^<]*</span>', re.S)
+
+
+def card_badge(m: "re.Match") -> str:
+    key = m.group(2)
+    if key not in TONE_LABEL:
+        return m.group(0)
+    css, text = CARD_STATUS[TONE_LABEL[key]]
+    return f'{m.group(1)}<span class="status {css}">{text}</span>'
+
+
+# The skip link is the first thing a keyboard user needs and the easiest thing to forget. The 22
+# generated pages all had one because chrome() carries it out of contact.html; the six hand-written
+# pages did not - including the homepage and every shipped product page, which is precisely the set
+# where tabbing past the whole nav costs the most. Every page already had the <main id="main"> target,
+# so only the link was missing. Inserted here rather than pasted into six files, because pasting into
+# six files is how it came to be missing from six files.
+SKIP = '<a class="skip-link" href="#main">Skip to content</a>'
+
+
+def add_skip(src: str) -> str:
+    if SKIP in src or "<body>" not in src:
+        return src
+    if 'id="main"' not in src:
+        return src   # no target: a broken skip link is worse than none
+    return src.replace("<body>", "<body>\n" + SKIP, 1)
+
+
 STATUS_RE = re.compile(r'( *)<h3>Status</h3>\s*<ul>.*?</ul>', re.S)
 NAVLINKS = re.compile(r'( *)<ul class="nav-links".*?</ul>\s*</nav>', re.S)
 SUBNAV = re.compile(r'( *)<ul class="subnav">.*?</ul>', re.S)
@@ -196,6 +243,8 @@ def main() -> None:
                 label = next((lab for href, _n, _t, lab in PRODUCTS if rel == f"products/{href}"), "__none__")
                 if label != "__none__":
                     out = STATUS_RE.sub(lambda m: status_block(m.group(1), label), out)
+            out = add_skip(out)
+            out = PCARD_RE.sub(card_badge, out)
             out = FOOTER.sub(lambda m: footer(m.group(1), pre), out)
             out = COMPANY_RE.sub(lambda m: company(m.group(1), up), out)
             out = COMPARE_RE.sub(lambda m: compare(m.group(1), up), out)

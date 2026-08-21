@@ -383,36 +383,10 @@ PRODUCTS = [
 
 # ------------------------------------------------------------------ rendering
 
-tabs, panels = [], []
-for i, p in enumerate(PRODUCTS):
-    # The badge belongs on the panel heading, not the tab. A tab label is a
-    # navigation target and should stay short; the availability caveat is part
-    # of what the panel says about the product, and it is repeated in the
-    # "Counted on" line and the notes below it anyway.
-    badge = (' <span class="status soon">%s</span>' % p["status"]) if p["status"] else ""
-    tabs.append(
-        '          <button type="button" role="tab" id="tab-%s" aria-controls="panel-%s"'
-        ' aria-selected="%s" tabindex="%s" style="--tone: var(%s)">%s</button>'
-        % (p["key"], p["key"], "true" if i == 0 else "false", "0" if i == 0 else "-1",
-           p["tone"], p["name"]))
-
-    body = [tech(p["tech"])]
-    if p["cols"]:
-        body.append(table(p["cols"], p["rows"]))
-    if p.get("note"):
-        body.append('        <div class="note plain" style="margin-top:0">\n'
-                    '          <p class="mb0">%s</p>\n        </div>' % p["note"])
-    if p.get("after"):
-        body.append('        <p class="after">%s</p>' % p["after"])
-
-    panels.append(
-        '      <div class="product-licence" role="tabpanel" id="panel-%s" aria-labelledby="tab-%s"'
-        ' tabindex="0" style="--tone: var(%s)">\n'
-        '        <header>\n'
-        '          <h3>%s%s</h3>\n'
-        '          <p class="counted">%s</p>\n'
-        '        </header>\n%s\n      </div>'
-        % (p["key"], p["key"], p["tone"], p["name"], badge, p["counted"], "\n".join(body)))
+# The tab strip and panel wrappers used to be built here, when this file wrote its own page.
+# The pricing page owns both since the 2026-08-19 merge, so that loop was building two lists
+# nothing read. Removed rather than left commented: dead code that still runs is the kind that
+# gets "fixed" years later by somebody who assumes it matters.
 
 # The per-product bodies, keyed for injection. The tab strip, the panel wrapper and the header all
 # belong to the pricing page now — this contributes only what goes INSIDE a panel.

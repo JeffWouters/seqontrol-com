@@ -160,7 +160,7 @@ def subnav(pad: str, pre: str) -> str:
     for href, name, tone, label in PRODUCTS:
         tag = f'<span class="soon-tag">{label}</span>' if label else ""
         out.append(f'{pad}  <li><a href="{pre}{href}">'
-                   f'<span class="dot" style="--tone: var({tone})"></span>{name}{tag}</a></li>')
+                   f'<span class="dot tone-{tone[4:]}"></span>{name}{tag}</a></li>')
     out.append(f'{pad}</ul>')
     return "\n".join(out)
 

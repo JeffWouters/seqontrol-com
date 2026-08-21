@@ -6,8 +6,6 @@
 <title>SeQontrol - Pricing - What sets your number</title>
 <meta name="description" content="Every product with a settled price, listed: per user, per site, per domain or per tenant, with the platform floor, the suite terms and the volume bands.">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; object-src 'none'">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; object-src 'none'">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; object-src 'none'">
 <link rel="canonical" href="https://seqontrol.com/pricing.html">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="SeQontrol">
@@ -48,14 +46,14 @@
       <li><a href="platform.html">Platform</a></li>
       <li class="has-sub"><a href="products/index.html">Products</a>
         <ul class="subnav">
-          <li><a href="products/sharecare.html"><span class="dot" style="--tone: var(--t-sharecare)"></span>ShareCare</a></li>
-          <li><a href="products/securityportal.html"><span class="dot" style="--tone: var(--t-security)"></span>SecurityPortal</a></li>
-          <li><a href="products/coming.html#conditionalaccessportal"><span class="dot" style="--tone: var(--t-condaccess)"></span>ConditionalAccessPortal<span class="soon-tag">Soon</span></a></li>
-          <li><a href="products/webscan.html"><span class="dot" style="--tone: var(--t-webscan)"></span>WebScan</a></li>
-          <li><a href="products/coming.html#complianceportal"><span class="dot" style="--tone: var(--t-compliance)"></span>CompliancePortal<span class="soon-tag">Soon</span></a></li>
-          <li><a href="products/coming.html#postureportal"><span class="dot" style="--tone: var(--t-posture)"></span>PosturePortal<span class="soon-tag">In dev</span></a></li>
-          <li><a href="products/mailtrust.html"><span class="dot" style="--tone: var(--t-mailtrust)"></span>MailTrust</a></li>
-          <li><a href="products/coming.html#dredd"><span class="dot" style="--tone: var(--t-dredd)"></span>Dredd<span class="soon-tag">In dev</span></a></li>
+          <li><a href="products/sharecare.html"><span class="dot tone-sharecare"></span>ShareCare</a></li>
+          <li><a href="products/securityportal.html"><span class="dot tone-security"></span>SecurityPortal</a></li>
+          <li><a href="products/coming.html#conditionalaccessportal"><span class="dot tone-condaccess"></span>ConditionalAccessPortal<span class="soon-tag">Soon</span></a></li>
+          <li><a href="products/webscan.html"><span class="dot tone-webscan"></span>WebScan</a></li>
+          <li><a href="products/coming.html#complianceportal"><span class="dot tone-compliance"></span>CompliancePortal<span class="soon-tag">Soon</span></a></li>
+          <li><a href="products/coming.html#postureportal"><span class="dot tone-posture"></span>PosturePortal<span class="soon-tag">In dev</span></a></li>
+          <li><a href="products/mailtrust.html"><span class="dot tone-mailtrust"></span>MailTrust</a></li>
+          <li><a href="products/coming.html#dredd"><span class="dot tone-dredd"></span>Dredd<span class="soon-tag">In dev</span></a></li>
         </ul>
       </li>
       <li><a href="pricing.html">Pricing</a></li>
@@ -183,15 +181,15 @@
 
       <div data-tabs class="tabs-v">
         <div class="tablist" role="tablist" aria-label="Products">
-          <button type="button" role="tab" id="tab-sharecare" aria-controls="panel-sharecare" aria-selected="true" tabindex="0" style="--tone: var(--t-sharecare)">ShareCare</button>
-          <button type="button" role="tab" id="tab-security" aria-controls="panel-security" aria-selected="false" tabindex="-1" style="--tone: var(--t-security)">SecurityPortal</button>
-          <button type="button" role="tab" id="tab-condaccess" aria-controls="panel-condaccess" aria-selected="false" tabindex="-1" style="--tone: var(--t-condaccess)">ConditionalAccessPortal</button>
-          <button type="button" role="tab" id="tab-webscan" aria-controls="panel-webscan" aria-selected="false" tabindex="-1" style="--tone: var(--t-webscan)">WebScan</button>
-          <button type="button" role="tab" id="tab-mailtrust" aria-controls="panel-mailtrust" aria-selected="false" tabindex="-1" style="--tone: var(--t-mailtrust)">MailTrust</button>
-          <button type="button" role="tab" id="tab-compliance" aria-controls="panel-compliance" aria-selected="false" tabindex="-1" style="--tone: var(--t-compliance)">CompliancePortal</button>
-          <button type="button" role="tab" id="tab-quoted" aria-controls="panel-quoted" aria-selected="false" tabindex="-1" style="--tone: var(--t-soon)">Quoted and unpriced</button>
+          <button type="button" role="tab" id="tab-sharecare" aria-controls="panel-sharecare" aria-selected="true" tabindex="0" class="tone-sharecare">ShareCare</button>
+          <button type="button" role="tab" id="tab-security" aria-controls="panel-security" aria-selected="false" tabindex="-1" class="tone-security">SecurityPortal</button>
+          <button type="button" role="tab" id="tab-condaccess" aria-controls="panel-condaccess" aria-selected="false" tabindex="-1" class="tone-condaccess">ConditionalAccessPortal</button>
+          <button type="button" role="tab" id="tab-webscan" aria-controls="panel-webscan" aria-selected="false" tabindex="-1" class="tone-webscan">WebScan</button>
+          <button type="button" role="tab" id="tab-mailtrust" aria-controls="panel-mailtrust" aria-selected="false" tabindex="-1" class="tone-mailtrust">MailTrust</button>
+          <button type="button" role="tab" id="tab-compliance" aria-controls="panel-compliance" aria-selected="false" tabindex="-1" class="tone-compliance">CompliancePortal</button>
+          <button type="button" role="tab" id="tab-quoted" aria-controls="panel-quoted" aria-selected="false" tabindex="-1" class="tone-soon">Quoted and unpriced</button>
         </div>
-      <div class="product-licence" role="tabpanel" id="panel-sharecare" aria-labelledby="tab-sharecare" tabindex="0" style="--tone: var(--t-sharecare)">
+      <div class="product-licence tone-sharecare" role="tabpanel" id="panel-sharecare" aria-labelledby="tab-sharecare" tabindex="0">
         <header>
           <h3>ShareCare</h3>
           <p class="counted">Per Microsoft 365 user, per month</p>
@@ -259,7 +257,7 @@
         </div>
         <p class="after">Counted on users rather than on shares or resources — metering the resource count would punish the messiest estates, which are exactly the ones that need it most, and it could not be quoted before a discovery scan. Write-back is live for OneDrive permissions and sharing links; Exchange forwarding, SharePoint site roles, Power Platform and delegated-admin relationships are detected but not yet revoked app-only.</p>
       </div>
-      <div class="product-licence" role="tabpanel" id="panel-security" aria-labelledby="tab-security" tabindex="0" style="--tone: var(--t-security)">
+      <div class="product-licence tone-security" role="tabpanel" id="panel-security" aria-labelledby="tab-security" tabindex="0">
         <header>
           <h3>SecurityPortal</h3>
           <p class="counted">Per user, per month</p>
@@ -301,7 +299,7 @@
         </div>
         <p class="after"><strong>Why a per-tenant minimum on a per-user product.</strong> Roughly half of what this checks does not shrink with headcount — a 20-seat tenant has about as many Conditional Access policies, app registrations and configuration settings as a 2,000-seat one, and every one is evaluated either way. Per-user alone would price a full posture scan of a small tenant at thirty dollars. The floor bites below 34 users and does nothing above it.<br><br>One tier, not a ladder: SecurityPortal is scan-only, so there is no write access to sell on a higher tier. Remediation lives in the products built to write safely. The log-analytics checks need the tenant to export activity logs; without that export they report &ldquo;not assessed&rdquo; rather than a pass. The public web and domain surface is <a href="products/webscan.html">WebScan</a>, licensed separately and free to run.</p>
       </div>
-      <div class="product-licence" role="tabpanel" id="panel-condaccess" aria-labelledby="tab-condaccess" tabindex="0" style="--tone: var(--t-condaccess)">
+      <div class="product-licence tone-condaccess" role="tabpanel" id="panel-condaccess" aria-labelledby="tab-condaccess" tabindex="0">
         <header>
           <h3>ConditionalAccessPortal</h3>
           <p class="counted">Per user, per month &middot; <strong>not released yet</strong></p>
@@ -356,7 +354,7 @@
         <p class="after"><strong>Governance reads, Automation writes, and the line between them is the whole ladder.</strong> Everything on Governance &mdash; the baselines, the repository comparison, the schedule, even the capture &mdash; leaves your directory exactly as it found it. Capture writes only to your Git repository, on a new branch, as a pull request somebody has to merge; it never pushes to the branch we read. Automation is the one rung that changes your tenant, and even there the deliberate decision is per change, not per contract: a deployment is approved by somebody other than the person who requested it, and nothing is written without a separate connector consent you grant yourself. Nothing is ever deleted &mdash; a policy your tenant has and the repository does not is reported, never removed.</p>
         <p class="after"><strong>Not released yet.</strong> Built, running and close &mdash; the price is published so it is not a surprise when it ships, not because you can buy it today. <a href="products/coming.html#conditionalaccessportal">What it does, and what it does not</a>.</p>
       </div>
-      <div class="product-licence" role="tabpanel" id="panel-webscan" aria-labelledby="tab-webscan" tabindex="0" style="--tone: var(--t-webscan)">
+      <div class="product-licence tone-webscan" role="tabpanel" id="panel-webscan" aria-labelledby="tab-webscan" tabindex="0">
         <header>
           <h3>WebScan</h3>
           <p class="counted">Per monitored site, per month &middot; five-site minimum</p>
@@ -449,7 +447,7 @@
         </div>
         <p class="after">Counted per site rather than per domain, because a site is what gets scanned: one domain can front several, and each is its own configuration to grade. Nothing caps how many sites you may add; the count is trued up, never a hard stop.<br><br><strong>Pro is $20 against a category that starts an order of magnitude higher.</strong> The nearest paid comparables run from roughly $60 per asset per month to several hundred, and they include active vulnerability testing that WebScan does not do. At the other end the free graders charge nothing and retain nothing. The gap between those two is where this sits, and it was empty.<br><br>WebScan never writes anywhere — DNS write-back belongs to MailTrust, which also owns SPF, DKIM and DMARC; those are mail authentication rather than web surface and are not duplicated here.</p>
       </div>
-      <div class="product-licence" role="tabpanel" id="panel-mailtrust" aria-labelledby="tab-mailtrust" tabindex="0" style="--tone: var(--t-mailtrust)">
+      <div class="product-licence tone-mailtrust" role="tabpanel" id="panel-mailtrust" aria-labelledby="tab-mailtrust" tabindex="0">
         <header>
           <h3>MailTrust</h3>
           <p class="counted">Per domain, per month</p>
@@ -542,7 +540,7 @@
         </div>
         <p class="after">No tier caps how many domains you may add — the count is a commercial measurement, trued up on the next invoice, never a hard stop. Ingesting DMARC reports needs a mailbox to receive them; that is part of onboarding.<br><br><strong>Automation is priced at $40 rather than higher, and the reason is honest:</strong> DNS write-back is live for Azure DNS and DNSimple only. If your DNS is anywhere else, that tier gives you a staged rollout and guided records to apply yourself, not automation — so it is not priced as though it wrote them for you. Cloudflare and Route 53 are the next two, and the price goes up when they land rather than before.</p>
       </div>
-      <div class="product-licence" role="tabpanel" id="panel-compliance" aria-labelledby="tab-compliance" tabindex="0" style="--tone: var(--t-compliance)">
+      <div class="product-licence tone-compliance" role="tabpanel" id="panel-compliance" aria-labelledby="tab-compliance" tabindex="0">
         <header>
           <h3>CompliancePortal</h3>
           <p class="counted">Per tenant, per month &middot; banded by frameworks in scope &middot; <strong>not released yet</strong></p>
@@ -638,7 +636,7 @@
         </div>
         <p class="after"><strong>Two questions, two axes, so neither answer is bought to get the other.</strong> How many frameworks you need is scope. Whether you want sign-off and automatic capture is depth. Until now those shared one number, which meant a company doing SOC 2 alone had to buy every framework in the catalogue to reach attestation — paying for twenty-three regimes it would never open, to get one capability. Attested is half again the band price at any band instead.<br><br><strong>Not called Automation, and not an accident.</strong> On the ladder products that word is the tier that writes to your tenant. CompliancePortal writes nothing — it maps, scores, evidences and attests. Automated evidence <em>capture</em> reads from the estate; it does not act on it.<br><br><strong>Assessments do not yet run on a schedule.</strong> They are raised on demand and the product has no recurring cadence to sell, which is why that row is empty in all three bands rather than quietly ticked. What <em>is</em> continuous is the evidence underneath: SecurityPortal, ShareCare, WebScan and MailTrust scan on their own schedules, and their control-tagged findings are what an assessment reuses. The scope still holds either way — this proves the technical controls on the platforms SeQontrol connects to, not a whole-company compliance programme.</p>
       </div>
-      <div class="product-licence" role="tabpanel" id="panel-quoted" aria-labelledby="tab-quoted" tabindex="0" style="--tone: var(--t-soon)">
+      <div class="product-licence tone-soon" role="tabpanel" id="panel-quoted" aria-labelledby="tab-quoted" tabindex="0">
         <header>
           <h3>Dredd and PosturePortal</h3>
           <p class="counted">One quoted, one not yet priced</p>

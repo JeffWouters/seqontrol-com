@@ -186,7 +186,6 @@ section.tight { padding-block: clamp(2.4rem, 4vw, 3.4rem); }
 .small { font-size: .9rem; }
 .center { text-align: center; }
 .mb0 { margin-bottom: 0; }
-.mt2 { margin-top: 2rem; }
 
 /* ---------------------------------------------------------------- header */
 
@@ -316,9 +315,8 @@ section.tight { padding-block: clamp(2.4rem, 4vw, 3.4rem); }
 .grid { display: grid; gap: 1.15rem; }
 .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-@media (max-width: 960px) { .grid-3, .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 660px) { .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; } }
+@media (max-width: 960px) { .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 660px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
 
 .card { background: var(--surface); border: 1px solid var(--border-soft); border-radius: var(--radius); padding: 1.35rem 1.4rem; }
 .card h3 { margin-bottom: .4rem; }
@@ -572,9 +570,6 @@ tbody tr:hover td { background: rgba(148,163,184,.03); }
 }
 .checklist li strong { color: var(--text); }
 
-.crosslist { list-style: none; padding: 0; }
-.crosslist li { position: relative; padding-left: 1.55rem; color: var(--muted); }
-.crosslist li::before { content: "×"; position: absolute; left: .2rem; top: -.05em; color: var(--dim); font-weight: 700; font-size: 1.05em; }
 
 /* tags + status */
 
@@ -651,14 +646,6 @@ tbody tr:hover td { background: rgba(148,163,184,.03); }
   letter-spacing: .1em; text-transform: uppercase; padding: .2rem .6rem; border-radius: 100px;
 }
 
-.price-line {
-  display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem;
-  padding: .85rem 0; border-bottom: 1px solid var(--border-soft);
-}
-.price-line:last-child { border-bottom: 0; }
-.price-line .pl-name { font-weight: 560; min-width: 12rem; }
-.price-line .pl-price { font-family: var(--mono); color: var(--text); font-weight: 600; }
-.price-line .pl-note { color: var(--muted); font-size: .9rem; }
 
 /* ---------------------------------------------------------------- CTA */
 
@@ -944,8 +931,6 @@ a[href^="https://jeffops.com"]:hover,
 .shot-cap { max-width: var(--w); margin-inline: auto; }
 
 /* side-by-side pair on wide screens, stacked below */
-.shot-pair { display: grid; gap: 1.1rem; grid-template-columns: 1fr; margin: 1.6rem 0; }
-@media (min-width: 60rem) { .shot-pair { grid-template-columns: 1fr 1fr; align-items: start; } }
 
 /* Availability headings in the products grid. The site sells eight products and four of them cannot be
    bought yet, so the grid is grouped by what a visitor can actually do rather than by the narrative the
@@ -964,3 +949,19 @@ a[href^="https://jeffops.com"]:hover,
   padding-left: .9rem; border-left: 2px solid var(--tone, var(--border));
 }
 .tier-lines b { color: var(--text); font-weight: 620; }
+
+/* Product tone as a class rather than an inline custom property. It was written inline 299
+   times across the site — the same eight values, repeated per element, in the markup. As a
+   class the tone is set in one place per product and the pages stop carrying it.
+
+   The annotation pins keep their inline --x / --y: those are genuine per-element data and a
+   class for each would be worse than the attribute it replaced. */
+.tone-sharecare { --tone: var(--t-sharecare); }
+.tone-security { --tone: var(--t-security); }
+.tone-condaccess { --tone: var(--t-condaccess); }
+.tone-webscan { --tone: var(--t-webscan); }
+.tone-compliance { --tone: var(--t-compliance); }
+.tone-posture { --tone: var(--t-posture); }
+.tone-mailtrust { --tone: var(--t-mailtrust); }
+.tone-dredd { --tone: var(--t-dredd); }
+.tone-soon { --tone: var(--t-soon); }

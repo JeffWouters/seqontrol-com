@@ -16,9 +16,12 @@ from __future__ import annotations
 
 import io
 import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from _chrome import SOURCE, chrome  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SOURCE = os.path.join(ROOT, "contact.html")
 OUT = os.path.join(ROOT, "guides")
 
 GUIDES = [
@@ -222,15 +225,6 @@ INDEX = dict(
 )
 
 
-def chrome():
-    src = io.open(SOURCE, encoding="utf-8").read()
-    head_open = src[:src.index("<title>")]
-    after_head = src[src.index("</head>"):src.index("<main")]
-    footer = src[src.index('<footer class="site-footer">'):src.index("<script src=")]
-    # guides live one level down
-    for frag in ('href="', 'src="'):
-        pass
-    return head_open, after_head, footer
 
 
 def depth_fix(html: str) -> str:

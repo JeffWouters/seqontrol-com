@@ -29,9 +29,12 @@ from __future__ import annotations
 import io
 import os
 import re
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from _chrome import SOURCE, chrome  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SOURCE = os.path.join(ROOT, "contact.html")   # chrome donor
 
 OPERATOR = 'JeffOps'
 CONTACT = 'jeff@jeffops.com'
@@ -217,15 +220,15 @@ PAGES = {
 
       <div data-tabs class="tabs-v">
         <div class="tablist" role="tablist" aria-label="Products">
-          <button type="button" role="tab" id="tab-sharecare" aria-controls="panel-sharecare" aria-selected="true" tabindex="0" style="--tone: var(--t-sharecare)">ShareCare</button>
-          <button type="button" role="tab" id="tab-security" aria-controls="panel-security" aria-selected="false" tabindex="-1" style="--tone: var(--t-security)">SecurityPortal</button>
-          <button type="button" role="tab" id="tab-condaccess" aria-controls="panel-condaccess" aria-selected="false" tabindex="-1" style="--tone: var(--t-condaccess)">ConditionalAccessPortal</button>
-          <button type="button" role="tab" id="tab-webscan" aria-controls="panel-webscan" aria-selected="false" tabindex="-1" style="--tone: var(--t-webscan)">WebScan</button>
-          <button type="button" role="tab" id="tab-mailtrust" aria-controls="panel-mailtrust" aria-selected="false" tabindex="-1" style="--tone: var(--t-mailtrust)">MailTrust</button>
-          <button type="button" role="tab" id="tab-compliance" aria-controls="panel-compliance" aria-selected="false" tabindex="-1" style="--tone: var(--t-compliance)">CompliancePortal</button>
-          <button type="button" role="tab" id="tab-quoted" aria-controls="panel-quoted" aria-selected="false" tabindex="-1" style="--tone: var(--t-soon)">Quoted and unpriced</button>
+          <button type="button" role="tab" id="tab-sharecare" aria-controls="panel-sharecare" aria-selected="true" tabindex="0" class="tone-sharecare">ShareCare</button>
+          <button type="button" role="tab" id="tab-security" aria-controls="panel-security" aria-selected="false" tabindex="-1" class="tone-security">SecurityPortal</button>
+          <button type="button" role="tab" id="tab-condaccess" aria-controls="panel-condaccess" aria-selected="false" tabindex="-1" class="tone-condaccess">ConditionalAccessPortal</button>
+          <button type="button" role="tab" id="tab-webscan" aria-controls="panel-webscan" aria-selected="false" tabindex="-1" class="tone-webscan">WebScan</button>
+          <button type="button" role="tab" id="tab-mailtrust" aria-controls="panel-mailtrust" aria-selected="false" tabindex="-1" class="tone-mailtrust">MailTrust</button>
+          <button type="button" role="tab" id="tab-compliance" aria-controls="panel-compliance" aria-selected="false" tabindex="-1" class="tone-compliance">CompliancePortal</button>
+          <button type="button" role="tab" id="tab-quoted" aria-controls="panel-quoted" aria-selected="false" tabindex="-1" class="tone-soon">Quoted and unpriced</button>
         </div>
-      <div class="product-licence" role="tabpanel" id="panel-sharecare" aria-labelledby="tab-sharecare" tabindex="0" style="--tone: var(--t-sharecare)">
+      <div class="product-licence tone-sharecare" role="tabpanel" id="panel-sharecare" aria-labelledby="tab-sharecare" tabindex="0">
         <header>
           <h3>ShareCare</h3>
           <p class="counted">Per Microsoft 365 user, per month</p>
@@ -252,7 +255,7 @@ PAGES = {
         <p class="after">There is no seat minimum: a twelve-person company pays for twelve people. The $99 platform floor is the only bar, and it bites below 50 users on Visibility, 25 on Governance and 16 on Automation. What each tier unlocks is on the.</p>
 <!--CAPS:sharecare-->
       </div>
-      <div class="product-licence" role="tabpanel" id="panel-security" aria-labelledby="tab-security" tabindex="0" style="--tone: var(--t-security)">
+      <div class="product-licence tone-security" role="tabpanel" id="panel-security" aria-labelledby="tab-security" tabindex="0">
         <header>
           <h3>SecurityPortal</h3>
           <p class="counted">Per user, per month</p>
@@ -265,7 +268,7 @@ PAGES = {
         <p class="after"><b>What you get</b> — read-only Microsoft 365 and Entra posture scans, on demand or daily, with findings history across managed tenants..</p>
 <!--CAPS:securityportal-->
       </div>
-      <div class="product-licence" role="tabpanel" id="panel-condaccess" aria-labelledby="tab-condaccess" tabindex="0" style="--tone: var(--t-condaccess)">
+      <div class="product-licence tone-condaccess" role="tabpanel" id="panel-condaccess" aria-labelledby="tab-condaccess" tabindex="0">
         <header>
           <h3>ConditionalAccessPortal</h3>
           <p class="counted">Per user, per month &middot; <strong>not released yet</strong></p>
@@ -291,7 +294,7 @@ PAGES = {
         <p class="after"><strong>Governance reads, Automation writes, and the line between them is the whole ladder.</strong> Everything on Governance &mdash; the baselines, the repository comparison, the schedule, even the capture &mdash; leaves your directory exactly as it found it. Capture writes only to your Git repository, on a new branch, as a pull request somebody has to merge; it never pushes to the branch we read. Automation is the one rung that changes your tenant, and even there the deliberate decision is per change, not per contract: a deployment is approved by somebody other than the person who requested it, and nothing is written without a separate connector consent you grant yourself. Nothing is ever deleted &mdash; a policy your tenant has and the repository does not is reported, never removed.</p>
         <p class="after"><strong>Not released yet.</strong> Built, running and close &mdash; the price is published so it is not a surprise when it ships, not because you can buy it today. <a href="products/coming.html#conditionalaccessportal">What it does, and what it does not</a>.</p>
       </div>
-      <div class="product-licence" role="tabpanel" id="panel-webscan" aria-labelledby="tab-webscan" tabindex="0" style="--tone: var(--t-webscan)">
+      <div class="product-licence tone-webscan" role="tabpanel" id="panel-webscan" aria-labelledby="tab-webscan" tabindex="0">
         <header>
           <h3>WebScan</h3>
           <p class="counted">Per monitored site, per month &middot; five-site minimum</p>
@@ -329,7 +332,7 @@ PAGES = {
         <p class="after">Scanning is never counted &mdash; only sites you chose to keep, once per billing period each, however often they run..</p>
 <!--CAPS:webscan-->
       </div>
-      <div class="product-licence" role="tabpanel" id="panel-mailtrust" aria-labelledby="tab-mailtrust" tabindex="0" style="--tone: var(--t-mailtrust)">
+      <div class="product-licence tone-mailtrust" role="tabpanel" id="panel-mailtrust" aria-labelledby="tab-mailtrust" tabindex="0">
         <header>
           <h3>MailTrust</h3>
           <p class="counted">Per domain, per month</p>
@@ -381,7 +384,7 @@ PAGES = {
         </div>
 <!--CAPS:mailtrust-->
       </div>
-      <div class="product-licence" role="tabpanel" id="panel-compliance" aria-labelledby="tab-compliance" tabindex="0" style="--tone: var(--t-compliance)">
+      <div class="product-licence tone-compliance" role="tabpanel" id="panel-compliance" aria-labelledby="tab-compliance" tabindex="0">
         <header>
           <h3>CompliancePortal</h3>
           <p class="counted">Per tenant, per month &middot; banded by frameworks in scope &middot; <strong>not released yet</strong></p>
@@ -435,7 +438,7 @@ PAGES = {
         </div>
 <!--CAPS:complianceportal-->
       </div>
-      <div class="product-licence" role="tabpanel" id="panel-quoted" aria-labelledby="tab-quoted" tabindex="0" style="--tone: var(--t-soon)">
+      <div class="product-licence tone-soon" role="tabpanel" id="panel-quoted" aria-labelledby="tab-quoted" tabindex="0">
         <header>
           <h3>Dredd and PosturePortal</h3>
           <p class="counted">One quoted, one not yet priced</p>
@@ -1236,12 +1239,6 @@ PAGES = {
 }
 
 
-def chrome() -> tuple[str, str]:
-    src = io.open(SOURCE, encoding="utf-8").read()
-    head_open = src[:src.index("<title>")]
-    after_head = src[src.index("</head>"):src.index("<main")]
-    footer = src[src.index('<footer class="site-footer">'):src.index("<script src=")]
-    return head_open, after_head, footer
 
 
 def build(name: str, spec: dict) -> None:

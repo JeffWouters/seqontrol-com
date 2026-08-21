@@ -52,7 +52,7 @@ def check_links(page: str, src: str) -> None:
 
 PAIRED = ("div", "table", "section", "article", "ul", "ol", "li", "button", "nav",
           "th", "td", "tr", "thead", "tbody", "aside", "form", "main", "header",
-          "footer", "p", "span", "a", "h1", "h2", "h3", "h4")
+          "footer", "p", "span", "a", "h1", "h2", "h3", "h4", "picture")
 
 
 def check_markup(page: str, src: str) -> None:
@@ -300,6 +300,19 @@ def check_seo(page: str, src: str) -> None:
             fail(page, f"invalid JSON-LD: {exc}")
 
 
+# A <source srcset> that points at a missing file fails silently: the browser just falls back to the
+# <img>, the page looks right, and the 69% saving quietly stops happening. Cheap to check, invisible
+# to catch any other way.
+def check_srcset(page: str, src: str) -> None:
+    base = os.path.dirname(page)
+    for m in re.finditer(r'<source[^>]*srcset="([^"]+)"', src):
+        ref = m.group(1).split()[0]
+        if ref.startswith(("http:", "https:", "data:")):
+            continue
+        if not os.path.exists(os.path.normpath(os.path.join(base, ref))):
+            fail(page, f"<source srcset> points at a missing file: {ref}")
+
+
 # ------------------------------------------------------- the script bundle
 
 # On 2026-08-21 the contact-form handler moved out of six generated inline <script> blocks and into
@@ -371,6 +384,7 @@ def main() -> int:
         check_content(page, src)
         check_seo(page, src)
         check_form(page, src)
+        check_srcset(page, src)
 
     check_scripts()
 

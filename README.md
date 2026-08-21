@@ -12,32 +12,72 @@ python -m http.server 8080
 ## Layout
 
 ```
-index.html          Home — pitch, products, platform, licensing preview, MSP, honesty section
+index.html          Home — pitch, products, platform, pricing preview, MSP, honesty section
 platform.html       The shared platform layer + the trust/security answers
-licensing.html      License flavours, metering rules, and a per-product capability matrix (no prices)
+pricing.html        Every price, plus the per-product capability tabs and metering rules
 for-msps.html       Provider model, commercials, land-and-expand motion
 contact.html        Contact + a form that composes a mailto (no backend, nothing submitted)
+limits.html         What the platform deliberately does not do
+about.html  security.html  privacy.html  terms.html   Company and legal
+exposure-report.html  spoofing-report.html  surface-report.html   The three free assessments
+vs-cipp.html  vs-grc-platforms.html  vs-m365-governance.html  vs-secure-score.html   Comparisons
+404.html            Not-found page (noindex, carries the same chrome)
 products/
   index.html        Product overview + at-a-glance comparison table
-  sharecare.html    ShareCare
-  securityportal.html
-  complianceportal.html
-  postureportal.html
-  mailtrust.html
-  dredd.html
+  sharecare.html  securityportal.html  webscan.html  mailtrust.html    the four shipped products
+  coming.html       The four unreleased ones share one page, anchored per product, so the
+                    catalogue never implies you can buy something you cannot
+guides/
+  index.html  dmarc-without-breaking-mail.html  evidence-auditors-accept.html
+  what-copilot-can-reach.html
 css/styles.css      Single stylesheet
-js/site.js          Mobile nav, current-page marker, footer year, tabs
+js/site.js          Mobile nav, current-page marker, footer year, tabs, contact form
 assets/             Logo extractions, on-dark variants, icons, OG card
+  Screenshots/      Published crops + their lossless WebP twins. The raw captures live here too
+                    and are gitignored — they still carry a real third-party domain.
 favicon.ico         Multi-resolution icon at the root, where browsers look for it
-tools/
-  verify.py         Pre-deploy checks — run by CI on every push
-  build_licensing.py  Regenerates the per-product licence tabs and matrices
-  extract_logo.py     Re-keys the supplied logo JPEG into transparent PNGs
-  make_logo_variants.py  On-dark variants, sized copies, OG card
-  make_icons.py       favicon.ico and the PNG icon set
 .github/workflows/deploy.yml   Verify, then publish to GitHub Pages
 CNAME, .nojekyll, robots.txt, sitemap.xml
 ```
+
+## Regenerating
+
+Most of the site is generated. Editing generated HTML directly is the one way to lose work here: the
+next generator run overwrites it, silently and completely. If a change belongs to something in
+`tools/`, make it there.
+
+Order matters — each step depends on the one above it:
+
+```powershell
+python tools/build_legal.py       # pricing + trust pages; leaves <!--CAPS:key--> markers
+python tools/build_guides.py      # the guides, from the same page chrome
+python tools/build_licensing.py   # fills those markers with capability tabs and matrices
+python tools/build_nav.py         # nav, footer, product cards, skip links, contact address
+python tools/build_seo.py         # titles, metadata, canonicals, JSON-LD, CSP, sitemap
+python tools/build_images.py      # lossless WebP twins + <picture> wrappers
+python tools/verify.py            # the gate CI runs on every push
+```
+
+`tools/`
+
+```
+verify.py           Pre-deploy checks — links, markup, a11y, SEO, editorial rules, shipped JS
+_chrome.py          The page shell, split out of contact.html and shared by the generators
+build_legal.py      Pricing and the legal/trust pages; owns CONTACT and the money figures
+build_licensing.py  Per-product capability tabs and matrices, injected into pricing.html
+build_guides.py     The guides section
+build_nav.py        Everything repeated on every page, derived from one PRODUCTS list
+build_seo.py        Metadata, canonicals, JSON-LD, the CSP meta tag, sitemap.xml
+build_images.py     PNG -> lossless WebP (69% smaller) and the <picture> markup
+build_frameworks.py Compliance framework tables
+extract_logo.py     Re-keys the supplied logo JPEG into transparent PNGs
+make_logo_variants.py  On-dark variants, sized copies, OG card
+make_icons.py       favicon.ico and the PNG icon set
+crop_screenshots.py  redact_screenshots.py   Raw capture -> publishable crop
+```
+
+Only `build_images.py` needs anything installed (`pip install Pillow`), and only when a screenshot
+changes — the WebP files are committed, so CI never runs it.
 
 ## Hosting — GitHub Pages
 

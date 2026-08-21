@@ -125,6 +125,35 @@ def card_badge(m: "re.Match") -> str:
 # where tabbing past the whole nav costs the most. Every page already had the <main id="main"> target,
 # so only the link was missing. Inserted here rather than pasted into six files, because pasting into
 # six files is how it came to be missing from six files.
+# Footer images sit below the fold on every page, so they have no business competing for bandwidth
+# with the content. Two of the three share a src with the header and are cache hits, so the real
+# saving is the tagline - one request and about 9 KB per page. Small, but it is free and it is on
+# every page.
+#
+# Header images are deliberately left alone. No loading attribute already means eager, which is what
+# an above-the-fold logo should be; adding loading="eager" would be markup that changes nothing.
+# Content images are left alone too - they already carry a deliberate eager/lazy split, and the one
+# eager case is the homepage hero, which is very likely the LCP element. Lazy-loading that would
+# make the number this section exists to improve worse.
+IMG_RE = re.compile(r'<img\b[^>]*>', re.S)
+
+
+def lazy_footer(src: str) -> str:
+    marker = '<footer class="site-footer">'
+    if marker not in src:
+        return src
+    cut = src.index(marker)
+    head, foot = src[:cut], src[cut:]
+
+    def add(m: "re.Match") -> str:
+        tag = m.group(0)
+        if "loading=" in tag:
+            return tag
+        return tag[:-1].rstrip() + ' loading="lazy">'
+
+    return head + IMG_RE.sub(add, foot)
+
+
 # The contact form's fallback path composes a mailto, and it needs an address. It used to carry a
 # '{contact}' placeholder that build_legal.py substituted while the handler was a generated inline
 # script; when the handler moved into the static js/site.js on 2026-08-21 nothing substituted it any
@@ -262,6 +291,7 @@ def main() -> None:
                     out = STATUS_RE.sub(lambda m: status_block(m.group(1), label), out)
             out = add_skip(out)
             out = CONTACT_FORM_RE.sub(stamp_contact, out)
+            out = lazy_footer(out)
             out = PCARD_RE.sub(card_badge, out)
             out = FOOTER.sub(lambda m: footer(m.group(1), pre), out)
             out = COMPANY_RE.sub(lambda m: company(m.group(1), up), out)

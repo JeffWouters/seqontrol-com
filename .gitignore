@@ -19,3 +19,12 @@ Thumbs.db
 *.swp
 .vscode/
 .idea/
+
+# WebP twins of the raw captures above. tools/build_images.py derives its work list from
+# `git ls-files` precisely so it can never create these, but the ignore rules above only match
+# *.png — a stray .webp would sail past them and publish the very capture the redaction removes.
+assets/Screenshots/**/ShareCare0*.webp
+assets/Screenshots/**/SecurityPortal0*.webp
+assets/Screenshots/**/WebScan0*.webp
+!assets/Screenshots/ShareCare/ShareCare05.webp
+!assets/Screenshots/WebScan/WebScan02-redacted.webp

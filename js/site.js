@@ -98,3 +98,74 @@
     if (deep) root.scrollIntoView({ block: 'start' });
   });
 })();
+
+/* ---------------------------------------------------------------- contact form
+   Moved here from six inline <script> blocks on 2026-08-21. It was identical on
+   every page carrying a form, so the same 2.7 KB shipped six times — and an
+   inline script is the one thing that forces 'unsafe-inline' into a Content
+   Security Policy. Out here it is cached once and script-src can be 'self'.
+
+   It already guarded on the form's absence, so it is safe on every page. */
+/* Same behaviour as the contact page: post when an endpoint is configured,
+   otherwise compose a mailto and surface the text so a failed handoff is
+   recoverable rather than silent. */
+(function () {
+  'use strict';
+  var form = document.getElementById('contact-form');
+  if (!form) return;
+  var status = document.getElementById('cf-status');
+  var thanks = document.getElementById('cf-thanks');
+  var fallback = document.getElementById('cf-fallback');
+  var submit = document.getElementById('cf-submit');
+  var endpoint = (form.getAttribute('data-endpoint') || '').trim();
+
+  function say(m) { status.textContent = m; }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = form.elements.name.value.trim();
+    if (!name) { say('A name helps.'); form.elements.name.focus(); return; }
+    var email = form.elements.email.value.trim();
+    if (!email || email.indexOf('@') < 1) {
+      say('We need an email address to reply to.'); form.elements.email.focus(); return;
+    }
+
+    var body = [
+      'Name: ' + name,
+      'Email: ' + email,
+      'Organisation: ' + (form.elements.org.value.trim() || '—'),
+      'Request: ' + form.elements.topic.value,
+      'Estate: ' + (form.elements.estate.value.trim() || '—'),
+      '', form.elements.message.value.trim()
+    ].join('\\n');
+
+    if (endpoint) {
+      submit.disabled = true; say('Sending…');
+      fetch(endpoint, { method: 'POST', headers: { 'Accept': 'application/json' },
+                        body: new FormData(form) })
+        .then(function (r) { if (!r.ok) throw new Error(r.status);
+          form.hidden = true; thanks.hidden = false;
+          thanks.setAttribute('tabindex', '-1'); thanks.focus(); })
+        .catch(function () { submit.disabled = false;
+          say('That did not send. Try again, or email us — your message is still in the form.'); });
+      return;
+    }
+
+    window.location.href = 'mailto:{contact}'
+      + '?subject=' + encodeURIComponent('SeQontrol — ' + form.elements.topic.value)
+      + '&body=' + encodeURIComponent(body);
+    say('Opening your mail client…');
+    document.getElementById('cf-copy').value =
+      'To: {contact}\\nSubject: SeQontrol — ' + form.elements.topic.value + '\\n\\n' + body;
+    window.setTimeout(function () { fallback.hidden = false; }, 1200);
+  });
+
+  var copyBtn = document.getElementById('cf-copy-btn');
+  if (copyBtn) copyBtn.addEventListener('click', function () {
+    var box = document.getElementById('cf-copy');
+    box.select();
+    var done = function () { copyBtn.textContent = 'Copied'; };
+    if (navigator.clipboard) navigator.clipboard.writeText(box.value).then(done, function () {});
+    else { document.execCommand('copy'); done(); }
+  });
+})();

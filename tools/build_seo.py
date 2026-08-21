@@ -12,6 +12,7 @@ Run: python tools/build_seo.py
 from __future__ import annotations
 
 import datetime
+import glob
 import io
 import os
 import re
@@ -247,6 +248,32 @@ def strip_existing(src: str) -> str:
     return src
 
 
+# A Content Security Policy, delivered by meta because GitHub Pages serves no custom headers.
+#
+# script-src can be 'self' with nothing else because this site loads exactly one script, from its own
+# origin, and carries no inline blocks: the contact-form handler moved into js/site.js on 2026-08-21
+# precisely so this line would not need 'unsafe-inline'. If an inline <script> ever comes back, this
+# policy stops it running — which is the point, and is worth more than the convenience it costs.
+#
+# style-src DOES need 'unsafe-inline', and that is an honest weakness rather than an oversight: the
+# pages carry ~380 inline style attributes. It is worth stating plainly that this half of the policy
+# buys very little until those move into the stylesheet.
+#
+# frame-ancestors is deliberately absent: it is ignored in a meta policy and only works as a header,
+# so writing it here would look like clickjacking protection the site does not have. The same is true
+# of X-Frame-Options. Both need a real host to set them.
+CSP = ('<meta http-equiv="Content-Security-Policy" content="'
+       "default-src 'self'; "
+       "script-src 'self'; "
+       "style-src 'self' 'unsafe-inline'; "
+       "img-src 'self' data:; "
+       "font-src 'self'; "
+       "connect-src 'self'; "
+       "base-uri 'self'; "
+       "object-src 'none'"
+       '">')
+
+
 def apply(rel: str) -> None:
     path = os.path.join(ROOT, rel.replace("/", os.sep))
     src = io.open(path, encoding="utf-8").read()
@@ -261,6 +288,7 @@ def apply(rel: str) -> None:
                  f'<meta name="description" content="{desc}">', src, count=1)
 
     blocks = [
+        CSP,
         f'<link rel="canonical" href="{url}">',
         f'<meta property="og:type" content="{"website" if rel == "index.html" else "article"}">',
         f'<meta property="og:site_name" content="SeQontrol">',
@@ -309,8 +337,37 @@ def sitemap() -> None:
     io.open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8").write(xml)
 
 
+def csp_only_pages() -> list[str]:
+    """Pages on disk that META does not cover. Derived, not listed, so a new page cannot be added
+    without a policy by simply not appearing in a hand-kept set."""
+    out = []
+    for pattern in ("*.html", "*/*.html"):
+        for path in glob.glob(os.path.join(ROOT, pattern)):
+            rel = os.path.relpath(path, ROOT).replace(os.sep, "/")
+            if rel not in META:
+                out.append(rel)
+    return sorted(out)
+
+
+def apply_csp_only(rel: str) -> None:
+    """A page outside META still gets the policy.
+
+    404.html carries no canonical, no Open Graph and no sitemap entry on purpose — a soft 404 in an
+    index helps nobody. None of that is a reason to serve it without a CSP: it is the page an
+    attacker probes first, precisely because it renders whatever path was requested.
+    """
+    path = os.path.join(ROOT, rel.replace("/", os.sep))
+    src = io.open(path, encoding="utf-8").read()
+    src = re.sub(r'\s*<meta http-equiv="Content-Security-Policy"[^>]*>', "", src)
+    src = src.replace("<head>", "<head>\n" + CSP, 1)
+    io.open(path, "w", encoding="utf-8", newline="\n").write(src)
+
+
 if __name__ == "__main__":
     for rel in META:
         apply(rel)
+    extra = csp_only_pages()
+    for rel in extra:
+        apply_csp_only(rel)
     sitemap()
-    print(f"metadata applied to {len(META)} pages; sitemap regenerated")
+    print(f"metadata applied to {len(META)} pages, CSP to {len(META) + len(extra)}; sitemap regenerated")

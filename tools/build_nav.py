@@ -13,6 +13,7 @@ Run: python tools/build_nav.py
 """
 from __future__ import annotations
 
+import html
 import os
 import re
 
@@ -164,6 +165,37 @@ def card_badge(m: "re.Match") -> str:
 # Content images are left alone too - they already carry a deliberate eager/lazy split, and the one
 # eager case is the homepage hero, which is very likely the LCP element. Lazy-loading that would
 # make the number this section exists to improve worse.
+# Every .table-scroll carries tabindex="0" - verify.py enforces that, because a scrollable region
+# a mouse can pan must also be reachable from a keyboard. What nothing enforced was that the
+# resulting focus stop has a NAME: 16 of 23 had none, so a screen reader announced them as bare
+# groups, and the 7 that did have one all said "Licence comparison".
+#
+# Derived from the nearest preceding heading rather than hand-written into 23 places, for the same
+# reason the nav and the footer columns are derived: a label typed into markup is a label that
+# drifts, and a new table added tomorrow gets named for free. build_licensing sets its own
+# per-product label and is left alone - the check below only fills in what is still unnamed.
+SCROLL_RE = re.compile(r'<div class="table-wrap table-scroll"(?![^>]*aria-label)([^>]*)>')
+HEADING_RE = re.compile(r'<h[1-4][^>]*>(.*?)</h[1-4]>', re.S)
+TAGS_RE = re.compile(r'<[^>]*>')
+
+
+def name_tables(src: str) -> str:
+    """Give every unnamed scrollable table an accessible name taken from its own heading."""
+    def one(m: "re.Match") -> str:
+        heading = HEADING_RE.findall(src[:m.start()])
+        if not heading:
+            return m.group(0)
+        label = html.unescape(TAGS_RE.sub("", heading[-1])).strip()
+        label = " ".join(label.split())[:80]
+        if not label:
+            return m.group(0)
+        attrs = m.group(1)
+        if "role=" not in attrs:
+            attrs += ' role="group"'
+        return f'<div class="table-wrap table-scroll"{attrs} aria-label="{html.escape(label, quote=True)}">'
+    return SCROLL_RE.sub(one, src)
+
+
 IMG_RE = re.compile(r'<img\b[^>]*>', re.S)
 
 
@@ -340,6 +372,7 @@ def main() -> None:
             out = add_skip(out)
             out = CONTACT_FORM_RE.sub(stamp_contact, out)
             out = lazy_footer(out)
+            out = name_tables(out)
             out = PCARD_RE.sub(card_badge, out)
             out = FOOTER.sub(lambda m: footer(m.group(1), pre), out)
             out = COMPANY_RE.sub(lambda m: company(m.group(1), up), out)

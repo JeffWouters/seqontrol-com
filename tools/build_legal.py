@@ -33,6 +33,26 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from _chrome import SOURCE, chrome  # noqa: E402
+from build_seo import META  # noqa: E402
+from build_frameworks import FRAMEWORK_COUNT  # noqa: E402
+
+
+# "twenty-three regimes" is FRAMEWORK_COUNT minus the one the buyer actually wants. Spelled out
+# because it reads as prose, derived because a literal here drifts the moment a framework is added.
+_WORDS = {21: "twenty-one", 22: "twenty-two", 23: "twenty-three", 24: "twenty-four",
+          25: "twenty-five", 26: "twenty-six", 27: "twenty-seven"}
+OTHER_FRAMEWORKS = _WORDS.get(FRAMEWORK_COUNT - 1, str(FRAMEWORK_COUNT - 1))
+
+
+def seo_title(rel: str) -> str:
+    """The page title build_seo will apply. Emitted here so the intermediate file is never wrong."""
+    if rel not in META:
+        raise SystemExit(f"build_legal: {rel} is not in build_seo.META, so it would ship untitled")
+    return META[rel][0]
+
+
+def seo_desc(rel: str) -> str:
+    return META[rel][1]
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -104,9 +124,6 @@ FORM_SCRIPT = '''
 
 PAGES = {
     "pricing.html": dict(
-        title="SeQontrol - Pricing - What sets your number",
-        desc="How SeQontrol is priced: what each product counts, what makes a quote go up or down, and "
-             "how to get a real number against your own estate.",
         eyebrow="Pricing",
         h1="What sets your number",
         lede="ShareCare is listed in full. Everything else is quoted, and this page says which is "
@@ -407,7 +424,7 @@ PAGES = {
         </ul>
         <div class="note plain">
           <h3>Two questions, two axes</h3>
-          <p>How many frameworks you need is <strong>scope</strong>. Whether you want sign-off and automatic capture is <strong>depth</strong>. Those used to share one number, which meant a company doing SOC 2 alone had to buy every framework in the catalogue to reach attestation &mdash; paying for twenty-three regimes it would never open, to get one capability.</p>
+          <p>How many frameworks you need is <strong>scope</strong>. Whether you want sign-off and automatic capture is <strong>depth</strong>. Those used to share one number, which meant a company doing SOC 2 alone had to buy every framework in the catalogue to reach attestation &mdash; paying for {others} regimes it would never open, to get one capability.</p>
           <p class="mb0"><strong>Evidence</strong> is the catalogue, the crosswalk, automated probes, assessments, the evidence repository and time-boxed auditor access. <strong>Attested</strong> adds attestation and sign-off with four-eyes and expiry, control ownership, and automated evidence capture &mdash; at half again the band price, whichever band you are on.</p>
         </div>
         <h4 style="margin-top:2rem">If you are a provider: pooled framework licences</h4>
@@ -580,9 +597,6 @@ PAGES = {
 """),
 
     "spoofing-report.html": dict(
-        title="SeQontrol - Free report - Who is sending as you",
-        desc="A free check of your domain's email authentication: SPF, DKIM, DMARC, BIMI and MTA-STS, "
-             "plus every source currently sending mail as you.",
         eyebrow="Free assessment",
         h1="Find out who is sending email as your domain",
         lede="A free check of SPF, DKIM, DMARC, BIMI and MTA-STS — and, once reports are flowing, a list "
@@ -625,9 +639,6 @@ PAGES = {
 """),
 
     "surface-report.html": dict(
-        title="SeQontrol - Free scan - Your public surface, graded",
-        desc="A free grade of your public web surface: TLS, HTTP headers, cookies, DNS, content and "
-             "infrastructure, each failure with the standard it breaks and the fix.",
         eyebrow="Free assessment",
         h1="Find out what your attacker sees first",
         lede="A free grade of your public surface — TLS, HTTP headers, cookies, DNS, content and "
@@ -684,9 +695,6 @@ PAGES = {
 """),
 
     "vs-cipp.html": dict(
-        title="SeQontrol - vs CIPP - Where each one wins",
-        desc="CIPP manages Microsoft 365 tenants and is free. SeQontrol produces control-tagged evidence. "
-             "The honest split for MSPs already running CIPP.",
         eyebrow="Comparison",
         h1="SeQontrol and CIPP",
         lede="Most providers we speak to already run CIPP, and should keep running it. Here is what it "
@@ -732,9 +740,6 @@ PAGES = {
 """),
 
     "vs-m365-governance.html": dict(
-        title="SeQontrol - vs M365 governance tools - Where each one wins",
-        desc="How SeQontrol compares with Microsoft 365 permission and governance specialists such as "
-             "Syskit Point, CoreView, AvePoint and Varonis — and when to pick them instead.",
         eyebrow="Comparison",
         h1="SeQontrol and the Microsoft 365 governance tools",
         lede="Syskit Point, CoreView, AvePoint and Varonis all report on Microsoft 365 permissions and "
@@ -787,9 +792,6 @@ PAGES = {
 """),
 
     "vs-grc-platforms.html": dict(
-        title="SeQontrol - vs GRC platforms - Where each one wins",
-        desc="How SeQontrol compares with questionnaire-first GRC platforms on Microsoft 365 control "
-             "evidence, and where those platforms are the better choice.",
         eyebrow="Comparison",
         h1="SeQontrol and the GRC platforms",
         lede="Vanta, Drata, Secureframe and their peers do something we deliberately do not. Here is "
@@ -828,9 +830,6 @@ PAGES = {
 """),
 
     "vs-secure-score.html": dict(
-        title="SeQontrol - vs Secure Score - What native tooling misses",
-        desc="How SeQontrol differs from Microsoft Secure Score and native Microsoft 365 reporting, "
-             "and when the native tools are enough.",
         eyebrow="Comparison",
         h1="SeQontrol and Microsoft's native tooling",
         lede="Secure Score, Purview and SharePoint Advanced Management already ship with your "
@@ -867,9 +866,6 @@ PAGES = {
 """),
 
     "exposure-report.html": dict(
-        title="SeQontrol - Free report - What Copilot can reach",
-        desc="A free, scoped scan of your Microsoft 365 tenant: what is shared externally, what is "
-             "over-shared internally, and exactly what to revoke first.",
         eyebrow="Free assessment",
         h1="See what Copilot can reach in your tenant",
         form=dict(topic="Free exposure report",
@@ -932,9 +928,6 @@ PAGES = {
 """),
 
     "limits.html": dict(
-        title="SeQontrol - Limits - What this does not do",
-        desc="The planes that detect but cannot yet fix, where the Microsoft-first scope ends, and "
-             "why readiness is not an audit opinion. Written down before you ask.",
         eyebrow="Straight answers",
         h1="What SeQontrol does not do",
         lede="Every limit worth knowing, in one place — including the ones a sales call would "
@@ -1002,9 +995,6 @@ PAGES = {
 """),
 
     "about.html": dict(
-        title="SeQontrol - About - Why this exists",
-        desc="Who builds SeQontrol, why a Microsoft 365 security and compliance platform was worth "
-             "building, and what we will and will not claim about it.",
         eyebrow="About",
         h1="Why this exists",
         lede="SeQontrol is built by {operator} — a small team, working on the Microsoft 365 estate, "
@@ -1056,9 +1046,6 @@ PAGES = {
 """),
 
     "privacy.html": dict(
-        title="SeQontrol - Privacy - What we collect and why",
-        desc="What SeQontrol collects from this website and from a connected tenant, "
-             "why, how long it is kept, and who to contact about it.",
         eyebrow="Privacy",
         h1="What we collect, and why",
         lede="Short, because there is not much of it. This covers the website; the second half "
@@ -1125,9 +1112,6 @@ PAGES = {
 """),
 
     "terms.html": dict(
-        title="SeQontrol - Terms - The plain version",
-        desc="The terms covering use of the SeQontrol website and, in outline, the service — "
-             "written to be read rather than to be scrolled past.",
         eyebrow="Terms",
         h1="Terms, in language you can actually check",
         lede="These cover the website. A signed agreement governs the service itself; ask and we "
@@ -1176,9 +1160,6 @@ PAGES = {
 """),
 
     "security.html": dict(
-        title="SeQontrol - Security - What we do with your access",
-        desc="The access SeQontrol asks for, what it does with it, how the audit trail works, "
-             "and how to report a vulnerability.",
         eyebrow="Security",
         h1="What we do with the access you give us",
         lede="A new vendor asking to read your entire identity estate should expect hard questions. "
@@ -1251,7 +1232,8 @@ def build(name: str, spec: dict) -> None:
     # worth relying on; both prose fields now go through the same substitution.
     fields = dict(contact=CONTACT, operator=OPERATOR, entity=ENTITY,
                   kvk=KVK, address=ADDRESS_INLINE,
-                  address_html='<br>'.join(ADDRESS_LINES))
+                  address_html='<br>'.join(ADDRESS_LINES),
+                  others=OTHER_FRAMEWORKS)
     body = spec["body"].format(**fields)
     spec = {**spec, "lede": spec["lede"].format(**fields)} if "lede" in spec else spec
 
@@ -1268,8 +1250,13 @@ def build(name: str, spec: dict) -> None:
 
     html = (
         head_open
-        + f"<title>{spec['title']}</title>\n"
-        + f'<meta name="description" content="{spec["desc"]}">\n'
+        # Title and description come from build_seo.META, which is the only copy that survives:
+        # build_seo.apply() rewrites both on every run regardless of what is emitted here. This file
+        # used to carry its own title=/desc= for each page, and seven of them had silently drifted
+        # out of agreement - editing one was a no-op, and one discarded description ran to 165
+        # characters, over verify.py's own limit, escaping the gate only because it never shipped.
+        + f"<title>{seo_title(name)}</title>\n"
+        + f'<meta name="description" content="{seo_desc(name)}">\n'
         + '<link rel="stylesheet" href="css/styles.css">\n'
         + after_head
         + "<main id=\"main\">\n\n"

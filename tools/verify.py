@@ -88,7 +88,10 @@ class Page(HTMLParser):
         self.scroll = 0
         self.scroll_reachable = 0
         self.link_text: list[str] = []
+        self.unnamed_links = 0
         self._in_a = False
+        self._a_buf: list[str] = []
+        self._a_named = False
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
@@ -100,6 +103,13 @@ class Page(HTMLParser):
             self.img_no_alt += 1
         if tag == "a" and a.get("href"):
             self._in_a = True
+            self._a_buf = []
+            self._a_named = bool(a.get("aria-label") or a.get("aria-labelledby"))
+        # An image inside a link supplies that link's name when it carries alt text. The brand
+        # lockup relies on exactly this: a decorative symbol with alt="" beside a wordmark with
+        # alt="SeQontrol".
+        if tag == "img" and self._in_a and a.get("alt", "").strip():
+            self._a_named = True
         if tag == "label" and a.get("for"):
             self.labels.add(a["for"])
         if tag in ("input", "select", "textarea"):
@@ -116,10 +126,27 @@ class Page(HTMLParser):
             self.scroll += 1
             self.scroll_reachable += a.get("tabindex") is not None
 
-    def handle_data(self, data):
-        if self._in_a and data.strip():
-            self.link_text.append(data.strip())
+    # There was no handle_endtag, so _in_a was only ever cleared by the first text node that
+    # followed an <a>. An element-only anchor - the brand lockup, which contains two <img> and no
+    # text - therefore stayed armed and captured the next text node in the DOCUMENT: feeding real
+    # about.html markup produced link_text starting ['Skip to content', 'Menu', ...], attributing
+    # the nav toggle's "Menu" to the brand link. The vague-link-text gate below was measuring
+    # strings that mostly did not come from links at all, on all 28 pages.
+    def handle_endtag(self, tag):
+        if tag == "a" and self._in_a:
+            text = " ".join(self._a_buf).strip()
+            if text:
+                self.link_text.append(text)
+            elif not self._a_named:
+                # No text, no alt, no aria-label: a link a screen reader announces as its bare URL.
+                self.unnamed_links += 1
             self._in_a = False
+
+    def handle_data(self, data):
+        # Accumulate rather than take the first node: a link whose text is split by a <span> or an
+        # <em> was previously judged on its first fragment alone.
+        if self._in_a and data.strip():
+            self._a_buf.append(data.strip())
 
 
 def check_a11y(page: str, src: str) -> None:
@@ -158,6 +185,8 @@ def check_a11y(page: str, src: str) -> None:
              ("here", "click here", "read more", "more", "link", "this")]
     if vague:
         fail(page, f"vague link text: {vague}")
+    if p.unnamed_links:
+        fail(page, f"{p.unnamed_links} link(s) with no text, no image alt and no aria-label")
 
 
 # ------------------------------------------------------------------- content

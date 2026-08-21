@@ -69,7 +69,8 @@ build_guides.py     The guides section
 build_nav.py        Everything repeated on every page, derived from one PRODUCTS list
 build_seo.py        Metadata, canonicals, JSON-LD, the CSP meta tag, sitemap.xml
 build_images.py     PNG -> lossless WebP (69% smaller) and the <picture> markup
-build_frameworks.py Compliance framework tables
+build_frameworks.py The compliance framework catalogue as DATA (7 families, 24
+                    frameworks). Writes nothing; pricing quotes its count.
 extract_logo.py     Re-keys the supplied logo JPEG into transparent PNGs
 make_logo_variants.py  On-dark variants, sized copies, OG card
 make_icons.py       favicon.ico and the PNG icon set
@@ -299,11 +300,11 @@ What that involved, and why, so it does not get undone:
   interpretation laid over it. A waived finding stays visible and scored, and its exception expires.
   Do not let later copy imply compliance is the goal or that a green report equals a secure estate.
 - **The three portals are grouped, with no bundle name.** The group headline is the agreed phrase:
-  *"Three products. One platform. Zero compromise."* — used on `index.html` and `products/index.html`.
+  *"Three products. One platform. Zero compromise."* — on `products/index.html`. The homepage heads the same group differently (*"Sold separately. Built as one. Priced honestly."*) because it sits above the three availability groups rather than a grid of three.
 - **CompliancePortal scope.** Every mention says it covers the *technical implementation* of controls on
   the platforms SeQontrol supports — not a whole-company compliance programme, and not an audit opinion.
   The full carve-out (policies, HR process, physical security, vendor management, anything on an
-  unsupported platform) is a prominent box near the top of `products/complianceportal.html`.
+  unsupported platform) is a prominent box near the top of its section on `products/coming.html`.
 - **No CIS framework references anywhere**, per instruction. Named frameworks are limited to SOC 2,
   ISO 27001, NIST CSF / 800-53, PCI-DSS, HIPAA, GDPR, NIS 2 and Essential Eight, plus "a first-party
   framework of our own". Google Cloud and AWS coverage is described as read-only connectors without
@@ -312,18 +313,18 @@ What that involved, and why, so it does not get undone:
   and no statements about their *absence* either. Where trust needs building, the site does it with
   concrete product limits (which planes are read-only, what Dredd has not shipped, Microsoft-first
   scope) rather than by discussing the customer base. Keep it that way when editing.
-- **Prices live on two pages and nowhere else.** `pricing.html` and `licensing.html` carry the figures,
+- **Prices live on one page and nowhere else.** `pricing.html` carries the figures,
   the discount percentages and the worked bills; `verify.py` refuses both on every other page
   (`PRICE_PAGES` is the allowlist, `PRICE_RULES` picks which rules it covers). This used to read "no
   prices anywhere", which stopped being true when the model was published — and the stale half of it
   did damage: the discount rule was never added to the allowlist, so the volume bands were written as
   "less 10 per cent" to slip past it, phrasing that reads just as easily as "less *than* 10 per cent".
   A figure on a product page or the home hero is still a leak: it ages badly and contradicts the two
-  pages that are maintained.
+  page that is maintained.
 - **There is no suite discount, and that is a decision rather than an omission.** Each product is
   priced on its own. Volume bands on the buyer's own estate are a different thing and are published.
 - **The licensing matrices are a commitment, so keep them true to the catalog.** The per-product tables
-  in `licensing.html` were built from the seeded entitlement catalog (Billing's `CatalogSeeder.cs`), not
+  in `pricing.html` were built from the seeded entitlement catalog (Billing's `CatalogSeeder.cs`), not
   invented: ShareCare and MailTrust ride the Visibility/Governance/Automation ladder, CompliancePortal
   is banded by frameworks in scope with retention and attestation moving between bands, and
   SecurityPortal has a single tier because it is scan-only. Rebuild them with `python tools/build_licensing.py`
@@ -334,39 +335,22 @@ What that involved, and why, so it does not get undone:
   ships with the tab strip hidden by CSS and every panel visible, and `site.js` adds `data-tabs-ready`
   to flip it into tabs. With JavaScript off the whole thing renders stacked and nothing is lost — do not
   "tidy" this by hiding panels in CSS. Tabs are keyboard-driven (arrows, Home/End) and deep-linkable:
-  `licensing.html#mailtrust` opens that product.
+  `pricing.html#mailtrust` opens that product.
 - **Technology lists are per product** and use `.tag.on` for supported, `.tag.off` (dashed) for roadmap
   or manual-only — e.g. ShareCare's Google Workspace, MailTrust's unsupported DNS providers. Keep the
   roadmap items visibly distinct rather than dropping them; that distinction is the honesty.
-- **Availability.** Available now: ShareCare, SecurityPortal, CompliancePortal, MailTrust.
-  **Coming soon:** PosturePortal, Dredd, ConditionalAccessPortal. The first two keep full pages carrying
-  a "Coming soon" badge in the hero, the aside status, the product cards, the comparison table and every
-  cross-page mention; their CTAs ask to be contacted when the product lands rather than offering a trial
-  or assessment. CAP has no page.
-- **Roadmap is labelled as roadmap.** Read-only planes, the Dredd snapshot-baselining gap and the
-  scan-only nature of SecurityPortal are stated on their product pages.
+- **Availability is not documented here, on purpose.** `tools/build_nav.py` holds the `PRODUCTS`
+  list, and that is the source of truth: the nav badge, the product-page status line, the cards on
+  `index.html` and `products/index.html`, and the availability group headings are all rendered from
+  it. This bullet used to restate the list and had drifted twice — most recently claiming
+  CompliancePortal was available, omitting WebScan entirely, and describing full pages for products
+  whose pages no longer exist. Read `PRODUCTS`; do not copy it into prose.
 
-## Things to change before it goes live
+  Three states, not two, and the distinction is deliberate: `None` means running today, `"Soon"`
+  means built but not released, `"In dev"` means real work is still happening. Collapsing the last
+  two tells a reader that something close and something months out are the same distance away.
+  The four unreleased products share `products/coming.html`, anchored per product, rather than each
+  keeping a page that implies you could buy it.
 
-1. **Contact address.** Every mailto points at `jeff@jeffops.com`. Swap it for a product address
-   (e.g. `hello@seqontrol.com`) if you want the product identity separate from the personal one.
-2. **ShareCare's Automation tier.** The site — including the licensing matrix — describes the intended
-   ladder, with remediation write-back at Automation. In the seeded catalog today
-   `sharecare.autoremediate` is bundled into *Governance*, so Automation currently grants an identical
-   set. This is the one cell in the matrices that does not match the catalog. Reconcile the catalog (move
-   the flag up) or move that tick down to Governance.
-3. **Scan cadence is sold but not yet enforced.** The licensing page now gates *scheduled* scan frequency
-   by tier (daily / every 6 hours / hourly), with on-demand scans unlimited on every tier. **No
-   entitlement gates the scheduler today.** Shipping this copy before the gate exists is precisely the
-   "checkbox an operator can sell that nothing could honour" failure `CatalogSeeder.cs` warns about — so
-   either add the gate first or pull those rows. Suggested shape: a numeric
-   `<code>.schedule.min_interval_minutes` feature (1440 / 360 / 60) read by each product's scheduler,
-   with the on-demand path exempt by design. Rationale is recorded in `Z:\repos\pricing.md`
-   ("Margin protection — four decisions").
-4. **Availability dates.** "Coming soon" carries no date anywhere. Add one if you have one.
-4. **A real form endpoint**, if you want submissions rather than a mailto hand-off.
-5. **Open Graph image** — `og:title`/`og:description` are set on the home page; no image is referenced.
-6. **CNAME / deploy** — not included. Add whatever your host needs.
-
-The commercial model behind the copy is `Z:\repos\pricing.md`; the license flavours and feature
-groupings were cross-checked against `CatalogSeeder.cs` in the Billing service.
+  `verify.py` enforces the part prose cannot: `check_availability` fails when a product card's
+  generated badge disagrees with the availability heading it sits under.

@@ -29,6 +29,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          # Full history, not the default shallow clone. build_seo.py derives each sitemap
+          # <lastmod> from `git log -1` on that file; with depth 1 every page reports the HEAD
+          # commit date instead, and the reproducibility check below would fail on a sitemap that
+          # is not actually wrong.
+          fetch-depth: 0
 
       - uses: actions/setup-python@v6
         with:
@@ -36,6 +42,25 @@ jobs:
 
       - name: Verify site
         run: python tools/verify.py
+
+      # The rule this repository runs on is that the generators own the HTML — editing a generated
+      # page by hand is how work gets silently overwritten. Nothing enforced it: verify.py checks
+      # the SHAPE of whatever HTML is committed, never whether the generators would produce that
+      # HTML. So the two most likely mistakes in this repo — hand-editing a generated page, and
+      # changing a generator without re-running it — both passed CI and deployed, and stayed wrong
+      # until a person happened to notice. Re-running the pipeline and diffing is the enforcement.
+      #
+      # build_images.py is deliberately not run here. It needs Pillow, and its output — the WebP
+      # twins and the <picture> wrappers — is committed, so the diff stays clean without it. Anyone
+      # changing a screenshot runs it locally; README says so.
+      - name: Generators reproduce the committed HTML
+        run: |
+          python tools/build_legal.py
+          python tools/build_guides.py
+          python tools/build_licensing.py
+          python tools/build_nav.py
+          python tools/build_seo.py
+          git diff --exit-code
 
   deploy:
     # Pull requests are verified but never published.

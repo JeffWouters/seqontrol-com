@@ -16,6 +16,7 @@ import glob
 import io
 import os
 import re
+import subprocess
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = "https://seqontrol.com"
@@ -327,14 +328,36 @@ def apply(rel: str) -> None:
     io.open(path, "w", encoding="utf-8").write(src)
 
 
+def last_modified(rel: str) -> str:
+    """The date this page last actually changed, from git.
+
+    It used to be datetime.date.today() for every URL, which had two costs. The honest one: the
+    sitemap told crawlers that all 27 pages changed today, every single time the pipeline ran, which
+    is precisely the signal <lastmod> exists to give and precisely the way to make it worthless. The
+    practical one: it made the generator output differ on every run, so CI could not check that the
+    committed HTML is what the generators actually produce - the check this unblocks.
+
+    Falls back to today when git cannot answer: a shallow clone, an untracked new page, or no git at
+    all. A slightly wrong date on one URL is better than a build that cannot run.
+    """
+    try:
+        out = subprocess.run(["git", "log", "-1", "--format=%cs", "--", rel],
+                             cwd=ROOT, capture_output=True, text=True, timeout=10)
+        stamp = out.stdout.strip()
+        if out.returncode == 0 and len(stamp) == 10:
+            return stamp
+    except (OSError, subprocess.SubprocessError):
+        pass
+    return datetime.date.today().isoformat()
+
+
 def sitemap() -> None:
-    today = datetime.date.today().isoformat()
     rows = []
     for rel, (_, _, _) in META.items():
         url = canonical_for(rel)
         priority = "1.0" if rel == "index.html" else (
             "0.9" if rel == "products/index.html" else "0.8")
-        rows.append(f"  <url>\n    <loc>{url}</loc>\n    <lastmod>{today}</lastmod>\n"
+        rows.append(f"  <url>\n    <loc>{url}</loc>\n    <lastmod>{last_modified(rel)}</lastmod>\n"
                     f"    <changefreq>monthly</changefreq>\n    <priority>{priority}</priority>\n  </url>")
     xml = ('<?xml version="1.0" encoding="UTF-8"?>\n'
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'

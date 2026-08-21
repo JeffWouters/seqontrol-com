@@ -1,21 +1,27 @@
 #!/usr/bin/env python3
-"""Build the per-framework coverage section on the CompliancePortal page.
+"""The compliance framework catalogue: 7 families, 24 frameworks, with control counts.
 
-The numbers are read out of the compliance framework packs, not estimated:
-each pack declares its controls with `Automatable: true|false`, which the
-domain defines as "expected to have a test/selector; otherwise it is
-manual-attestation-only". That is exactly the split a buyer needs — what can be
-proved by inspecting configuration, and what still needs a human to attest.
+THIS NO LONGER WRITES A PAGE. It used to build a per-framework coverage section on
+products/complianceportal.html, which was deleted when the four unreleased products were collapsed
+into products/coming.html. From then on it raised FileNotFoundError on every run, its
+frameworks:start/end markers existed nowhere in the site, and README still advertised it - so a
+maintainer coming to update a framework table got a traceback and had to work out for themselves
+that the page was gone.
 
-Frameworks are grouped into families because 24 tabs is not a tab set. Every
-framework still gets its own row with its own numbers.
+Deleting it was the obvious alternative and would have destroyed the only copy of this data.
+tools/framework_stats.py, which generated these counts from the platform's framework packs, is not
+in this repo; the numbers were pasted here precisely so the site could build without that checkout.
+So the table stays, as data, and the parts of the site that quote it now derive their figures from
+it instead of hand-typing them.
+
+The numbers are read out of the packs, not estimated: each control declares `Automatable: true|false`,
+which the domain defines as "expected to have a test/selector; otherwise it is manual-attestation
+only". That is the split a buyer needs - what can be proved by inspecting configuration, and what
+still needs a human to attest.
 
 CIS packs are excluded deliberately (site-wide rule, see README).
 
-Regenerate the counts with tools/framework_stats.py against the platform repo;
-they are pasted here so the site builds without the platform checkout.
-
-Run: python tools/build_frameworks.py
+Run: python tools/build_frameworks.py   - prints the catalogue; writes nothing.
 """
 from __future__ import annotations
 
@@ -23,8 +29,11 @@ import io
 import os
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PAGE = os.path.join(ROOT, "products", "complianceportal.html")
-START, END = "<!-- frameworks:start -->", "<!-- frameworks:end -->"
+
+# Derived, never typed. pricing.html quotes this count in a group label, and build_legal.py's
+# scope-versus-depth paragraph quotes it minus one ("twenty-three regimes it would never open").
+# Both used to be literals sitting a long way from the list that defines them.
+FRAMEWORK_COUNT = None   # set below, once FAMILIES exists
 
 # (family key, tab label, blurb, [(framework, controls, automatable), ...])
 FAMILIES = [
@@ -83,6 +92,10 @@ FAMILIES = [
 
 TONE = "var(--t-compliance)"
 
+
+
+FRAMEWORK_COUNT = sum(len(items) for _key, _label, _blurb, items in FAMILIES)
+FAMILY_COUNT = len(FAMILIES)
 
 def rows(items):
     out = []
@@ -174,19 +187,12 @@ def build() -> str:
 
 
 def main() -> None:
-    src = io.open(PAGE, encoding="utf-8").read()
-    section = build()
-    if START in src and END in src:
-        head, rest = src.split(START, 1)
-        _, tail = rest.split(END, 1)
-        src = head + section.rstrip("\n") + tail
-    else:
-        anchor = '  <section class="cta">'
-        assert anchor in src
-        src = src.replace(anchor, section + anchor, 1)
-    io.open(PAGE, "w", encoding="utf-8").write(src)
-    print(f"framework section written: {len(FAMILIES)} families, "
-          f"{sum(len(i) for _, _, _, i in FAMILIES)} frameworks")
+    """Report the catalogue. Writing a page is not this module's job any more."""
+    print(f"{len(FAMILIES)} families, {FRAMEWORK_COUNT} frameworks")
+    for _key, label, _blurb, items in FAMILIES:
+        print(f"  {label}")
+        for name, controls, automatable in items:
+            print(f"    {name:52} {automatable:4}/{controls:<4} provable from configuration")
 
 
 if __name__ == "__main__":

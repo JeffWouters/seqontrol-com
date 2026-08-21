@@ -20,6 +20,16 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from _chrome import SOURCE, chrome  # noqa: E402
+from build_seo import META  # noqa: E402
+
+
+def seo(spec: dict) -> tuple[str, str]:
+    """(title, description) for a guide, from the one place build_seo will not overwrite."""
+    rel = "guides/" + spec.get("slug", "index") + ".html"
+    if rel not in META:
+        raise SystemExit(f"build_guides: {rel} is not in build_seo.META, so it would ship untitled")
+    return META[rel][0], META[rel][1]
+
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "guides")
@@ -27,9 +37,6 @@ OUT = os.path.join(ROOT, "guides")
 GUIDES = [
     dict(
         slug="what-copilot-can-reach",
-        title="SeQontrol - Guide - What Copilot can actually reach",
-        desc="Copilot surfaces anything a user can already open. What that means in practice, and "
-             "how to find your real blast radius before you roll it out.",
         eyebrow="Guide",
         h1="What Copilot can actually reach in Microsoft 365",
         lede="Copilot does not break permissions. It obeys them — which is exactly the problem, "
@@ -91,9 +98,6 @@ GUIDES = [
 
     dict(
         slug="dmarc-without-breaking-mail",
-        title="SeQontrol - Guide - DMARC enforcement without breaking mail",
-        desc="How to get a domain from p=none to p=reject without dropping legitimate mail: sender "
-             "inventory, staged policy, and the mistakes that stall most DMARC projects.",
         eyebrow="Guide",
         h1="Getting to DMARC enforcement without breaking your mail",
         lede="Almost every domain sits at p=none, which monitors and blocks nothing. The reason is not "
@@ -153,9 +157,6 @@ GUIDES = [
 
     dict(
         slug="evidence-auditors-accept",
-        title="SeQontrol - Guide - Evidence auditors accept",
-        desc="Why screenshots are tolerated rather than trusted, what continuous control evidence looks "
-             "like, and which controls can never be automated regardless of tooling.",
         eyebrow="Guide",
         h1="Evidence auditors accept, and evidence they merely tolerate",
         lede="A screenshot proves a setting was correct on the day somebody remembered to take it. "
@@ -215,9 +216,6 @@ GUIDES = [
 ]
 
 INDEX = dict(
-    title="SeQontrol - Guides - Microsoft 365 security and compliance",
-    desc="Practical guides on Copilot exposure, DMARC enforcement and compliance evidence — written "
-         "to be useful whether or not you ever buy anything.",
     eyebrow="Guides",
     h1="Guides",
     lede="What we have learned building this, written to be useful on its own. No gates, no forms in "
@@ -257,8 +255,11 @@ def page(spec, body_html, offer=None) -> str:
             "      </div>\n")
     html = (
         head_open
-        + f"<title>{spec['title']}</title>\n"
-        + f'<meta name="description" content="{spec["desc"]}">\n'
+        # From build_seo.META, not from this file's own copy. build_seo.apply() overwrites both on
+        # every run, so a title authored here was decorative at best and misleading at worst - two
+        # of the guides' copies had already drifted out of agreement with what actually ships.
+        + f"<title>{seo(spec)[0]}</title>\n"
+        + f'<meta name="description" content="{seo(spec)[1]}">\n'
         + '<link rel="stylesheet" href="../css/styles.css">\n'
         + after_head
         + '<main id="main">\n\n'

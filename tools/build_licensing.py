@@ -24,6 +24,10 @@ survives with JavaScript off; site.js flips it into tabs.
 import io
 import os
 import re
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from build_frameworks import FRAMEWORK_COUNT  # noqa: E402
 
 # Derived from __file__ like every other generator. This was the absolute path
 # r"Z:\Websites\SeQontrol.com\pricing.html", which made this the one script in tools/ that could not
@@ -59,10 +63,13 @@ def rows(items, cols):
     return "\n".join(out)
 
 
-def table(cols, items):
+def table(cols, items, label="Licence comparison"):
+    """label names the scrollable region. It is per product because all seven matrices used to
+    announce themselves as "Licence comparison" - seven focus stops on one page with identical
+    names and nothing to tell them apart."""
     head = "".join('<th class="tier-head" scope="col">%s<small>%s</small></th>' % (n, s) for n, s in cols)
     return ('        <div class="table-wrap table-scroll" tabindex="0" role="group"'
-            ' aria-label="Licence comparison">\n'
+            ' aria-label="' + label + '">\n'
             '          <table class="matrix">\n'
             '            <thead>\n'
             '              <tr><th scope="col">Capability</th>%s</tr>\n'
@@ -257,9 +264,10 @@ PRODUCTS = [
                              ("Intune", 1), ("Azure", 1), ("Purview", 1), ("Power Platform", 1), ("Power BI", 1)]),
               ("Other clouds", [("Google Cloud", 1), ("Amazon Web Services", 1)]),
               ("Engineering", [("GitHub", 1), ("Azure DevOps", 1)]),
-              # 24 in the catalog; a representative spread is listed rather than all of them.
-              # The full per-framework coverage lives on the CompliancePortal page.
-              ("Frameworks — 24 in the catalog", [
+              # A representative spread is listed rather than all of them; the count comes from
+              # build_frameworks.FAMILIES, which is the catalogue, so the label cannot drift from
+              # the list that defines it. It was a literal 24 sitting in a different file.
+              (f"Frameworks — {FRAMEWORK_COUNT} in the catalog", [
                   ("SOC 2", 1), ("ISO 27001", 1), ("ISO 27002", 1), ("ISO 27017", 1),
                   ("ISO 27701", 1), ("NIST CSF", 1), ("PCI DSS", 1), ("HIPAA", 1),
                   ("GDPR", 1), ("NIS 2", 1), ("DORA", 1), ("FedRAMP", 1), ("CMMC", 1),
@@ -402,7 +410,7 @@ BODIES = {}
 for p in PRODUCTS:
     body = [tech(p["tech"])]
     if p["cols"]:
-        body.append(table(p["cols"], p["rows"]))
+        body.append(table(p["cols"], p["rows"], label=f'{p["name"]} licence comparison'))
     if p.get("note"):
         body.append('        <div class="note plain" style="margin-top:0">\n'
                     '          <p class="mb0">%s</p>\n        </div>' % p["note"])
@@ -426,10 +434,20 @@ def fill(match):
     return "\n".join(out)
 
 
-s = io.open(PAGE, encoding="utf-8").read()
-before = s
-s, filled = re.subn(r'<!--CAPS:([a-z,]*)-->', fill, s)
-if filled == 0:
-    raise SystemExit("build_licensing: no CAPS markers in pricing.html — run build_legal.py first")
-io.open(PAGE, "w", encoding="utf-8", newline="\n").write(s)
-print("capability blocks filled:", filled, "| matrices:", s.count('class="matrix"') - before.count('class="matrix"'))
+# Behind a __main__ guard, like every other generator here. This block used to run at import scope,
+# which made `import build_licensing` rewrite pricing.html as a side effect - or kill the importing
+# process outright, since the no-markers path raises SystemExit. Merely looking at this module's
+# data from another script was enough to trigger it.
+def main() -> None:
+    s = io.open(PAGE, encoding="utf-8").read()
+    before = s
+    s, filled = re.subn(r'<!--CAPS:([a-z,]*)-->', fill, s)
+    if filled == 0:
+        raise SystemExit("build_licensing: no CAPS markers in pricing.html — run build_legal.py first")
+    io.open(PAGE, "w", encoding="utf-8", newline="\n").write(s)
+    print("capability blocks filled:", filled,
+          "| matrices:", s.count('class="matrix"') - before.count('class="matrix"'))
+
+
+if __name__ == "__main__":
+    main()

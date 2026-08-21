@@ -171,7 +171,6 @@ PRODUCTS = [
         rows=["Price",
               ("Per monitored site, per month", ["$0", "$20"]),
               ("At the five-site minimum", ["$0", "$100"]),
-              ("Monitored sites included with any ShareCare or SecurityPortal tier", ["&mdash;", "3"]),
               "The scan itself",
               ("On-demand scan, whenever you want one", [Y, Y]),
               ("The complete check set", [Y, Y]),

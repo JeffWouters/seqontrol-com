@@ -351,7 +351,6 @@ PAGES = {
               <tr><th scope="row">List</th><td>$0</td><td>$20</td></tr>
               <tr><th scope="row">5 sites, the minimum</th><td>$0</td><td>$100</td></tr>
               <tr><th scope="row">25 sites</th><td>$0</td><td>$500</td></tr>
-              <tr><th scope="row">Included with any ShareCare or SecurityPortal tier</th><td>&mdash;</td><td>3 sites</td></tr>
             </tbody>
           </table>
         </div>
@@ -362,7 +361,7 @@ PAGES = {
         </ul>
         <div class="note plain">
           <h3>A WebScan-only tenant pays no platform floor</h3>
-          <p class="mb0">The five-site minimum is the floor and nothing else applies. A tenant that arrived through a free scan is one we would not otherwise have, and putting a platform minimum in front of them would eat the funnel it sits downstream of. Add any second product and the $99 applies from that point.</p>
+          <p class="mb0">A tenant that arrived through a free scan is one we would not otherwise have, and putting a platform minimum in front of them would eat the funnel it sits downstream of. Add any second product and the $99 applies from that point.</p>
         </div>
         <div class="note plain">
           <h3>Discovered subdomains are free, and stay free until you say otherwise</h3>

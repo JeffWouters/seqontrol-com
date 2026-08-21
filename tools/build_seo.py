@@ -241,6 +241,11 @@ def breadcrumb_ld(label: str, url: str, in_products: bool) -> str:
 
 def strip_existing(src: str) -> str:
     """Remove the metadata this script owns, so it can be re-run idempotently."""
+    # The CSP is owned by this script too and has to be stripped like everything else. It was not,
+    # so every run appended another copy to the ten hand-written pages in META. Generated pages hid
+    # the bug: their whole head is rebuilt upstream, so they always looked correct. The re.sub has
+    # no count, which makes the first run after this fix clean up the copies already on disk.
+    src = re.sub(r'\n?<meta http-equiv="Content-Security-Policy"[^>]*>', "", src)
     src = re.sub(r'\n?<link rel="canonical"[^>]*>', "", src)
     src = re.sub(r'\n?<meta property="og:[^"]*"[^>]*>', "", src)
     src = re.sub(r'\n?<meta name="twitter:[^"]*"[^>]*>', "", src)

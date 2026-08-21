@@ -313,6 +313,29 @@ def check_srcset(page: str, src: str) -> None:
             fail(page, f"<source srcset> points at a missing file: {ref}")
 
 
+# Head tags that must appear exactly once. build_seo.py rebuilds all of these on every run, and it
+# strips before it reinserts - except it forgot the CSP, so ten pipeline runs left ten identical
+# policies in the head of every hand-written page. Nothing broke, which is why it survived: duplicate
+# metadata is invisible in a browser and invisible in a diff you are not looking at. Counting is
+# cheap and catches the whole family, not just the one that went wrong.
+SINGLETONS = (
+    ('http-equiv="Content-Security-Policy"', "content security policy"),
+    ('rel="canonical"', "canonical link"),
+    ("<title>", "title"),
+    ('name="description"', "meta description"),
+    ('property="og:title"', "og:title"),
+    ('name="twitter:card"', "twitter:card"),
+)
+
+
+def check_singletons(page: str, src: str) -> None:
+    head = src[:src.index("</head>")] if "</head>" in src else src
+    for needle, label in SINGLETONS:
+        n = head.count(needle)
+        if n > 1:
+            fail(page, f"{label} appears {n} times in <head>; a generator is appending instead of replacing")
+
+
 # ------------------------------------------------------- the script bundle
 
 # On 2026-08-21 the contact-form handler moved out of six generated inline <script> blocks and into
@@ -385,6 +408,7 @@ def main() -> int:
         check_seo(page, src)
         check_form(page, src)
         check_srcset(page, src)
+        check_singletons(page, src)
 
     check_scripts()
 

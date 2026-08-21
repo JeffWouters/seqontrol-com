@@ -80,6 +80,25 @@ crop_screenshots.py  redact_screenshots.py   Raw capture -> publishable crop
 Only `build_images.py` needs anything installed (`pip install Pillow`), and only when a screenshot
 changes — the WebP files are committed, so CI never runs it.
 
+The three artwork scripts need Pillow too, and they have an order of their own:
+
+```powershell
+python tools/extract_logo.py        # supplied JPEG -> transparent symbol/wordmark/tagline
+python tools/make_logo_variants.py  # on-dark variants, sized copies, OG card
+python tools/make_icons.py          # favicon.ico and the icon set   <- must run last
+```
+
+`make_logo_variants.py` and `make_icons.py` both write `favicon-32.png`,
+`apple-touch-icon.png` and `icon-512.png`, and they disagree about what those should hold: the
+first centres the on-dark symbol, the second emits the white shield the site actually links.
+Whichever runs last wins, and the committed icons are the `make_icons.py` treatment — verified
+byte-for-byte. Run them out of order and three icons change silently.
+
+None of the three runs in CI, and none of them run at import: they rewrite tracked binaries, so
+they only act when invoked directly. `extract_logo.py` reads artwork that is deliberately not in
+this repo; point `SEQONTROL_LOGO_SRC` at it. Both preview images go to `SEQONTROL_PREVIEW_DIR`
+(default `Z:	mp`) rather than into the site.
+
 ## Hosting — GitHub Pages
 
 The repository root *is* the site: no build step, so the whole checkout is published as-is.
